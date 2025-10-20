@@ -7,5 +7,9 @@ Das Projekt wird nachhaltig weiterverwendet: zum Beispiel auf Messen, um Begeist
 
  Befehle für Git
  cd ~/Desktop/ExpoDroid
+ 
  git status
+
+ git pull
+ 
 
