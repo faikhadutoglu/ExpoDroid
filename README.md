@@ -13,3 +13,9 @@ Das Projekt wird nachhaltig weiterverwendet: zum Beispiel auf Messen, um Begeist
  git pull
  
 
+Titel:
+Konzeption, Entwicklung und Realisierung eines mechatronischen Roboters zur Demonstration auf Hochschulmessen
+
+
+Beschreibung:
+Im Rahmen dieser Studienarbeit wird ein funktionsfähiger mechatronischer Roboter konzipiert, entwickelt und realisiert, dessen Einsatz vorrangig der Demonstration auf Hochschulmessen dient. Ziel ist die systematische Integration konstruktiver, informationstechnischer und fertigungstechnischer Disziplinen in ein interdisziplinäres Gesamtsystem. Der entwickelte Demonstrator veranschaulicht die kombinierte Anwendung von Methoden des Systems Engineering, der hardwarenahen Programmierung sowie der additiven Fertigung und zeigt deren Synergiepotenziale auf. Als Begeisterungsobjekt soll er potenzielle neue Studierende faszinieren und Aufmerksamkeit auf die DHBW lenken.
