@@ -7,7 +7,48 @@
 \subsection{Interdisziplinäre Integration}
 
 \section{Elektrische Antriebstechnik}
-\subsection{Funktionsweise von Elektromotoren (DC/BLDC)}
+Die elektrische Antriebstechnik befasst sich mit der Umwandlung elektrischer Energie in mechanische Bewegung und stellt damit eine zentrale Grundlage moderner mechatronischer Systeme dar. Sie umfasst den Aufbau, die Funktionsweise und die Steuerung elektrischer Maschinen, die in zahlreichen Anwendungen – von industriellen Produktionsanlagen bis hin zu Fahrzeugantrieben – eingesetzt werden. Ziel dieses Kapitels ist es, die grundlegenden Prinzipien elektrischer Antriebe sowie deren Komponenten und Wirkungszusammenhänge zu erläutern.
+\subsection{Funktionsweise von Elektromotoren (DC)}
+Das Grundprinzip des Elektromotors basiert auf der Lorentzkraft, 
+die im Jahr 1895 von dem niederländischen Physiker Hendrik Antoon Lorentz
+entdeckt wurde\cite{ressierer.2011}. Sie beschreibt die Kraftwirkung auf bewegte elektrische Ladungen 
+in einem magnetischen Feld und bildet damit die physikalische Grundlage für die 
+Umwandlung elektrischer Energie in mechanische Bewegung.
+
+Wenn sich eine elektrische Ladung mit der Geschwindigkeit \( \vec{v} \) in einem 
+Magnetfeld mit der Flussdichte \( \vec{B} \) bewegt, wirkt auf sie eine Kraft, 
+die durch das Kreuzprodukt beschrieben wird\cite{Brandt.2021}:
+\[
+\vec{F} = q \, (\vec{v} \times \vec{B})
+\]
+Diese \emph{Lorentzkraft} steht senkrecht sowohl zur Bewegungsrichtung der Ladung 
+als auch zu den Feldlinien des Magnetfelds. 
+
+In einem stromdurchflossenen Leiter bewegen 
+sich viele Elektronen gleichzeitig. Die resultierende Gesamtkraft auf den Leiter 
+ergibt sich zu:
+\[
+\vec{F} = I \, (\vec{l} \times \vec{B})
+\]
+wobei \( I \) die Stromstärke und \( \vec{l} \) die wirksame Leiterlänge im Magnetfeld 
+darstellt. Diese Kraft bewirkt ein \textbf{Drehmoment} auf die Leiterschleife des 
+Rotors, wodurch sich dieser in Rotation versetzt.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/MyImage}
+	\caption[Beispiel für die Einbindung eines Bildes.]{Beispiel für die Einbindung eines Bildes (PDF-, JPG-, und PNG-Bilder können eingebunden werden).}
+	\label{fig:Lorenzkraft}
+\end{figure}
+
+
+Zur Bestimmung der Kraftrichtung wird die sogenannte \textbf{Linke-Hand-Regel} 
+verwendet: Zeigt der \emph{Daumen} in die Stromrichtung, der \emph{Zeigefinger} in 
+die Richtung des Magnetfeldes (von Nord nach Süd), so zeigt der \emph{Mittelfinger} 
+die Richtung der auf den Leiter wirkenden Lorentzkraft an. Dieses Prinzip erklärt, 
+warum die stromdurchflossenen Leiter im Magnetfeld ein Drehmoment erfahren und sich 
+der Rotor eines Elektromotors in Bewegung setzt.
+
 \subsection{Hoverboard-Motoren und deren Eigenschaften}
 \subsection{Motortreiber und PWM-Steuerung}
 
