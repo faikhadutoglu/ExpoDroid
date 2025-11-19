@@ -61,9 +61,24 @@ Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der Maker-Community a
 \subsection{Raspberry Pi}
 a
 \section{Energieversorgung}
-a
-\subsection{Lithium-Ionen-Akkumulatoren}
-a
+Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
+\subsection{Batterie}
+Batterien stellen eine mobile und unabhängige Energiequelle dar und ermöglichen den zuverlässigen Betrieb elektronischer Systeme auch ohne feste Stromversorgung, weshalb sie insbesondere in mobilen oder autonomen Anwendungen eine zentrale Rolle einnehmen.
+Batterien gehören zu den elektrochemischen Speichern, bei denen chemisch gebundene Energie durch Redoxreaktionen in elektrische Energie umgewandelt wird. Sie stellen eine universell einsetzbare Form chemischer Speicher dar, deren Energiedichte im Vergleich zu anderen Technologien jedoch begrenzt ist\autocite{Kurzweil2015}.
+
+Eine Batterie besteht grundsätzlich aus einer negativen und einer positiven Elektrode sowie einem Elektrolyten, der den Ionentransport ermöglicht. Die elektrische Spannung ergibt sich aus der unterschiedlichen chemischen Potenziallage der Elektroden, die beim Entladen genutzt wird, um elektrische Energie bereitzustellen.
+
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Batterie.png}
+	\caption[\autocite{BatteryEssentials2025} Schematischer Aufbau einer Lithium-Ionen-Batterie.]{Schematischer Aufbau einer Lithium-Ionen-Batterie mit Anode (Li$_x$C), nicht-wässrigem Elektrolyt und Kathode (LiFePO$_4$/FePO$_4$). Während des Entladevorgangs fließen Elektronen (e$^-$) über den äußeren Stromkreis, während Lithium-Ionen durch den Elektrolyten wandern.}
+	\label{fig:LithiumIonenBatterie}
+\end{figure}
+
+Als elektrochemische Speicher basieren Batterien auf einem Funktionsprinzip, bei dem während des Entladevorgangs Elektronen über den äußeren Stromkreis fließen, während Ionen durch den Elektrolyten wandern(siehe \ref{fig:LithiumIonenBatterie})\autocite{Kurzweil2015}. Dieser Mechanismus ist typisch für galvanische Zellen. Abhängig vom chemischen System unterscheiden sich Batterien hinsichtlich Zellspannung, Energiedichte, Leistungsfähigkeit und Lebensdauer.
+Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird\autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung\autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen – von stationären Speichern über Mobilitätslösungen bis hin zu Kleingeräten.
+
 \subsection{Spannungswandler und Stromverteilung}
 a
 \subsection{Sicherheitskonzepte (Sicherungen, Battery Management)}
