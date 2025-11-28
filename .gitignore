@@ -1,0 +1,66 @@
+# ============================
+# LaTeX – Ignore Build Files
+# ============================
+
+# Auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+
+# Intermediate files
+*.dvi
+*.xdv
+*.pdfsync
+*.synctex.gz
+*.synctex
+
+# Bibliography
+*.bbl
+*.bcf
+*.blg
+*-blx.bib
+
+# MakeIndex / Glossaries
+*.idx
+*.ilg
+*.ind
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.nlo
+
+# Latexmk / arara / Build tools
+*.fdb_latexmk
+*.auxlock
+*.run.xml
+
+# Meta files
+*.nav
+*.snm
+*.vrb
+
+# Temp files
+*.tmp
+*.tmp.*
+*~
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.backup
+
+# Mac-specific
+.DS_Store
