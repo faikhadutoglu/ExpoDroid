@@ -48,7 +48,7 @@ ngerman
 \newcommand{\autor}{Faik Hadutoglu, Angus Bach, Simon Steiger, 
 	Hai Nguyen}
 \newcommand{\bearbeitungszeitraum}{07.10.2025 - 12.03.2026}
-\newcommand{\matrikelnr}{6769107,}
+\newcommand{\matrikelnr}{6769107, 1124670}
 \newcommand{\kurs}{TFE23-2}
 \newcommand{\firma}{Opel Automobile GmbH}
 \newcommand{\abgabedatum}{\today}
@@ -94,6 +94,7 @@ hyperref=true, %% hyperref-Paket verwenden, um Links zu erstellen
 %\renewcommand{\@cite}[2]{(vgl. {#1\if@tempswa , #2\fi})} 
 %\renewcommand{\@biblabel}[1]{(#1)}
 %\makeatother
+
 
 \usepackage{pdfpages}
 
@@ -178,6 +179,10 @@ marginal
 \usepgfplotslibrary{smithchart}
 \usepackage{tikz}						% Tikz sollte nach Listings Pakete geladen werden.
 \usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usepackage{longtable}
+\usepackage{textcomp,xspace} % \textregistered, \texttrademark
+\newcommand{\reg}{\textsuperscript{\textregistered}\xspace}
 
 \hyphenation{Schrift-ar-ten}
 
@@ -332,6 +337,7 @@ type=main]
 \appendix
 %\pagenumbering{Roman}					% große, römische Seitenzahlen für Anhang, falls gewünscht
 \include{chapter/anhang}
+\include{chapter/Requierments_Tabelle}
 \ifthenelse{\boolean{@twoside}}{%
 	\cleardoubleoddpage
 }{%
