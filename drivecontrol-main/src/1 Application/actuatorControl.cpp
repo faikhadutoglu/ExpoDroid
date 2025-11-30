@@ -47,7 +47,19 @@ void actuatorControllerInit(){
     // pinMode(PIN_RUDDER_RECEIVED_ESP, INPUT);
     // pinMode(PIN_FLAP_RECEIVED_ESP, INPUT); // Currently not used
 
-//PINs einstellen hier 4 stk s2-s4 und output 
+
+
+
+    // EXPODROID PWM-Pins konfigurieren
+    //Module 1 
+    pinMode(PIN_BTS1_RPWM, OUTPUT);
+    pinMode(PIN_BTS1_LPWM, OUTPUT);
+    //Modul2
+    pinMode(PIN_BTS2_RPWM, OUTPUT);
+    pinMode(PIN_BTS2_LPWM, OUTPUT);
+
+
+
 
     // To read PWM Signals from Remote Control
     pinMode(PIN_ELEVATOR_RECEIVED_RC, INPUT);
@@ -55,7 +67,7 @@ void actuatorControllerInit(){
     pinMode(PIN_AILERON_RECEIVED_RC, INPUT);
     pinMode(PIN_RUDDER_RECEIVED_RC, INPUT);
     pinMode(PIN_FLAP_RECEIVED_RC, INPUT);
-
+    
     // To write PWM signals to servos
     servo[ELEVATOR].attach(PIN_ELEVATOR_CONTROLLER);
     servo[AILERON].attach(PIN_AILERON_CONTROLLER);
@@ -66,7 +78,6 @@ void actuatorControllerInit(){
     pinMode(PIN_AUTOPILOT_LED, OUTPUT);
 
     moduleIsInitialised = true;
-
 }
 
 void actuatorControllerForwardSignals(){
@@ -75,6 +86,10 @@ void actuatorControllerForwardSignals(){
     static uint32_t autopilotLEDCounter = 0;
     uint16_t pulseLength_us = 0;
     uint8_t autopilotState = flightguidanceCommunicatorGetAutopilotState();
+
+    // EXPODROID: Variablen für Motor-Steuerung
+    static int lastSteeringPulse = 1500;
+    static int lastSpeedPulse = 1500;
 
     autopilotLEDCounter++;
 
@@ -97,20 +112,6 @@ void actuatorControllerForwardSignals(){
             #ifdef DEBUG_CURRENT_SERVO_ANGLES
                 #define PRINT_COUNTS 10
                 if(cnt>PRINT_COUNTS){
-                    //switch(i){
-                    //     case 0: 
-                    //         Serial.println("ELE:"+String(map(pulseLength_us,MINIMUM_VALID_PULSE_LENGTH_SERVO,MAXIMUM_VALID_PULSE_LENGTH_SERVO,MINIMUM_ANGLE_SERVO,MAXIMUM_ANGLE_SERVO))+",");
-                    //         break;
-                    //     case 1: 
-                    //         Serial.println("AIL:"+String(map(pulseLength_us,MINIMUM_VALID_PULSE_LENGTH_SERVO,MAXIMUM_VALID_PULSE_LENGTH_SERVO,MINIMUM_ANGLE_SERVO,MAXIMUM_ANGLE_SERVO))+",");
-                    //         break;
-                    //     case 2: 
-                    //         Serial.println("RDR:"+String(map(pulseLength_us,MINIMUM_VALID_PULSE_LENGTH_SERVO,MAXIMUM_VALID_PULSE_LENGTH_SERVO,MINIMUM_ANGLE_SERVO,MAXIMUM_ANGLE_SERVO))+",");
-                    //         break;
-                    //     case 3: 
-                    //         Serial.println("ENG:"+String(map(pulseLength_us,MINIMUM_VALID_PULSE_LENGTH_SERVO,MAXIMUM_VALID_PULSE_LENGTH_SERVO,MINIMUM_ANGLE_SERVO,MAXIMUM_ANGLE_SERVO))+",");
-                    //         break;     
-                    // }
                     switch(i){
                         case 0: 
                             Serial.println("ELE:"+String(pulseLength_us)+",");
@@ -127,24 +128,94 @@ void actuatorControllerForwardSignals(){
                     }
                 }
             #endif
+
+            // EXPODROID: Werte für Motor-Steuerung speichern
             if(i == ENGINE){
-                //Hier code für gas
-                // pulseLength_us 1000-2000 Variable ALT?
-                if(pulseLength_us < 1200){ //motor aus
-
-                }
-                if(pulseLength_us > 1600){ //motor vollgas
-
-                }
+                lastSteeringPulse = pulseLength_us;
             }
-            if(i == AILERON){
-                //Hier code für lenkung
-                // pulseLength_us 1000-2000 Variable ENG?
+            else if(i == AILERON){
+                lastSpeedPulse = pulseLength_us;
             }
-            servo[i].writeMicroseconds(pulseLength_us);
-
+            
+            // Normale Servos (ELEVATOR, RUDDER) direkt ansteuern
+            // ENGINE und AILERON werden später für Motoren verwendet
+            if(i != ENGINE && i != AILERON){
+                servo[i].writeMicroseconds(pulseLength_us);
+            }
         }
     }
+
+    // EXPODROID: Motor-Steuerung mit den gesammelten Werten
+    // Berechne Basis-Geschwindigkeit (-255 bis +255)
+    int baseSpeed = 0;
+    if(lastSpeedPulse < 1450) {
+        // Rückwärts: 1100-1450 -> -255 bis 0
+        baseSpeed = map(lastSpeedPulse, 1100, 1450, -255, 0);
+    } else if(lastSpeedPulse > 1550) {
+        // Vorwärts: 1550-1900 -> 0 bis 255
+        baseSpeed = map(lastSpeedPulse, 1550, 1900, 0, 255);
+    } else {
+        // Deadzone: 1450-1550 = Stop
+        baseSpeed = 0;
+    }
+    
+    // Berechne Lenkung (-100 bis +100)
+    int steering = 0;
+    if(lastSteeringPulse < 1450) {
+        // Links: 1000-1450 -> -100 bis 0
+        steering = map(lastSteeringPulse, 1000, 1450, -100, 0);
+    } else if(lastSteeringPulse > 1550) {
+        // Rechts: 1550-2000 -> 0 bis +100
+        steering = map(lastSteeringPulse, 1550, 2000, 0, 100);
+    }
+    
+    // Differential Berechnung
+    int leftMotorSpeed = baseSpeed;
+    int rightMotorSpeed = baseSpeed;
+    
+    if(steering > 0) {
+        // Rechts drehen: rechter Motor langsamer
+        rightMotorSpeed = baseSpeed * (100 - steering) / 100;
+    } else if(steering < 0) {
+        // Links drehen: linker Motor langsamer
+        leftMotorSpeed = baseSpeed * (100 + steering) / 100;
+    }
+    
+    // Begrenzung auf -255 bis +255
+    leftMotorSpeed = constrain(leftMotorSpeed, -255, 255);
+    rightMotorSpeed = constrain(rightMotorSpeed, -255, 255);
+    
+    // Motor 1 (Links) ansteuern
+    if(leftMotorSpeed > 0) {
+        analogWrite(PIN_BTS1_RPWM, abs(leftMotorSpeed));
+        analogWrite(PIN_BTS1_LPWM, 0);
+    } else if(leftMotorSpeed < 0) {
+        analogWrite(PIN_BTS1_RPWM, 0);
+        analogWrite(PIN_BTS1_LPWM, abs(leftMotorSpeed));
+    } else {
+        analogWrite(PIN_BTS1_RPWM, 0);
+        analogWrite(PIN_BTS1_LPWM, 0);
+    }
+    
+    // Motor 2 (Rechts) ansteuern
+    if(rightMotorSpeed > 0) {
+        analogWrite(PIN_BTS2_RPWM, abs(rightMotorSpeed));
+        analogWrite(PIN_BTS2_LPWM, 0);
+    } else if(rightMotorSpeed < 0) {
+        analogWrite(PIN_BTS2_RPWM, 0);
+        analogWrite(PIN_BTS2_LPWM, abs(rightMotorSpeed));
+    } else {
+        analogWrite(PIN_BTS2_RPWM, 0);
+        analogWrite(PIN_BTS2_LPWM, 0);
+    }
+    
+    // Debug-Ausgabe für Motor-Steuerung (immer aktiv für Testen)
+    Serial.print("AIL:"); Serial.print(lastSpeedPulse);
+    Serial.print(" ENG:"); Serial.print(lastSteeringPulse);
+    Serial.print(" Base:"); Serial.print(baseSpeed);
+    Serial.print(" Steer:"); Serial.print(steering);
+    Serial.print(" L:"); Serial.print(leftMotorSpeed);
+    Serial.print(" R:"); Serial.println(rightMotorSpeed);
 
     #ifdef DEBUG_CURRENT_SERVO_ANGLES
     if(cnt++>PRINT_COUNTS){
@@ -160,8 +231,9 @@ void actuatorControllerForwardSignals(){
         pulseLength_us = pulseIn(servoSignalPinsRC[FLAP], HIGH, TIMEOUT_SERVO_SIGNAL_HIGH_US);
         servo[FLAP].writeMicroseconds(pulseLength_us);
     }
-
 }
+
+
 
 #ifdef DEBUG_PRINT_RECEIVED_ANGLES
 void actuatorControllerPrintAngles(){

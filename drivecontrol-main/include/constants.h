@@ -43,6 +43,13 @@
 #define PIN_JTAG_TMS 14
 #define PIN_JTAG_TDO 15
 
+//EXPODROID PINSS
+// BTS7960 Module 1 
+#define PIN_BTS1_RPWM  33    // Forward PWM
+#define PIN_BTS1_LPWM  0     // Reverse PWM
+// R_EN und L_EN fest auf 5V
 
-
+// BTS7960 Module 2 
+#define PIN_BTS2_RPWM  1     // Forward PWM (TX0)
+#define PIN_BTS2_LPWM  3     // Reverse PWM (RX0)
 
