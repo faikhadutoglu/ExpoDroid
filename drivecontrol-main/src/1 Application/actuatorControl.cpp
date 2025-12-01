@@ -129,7 +129,7 @@ void actuatorControllerForwardSignals(){
                 }
             #endif
 
-            // EXPODROID: Werte für Motor-Steuerung speichern
+            // EXPODROID: Werte für Motor-Steuerung speichern (wir wollen dc Motoren ansteuern und keine Servos deswegen die Anpassung)
             if(i == ENGINE){
                 lastSteeringPulse = pulseLength_us;
             }
@@ -137,7 +137,7 @@ void actuatorControllerForwardSignals(){
                 lastSpeedPulse = pulseLength_us;
             }
             
-            // Normale Servos (ELEVATOR, RUDDER) direkt ansteuern
+            // Normale Servos (ELEVATOR, RUDDER) direkt ansteuern signal was vom Sender kommt ohne änderung für Servos
             // ENGINE und AILERON werden später für Motoren verwendet
             if(i != ENGINE && i != AILERON){
                 servo[i].writeMicroseconds(pulseLength_us);
@@ -150,7 +150,7 @@ void actuatorControllerForwardSignals(){
     int baseSpeed = 0;
     if(lastSpeedPulse < 1450) {
         // Rückwärts: 1100-1450 -> -255 bis 0
-        baseSpeed = map(lastSpeedPulse, 1100, 1450, -255, 0);
+        baseSpeed = map(lastSpeedPulse, 1100, 1450, -255, 0); //mappen bedeutet wert von einem bereich in einen anderen zu übertragen damit er von Motortreiber verstanden wird
     } else if(lastSpeedPulse > 1550) {
         // Vorwärts: 1550-1900 -> 0 bis 255
         baseSpeed = map(lastSpeedPulse, 1550, 1900, 0, 255);
@@ -174,16 +174,17 @@ void actuatorControllerForwardSignals(){
     int rightMotorSpeed = baseSpeed;
     
     if(steering > 0) {
-        // Rechts drehen: rechter Motor langsamer
+        // Rechts drehen: rechter Motor langsamer  //bissle: in der Praxis testen ob die Rädergeschwindigkeitsunterschied zu viel wird!!
         rightMotorSpeed = baseSpeed * (100 - steering) / 100;
     } else if(steering < 0) {
         // Links drehen: linker Motor langsamer
         leftMotorSpeed = baseSpeed * (100 + steering) / 100;
     }
     
-    // Begrenzung auf -255 bis +255
-    leftMotorSpeed = constrain(leftMotorSpeed, -255, 255);
-    rightMotorSpeed = constrain(rightMotorSpeed, -255, 255);
+    // Begrenzung auf -255 bis +255  
+    const float batterie_factor = 0.91; //Begrenzung der Spannung // Spitzenspannung kann trzdem mehr als 12V sein??
+    leftMotorSpeed = constrain(leftMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
+    rightMotorSpeed = constrain(rightMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
     
     // Motor 1 (Links) ansteuern
     if(leftMotorSpeed > 0) {
