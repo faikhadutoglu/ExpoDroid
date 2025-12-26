@@ -9,18 +9,59 @@
 
 
 
+\section{Steuerungskonzept}%Faik
+Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren, bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle RC-Steuersignale (Remote Control) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
-\section{Steuerungskonzept}
-\subsection{Systemarchitektur}
-\subsection{Sensorik und Aktorik}
-\subsection{Steuerungsalgorithmen}
+\subsection{Grundlegende Signalverarbeitung}%Faik
+Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen enthalten über:
+\begin{itemize}
+	\item die gewünschte Vortriebsrichtung und -intensität
+	\item die gewünschte Lenkrichtung und -intensität
+\end{itemize}
+Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsichtlich Neutralstellung und Plausibilität bewertet werden, um unbeabsichtigte Bewegungen oder Störungen zu vermeiden.
 
+
+\subsection{Differenzielle Bewegungssteuerung}%Faik
+Die eigentliche Bewegungsumsetzung soll über eine differenzielle Ansteuerung der beiden Antriebseinheiten erfolgen. Hierbei soll die zuvor ermittelte Basisbewegung durch einen Lenkanteil modifiziert werden, sodass sich für linke und rechte Seite unterschiedliche Sollwerte ergeben können.
+
+Das mathematische Grundprinzip basiert darauf, dass bei einer Kurvenfahrt die Geschwindigkeit des kurveninneren Antriebs reduziert wird, während der kurvenäußere Antrieb seine Geschwindigkeit beibehält oder anpasst. Die Stärke dieser Anpassung soll proportional zum Lenkausschlag erfolgen.
+
+Dieses Prinzip soll sowohl Geradeausfahrten als auch Kurvenbewegungen durch gezielte Anpassung der relativen Drehgeschwindigkeiten der Antriebe ermöglichen.
+
+\subsection{Begrenzung und Schutzmechanismen}%Faik
+Um einen sicheren und zuverlässigen Betrieb zu gewährleisten, sollen die berechneten Sollwerte vor der Ausgabe begrenzt werden. Dabei sollen systembedingte Maximalwerte berücksichtigt werden, um elektrische und thermische Überlastungen der Antriebskomponenten zu vermeiden.
+
+Zusätzlich soll das System die Integration späterer Schutzmechanismen, wie z. B. einer Notbremse, ermöglichen.
+
+\subsection{Ablaufbasierte Steuerungslogik}
+Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
+\begin{enumerate}
+	\item kontinuierliche Erfassung der Eingabesignale,
+	\item Interpretation der gewünschten Fahrbewegung,
+	\item Berechnung differenzieller Antriebssollwerte,
+	\item Anwendung von Begrenzungs- und Sicherheitsfunktionen,
+	\item Ausgabe der berechneten Werte an die Antriebseinheiten,
+	\item anschließende Wiederholung des Zyklus bei neuen Eingaben.
+\end{enumerate}
+
+
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/konezpt_bewegung.png}
+	\caption{Flussdiagramm des Steuerungskonzepts für den Differentialantrieb. 
+		Die vertikale Joystickbewegung (Y-Achse) bestimmt die Basisgeschwindigkeit sowie Vorwärts- und Rückwärtsfahrt, 
+		während die horizontale Joystickbewegung (X-Achse) zur Richtungsänderung durch differenzielle Anpassung der Radgeschwindigkeiten genutzt wird.}
+	\label{fig:flowchart_steuerung}
+\end{figure}
+
+\clearpage
 
 \section{Interaktionsdesign}
 \subsection{Display-Integration}
 \subsection{Augen-Animation und Emotionsdarstellung}
 \subsection{Benutzerinteraktion}
-a
+
 
 
 

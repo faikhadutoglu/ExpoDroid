@@ -59,15 +59,15 @@ Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine in
 In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Cameron betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist - vom einfachen Entwicklungsboard bis hin zu Modellen mit Display, GPS oder Kamera – und dadurch eine breite Palette an Anwendungen ermöglicht.\autocite{Cameron2023}
 Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht.\autocite{Cameron2023}
 \subsection{Raspberry Pi}
-a
-\section{Energieversorgung}
+
+\section{Energieversorgung}%Faik
 Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
-\subsection{Batterie}
+\subsection{Batterie}%Faik
 Batterien stellen eine mobile und unabhängige Energiequelle dar und ermöglichen den zuverlässigen Betrieb elektronischer Systeme auch ohne feste Stromversorgung, weshalb sie insbesondere in mobilen oder autonomen Anwendungen eine zentrale Rolle einnehmen.
 Batterien gehören zu den elektrochemischen Speichern, bei denen chemisch gebundene Energie durch Redoxreaktionen in elektrische Energie umgewandelt wird. Sie stellen eine universell einsetzbare Form chemischer Speicher dar, deren Energiedichte im Vergleich zu anderen Technologien jedoch begrenzt ist\autocite{Kurzweil2015}.
 
-Eine Batterie besteht grundsätzlich aus einer negativen und einer positiven Elektrode sowie einem Elektrolyten, der den Ionentransport ermöglicht. Die elektrische Spannung ergibt sich aus der unterschiedlichen chemischen Potenziallage der Elektroden, die beim Entladen genutzt wird, um elektrische Energie bereitzustellen.
-
+Eine Batterie besteht aus drei wesentlichen Komponenten: einer negativen Elektrode (Anode), einer positiven Elektrode (Kathode) sowie einem Elektrolyten, der als Transportmedium für geladene Teilchen (Ionen) dient. Die elektrische Spannung, die eine Batterie liefert, entsteht durch den Unterschied im chemischen Potenzial zwischen den beiden Elektroden – also durch deren unterschiedliche Neigung, Elektronen abzugeben oder aufzunehmen. Dieser Potenzialunterschied wird beim Entladen genutzt, um elektrische Energie für den Betrieb von Geräten bereitzustellen\autocite{Kurzweil2015,BatteryEssentials2025}.
+Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf parallel ablaufenden, reversiblen Prozessen: Beim Entladevorgang fließen Elektronen als elektrischer Strom über den äußeren Stromkreis von der negativen zur positiven Elektrode und versorgen dabei den angeschlossenen Verbraucher mit Energie. Gleichzeitig findet im Inneren der Batterie eine Ionenwanderung statt – positiv geladene Ionen bewegen sich durch den Elektrolyten, um den Ladungsausgleich zu gewährleisten und den Stromfluss aufrechtzuerhalten (siehe Abbildung \ref{fig:LithiumIonenBatterie})\autocite{Kurzweil2015,BatteryEssentials2025}. Beim Ladevorgang laufen diese Prozesse in umgekehrter Richtung ab: Durch Anlegen einer externen Spannung werden Elektronen zur negativen Elektrode zurückgeführt, während die Ionen durch den Elektrolyten in die entgegengesetzte Richtung wandern. Dadurch wird die chemische Energie in der Batterie wiederhergestellt und sie kann erneut entladen werden\autocite{Kurzweil2015,BatteryEssentials2025}.
 
 \begin{figure}[hbt]
 	\centering
@@ -76,7 +76,7 @@ Eine Batterie besteht grundsätzlich aus einer negativen und einer positiven Ele
 	\label{fig:LithiumIonenBatterie}
 \end{figure}
 
-Als elektrochemische Speicher basieren Batterien auf einem Funktionsprinzip, bei dem während des Entladevorgangs Elektronen über den äußeren Stromkreis fließen, während Ionen durch den Elektrolyten wandern(siehe \ref{fig:LithiumIonenBatterie})\autocite{Kurzweil2015}. Dieser Mechanismus ist typisch für galvanische Zellen. Abhängig vom chemischen System unterscheiden sich Batterien hinsichtlich Zellspannung, Energiedichte, Leistungsfähigkeit und Lebensdauer.
+
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird\autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung\autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen – von stationären Speichern über Mobilitätslösungen bis hin zu Kleingeräten.
 
 \subsection{Spannungswandler und Stromverteilung}
