@@ -6,16 +6,197 @@
 \subsection{3D-Druck der Komponenten}
 \subsection{Montage und Nachbearbeitung}
 
+
+
+
 \section{Elektronische Integration}
 \subsection{Schaltungsdesign und Verkabelung}
 \subsection{Motoransteuerung und Treiber-Konfiguration}
 \subsection{Energieversorgungssystem}
 \subsection{Sicherheitsschaltungen}
 
-\section{Softwareentwicklung}
-\subsection{Motorsteuerung und Bewegungsalgorithmen}
-a
-\subsection{Display-Programmierung}
+
+\section{Motorsteuerung und Bewegungsalgorithmen}
+
+
+\subsection{Hardwareanbindung der Motortreiber}
+Die Motoransteuerung erfolgt über zwei BTS7960 H-Brücken-Module, die eine bidirektionale Steuerung von Gleichstrommotoren mit hohen Strömen ermöglichen. Jedes Modul verfügt über zwei PWM-Eingänge:
+\begin{itemize}
+	\item \text{RPWM (Right PWM)}: Steuerung der Vorwärtsdrehung
+	\item \text{LPWM (Left PWM)}: Steuerung der Rückwärtsdrehung
+\end{itemize}
+
+Die Pin-Konfiguration im System:
+\begin{lstlisting}[language=C++]
+	// Modul 1 (Linker Motor)
+	PIN_BTS1_RPWM  // Vorwaerts-PWM
+	PIN_BTS1_LPWM  // Rueckwaerts-PWM
+	
+	// Modul 2 (Rechter Motor)
+	PIN_BTS2_RPWM  // Vorwaerts-PWM
+	PIN_BTS2_LPWM  // Rueckwaerts-PWM
+\end{lstlisting}
+
+
+\subsection{Implementierung der Motorsteuerung}
+
+
+Die Initialisierungsphase konfiguriert alle relevanten Pins als Ausgänge und bereitet die PWM-Generierung vor:
+\begin{lstlisting}[language=C++]
+	void actuatorControllerInit() {
+		// Modul 1 PWM-Pins
+		pinMode(PIN_BTS1_RPWM, OUTPUT);
+		pinMode(PIN_BTS1_LPWM, OUTPUT);
+		
+		// Modul 2 PWM-Pins
+		pinMode(PIN_BTS2_RPWM, OUTPUT);
+		pinMode(PIN_BTS2_LPWM, OUTPUT);
+		
+		moduleIsInitialised = true;
+	}
+\end{lstlisting}
+
+
+Die Hauptsteuerungslogik in der Funktion \texttt{actuatorControllerForwardSignals()} implementiert eine kontinuierliche Signal-zu-Bewegungs-Transformation.
+
+\textbf{1. Signalerfassung}
+\begin{lstlisting}[language=C++]
+	pulseLength_us = pulseIn(servoSignalPinsRC[i], HIGH,
+	TIMEOUT_SERVO_SIGNAL_HIGH_US);
+\end{lstlisting}
+Die Funktion liest die Pulsbreite der RC-Signale ein. Bei einem Timeout (kein Signal) wird \texttt{0} zurückgegeben, was als Fehlerfall behandelt wird.
+
+\textbf{2. Kanalspeicherung}
+\begin{lstlisting}[language=C++]
+	if (i == ENGINE) {
+		lastSteeringPulse = pulseLength_us;
+	} else if (i == AILERON) {
+		lastSpeedPulse = pulseLength_us;
+	}
+\end{lstlisting}
+Die relevanten Steuerkanäle werden zur weiteren Verarbeitung zwischengespeichert.
+
+\textbf{3. Motorrichtungslogik}
+Die bidirektionale Motoransteuerung erfolgt durch exklusive Aktivierung einer der beiden PWM-Leitungen:
+
+\textbf{Linker Motor -- Vorwärtsfahrt} ($leftMotorSpeed > 0$):
+\begin{lstlisting}[language=C++]
+	analogWrite(PIN_BTS1_RPWM, abs(leftMotorSpeed));
+	analogWrite(PIN_BTS1_LPWM, 0);
+\end{lstlisting}
+
+\textbf{Linker Motor -- Rückwärtsfahrt} ($leftMotorSpeed < 0$):
+\begin{lstlisting}[language=C++]
+	analogWrite(PIN_BTS1_RPWM, 0);
+	analogWrite(PIN_BTS1_LPWM, abs(leftMotorSpeed));
+\end{lstlisting}
+
+\textbf{Linker Motor -- Stopp} ($leftMotorSpeed = 0$):
+\begin{lstlisting}[language=C++]
+	analogWrite(PIN_BTS1_RPWM, 0);
+	analogWrite(PIN_BTS1_LPWM, 0);
+\end{lstlisting}
+
+Identische Logik wird für den rechten Motor (Modul~2) implementiert.
+
+
+\subsubsection{Bewegungsprofile}
+Das entwickelte System unterstützt verschiedene Bewegungsprofile:
+
+\paragraph{Geradeausfahrt}
+\begin{itemize}
+	\item Bedingung: $steering = 0$
+	\item Verhalten: $leftMotorSpeed = rightMotorSpeed = baseSpeed$
+	\item Ergebnis: Beide Motoren laufen synchron
+\end{itemize}
+
+\paragraph{Kurvenfahrt}
+\begin{itemize}
+	\item Bedingung: $steering \neq 0$
+	\item Verhalten: Geschwindigkeitsdifferenz zwischen den Motoren
+	\item Ergebnis: Fahrzeug vollzieht eine Kurve mit Radius abhängig vom Lenkausschlag
+\end{itemize}
+
+%\paragraph{Drehung auf der Stelle}
+%\begin{itemize}
+%	\item Bedingung: $baseSpeed = 0$ und $steering = \pm 100$
+%	\item Verhalten: Ein Motor vorwärts, der andere gestoppt (bzw.\ entgegengesetzt, je nach Implementierung)
+%	\item Ergebnis: Minimaler Wendekreis
+%\end{itemize}
+
+%\paragraph{Rückwärtsfahrt mit Lenkung}
+%\begin{itemize}
+%	\item Bedingung: $baseSpeed < 0$ und $steering \neq 0$
+%	\item Verhalten: Negative Geschwindigkeiten mit Differentialsteuerung
+%	\item Ergebnis: Präzise Rückwärtsmanöver
+%\end{itemize}
+%
+%\subsubsection{Diagnose und Debugging}
+%Das System implementiert eine serielle Diagnoseausgabe:
+%\begin{lstlisting}[language=C++]
+%	Serial.print("AIL:");  Serial.print(lastSpeedPulse);
+%	Serial.print(" ENG:"); Serial.print(lastSteeringPulse);
+%	Serial.print(" Base:"); Serial.print(baseSpeed);
+%	Serial.print(" Steer:"); Serial.print(steering);
+%	Serial.print(" L:");    Serial.print(leftMotorSpeed);
+%	Serial.print(" R:");    Serial.println(rightMotorSpeed);
+%\end{lstlisting}
+%
+%Diese Ausgabe ermöglicht:
+%\begin{itemize}
+%	\item Echtzeit-Monitoring der Eingangssignale
+%	\item Verifizierung der Berechnungen
+%	\item Analyse des Fahrverhaltens
+%	\item Fehlerdiagnose bei unerwarteten Bewegungen
+%\end{itemize}
+
+\subsubsection{Sicherheitsmechanismen}
+
+\paragraph{Timeout-Behandlung}
+Ein Timeout beim Signaleinlesen (Rückgabewert \texttt{0}) verhindert die Aktualisierung der Motorwerte, sodass die letzten gültigen Werte beibehalten werden.
+
+\paragraph{Wertebereichsbegrenzung}
+Die \texttt{constrain()}-Funktion stellt sicher, dass PWM-Werte niemals die physikalischen Grenzen der Hardware überschreiten.
+
+\paragraph{Spannungsreduktion}
+Der Batterie-Korrekturfaktor (\num{0.91}) schützt vor Überspannung und verlängert die Batterielebensdauer durch gemäßigte Spitzenlast.
+
+\subsubsection{Performance-Charakteristiken}
+Die implementierte Steuerung zeichnet sich aus durch:
+\begin{itemize}
+	\item \textbf{Reaktionszeit}: $< \SI{20}{\milli\second}$ durch kontinuierliche Polling-Schleife
+	\item \textbf{Präzision}: 8-Bit PWM-Auflösung (256 Stufen pro Richtung)
+	\item \textbf{Stabilität}: Keine Oszillationen durch direkte Ansteuerung ohne Regelkreis
+	\item \textbf{Intuitivität}: Natürliches Fahrverhalten durch proportionale Lenkcharakteristik
+\end{itemize}
+
+%\subsubsection{Erweiterungsmöglichkeiten}
+%Das modulare Design ermöglicht zukünftige Erweiterungen:
+%\begin{itemize}
+%	\item Integration von Geschwindigkeitsreglern (PID-Controller)
+%	\item Implementierung von Trajektorienplanung für autonome Navigation
+%	\item Hinzufügen von Beschleunigungsbegrenzungen für sanftere Bewegungen
+%	\item Entwicklung adaptiver Lenkcharakteristiken basierend auf Geschwindigkeit
+%\end{itemize}
+
+Die entwickelte Motorsteuerung bildet damit eine robuste Grundlage für den mechatronischen Demonstrator und erfüllt Anforderungen an Zuverlässigkeit, Präzision und Benutzerfreundlichkeit für den Einsatz auf Hochschulmessen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Display-Programmierung}
 a
 \subsection{Animations-Engine für Augen}
 a
