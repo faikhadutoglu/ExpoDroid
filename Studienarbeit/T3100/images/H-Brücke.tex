@@ -1,0 +1,132 @@
+\begin{tikzpicture}[thick]
+	
+	\draw (0,5) -- ++(15,0) node[pos=0, left] {$V_{\mathrm{CC}}$};
+	\draw (0,0) -- ++(15,0) node[pos=0, left] {GND};
+	
+	\begin{scope}[shift={(0,0)}]
+		
+		%links	
+		\draw (0.5,5) -- ++ (0,-0.8);
+		\fill (0.5,4.2) circle (2pt);
+		\fill (0.5,3.3) circle (2pt);
+		\draw (0.5,3.3) -- ++ (0,-0.8);
+		
+		\draw[] (0.5,4.2) -- ++ (-0.4,-0.8) node[midway, left] {S1};
+		
+		\draw (0.5,2.5) -- ++ (0,-0.8);
+		\fill (0.5,0.8) circle (2pt);
+		\fill (0.5,1.7) circle (2pt);
+		\draw (0.5,0.8) -- ++ (0,-0.8);
+		
+		\draw[] (0.5,1.7) -- ++ (-0.4,-0.8) node[midway, left] {S2};
+		
+		%rechts
+		
+		\draw (3.5,5) -- ++ (0,-0.8);
+		\fill (3.5,4.2) circle (2pt);
+		\fill (3.5,3.3) circle (2pt);
+		\draw (3.5,3.3) -- ++ (0,-0.8);
+		\draw[] (3.5,4.2) -- ++ (-0.4,-0.8) node[midway, left] {S3};
+		
+		\draw (3.5,2.5) -- ++ (0,-0.8);
+		\fill (3.5,0.8) circle (2pt);
+		\fill (3.5,1.7) circle (2pt);
+		\draw (3.5,0.8) -- ++ (0,-0.8);
+		\draw[] (3.5,1.7) -- ++ (-0.4,-0.8) node[midway, left] {S4};
+		
+		%mitte
+		\fill (0.5,2.5) circle (2pt);
+		
+		\fill (3.5,2.5) circle (2pt);
+		\draw (0.5,2.5) -- ++ (3,0);
+		\draw[fill=white] (2,2.5) circle (0.4);
+		\node at (2,2.5) {M};
+		
+		
+		
+	\end{scope}
+	
+	\begin{scope}[shift={(5.75,0)}]
+		
+		%links	
+		\draw[color=green] (0.5,5) -- ++ (0,-0.8);
+		\fill[color=green] (0.5,4.2) circle (2pt);
+		\fill[color=green] (0.5,3.3) circle (2pt);
+		\draw[color=green] (0.5,3.3) -- ++ (0,-0.8);
+		
+		\draw[color=green] (0.5,4.2) -- (0.41,3.3) node[midway, left] {S1};
+		
+		\draw (0.5,2.5) -- ++ (0,-0.8);
+		\fill (0.5,0.8) circle (2pt);
+		\fill (0.5,1.7) circle (2pt);
+		\draw (0.5,0.8) -- ++ (0,-0.8);
+		
+		\draw[] (0.5,1.7) -- ++ (-0.4,-0.8) node[midway, left] {S2};
+		
+		%rechts
+		
+		\draw (3.5,5) -- ++ (0,-0.8);
+		\fill (3.5,4.2) circle (2pt);
+		\fill (3.5,3.3) circle (2pt);
+		\draw (3.5,3.3) -- ++ (0,-0.8);
+		\draw[] (3.5,4.2) -- ++ (-0.4,-0.8) node[midway, left] {S3};
+		
+		\draw[color=green] (3.5,2.5) -- ++ (0,-0.8);
+		\fill[color=green] (3.5,0.8) circle (2pt);
+		\fill[color=green] (3.5,1.7) circle (2pt);
+		\draw[color=green] (3.5,0.8) -- ++ (0,-0.8);
+		\draw[color=green] (3.5,1.7) -- (3.41,0.8) node[midway, left] {S4};
+		
+		%mitte
+		\fill[color=green] (0.5,2.5) circle (2pt);
+		\fill[color=green] (3.5,2.5) circle (2pt);
+		\draw[color=green] (0.5,2.5) -- ++ (3,0);
+		\draw[color=green, fill=white] (2,2.5) circle (0.4);
+		\node[color=green] at (2,2.5) {M};
+		\draw[color=green, line width=2pt, -{Triangle[length=6pt,width=8pt]}] (1.7,1.8) -- ++ (0.6,0);
+		
+		
+	\end{scope}
+	
+	\begin{scope}[shift={(11.5,0)}]
+		%links	
+		\draw (0.5,5) -- ++ (0,-0.8);
+		\fill (0.5,4.2) circle (2pt);
+		\fill (0.5,3.3) circle (2pt);
+		\draw (0.5,3.3) -- ++ (0,-0.8);
+		
+		\draw[] (0.5,4.2) -- ++ (-0.4,-0.8) node[midway, left] {S1};
+		
+		\draw[color=red] (0.5,2.5) -- ++ (0,-0.8);
+		\fill[color=red] (0.5,0.8) circle (2pt);
+		\fill[color=red] (0.5,1.7) circle (2pt);
+		\draw[color=red] (0.5,0.8) -- ++ (0,-0.8);
+		
+		\draw[color=red] (0.5,1.7) -- (0.41,0.8) node[midway, left] {S2};
+		
+		%rechts
+		
+		\draw[color=red] (3.5,5) -- ++ (0,-0.8);
+		\fill[color=red] (3.5,4.2) circle (2pt);
+		\fill[color=red] (3.5,3.3) circle (2pt);
+		\draw[color=red] (3.5,3.3) -- ++ (0,-0.8);
+		\draw[color=red] (3.5,4.2) -- (3.1,3.3) node[midway, left] {S3};
+		
+		\draw (3.5,2.5) -- ++ (0,-0.8);
+		\fill (3.5,0.8) circle (2pt);
+		\fill (3.5,1.7) circle (2pt);
+		\draw (3.5,0.8) -- ++ (0,-0.8);
+		\draw[] (3.5,1.7) -- ++ (-0.4,-0.8) node[midway, left] {S4};
+		
+		%mitte
+		\fill[color=red] (0.5,2.5) circle (2pt);
+		
+		\fill[color=red] (3.5,2.5) circle (2pt);
+		\draw[color=red] (0.5,2.5) -- ++ (3,0);
+		\draw[color=red, fill=white] (2,2.5) circle (0.4);
+		\node[color=red] at (2,2.5) {M};
+		\draw[color=red, line width=2pt, {Triangle[length=6pt,width=8pt]}-] (1.7,1.8) -- ++ (0.6,0);
+		
+	\end{scope}
+	
+\end{tikzpicture}

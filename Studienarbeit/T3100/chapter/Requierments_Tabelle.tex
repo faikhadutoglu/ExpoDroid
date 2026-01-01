@@ -1,0 +1,158 @@
+\section{Projekt Requierments}
+\begin{longtable}{|p{1.7cm}|p{3.5cm}|p{7.2cm}|p{1.8cm}|p{2.2cm}|}
+	\caption{Übersicht der Anforderungen für das Projekt}
+	\label{tab:anforderungen} \\
+	\hline
+	\textbf{ID} & \textbf{Kategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} & \textbf{Ersteller} \\
+	\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{ID} & \textbf{Kategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} & \textbf{Ersteller} \\
+	\hline
+	\endhead
+	
+	\hline
+	\multicolumn{5}{r}{Fortsetzung auf nächster Seite} \\
+	\endfoot
+	
+	\hline
+	\endlastfoot
+	
+	REQ-001 & Funktionale Anforderungen &
+	Der Roboter soll sich vorwärts und rückwärts bewegen können. &
+	High & Faik \\
+	\hline
+	REQ-002 & Funktionale Anforderungen &
+	Der Roboter soll sich über eine Fernsteuerung (ESP32 + Fernbedienung oder App) steuern lassen. &
+	High & Faik \\
+	\hline
+	REQ-003 & Funktionale Anforderungen &
+	Der Roboter soll gleichmäßig links und rechts drehen können. &
+	Medium & Faik \\
+	\hline
+	REQ-004 & Funktionale Anforderungen &
+	Das Display soll Statusinformationen wie Akkustand und Verbindung anzeigen können. &
+	Medium & Simon \\
+	\hline
+	REQ-005 & Nicht-funktionale Anforderungen &
+	Die Motorsteuerung soll eine Verzögerung von weniger als 0,5 Sekunden haben. &
+	High & Faik \\
+	\hline
+	REQ-006 & Nicht-funktionale Anforderungen &
+	Die Motoren sollen mindestens 7\,kg Nutzlast sicher bewegen können. &
+	High & Faik \\
+	\hline
+	REQ-007 & Nicht-funktionale Anforderungen &
+	Die Geschwindigkeit des Roboters soll max.\ 10\,km/h sein. &
+	Medium & Faik \\
+	\hline
+	REQ-008 & Nicht-funktionale Anforderungen &
+	Die Motorsteuerung soll bei mindestens 10\,m Entfernung funktionieren können. &
+	Low & Faik \\
+	\hline
+	REQ-009 & Safety &
+	Wird kein Signal fürs Fahren erteilt, stoppt das Fahrzeug. &
+	High & Angus \\
+	\hline
+	REQ-010 & Design &
+	Display soll Augen anzeigen. &
+	Low & Angus \\
+	\hline
+	REQ-011 &  &
+	Kamera soll Bilddaten für Mikrocomputer liefern. &
+	Medium & Angus \\
+	\hline
+	REQ-012 & Qualität &
+	Motor soll genug Drehmoment haben, um das Fahrzeug fortzubewegen. &
+	High & Angus \\
+	\hline
+	REQ-013 & Funktionale Anforderungen &
+	Der Roboter soll in Fahrtrichtung lenken und Kurven fahren können. &
+	High & Hai Nam \\
+	\hline
+	REQ-014 & Funktionale Anforderungen &
+	Der Roboter soll sich um die eigene Achse drehen können. &
+	High & Hai Nam \\
+	\hline
+	REQ-015 & Funktionale Anforderungen &
+	Der Roboter muss sanft beschleunigen und verlangsamen. &
+	Medium & Hai Nam \\
+	\hline
+	REQ-016 & Safety &
+	Geschwindigkeit muss für Personen ungefährlich sein (4–5\,km/h). &
+	High & Angus \\
+	\hline
+	REQ-017 & Safety &
+	Der Roboter muss bei Hindernissen automatisch anhalten. &
+	Low & Hai Nam \\
+	\hline
+	REQ-018 & Qualität &
+	Die Struktur muss das gesamte Gewicht sicher tragen können. &
+	High & Angus \\
+	\hline
+	REQ-019 & Design &
+	Der Kopf soll sich horizontal drehen können. &
+	High & Angus \\
+	\hline
+	REQ-020 & Qualität &
+	Die Elektronik darf bei hoher Belastung nicht durchbrennen. &
+	High & Angus \\
+	\hline
+	REQ-021 & Qualität &
+	Die tragende Struktur soll Kräfte- und Geschwindigkeitsänderungen aushalten. &
+	High & Angus \\
+	\hline
+	REQ-022 &  &
+	Der Kopf soll sich vertikal drehen können. &
+	Low & Angus \\
+	\hline
+	REQ-023 & Wartbarkeit &
+	Einfache/selbsterklärende Bedienung. &
+	Medium & Angus \\
+	\hline
+	REQ-024 & Wartbarkeit &
+	Akku soll sich sicher wechseln lassen. &
+	High & Angus \\
+	\hline
+	REQ-025 & Wartbarkeit &
+	Elektronik darf beim Akkuwechseln nicht beschädigt werden. &
+	Medium & Angus \\
+	\hline
+	REQ-026 & Safety &
+	Innere Elektronik soll vor unbefugtem Zugriff geschützt sein. &
+	Medium & Angus \\
+	\hline
+	REQ-027 & Wartbarkeit &
+	Innere Elektronik soll vor Dreck und Umwelt geschützt sein. &
+	Medium & Angus \\
+	\hline
+	REQ-028 & Safety &
+	Erschütterungen sollen Elektronik nicht beschädigen. &
+	Medium & Angus \\
+	\hline
+	REQ-029 & Wartbarkeit &
+	Der Antrieb darf keinen hohen Verschleiß aufweisen. &
+	Medium & Angus \\
+	\hline
+	REQ-030 & Design &
+	Das Erscheinungsbild soll der DHBW-Designsprache entsprechen. &
+	Low & Angus \\
+	\hline
+	REQ-031 & Design &
+	Das Display soll animierte Augenbewegungen darstellen. &
+	Low & Simon \\
+	\hline
+	REQ-032 & Funktionale Anforderungen &
+	Der Kopf soll sich mindestens 180° drehen können. &
+	Medium & Simon \\
+	\hline
+	REQ-033 & Nicht-funktionale Anforderungen &
+	Servomotoren sollen eine Positionsgenauigkeit von ±2° erreichen. &
+	High & Simon \\
+	\hline
+	REQ-034 & Funktionale Anforderungen &
+	Raspberry Pi soll Display, Audio und KI-Funktionen ausführen. &
+	Medium & Simon \\
+	\hline
+\end{longtable}

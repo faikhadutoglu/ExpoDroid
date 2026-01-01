@@ -51,6 +51,25 @@ der Rotor eines Elektromotors in Bewegung setzt.
 
 \subsection{Hoverboard-Motoren und deren Eigenschaften}
 \subsection{Motortreiber und PWM-Steuerung}
+Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
+
+Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen.
+\subsubsection{H-Brücke}
+
+Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
+$V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt.
+\begin{figure}[hbt]
+	\centering
+	\input{images/H-Brücke.tex}
+	\caption{Aufbau und Funktion einer H-Brücke}		
+	\label{fig:H-Brücke}
+\end{figure}
+Dabei dürfen die beiden Schalter einer Halbbrücke (z. B. S1 und S2) niemals gleichzeitig leitend sein, da dies zu einem direkten Kurzschluss zwischen 
+$V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
+In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen.
+
+
+
 
 \section{Mikrocontroller und Steuerungseinheiten} %Faik
 Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funktionen integriert enthalten. Sie entstanden Mitte der 1970er-Jahre aus den Mikroprozessoren\autocite{Brandes.2024}. Mikrocontroller können daher als kleine Computer auf einem Chip verstanden werden, die ohne komplexes Betriebssystem spezielle Aufgaben in eingebetteten Systemen übernehmen. Ein Mikrocontroller enthält neben einen Prozessor, Arbeitsspeicher (RAM) und einen Speicher (EEPROM), in dem die Programme gespeichert werden, auch wenn das Gerät keinen Strom hat. Im Gegensatz zu Mikroprozessoren vereint der Mikrocontroller die Verarbeitung, den Speicher und verschiedene Ein- und Ausgabefunktionen wie Timer und Analog-Digital-Wandler in einer einzigen, kostengünstigen Einheit. Mikrocontroller sind für Steuerungsanwendungen geeignet, wie die Motor- und Sensorsteuerung oder die Kommunikation mit anderen Geräten\autocite{IBM_Microcontroller}.
