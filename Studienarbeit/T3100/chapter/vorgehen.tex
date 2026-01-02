@@ -1,10 +1,15 @@
 \chapter{Vorgehensweise und Konzeption}
 \label{cha:vorgehen}
 
-\section{Konkretisierung der Projektziele}
+\section{Konkretisierung der Projektziele[\textcolor{blue}{Angus}]}
+
+[\textcolor{green}{Ich würde vorschlagen die konkreten Ziele hier erst zu thematisieren und systematischer aufzubauen, dabei müsste dann etwas Stoff aus der Einleitung genommen werden!!!}]
+
 \section{Projektplanung und Meilensteine}
 
-\section{Design Konzept}
+[\textcolor{blue}{Faik} \textcolor{green}{kann hier seine Excel mit dem Meilensteinen und der Timeline darstellen und erklären}]
+
+\section{Design Konzept[\textcolor{blue}{Angus}]}
 
 
 Bei der Entwicklung eines Roboters für Messeeinsätze, spielt das äußere Design sowie das erscheinen und Wirken eine wdichtige Rolle, wenn es darum geht Aufmerksamkeit auf sich zuziehen. Die Hauptaufgabe darin besteht neue Studierende für die DHBW im Bereich Technik zu begeistern wird auf die Ästhetik ein Hauptaugenmerk gelegt. Die Größe und Form, sowie Designfeatures spielen dabei auch eine wichtige Rolle für die Auslegung von Komponenten und Materialien. Aus diesem Grund ist die Designrache und Optik die mit dem Roboter erreicht werden soll, mit das Erste was grundlegend konzipiert werden muss.
@@ -20,8 +25,8 @@ Von laufenden humanoiden wie dem Protokolldroide C3PO\reg{} aus dem Star Wars\re
 
 Im Rahmen der Studienarbeit ist dabei stets die umsetztbarkeit zu bewerten, humanoide oder laufende Konzepte wären mechanisch nur sehr schwierig umzusetzen, wie die langjährigen Entwicklungen von \emph{Tesla}\reg{} oder \emph{Boston Dynamics}\reg{} im Bereich humanoider Roboter zeigt \textcolor{red}{Dazugehörende Quelle einfügen}.
 
-\section{Konzeptentwicklung Fahrwerk}
-\section{Designkonzept}
+\section{Konzeptentwicklung Fahrwerk[\textcolor{blue}{Angus}]}
+\section{Designkonzept[\textcolor{blue}{Angus}]}
 
 Bei der Entwicklung eines Roboters für den Einsatz auf Messen spielt das äußere Design sowie das visuelle Erscheinungsbild eine zentrale Rolle, insbesondere wenn es darum geht, Aufmerksamkeit zu erzeugen und Interesse zu wecken. Da eine der Hauptaufgaben des Roboters darin besteht, potenzielle neue Studierende für die Duale Hochschule Baden-Württemberg (DHBW) im technischen Bereich zu begeistern, wird der Ästhetik des Systems ein besonderes Augenmerk gewidmet.
 
@@ -37,7 +42,7 @@ Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt wer
 
 Im Rahmen einer studentischen Studienarbeit muss daher die Umsetzbarkeit stets kritisch bewertet werden. Konzepte mit hoher mechanischer und softwareseitiger Komplexität sind unter gegebenen zeitlichen, finanziellen und personellen Rahmenbedingungen nur eingeschränkt realisierbar. Aus diesem Grund liegt der Fokus des Designkonzepts auf einer ausgewogenen Kombination aus ansprechender Gestaltung, technischer Machbarkeit und funktionaler Zuverlässigkeit.
 
-\subsection{Vergleich: Räder vs. Ketten}
+\subsection{Vergleich: Räder vs. Ketten [\textcolor{blue}{Angus}]}
 Die entscheidung zur allgemeinen Antriebsart fällt auf eine fahrzeugnahe Umsetztung. Das Umfasst in ersterlienie den einsatz von Rädern unterschiedlicher Antriebsweisen aber auch die Verwendung von Ketten. Dabei wirkt sich diese Wahl auf die  beweglichkeit, bzw. das Lenkvermögen sowie das Befahrbare Terain aus.
 
 Zur Auflistung und erklährung der folgenden vorgeschlagenen Möglichkeiten:
@@ -47,7 +52,7 @@ Kettenantrieb: Das Konzept entspricht der Fahrweise eines vollkettenfahrzeuges w
 Statt Ketten können auch vier Räder wie bei herkömlichen PKWs verwendet werden (2 räder links, 2 rechts). Diese können sowohl allradbetrieben, vorder oder hinterantrieb oder  zwei diagonall betriebene räder sein. Auch ein Dreirad ist vorstellbar.
 
 ------------------------------------------
-\subsection{Vergleich: Räder vs. Ketten}
+\subsection{Vergleich: Räder vs. Ketten [\textcolor{blue}{Angus}]}
 
 Die Entscheidung für eine geeignete Antriebsart fällt im Rahmen dieses Projekts auf eine fahrzeugnahe Umsetzung. Dazu zählen insbesondere der Einsatz von Rädern in unterschiedlichen Konfigurationen sowie die Verwendung eines Kettenantriebs. Diese Wahl hat direkten Einfluss auf die Beweglichkeit, das Lenkverhalten sowie auf die befahrbaren Untergründe des Roboters.
 
@@ -79,7 +84,21 @@ Neben der Vier-Rad-Konfiguration ist auch der Einsatz eines Dreiradsystems denkb
 	\label{fig:Antribskonzepte_Ketten_Räder}
 \end{figure}
 
-Traidanalyse:
+Die Entscheidungsfindung wird mithilfe einer Trade-off-Analyse durchgeführt um möglichst nüchtern und systematisch das beste Vorgehen zu identifizieren.
+Die jeweiligen Antriebsweisen werden dabei in vordefinierten Kriterien verglichen, dabei wird diesen eine Punktzahl vergeben, die das erfüllen des jeweiligen Kriteriums darstellt. Es werden Punkte von 1 bis 5 vergeben, 1 ist dabei schlecht und 5 ist sehr gut.
+Die Krieterien werden nach ihrer Relevanz für das Projekt bewertet und gewichtet, diese Gewichting wird als Faktor mit den vergebenen Punkten multipliziert.
+-----
+Die Krieterien für die bewertung sind:
+\textbf{Staabilität:}Diese bezieht sich auf die Standfestigkeit
+-----
+
+\begin{table}[hbt]
+	\centering
+	\input{images/tradeoff_Analyse_Antriebsart.tex}
+	\caption{Trade-off-Analyse der betrachteten Antriebskonzepte}		
+	\label{tab:tradeoff_Antriebsart}
+\end{table}
+
 
 
 \paragraph{Zwischenfazit}
@@ -113,6 +132,9 @@ Dieses Prinzip soll sowohl Geradeausfahrten als auch Kurvenbewegungen durch gezi
 Um einen sicheren und zuverlässigen Betrieb zu gewährleisten, sollen die berechneten Sollwerte vor der Ausgabe begrenzt werden. Dabei sollen systembedingte Maximalwerte berücksichtigt werden, um elektrische und thermische Überlastungen der Antriebskomponenten zu vermeiden.
 
 Zusätzlich soll das System die Integration späterer Schutzmechanismen, wie z. B. einer Notbremse, ermöglichen.
+
+[\textcolor{green}{Maximale Spannung für Motoren um Geschwindigkeit zu drosseln
++ exponentielles Beschleunigen (sollte aber vllt noch später thematisiert werden) + Testen der Bremskraft bei nicht Gas geben}]
 
 \subsection{Ablaufbasierte Steuerungslogik}
 Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
