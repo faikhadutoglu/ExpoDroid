@@ -137,11 +137,11 @@ Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreibe
 
 Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
 $V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt.
-%\begin{figure}[hbt]
-%	\input{images/H-Brücke.tex}
-%	\caption{Aufbau und Funktion einer H-Brücke}		
-%	\label{fig:H-Brücke}
-%\end{figure}
+\begin{figure}[hbt]
+	\input{images/H-Brücke.tex}
+	\caption{Aufbau und Funktion einer H-Brücke}		
+	\label{fig:H-Brücke}
+\end{figure}
 Dabei dürfen die beiden Schalter einer Halbbrücke (z. B. S1 und S2) niemals gleichzeitig leitend sein, da dies zu einem direkten Kurzschluss zwischen 
 $V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
 In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen.
