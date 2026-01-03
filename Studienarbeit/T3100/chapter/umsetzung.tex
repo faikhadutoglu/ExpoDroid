@@ -12,6 +12,17 @@
 \section{Elektronische Integration}
 \subsection{Schaltungsdesign und Verkabelung}
 \subsection{Motoransteuerung und Treiber-Konfiguration}
+Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} über WLAN angesteuert. Die Bewegung des Joysticks wirkt sich wie folgend in Abbildung \ref{fig:Joystick_Controler} gezeigt aus. Bewegung des Sticks nach Norden bedeutet vorwärtsfahren und nach Süden Rückwärtsfahren. Die weite in die jeweilige Richtung bestimmt dabei die an den Motoren anliegende Spannung, damit die Geschwindigkeit. In Ruhelage, sprich in der Mitte stoppt der Roboter. Wird der Joystick nicht betätigt, geht dieser von alleine zurück in die Ruheposition, damit lässt sich der Roboter nur mit aktiver Eingabe des Benutzers in Bewegung versetzten.
+
+
+
+\begin{figure}[hbt]
+	\centering
+	\input{images/Joystick_Controler.tex}
+	\caption{Zeigt die Stelllagen des Steuerungs-Joysticks für Fahren und Lenken des Roboters}		
+	\label{fig:Joystick_Controler}
+\end{figure}
+
 \subsection{Energieversorgungssystem}
 \subsection{Sicherheitsschaltungen}
 

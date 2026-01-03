@@ -1,0 +1,26 @@
+\begin{tikzpicture}[thick]
+
+\draw (0,0) circle (1.5);
+\draw (0,0) circle (1.4);
+\node at (0,1.8) {N};
+\node at (1.8,0) {O};
+\node at (0,-1.8) {S};
+\node at (-1.8,0) {W};
+
+
+
+
+\draw[color=green, line width=6pt, -{Triangle[length=10pt,width=14pt]}]
+(0,0.5) -- ++(0,0.8);
+\draw[color=red, line width=6pt, -{Triangle[length=10pt,width=14pt]}]
+(0,-0.5) -- ++(0,-0.8);
+
+\draw[color=blue, line width=6pt, -{Triangle[length=10pt,width=14pt]}]
+(0.5,0) -- ++(0.8,0);
+\draw[color=blue, line width=6pt, -{Triangle[length=10pt,width=14pt]}]
+(-0.5,0) -- ++(-0.8,0);
+
+
+\draw (0,0) circle (0.5);
+\draw[fill=black] (0,0) circle (0.4);
+\end{tikzpicture}
