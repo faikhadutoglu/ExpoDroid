@@ -3,8 +3,36 @@
 
 
 \section{Mechatronische Systeme}
+Folgendes Zitat verdeutlicht die Herkunft und Entstehung des Worts Mechatronik:
+\enquote{The word, mechatronics is composed of \emph{mecha} from mechanics and \emph{tronics}
+	from electronics. In other words, technologies and developed products will be incorporating
+	electronics more and more into mechanisms, intimately and organically, and making it impossible
+	to tell where one ends and the other begins.}\autocite{Mori1969}
+
+Zur historischen Einordnung siehe auch die Darstellung in \autocite{Comerford1994} und gängige Lehrmaterialien, die dieses Memo zitieren \autocite{NYUIntroMechatronics}.
 \subsection{Definition und Systemarchitektur}
+Mechatronische Systeme sind integrierte technische Systeme, die Mechanik, Elektronik, Regelungstechnik und Informatik synergetisch verbinden, um intelligente Funktionen zu realisieren. Ziel ist eine höhere Funktionalität, Präzision und Automatisierung. Typische Anwendungsbereiche sind Industrieroboter, CNC-Maschinen und Fahrerassistenzsysteme.
+
+Die Systemarchitektur umfasst folgende Hauptkomponenten:
+\begin{itemize}
+	\item \textbf{Sensorik:} Erfassung physikalischer Größen wie Position, Temperatur oder Kraft.
+	\item \textbf{Signalverarbeitung:} Verstärkung, Filterung und A/D-Wandlung der Messsignale.
+	\item \textbf{Steuerungseinheit:} Mikrocontroller oder Prozessoren zur Berechnung von Steuerbefehlen.
+	\item \textbf{Aktoren:} Motoren, Hydraulik- oder Pneumatiksysteme zur Umsetzung der Steuerbefehle.
+	\item \textbf{Mechanische Struktur:} Rahmen, Getriebe und mechanische Komponenten.
+	\item \textbf{Software:} Regelalgorithmen, Diagnosefunktionen und Kommunikationsschnittstellen.
+\end{itemize}
+
 \subsection{Interdisziplinäre Integration}
+Die Mechatronik vereint mehrere Disziplinen:
+\begin{itemize}
+	\item \textbf{Mechanik:} Konstruktion, Dynamik und Werkstoffkunde.
+	\item \textbf{Elektronik:} Leistungselektronik und Signalverarbeitung.
+	\item \textbf{Informatik:} Embedded Software, Algorithmen und KI.
+	\item \textbf{Regelungstechnik:} Steuerung und Rückkopplungssysteme.
+\end{itemize}
+
+Die Vorteile dieser Integration liegen in der Kompaktheit, Effizienz und Zuverlässigkeit moderner Systeme. Sie ermöglicht Anwendungen wie autonome Fahrzeuge, Robotik und Smart Devices.
 
 \section{Elektrische Antriebstechnik}
 Die elektrische Antriebstechnik befasst sich mit der Umwandlung elektrischer Energie in mechanische Bewegung und stellt damit eine zentrale Grundlage moderner mechatronischer Systeme dar. Sie umfasst den Aufbau, die Funktionsweise und die Steuerung elektrischer Maschinen, die in zahlreichen Anwendungen – von industriellen Produktionsanlagen bis hin zu Fahrzeugantrieben – eingesetzt werden. Ziel dieses Kapitels ist es, die grundlegenden Prinzipien elektrischer Antriebe sowie deren Komponenten und Wirkungszusammenhänge zu erläutern.
@@ -36,10 +64,14 @@ Rotors, wodurch sich dieser in Rotation versetzt.
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=0.3\linewidth]{images/MyImage}
-	\caption[Beispiel für die Einbindung eines Bildes.]{Beispiel für die Einbindung eines Bildes (PDF-, JPG-, und PNG-Bilder können eingebunden werden).}
+	\includegraphics[width=0.8\linewidth]{images/DC-motor-Example.jpg}
+	\caption{Aufbau und Funktionsweise eines Gleichstrommotors}
 	\label{fig:Lorenzkraft}
 \end{figure}
+
+
+
+
 
 
 Zur Bestimmung der Kraftrichtung wird die sogenannte \textbf{Linke-Hand-Regel} 
@@ -49,7 +81,54 @@ die Richtung der auf den Leiter wirkenden Lorentzkraft an. Dieses Prinzip erklä
 warum die stromdurchflossenen Leiter im Magnetfeld ein Drehmoment erfahren und sich 
 der Rotor eines Elektromotors in Bewegung setzt.
 
+\newpage
+
+
+
+
+
 \subsection{Hoverboard-Motoren und deren Eigenschaften}
+
+
+Hoverboards verwenden in der Regel \textbf{bürstenlose Gleichstrommotoren (BLDC-Hub-Motoren)}, die direkt in die Radnabe integriert sind. Diese Bauweise ermöglicht einen kompakten Aufbau und eine hohe Effizienz, da keine mechanischen Getriebe erforderlich sind\autocite{Zhang2025}.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/Howerboard.png}
+	\caption{Aufbau und Funktionsweise eines Hoverboards}
+	\label{fig:Hoverboardaufbau}
+\end{figure}
+
+\subsection{Aufbau und Bauform}
+Die Motoren sind als \emph{Hub-Motoren} ausgeführt, wobei der Rotor entweder innen oder außen angeordnet sein kann:
+\begin{itemize}
+	\item \textbf{Innerer Rotor:} Kompakte Bauweise, geeignet für platzkritische Anwendungen.
+	\item \textbf{Äußerer Rotor:} Bessere Wärmeableitung und höheres Drehmoment bei niedrigen Drehzahlen\autocite{Zhang2025}.
+\end{itemize}
+
+Die meisten Hoverboard-Motoren sind sensorbasiert und nutzen Hall-Sensoren zur präzisen Positionsbestimmung. Dies ermöglicht eine feldorientierte Regelung (FOC) für sanftes Anfahren und effiziente Drehmomentsteuerung\autocite{Jaulin2025}.
+
+\subsection{Eigenschaften}
+Typische Merkmale von Hoverboard-Motoren:
+\begin{itemize}
+	\item \textbf{Direktantrieb:} Keine Getriebe, dadurch hoher Wirkungsgrad.
+	\item \textbf{Hohe Effizienz:} Wirkungsgrade über 90\,\%.
+	\item \textbf{Geringer Verschleiß:} Wegfall von Bürsten erhöht die Lebensdauer.
+	\item \textbf{Kompakte Bauweise:} Motor und Rad bilden eine Einheit\autocite{Zhang2025}.
+\end{itemize}
+
+\subsection{Technische Daten (Beispiel)}
+Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Parallax2025}:
+\begin{itemize}
+	\item Betriebsspannung: 36\,V
+	\item Leistung: 250--350\,W
+	\item Drehzahl: ca. 600\,RPM (Leerlauf)
+	\item Stromaufnahme: 2,5--15\,A
+	\item Integrierte Hall-Sensoren
+\end{itemize}
+
+\subsection{Regelung und Steuerung}
+Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
 \subsection{Motortreiber und PWM-Steuerung}
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
 
@@ -58,15 +137,15 @@ Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreibe
 
 Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
 $V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt.
-\begin{figure}[hbt]
-	\centering
-	\input{images/H-Brücke.tex}
-	\caption{Aufbau und Funktion einer H-Brücke}		
-	\label{fig:H-Brücke}
-\end{figure}
+%\begin{figure}[hbt]
+%	\input{images/H-Brücke.tex}
+%	\caption{Aufbau und Funktion einer H-Brücke}		
+%	\label{fig:H-Brücke}
+%\end{figure}
 Dabei dürfen die beiden Schalter einer Halbbrücke (z. B. S1 und S2) niemals gleichzeitig leitend sein, da dies zu einem direkten Kurzschluss zwischen 
 $V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
 In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen.
+
 
 
 
@@ -77,7 +156,65 @@ Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funkt
 Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien - Wi-Fi und Bluetooth - auszeichnet.\autocite{Cameron2023} Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt.\autocite{Cameron2023}
 In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Cameron betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist - vom einfachen Entwicklungsboard bis hin zu Modellen mit Display, GPS oder Kamera – und dadurch eine breite Palette an Anwendungen ermöglicht.\autocite{Cameron2023}
 Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht.\autocite{Cameron2023}
-\subsection{Raspberry Pi}
+\subsection{Einplatinencomputer und Raspberry Pi}
+
+\subsection*{Einführung}
+Einplatinencomputer (Single-Board Computers, SBCs) sind vollständige Computersysteme, die alle wesentlichen Komponenten wie Prozessor, Speicher und Schnittstellen auf einer einzigen Platine vereinen. Diese kompakte Bauweise ermöglicht den Einsatz in eingebetteten Systemen, IoT-Anwendungen, Bildung und industriellen Steuerungen\autocite{Alvarez2022,Pajankar2017}. SBCs zeichnen sich durch geringe Kosten, Energieeffizienz und hohe Integrationsdichte aus, was sie für mobile und vernetzte Systeme attraktiv macht.
+
+\subsection*{Grundwissen und Architektur}
+Die Architektur eines SBC basiert typischerweise auf einem System-on-Chip (SoC), das CPU, GPU, Speichercontroller und Peripherie integriert. Weitere zentrale Komponenten sind:
+\begin{itemize}
+	\item \textbf{Arbeitsspeicher (RAM)} für Betriebssystem und Anwendungen.
+	\item \textbf{Massenspeicher} über microSD-Karten oder eMMC.
+	\item \textbf{Schnittstellen} wie HDMI, USB, Ethernet sowie GPIO-Pins für Sensoren und Aktoren\autocite{Pajankar2017}.
+\end{itemize}
+
+\subsection*{Einsatzbereiche}
+SBCs finden Anwendung in:
+\begin{itemize}
+	\item \textbf{Bildung}: Programmierkurse, Robotik und Elektronikprojekte\autocite{Alvarez2022}.
+	\item \textbf{IoT und Automatisierung}: Edge-Computing, Sensorsteuerung und Heimautomation\autocite{Matthews2018}.
+	\item \textbf{Prototyping}: Schnelle Entwicklung von Steuerungen und Embedded-Systemen.
+\end{itemize}
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=1\linewidth]{images/RP5_Anschluss.png}
+	\caption{Platinenbelegung Raspberry Pi 5}
+	\label{fig:Aufbau RP5}
+\end{figure}
+\subsection*{Fokus auf Raspberry Pi}
+Der Raspberry Pi ist der bekannteste SBC und wurde 2012 von der Raspberry Pi Foundation entwickelt, um Computerkenntnisse in Schulen zu fördern\autocite{Pajankar2017}. Seitdem hat sich die Plattform zu einem vielseitigen Werkzeug für Bildung, Forschung und Industrie entwickelt.
+
+\paragraph{Technische Entwicklung}
+\begin{itemize}
+	\item \textbf{Raspberry Pi 1 (2012)}: ARM11 CPU, 256--512 MB RAM.
+	\item \textbf{Raspberry Pi 3 (2016)}: Quad-Core ARM Cortex-A53, integriertes WLAN und Bluetooth.
+	\item \textbf{Raspberry Pi 4 (2019)}: Quad-Core Cortex-A72, bis zu 8 GB RAM, USB 3.0 und Dual-HDMI\autocite{Matthews2018}.
+\end{itemize}
+
+\paragraph{Anwendungen}
+Der Raspberry Pi wird eingesetzt für:
+\begin{itemize}
+	\item \textbf{Lehre}: Informatik- und Technikunterricht, paralleles Rechnen\autocite{Matthews2018}.
+	\item \textbf{Forschung}: IoT, Edge-AI und Bildverarbeitung.
+	\item \textbf{Projekte}: Mediencenter, Heimautomation und Robotik\autocite{Pajankar2017}.
+\end{itemize}
+
+\paragraph{Vorteile}
+\begin{itemize}
+	\item Große Community und Open-Source-Software.
+	\item Hohe Konnektivität (GPIO, WLAN, Bluetooth).
+	\item Kostengünstig und energieeffizient\autocite{Alvarez2022}.
+\end{itemize}
+
+\paragraph{Nachteile}
+Trotz der Vorteile bestehen auch Einschränkungen:
+\begin{itemize}
+	\item \textbf{Begrenzte Rechenleistung}: Für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet\autocite{Matthews2018}.
+	\item \textbf{Speicherlimitierungen}: Maximal 8 GB RAM begrenzt große Datenverarbeitungen.
+	\item \textbf{Fehlende industrielle Robustheit}: Nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt\autocite{Alvarez2022}.
+	\item \textbf{Leistungsaufnahme bei Volllast}: Höhere Last kann zusätzliche Kühlung erfordern.
+\end{itemize}
 
 \section{Energieversorgung}%Faik
 Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
