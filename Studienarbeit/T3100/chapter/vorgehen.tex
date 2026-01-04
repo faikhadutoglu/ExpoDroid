@@ -42,39 +42,54 @@ Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt wer
 
 Im Rahmen einer studentischen Studienarbeit muss daher die Umsetzbarkeit stets kritisch bewertet werden. Konzepte mit hoher mechanischer und softwareseitiger Komplexität sind unter gegebenen zeitlichen, finanziellen und personellen Rahmenbedingungen nur eingeschränkt realisierbar. Aus diesem Grund liegt der Fokus des Designkonzepts auf einer ausgewogenen Kombination aus ansprechender Gestaltung, technischer Machbarkeit und funktionaler Zuverlässigkeit.
 
-\subsection{Vergleich: Räder vs. Ketten [\textcolor{blue}{Angus}]}
-Die entscheidung zur allgemeinen Antriebsart fällt auf eine fahrzeugnahe Umsetztung. Das Umfasst in ersterlienie den einsatz von Rädern unterschiedlicher Antriebsweisen aber auch die Verwendung von Ketten. Dabei wirkt sich diese Wahl auf die  beweglichkeit, bzw. das Lenkvermögen sowie das Befahrbare Terain aus.
+\subsection{Vergleich: Räder vs. Ketten}
 
-Zur Auflistung und erklährung der folgenden vorgeschlagenen Möglichkeiten:
+Die Entscheidung für eine geeignete Antriebsart fällt im Rahmen dieses Projekts auf eine fahrzeugnahe Umsetzung. In Betracht gezogen werden dabei insbesondere radbasierte Antriebskonzepte in unterschiedlichen Konfigurationen sowie ein Kettenantrieb. Die Wahl der Antriebsart beeinflusst maßgeblich die Beweglichkeit, das Lenkverhalten sowie die befahrbaren Untergründe des Roboters und stellt somit eine grundlegende Entwurfsentscheidung dar.
 
-Kettenantrieb: Das Konzept entspricht der Fahrweise eines vollkettenfahrzeuges wie bei herkömmlichen Kettenpanzern. Die Ketten Verteilen das Gesammtgewicht sehrgleichmäßig, was einem mehrere Tonnenschweren Pannzer auf unebenen Oberflächen eine gute beweglichkeit verleit, bei einem geringeren Gewicht könnten die Ketten das Gewicht allerdings zu stark verteilen, was die Vortbewegung auf glatten Boden (wie in Messehallen üblich) durch durchdrheen erschwähren könnte. es unterschiedliche Untergrundarten zu befahren, können, wie reibungsstärkeren wie gras oder sandigerem untergrund. Wie ein Panzer könnte sich der Roboter dadruch auf der Stelle um die eigene Achse drehen, damit wird das Manövrieren auf begrenzten oder überfüllten Bereichen wie einer viel besuchten Messe erleichtert. Die Ketten sorgen für eine starke und interesante Optik, die an starke und Größe maschienen wie Panzer oder große traktoren errinnert und somit bei jungen interesierte n für den gewissen coolnesfaktor sorgen könnte. Ein Droide, der an das Aussehen eines Panzers errinnert könnte im Kontext einer Präsentation der Hochschule jedoch auch kontrovers oder militaristisch aufgefasst werden. 
+Im Folgenden werden die betrachteten Antriebskonzepte vorgestellt und hinsichtlich ihrer Eigenschaften, Vorteile und Einschränkungen gegenübergestellt.
 
-Statt Ketten können auch vier Räder wie bei herkömlichen PKWs verwendet werden (2 räder links, 2 rechts). Diese können sowohl allradbetrieben, vorder oder hinterantrieb oder  zwei diagonall betriebene räder sein. Auch ein Dreirad ist vorstellbar.
+\paragraph{I. Kettenantrieb}
+Der Kettenantrieb entspricht dem Fahrprinzip eines Vollkettenfahrzeugs, wie es beispielsweise von Kettenpanzern oder schweren landwirtschaftlichen Maschinen bekannt ist. Durch die großflächige Aufstandsfläche wird das Gesamtgewicht sehr gleichmäßig verteilt, was bei schweren Fahrzeugen eine hohe Geländegängigkeit auf unebenem Untergrund ermöglicht.
 
-------------------------------------------
-\subsection{Vergleich: Räder vs. Ketten [\textcolor{blue}{Angus}]}
+Bei vergleichsweise leichten Systemen, wie einem für den Messebetrieb konzipierten Roboter, kann diese Eigenschaft jedoch auch nachteilig sein. Auf glatten Böden, wie sie in Messehallen üblich sind, kann es zu erhöhtem Schlupf kommen, wodurch die Fortbewegung weniger effizient wird. Gleichzeitig bietet der Kettenantrieb den Vorteil, dass unterschiedliche Untergrundarten – etwa Teppich, Gras oder sandiger Untergrund – grundsätzlich befahrbar sind.
 
-Die Entscheidung für eine geeignete Antriebsart fällt im Rahmen dieses Projekts auf eine fahrzeugnahe Umsetzung. Dazu zählen insbesondere der Einsatz von Rädern in unterschiedlichen Konfigurationen sowie die Verwendung eines Kettenantriebs. Diese Wahl hat direkten Einfluss auf die Beweglichkeit, das Lenkverhalten sowie auf die befahrbaren Untergründe des Roboters.
+Ein weiterer Vorteil ist die Möglichkeit, den Roboter durch gegenläufige Ansteuerung der Ketten auf der Stelle um die eigene Achse zu drehen. Dies erleichtert das Manövrieren in engen oder stark frequentierten Bereichen, wie sie auf Messen oder in Menschenmengen häufig vorkommen.
 
-Im Folgenden werden die betrachteten Antriebskonzepte vorgestellt \textcolor{red}{und miteinander verglichen.}
-
-\paragraph{Kettenantrieb}
-Der Kettenantrieb entspricht dem Fahrprinzip eines Vollkettenfahrzeugs, wie es beispielsweise von Kettenpanzern bekannt ist. Die Ketten verteilen das Gesamtgewicht sehr gleichmäßig auf die Aufstandsfläche, was bei schweren Fahrzeugen wie einem Panzer oder einem Traktor eine hohe Geländegängigkeit auf unebenem Untergrund ermöglicht.
-
-Bei vergleichsweise leichten Systemen, wie einem Messe-Roboter, kann diese starke Gewichtsverteilung jedoch auch nachteilig sein. Auf glatten Böden, wie sie in Messehallen üblich sind, kann es zu einem erhöhten Schlupf kommen, wodurch die Fortbewegung ineffizienter wird. Gleichzeitig bietet der Kettenantrieb den Vorteil, dass unterschiedliche Untergrundarten – etwa Teppich, Gras oder sandiger Untergrund – grundsätzlich befahrbar sind.
-
-Ein weiterer Vorteil ist die Möglichkeit, sich durch gegenläufige Ansteuerung der Ketten auf der Stelle um die eigene Achse zu drehen. Dies erleichtert das Manövrieren in engen oder stark frequentierten Bereichen, wie sie auf Messen oder in Menschenmengen häufig sind.
-
-Optisch vermittelt ein Kettenfahrzeug Stabilität und Robustheit und wird häufig mit großen Maschinen wie Panzern oder landwirtschaftlichen Fahrzeugen assoziiert. Dies kann insbesondere bei technisch interessierten jungen Zielgruppen einen hohen Aufmerksamkeits- und sogenannten \textcolor{red}{„Coolnessfaktor“} erzeugen. Gleichzeitig besteht jedoch die Gefahr, dass ein kettengetriebener Roboter im Kontext einer Hochschulpräsentation als zu martialisch oder militärisch wahrgenommen wird, was kritisch bewertet werden muss.
+Optisch vermittelt ein kettengetriebenes Fahrzeug Robustheit und technische Leistungsfähigkeit und wird häufig mit großen Maschinen wie Panzern oder Traktoren assoziiert. Dies kann insbesondere bei technisch interessierten Zielgruppen einen hohen Aufmerksamkeitswert erzeugen. Gleichzeitig besteht jedoch die Gefahr, dass ein solcher kettengetriebener Roboter im Kontext einer Hochschulpräsentation als zu martialisch oder militärisch wahrgenommen wird, was kritisch bewertet werden muss.
 
 \paragraph{Radantrieb}
-Alternativ zum Kettenantrieb kann der Roboter mit Rädern ausgestattet werden. Eine gängige Konfiguration ist der Einsatz von vier Rädern, vergleichbar mit einem konventionellen Personenkraftwagen, wobei jeweils zwei Räder auf der linken und rechten Seite angeordnet sind. Diese können als Vorder-, Hinter- oder Allradantrieb ausgeführt werden. Auch differenzielle Antriebe oder diagonal angetriebene Räder sind möglich.
+Alternativ zum Kettenantrieb kann der Roboter mit Rädern ausgestattet werden. Eine gängige Grundkonfiguration ist der Einsatz von vier Rädern, vergleichbar mit einem konventionellen Kraftfahrzeug, wobei jeweils zwei Räder auf der linken und rechten Seite angeordnet sind. Abhängig von der Anordnung und Ansteuerung können verschiedene Antriebskonzepte realisiert werden, etwa Vorder-, Hinter- oder Allradantrieb. Darüber hinaus sind auch differenzielle oder diagonal angetriebene Varianten möglich.
 
-Räder bieten auf ebenen und festen Untergründen, wie glatten Hallenböden, eine sehr effiziente und energiearme Fortbewegung. Zudem ist der mechanische Aufbau eines Radantriebs in der Regel einfacher, kostengünstiger und wartungsärmer als ein Kettenantrieb. Dies stellt insbesondere im Rahmen einer studentischen Studienarbeit einen wesentlichen Vorteil dar.
+Räder ermöglichen auf ebenen und festen Untergründen, wie glatten Hallenböden, eine sehr effiziente und energiearme Fortbewegung. Zudem ist der mechanische Aufbau eines Radantriebs in der Regel einfacher, kostengünstiger und wartungsärmer als der eines Kettenantriebs.
 
 Darüber hinaus wirkt ein radgetriebenes System optisch weniger aggressiv und lässt sich gestalterisch vielseitiger in ein freundliches und einladendes Gesamtdesign integrieren. Einschränkungen ergeben sich hingegen bei der Geländegängigkeit, da Räder auf stark unebenem oder losem Untergrund schneller an ihre Grenzen stoßen.
 
-Neben der Vier-Rad-Konfiguration ist auch der Einsatz eines Dreiradsystems denkbar, bei dem beispielsweise zwei angetriebene Räder und ein frei bewegliches Stützrad verwendet werden. Solche Konzepte ermöglichen einen kompakten Aufbau und ein gutes Wendemanöver, erfordern jedoch eine sorgfältige Auslegung hinsichtlich Stabilität und Lastverteilung.
+Zur detaillierteren Betrachtung werden im Folgenden verschiedene Radkonfigurationen vorgestellt, die in Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} schematisch dargestellt sind. Die Konzepte unterscheiden sich insbesondere hinsichtlich Antriebsverteilung, Wendigkeit, mechanischem Aufwand und Einsatzszenario.
+
+\subparagraph{II. Allradantrieb}
+Beim Allradantrieb sind alle vier Räder aktiv angetrieben. Diese Konfiguration ermöglicht eine gleichmäßige Kraftverteilung und bietet ein hohes Maß an Traktion sowie ein stabiles Fahrverhalten. Insbesondere bei wechselnden Untergründen kann dies von Vorteil sein.
+
+Dem stehen ein erhöhter mechanischer und elektrischer Aufwand sowie ein höherer Energiebedarf gegenüber, da vier Antriebseinheiten erforderlich sind. Für den überwiegend ebenen Einsatz auf Messeflächen kann diese Lösung daher als technisch leistungsfähig, jedoch potenziell überdimensioniert angesehen werden.
+
+\subparagraph{III. Vorder- oder Hinterradantrieb}
+Bei dieser Konfiguration werden entweder die beiden vorderen oder die beiden hinteren Räder angetrieben, während die jeweils anderen Räder passiv mitlaufen. Dieses Konzept entspricht dem klassischen Aufbau vieler Straßenfahrzeuge.
+
+Der Vorteil liegt im vergleichsweise einfachen mechanischen Aufbau bei gleichzeitig gut kontrollierbarem Fahrverhalten. Der Energiebedarf ist geringer als beim Allradantrieb, da nur zwei Motoren eingesetzt werden. Einschränkungen ergeben sich bei der Traktion, insbesondere bei ungünstiger Lastverteilung oder sehr glatten Untergründen. Für den Einsatz auf ebenen Messeflächen stellt diese Variante jedoch eine praktikable und bewährte Lösung dar.
+
+\subparagraph{IV. Diagonalantrieb}
+Beim Diagonalantrieb werden zwei diagonal gegenüberliegende Räder aktiv angetrieben. Diese Konfiguration stellt einen Kompromiss zwischen Allrad- und Zweiradantrieb dar und ermöglicht – ähnlich wie beim Allradantrieb – prinzipiell ein Drehen auf der Stelle.
+
+Allerdings ist das Fahr- und Lenkverhalten schwerer vorhersehbar und erfordert eine präzise Regelung, um ungleichmäßige Kraftverteilungen auszugleichen. Der erhöhte Regelungsaufwand sowie die geringe Verbreitung dieses Konzepts sprechen eher gegen den Einsatz im Rahmen eines studentischen Projekts.
+
+\subparagraph{V. Hinterradantrieb mit zwei frei beweglichen Rädern}
+In dieser Variante sind die beiden hinteren Räder aktiv angetrieben, während die vorderen Räder frei beweglich gelagert sind und zur Lenkung beitragen. Das Konzept ähnelt dem Aufbau vieler mobiler Serviceroboter oder Transportplattformen.
+
+Diese Anordnung ermöglicht ein gutes Wendemanöver bei gleichzeitig reduziertem mechanischem Aufwand. Die frei beweglichen Räder können jedoch bei höheren Geschwindigkeiten oder abrupten Richtungswechseln zu Instabilitäten führen, was bei der Regelung berücksichtigt werden muss. Für moderate Fahrgeschwindigkeiten im Messebetrieb stellt dieses Konzept dennoch eine realistische Option dar.
+
+\subparagraph{VI. Hinterradantrieb mit einem frei beweglichen Stützrad}
+Das Dreiradkonzept besteht aus zwei angetriebenen Rädern sowie einem einzelnen frei beweglichen Stützrad. Diese Konfiguration erlaubt einen sehr kompakten Aufbau und eine einfache mechanische Realisierung. Zudem kann die ungewohnte Anordnung zur Eigenständigkeit und Wiedererkennbarkeit des Roboters beitragen.
+
+Vorteilhaft sind der geringe Bauteilaufwand sowie eine hohe Wendigkeit, insbesondere bei differenzieller Ansteuerung der Antriebsräder. Nachteilig wirkt sich die reduzierte Stabilität aus, insbesondere bei ungleichmäßiger Lastverteilung oder beim Überfahren von Kanten. Für einen leichten, langsam fahrenden Messe-Roboter kann dieses Konzept dennoch geeignet sein, erfordert jedoch eine sorgfältige Schwerpunkt- und Fahrwerksauslegung.
 
 
 \begin{figure}[hbt]
