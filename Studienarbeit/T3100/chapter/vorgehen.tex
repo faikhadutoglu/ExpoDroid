@@ -184,8 +184,135 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 \clearpage
 
 \section{Interaktionsdesign}
+Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
+Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige grafische Benutzeroberfläche (GUI) bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[font=\sffamily]
+		
+		% Farben (optional, reine TikZ-Optionen)
+		% Du kannst sie weglassen, falls du SW möchtest.
+		\definecolor{piBlue}{RGB}{204,220,255}
+		\definecolor{dispGreen}{RGB}{210,240,210}
+		\definecolor{camOrange}{RGB}{255,225,190}
+		\definecolor{swPurple}{RGB}{230,210,250}
+		\definecolor{gpioYellow}{RGB}{250,240,180}
+		\definecolor{boxGray}{RGB}{235,235,235}
+		
+		% ---------- Knoten als einfache Rechtecke ----------
+		% Netzteil
+		\draw[fill=boxGray, thick] (0,0) rectangle +(4,1.5);
+		\node[anchor=west] at (0.2,1.15) {\textbf{Netzteil}};
+		\node[anchor=west] at (0.2,0.6) {5\,V / 5\,A (USB‑C)};
+		
+		% Raspberry Pi 5
+		\draw[fill=piBlue, thick] (6,0) rectangle +(5,2);
+		\node[anchor=west] at (6.2,1.6) {\textbf{Raspberry Pi 5}};
+		\node[anchor=west] at (6,1.05) {USB‑C (Power In), USB 3.0};
+		\node[anchor=west] at (6,0.55) {2$\times$ micro‑HDMI};
+		
+		% HDMI-Display
+		\draw[fill=dispGreen, thick] (13,0) rectangle +(5,2);
+		\node[anchor=west] at (13.2,1.6) {\textbf{HDMI‑Display}};
+		\node[anchor=west] at (13.2,1.05) {Video/Audio via HDMI};
+		\node[anchor=west] at (13.2,0.55) {Strom über USB (5\,V)};
+		
+		% Kamera
+		\draw[fill=camOrange, thick] (8.5,4) rectangle +(4,1.7);
+		\node[anchor=west] at (8.7,5.4) {\textbf{Logitech Brio 500}};
+		\node[anchor=west] at (8.7,4.9) {USB 3.0 (UVC)};
+		
+		% Software-Block
+		\draw[fill=swPurple, thick] (6,-3) rectangle +(5,2);
+		\node[anchor=west] at (6.2,-1.2) {\textbf{Python‑Anwendung}};
+		\node[anchor=west] at (6,-1.8) {GUI: Tkinter / PyQt / Kivy};
+		\node[anchor=west] at (6,-2.3) {Bildverarbeitung: OpenCV};
+		
+		% Optionale GPIO-Peripherie
+		%	\draw[fill=gpioYellow, thick] (13,-3) rectangle +(5,2);
+		%	\node[anchor=west] at (13.2,-1.1) {\textbf{Optionale GPIO‑Peripherie}};
+		%	\node[anchor=west] at (13.2,-1.6) {Taster / LED / Sensoren};
+		
+		% ---------- Verbindungen (nur einfache Linien und Pfeile) ----------
+		% Netzteil -> Pi (Power)
+		\draw[thick,->] (4,0.75) -- (6,0.75);
+		\node[anchor=south] at (5,0.9) {5\,V / GND};
+		
+		% Pi -> Display (HDMI)
+		\draw[thick,->] (11,1.4) -- (13,1.4);
+		\node[anchor=south] at (12,1.75) {HDMI (Video/Audio)};
+		
+		% Pi -> Kamera (USB)
+		\draw[thick,->] (9,2) -- (9,4);
+		\node[anchor=west] at (9.1,3.1) {USB 3.0};
+		
+		% Pi -> Display (USB‑Power)
+		\draw[thick,->] (11,0.6) -- (13,0.6);
+		\node[anchor=north] at (12,0.5) {USB 5\,V};
+		
+		% Pi -> GPIO-Peripherie
+		%	\draw[thick,->] (11,-2) -- (13,-2);
+		%	\node[anchor=north] at (12,-2.1) {HDMI};
+		
+		% Software-Datenflüsse (gestrichelt)
+		\draw[thick,dashed,->] (8.5,-1) -- (8.5,0);       % Python <-> Pi
+		\node[anchor=east] at (10,-0.75) {Frames/Events};
+		
+		\draw[thick,dashed,->] (11,-2.5) -- (15,-0.1);    % Python -> Display
+		%	\node[anchor=west] at (12.5,-1.6) {Fenster/Canvas};
+		
+		\draw[thick,dashed,->] (10.5,-0.95) -- (10.5,4);     % Python -> Kamera (Stream)
+		%	\node[anchor=west] at (10.6,) {Videostream};
+		
+		% ---------- Legende ----------
+		\draw[thick] (0,-4.2) -- (2,-4.2);
+		\node[anchor=west] at (2.1,-4.2) {Hardware‑Verbindung};
+		
+		\draw[thick,dashed] (0,-4.7) -- (2,-4.7);
+		\node[anchor=west] at (2.1,-4.7) {Software-/Datenfluss};
+		
+		\node[anchor=west] at (0,-5.3) {\textbf{Hinweis:} Je nach Leistungsbedarf kann das Display ein eigenes Netzteil benötigen.};
+		
+	\end{tikzpicture}
+	\caption{Anschlussplan Raspberry Pi}
+	\label{fig:anschlussschema_rpi5}
+\end{figure}
+\newpage
+
+
 \subsection{Display-Integration}
+Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. Dazu soll das Display im Fehlerfall auch weitere Daten anzeigen können. Für die Displayinteraktion sind mehrere Schnittstellen angedacht. Hierzu zählt die Verbindung über HDMI zum Raspberry Pi, welche für die Datenübertragung in Richtung Display sorgt. Zusätzlich zu dieser gibt es aber noch eine USB Verbindung, welche neben der Stromversorgung für das Display auch gleichzeitig für die Rückmeldung der Toucheingabe für den Raspberry Pi genutzt werden kann. Auch dies ist aus Abbildung \ref{fig:display_interaktion} ersichtlich. 
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[font=\sffamily]
+		
+		% Raspberry Pi
+		\draw[fill=blue!10, thick] (-0.5,0) rectangle +(4,2);
+		\node[anchor=west] at (-0.3,1.5) {\textbf{Raspberry Pi 5}};
+		\node[anchor=west] at (-0.3,1.0) {Python-Anwendung};
+		\node[anchor=west] at (-0.3,0.5) {GUI + Animationen};
+		
+		% Display
+		\draw[fill=green!10, thick] (9.2,0) rectangle +(5.5,2);
+		\node[anchor=west] at (9.4,1.5) {\textbf{HDMI-Touch-Display}};
+		\node[anchor=west] at (9.4,1.0) {Augen- und Sprachanimation};
+		\node[anchor=west] at (9.4,0.5) {Fehleranzeige};
+		
+		% Verbindungen
+		\draw[->, thick] (3.5,1.5) -- (9.2,1.5) node[midway, above] {HDMI (Video)};
+		\draw[<->, thick] (3.5,0.5) -- (9.2,0.5) node[midway, above] {USB (Power + Touch-Daten)};
+		
+	\end{tikzpicture}
+	\caption{Displayinteraktion: HDMI für Bildausgabe, USB für Stromversorgung und Touch-Rückmeldung.}
+	\label{fig:display_interaktion}
+\end{figure}
+
+
 \subsection{Augen-Animation und Emotionsdarstellung}
+
+Für die Augenanimation ist eine einfache 
 \subsection{Benutzerinteraktion}
 
 
