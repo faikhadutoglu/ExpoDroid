@@ -109,7 +109,7 @@ Hoverboards verwenden in der Regel \textbf{bürstenlose Gleichstrommotoren (BLDC
 	\label{fig:Hoverboardaufbau}
 \end{figure}
 
-\subsection{Aufbau und Bauform}
+\subsubsection{Aufbau und Bauform}
 Die Motoren sind als \emph{Hub-Motoren} ausgeführt, wobei der Rotor entweder innen oder außen angeordnet sein kann:
 \begin{itemize}
 	\item \textbf{Innerer Rotor:} Kompakte Bauweise, geeignet für platzkritische Anwendungen.
@@ -118,7 +118,7 @@ Die Motoren sind als \emph{Hub-Motoren} ausgeführt, wobei der Rotor entweder in
 
 Die meisten Hoverboard-Motoren sind sensorbasiert und nutzen Hall-Sensoren zur präzisen Positionsbestimmung. Dies ermöglicht eine feldorientierte Regelung (FOC) für sanftes Anfahren und effiziente Drehmomentsteuerung\autocite{Jaulin2025}.
 
-\subsection{Eigenschaften}
+\subsubsection{Eigenschaften}
 Typische Merkmale von Hoverboard-Motoren:
 \begin{itemize}
 	\item \textbf{Direktantrieb:} Keine Getriebe, dadurch hoher Wirkungsgrad.
@@ -127,7 +127,7 @@ Typische Merkmale von Hoverboard-Motoren:
 	\item \textbf{Kompakte Bauweise:} Motor und Rad bilden eine Einheit\autocite{Zhang2025}.
 \end{itemize}
 
-\subsection{Technische Daten (Beispiel)}
+\subsubsection{Technische Daten (Beispiel)}
 Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Parallax2025}:
 \begin{itemize}
 	\item Betriebsspannung: 36\,V
@@ -137,7 +137,7 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 	\item Integrierte Hall-Sensoren
 \end{itemize}
 
-\subsection{Regelung und Steuerung}
+\subsubsection{Regelung und Steuerung}
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
 \subsection{Motortreiber und PWM-Steuerung}
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
