@@ -74,6 +74,27 @@ singlelinecheck=true,
 aboveskip=1mm
 ]{caption}
 
+
+
+
+
+
+
+\usepackage{xcolor}
+\usepackage{siunitx}
+\sisetup{locale = DE} % Deutsche Zahlenschreibweise (Komma statt Punkt)
+% --- Listings Style Definition ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+
+
+
+
+
 \usepackage[backend=biber, %% Hilfsprogramm "biber" beim Compilieren nutzen (statt "biblatex" oder "bibtex")
 style=numeric, %% Zitierstil (siehe Dokumentation) style=numeric oder style=alphabetic oder authortitle oder authoryear
 %verbose-inote,
@@ -159,6 +180,49 @@ marginal
 	tabsize=2,	                   % sets default tabsize to 2 spaces
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+
+%Motorcode styling (Faik)
+\definecolor{motorBack}{rgb}{0.95,0.95,0.92} 
+\definecolor{motorGreen}{rgb}{0,0.6,0}
+\definecolor{motorPurple}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{motorStyle}{
+	backgroundcolor=\color{motorBack},   
+	commentstyle=\color{motorGreen},
+	keywordstyle=\color{magenta},     
+	numberstyle=\tiny\color{gray},
+	stringstyle=\color{motorPurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,                    
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	language=C++
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 % -----------------------------------------------------------------------------------------------------------------
 % Zum Aktualisieren des Abkürzungsverzeichnisses (Nomenklatur) bitte auf der Kommandozeile folgenden Befehl aufrufen :
