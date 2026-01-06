@@ -257,29 +257,43 @@ a
 \subsection{Materialien und Nachbearbeitung}
 a
 
-\section{Human-Machine-Interaction [\textcolor{blue}{Hai Nam}]}
+\section{Human-Machine-Interaction [\textcolor{blue}{Hai Nam, WIP}]}
 
-[\textcolor{green}{HMI Text Placeholder. Quellen n Proof Reading pending. WIP}]
+Die Mensch-Maschine-Interaktion (Human-Machine Interaction, HMI) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie autonome Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
 
-Unter Human‑Machine Interface (HMI) wird die Schnittstelle verstanden, über die ein Mensch mit einer Maschine oder einem technischen System interagiert. Ziel ist es, Informationen verständlich darzustellen und Eingaben so zu ermöglichen, dass die Maschine sicher, effizient und möglichst intuitiv bedient werden kann.
+Das Entwurf einer HMI umfasst sowohl Hardwarekomponenten als auch Softwarekomponenten. Für ein optimales Entwurf der HMI müssen Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit und zeitnahe Rückmeldung berücksichtigt werden. \autocite{Taxi.2010}
 
-Im Zusammenhang mit einem Messroboter kann eine HMI beispielsweise auf einem integrierten Display, einem Tablet oder einem PC-Panel ausgeführt werden. So können Sie Betriebsmodi auswählen, Messprogramme starten, Diagnosedaten anzeigen oder zusätzliche Funktionen wie einen Debugging-Modus oder eine „Kamera-Selfie“-Ansicht nutzen.
+\subsection{Definitionen und Zielsetzung}
 
-Ein HMI besteht typischerweise aus Ein- und Ausgabe­elementen. Zu den Ausgabeelementen gehören etwa Textanzeigen, Status‑LEDs, Diagramme oder Kamerabilder, während Eingabeelemente Taster, Softkeys auf einem Touchscreen, Slider, Menüs oder Gestensteuerungen sein können.
+HMI bezeichnet die Schnittstelle, über die Menschen mit technischen Systemen kommunizieren und miteinander interagieren. Dazu zählen alle Methoden und Technologien, die den Austausch von Informationen zwischen Benutzern und Maschinen ermöglichen. Die Norm International Organization for Standardization (ISO) 9241-210:2019 bietet einen strukturierten Überblick über die Entwicklung interaktiver Systeme auf der Grundlage des Prinzips des nutzerzentrierten Entwurfs (englisch: User-centered design (UCD)). Damit wird HMI als „Gestaltung interaktiver Systeme, die den Nutzer in den Mittelpunkt stellt, um Effektivität, Effizienz und Zufriedenheit zu gewährleisten“ definiert. \autocite{Francis.2025}
 
-Eine Touch-Oberfläche mit klar strukturierten Menüs ist ideal für einen Messroboter mit Display, über das der Benutzer beispielsweise zwischen „Normalbetrieb“, „Debugging-Modus“, „Service“ oder „Info“ wählen kann. Darüber hinaus können einfache Symbole bzw. Icons und Farbcodes verwendet werden, um Status wie „Messung läuft“, „Fehler“ oder „Bereit“ schnell zu erkennen.
+Das Hauptziel einer HMI besteht darin, die Bedienung komplexer Systeme intuitiv, sicher und effizient zu gestalten. Dies schließt die Reduktion von Fehlbedienungen, die Bereitstellung klarer Rückmeldungen sowie die Anpassung an unterschiedliche Nutzungskontexte ein. Wird ein HMI gut gestaltet, so erleben die Messebesucher eine positive Benutzererfahrung, die Hochschule gewinnen an Bindung von Studierenden und wird als innovativ wahrgenommen \autocite{Rahul.2025}. In der Robotik ist dies besonders relevant, da autonome Systeme wie Serviceroboter oder industrielle Roboter nur dann praktikabel eingesetzt werden können, wenn die Interaktion für den Anwender verständlich und zuverlässig ist \autocite{Dix.2004}. 
 
-Ein gutes HMI muss vor allem benutzerfreundlich sein, damit Bedienfehler reduziert und Einarbeitungszeiten kurz gehalten werden. Wichtige Prinzipien sind Konsistenz (gleiche Symbole und Aktionen verhalten sich überall gleich), klare Rückmeldungen auf Eingaben und eine logische Strukturierung der Funktionen.
+Für den Messeroboter bedeutet dies, dass die HMI nicht nur grundlegende Steuerungsfunktionen für beispielsweise Bewegungen bereitstellen, sondern auch erweiterte Modi wie „Selfie-Modus“, „Debugging-Modus“ oder Informationsanzeigen integrieren muss. Das Ziel ist es, eine benutzerfreundliche Oberfläche zu schaffen, die sowohl für Messebesucher als auch für Entwickler geeignet ist. Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit, Echtzeit-Rückmeldung und  klare Trennung zwischen Benutzer‑ und Servicefunktionen sind dabei von entscheidender Bedeutung.
 
-Besonders in der Robotik spielen zudem Sicherheit und Transparenz eine große Rolle: Der Nutzer muss jederzeit erkennen können, in welchem Zustand sich der Roboter befindet, ob sich Achsen bewegen werden und welche Risiken bestehen. Für einen Messeroboter bedeutet das zum Beispiel: deutliche Anzeige vor einem Messlauf, gut sichtbare Warnhinweise im Debugging‑Mode und klare Trennung zwischen Benutzer‑ und Servicefunktionen.
+Zusammenfassend verfolgt die HMI folgende Kernziele:
+
+\begin{itemize}
+	\item \textbf{Effizienz:} Minimierung des Zeitaufwands für Bedienung und Steuerung.
+	\item \textbf{Sicherheit:} Vermeidung von Fehlbedienungen und Integration von Notfallmechanismen.
+	\item \textbf{Benutzerfreundlichkeit:} Intuitive Navigation und klare Informationsdarstellung.
+	\item \textbf{Flexibilität:} Anpassung an verschiedene Nutzergruppen und Anwendungsszenarien.
+\end{itemize}
+
+\subsection{Interaktionsformen}
+
+PENDING TEXTS
+
+Ein HMI besteht typischerweise aus Ein- und Ausgabe­elementen. Zu den Ausgabeelementen gehören etwa Textanzeigen, Status‑LEDs, Diagramme oder Kamerabilder, während Eingabeelemente Taster, Softkeys auf einem Touchscreen, Slider, Menüs oder Gestensteuerungen sein können. QUELLE WIP
 
 In der Robotik lässt sich grob zwischen verschiedenen Arten von HMIs unterscheiden: klassische Bedienfelder (z. B. Teach-Pendant mit Tasten und Not-Aus-Schalter), fest installierte Touchpanels am System und mobile Geräte wie Tablets oder Smartphones. Jede Variante hat ihre eigenen Vor- und Nachteile in Bezug auf Ergonomie, Flexibilität und Sicherheit.
 
-Für ein Projekt mit Schneidrobotern und Displays ist eine Kombination aus einer festen Sicherheitssteuerung (z. B. Not-Aus, Freigabetaster) und einer grafischen HMI für Komfortfunktionen ideal. Das Display kann dann zur Visualisierung von DHBW-Informationen, Systemstatus, Messprotokollen oder einer einfachen „Kamera-Selfie“-Funktion verwendet werden, während sicherheitskritische Aktionen weiterhin nur über zugelassene Bedienelemente ausgeführt werden können.
+Im Zusammenhang mit einem Messroboter kann eine HMI beispielsweise auf einem integrierten Display, einem Tablet oder einem PC-Panel ausgeführt werden. So können Betriebsmodi ausgewählt, Messprogramme gestartet, Diagnosedaten angezeigt oder zusätzliche Funktionen wie einen Debugging-Modus oder eine „Kamera-Selfie“-Ansicht genutzt werden. WIP
 
-Bei Messrobotern ist die Integration von Mess- und Qualitätsinformationen in die HMI besonders wichtig. Der Benutzer sollte in der Lage sein, Messaufträge auszuwählen, grundlegende Parameter (z. B. aktuelles Messprogramm, Werkstücktyp, Toleranzstatus) anzuzeigen und die Ergebnisse in kompakter Form darzustellen.
+\subsection{Usability Test und Ergonomie (TITLE WIP)}
 
-Darüber hinaus kann das HMI Wartung und Debugging unterstützen, etwa durch Anzeige von Roboter‑Koordinaten, Fehlermeldungen, Log‑Informationen oder Live‑Kamerabildern der Messszene. Zusätzliche, weniger kritische Funktionen wie eine „Camera Selfie“-Ansicht oder DHBW‑Infobildschirme können als eigene Menüpunkte implementiert werden, dürfen aber die Übersicht im produktiven Betrieb nicht stören.
+\subsection{Visualisierung und Interaktionssystem}
+
 
 
 
