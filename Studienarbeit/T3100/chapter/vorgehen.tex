@@ -38,7 +38,7 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
 
 
 %Faik
-\section{Projektplanung und Meilensteine}
+\section{Projektplanung und Meilensteine\textcolor{brown}{FAIK}}
 
 Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2.4} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form eines Gantt-Diagramms ermöglicht (siehe \textcolor{red}{HAI NAM }\textcolor{blue}{hier kannst du dein gantt diagramm einfügen und den text hier anhand deiner Abbildung erweitern/anpassen}]).
 
@@ -47,10 +47,10 @@ Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vo
 
 
 
-\subsection{Aufteilung der Arbeitspakete}
+\subsection{Aufteilung der Arbeitspakete\textcolor{brown}{FAIK}}
 Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi zuständig. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
 
-\subsection{Definition von Meilensteinen}
+\subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
 Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
 
 \begin{itemize}
@@ -202,11 +202,11 @@ Zusammenfassend bietet der Kettenantrieb Vorteile in Bezug auf Wendigkeit und Ge
 
 
 
-\section{Steuerungskonzept}%Faik
+\section{Steuerungskonzept\textcolor{brown}{FAIK}}%Faik
 \label{sec:Steuerungskonzept}
 Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren(siehe Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} VI), bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle RC-Steuersignale (Remote Control) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
-\subsection{Grundlegende Signalverarbeitung}%Faik
+\subsection{Grundlegende Signalverarbeitung\textcolor{brown}{FAIK}}%Faik
 Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen enthalten über:
 \begin{itemize}
 	\item die gewünschte Vortriebsrichtung und -intensität
@@ -215,7 +215,7 @@ Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, wel
 Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsichtlich Neutralstellung und Plausibilität bewertet werden, um unbeabsichtigte Bewegungen oder Störungen zu vermeiden.
 
 
-\subsection{Differenzielle Bewegungssteuerung}%Faik
+\subsection{Differenzielle Bewegungssteuerung\textcolor{brown}{FAIK}}%Faik
 
 Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsumsetzung über eine differenzielle Ansteuerung der beiden Antriebseinheiten (\textit{Differential Drive}). Das mathematische Grundprinzip basiert darauf, dass die zuvor ermittelte Basisgeschwindigkeit für jede Seite individuell angepasst wird:
 
@@ -228,7 +228,7 @@ Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsum
 Dieses Mischverfahren (\textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
 
 
-\subsection{Begrenzung und Schutzmechanismen}%Faik
+\subsection{Begrenzung und Schutzmechanismen\textcolor{brown}{FAIK}}%Faik
 
 Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden zu vermeiden, sieht das Konzept mehrstufige Schutzmechanismen in der Signalverarbeitung vor:
 
@@ -242,7 +242,7 @@ Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden z
 
 Zusätzlich ist die Software-Architektur so ausgelegt, dass spätere Erweiterungen, wie beispielsweise eine aktive Notbremsung durch Sensorik, modular integriert werden können.
 
-\subsection{Ablaufbasierte Steuerungslogik}
+\subsection{Ablaufbasierte Steuerungslogik\textcolor{brown}{FAIK}}
 Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
 \begin{enumerate}
 	\item kontinuierliche Erfassung der Eingabesignale,
