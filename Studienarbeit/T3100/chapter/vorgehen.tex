@@ -35,10 +35,32 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
 \textcolor{green}{Vllt noch Link zur Requierments-Liste}
 
 
+
+
+%Faik
 \section{Projektplanung und Meilensteine}
 
-[\textcolor{blue}{Faik} \textcolor{green}{kann hier seine Excel mit dem Meilensteinen und der Timeline darstellen und erklären}]
+Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2.4} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form eines Gantt-Diagramms ermöglicht (siehe \textcolor{red}{HAI NAM }\textcolor{blue}{hier kannst du dein gantt diagramm einfügen und den text hier anhand deiner Abbildung erweitern/anpassen}]).
 
+
+
+
+
+
+\subsection{Aufteilung der Arbeitspakete}
+Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi zuständig. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
+
+\subsection{Definition von Meilensteinen}
+Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
+
+\begin{itemize}
+	\item Fertigstellung des mechanischen Aufbaus.
+	\item Erste Inbetriebnahme der Motoren und der Steuerelektronik.
+	\item Implementierung der Basis-Software für das Display.
+
+\end{itemize}
+
+Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stellte sicher, dass der Fokus auf den wesentlichen Projektzielen lag und bei zeitlichen Abweichungen rechtzeitig gegengesteuert werden konnte.
 
 
 
@@ -182,7 +204,7 @@ Zusammenfassend bietet der Kettenantrieb Vorteile in Bezug auf Wendigkeit und Ge
 
 \section{Steuerungskonzept}%Faik
 \label{sec:Steuerungskonzept}
-Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren, bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle RC-Steuersignale (Remote Control) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
+Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren(siehe Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} VI), bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle RC-Steuersignale (Remote Control) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
 \subsection{Grundlegende Signalverarbeitung}%Faik
 Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen enthalten über:
@@ -194,19 +216,31 @@ Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsic
 
 
 \subsection{Differenzielle Bewegungssteuerung}%Faik
-Die eigentliche Bewegungsumsetzung soll über eine differenzielle Ansteuerung der beiden Antriebseinheiten erfolgen. Hierbei soll die zuvor ermittelte Basisbewegung durch einen Lenkanteil modifiziert werden, sodass sich für linke und rechte Seite unterschiedliche Sollwerte ergeben können.
 
-Das mathematische Grundprinzip basiert darauf, dass bei einer Kurvenfahrt die Geschwindigkeit des kurveninneren Antriebs reduziert wird, während der kurvenäußere Antrieb seine Geschwindigkeit beibehält oder anpasst. Die Stärke dieser Anpassung soll proportional zum Lenkausschlag erfolgen.
+Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsumsetzung über eine differenzielle Ansteuerung der beiden Antriebseinheiten (\textit{Differential Drive}). Das mathematische Grundprinzip basiert darauf, dass die zuvor ermittelte Basisgeschwindigkeit für jede Seite individuell angepasst wird:
 
-Dieses Prinzip soll sowohl Geradeausfahrten als auch Kurvenbewegungen durch gezielte Anpassung der relativen Drehgeschwindigkeiten der Antriebe ermöglichen.
+\begin{itemize}
+	\item Bei \textbf{Geradeausfahrt} erhalten beide Antriebe identische Sollwerte.
+	
+	\item Bei \textbf{Kurvenfahrt} wird die Geschwindigkeit des kurveninneren Antriebs reduziert, während der kurvenäußere Antrieb seine Geschwindigkeit beibehält oder erhöht.
+\end{itemize}
+
+Dieses Mischverfahren (\textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
+
 
 \subsection{Begrenzung und Schutzmechanismen}%Faik
-Um einen sicheren und zuverlässigen Betrieb zu gewährleisten, sollen die berechneten Sollwerte vor der Ausgabe begrenzt werden. Dabei sollen systembedingte Maximalwerte berücksichtigt werden, um elektrische und thermische Überlastungen der Antriebskomponenten zu vermeiden.
 
-Zusätzlich soll das System die Integration späterer Schutzmechanismen, wie z. B. einer Notbremse, ermöglichen.
+Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden zu vermeiden, sieht das Konzept mehrstufige Schutzmechanismen in der Signalverarbeitung vor:
 
-[\textcolor{green}{Maximale Spannung für Motoren um Geschwindigkeit zu drosseln
-+ exponentielles Beschleunigen (sollte aber vllt noch später thematisiert werden) + Testen der Bremskraft bei nicht Gas geben}]
+\begin{itemize}
+	\item \textbf{Eingangsfilterung (Deadzone):} Mechanische Toleranzen der Fernsteuerungs-Joysticks und Rauschen im Übertragungssignal können zu ungewollten Minimalbewegungen führen. Um dies zu verhindern, wird um den Nullpunkt der Eingabewerte eine Totzone definiert, innerhalb derer die Motoren im Stillstand verbleiben.
+	
+	\item \textbf{Signalüberwachung (Failsafe):} Das System muss erkennen, ob ein gültiges Steuersignal vom Empfänger anliegt. Bei Signalverlust oder fehlerhaften Werten (z.\,B. durch Verbindungsabbruch oder Timeout) müssen die Antriebe unverzüglich in einen sicheren Zustand (Stopp) versetzt werden.
+	
+	\item \textbf{Ausgangsbegrenzung:} Um eine elektrische Überlastung der Motoren und Treiber zu verhindern, wird die maximale Ansteuerung softwareseitig begrenzt. Dies stellt sicher, dass auch bei vollem Ausschlag der Fernsteuerung die zulässige Durchschnittsspannung der Motoren nicht überschritten wird.
+\end{itemize}
+
+Zusätzlich ist die Software-Architektur so ausgelegt, dass spätere Erweiterungen, wie beispielsweise eine aktive Notbremsung durch Sensorik, modular integriert werden können.
 
 \subsection{Ablaufbasierte Steuerungslogik}
 Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
