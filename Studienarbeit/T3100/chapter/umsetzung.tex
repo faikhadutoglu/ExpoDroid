@@ -235,10 +235,66 @@ a
 \subsection{Funktionstests}
 \subsection{Fehleranalyse und Optimierung}
 
-\chapter{Ergebnisse und Diskussion}
-\section{Funktionsnachweis und Leistungsbewertung}
-\section{Anforderungsabgleich}
-\section{Lessons Learned}
+\chapter{Ergebnisse und Diskussion\textcolor{brown}{FAIK}}
+
+In diesem Kapitel werden die realisierten Ergebnisse der Studienarbeit vorgestellt
+und kritisch bewertet. Dabei liegt der Fokus auf dem Vergleich zwischen den definierten Anforderungen und dem tatsächlich umgesetzten Funktionsstand des Roboters.
+
+
+\section{Funktionsnachweis und Leistungsbewertung\textcolor{brown}{FAIK}}
+
+Zum Abschluss der Entwicklungsphase wurde der Roboter einer Reihe von Funktionstests unterzogen, um die Leistungsfähigkeit der Teilsysteme sowie des Gesamtsystems zu validieren.
+
+\subsection{Antrieb und Fahrverhalten}
+
+Das Chassis des Roboters wurde als stabile Holzkonstruktion realisiert, in welche die Antriebseinheit integriert ist. Diese besteht aus zwei unabhängig angesteuerten Gleichstrommotoren (DC-Motoren) für den Vortrieb sowie einem frei beweglichen Stützrad im hinteren Bereich, das für die nötige Stabilität sorgt. Die Tests bestätigten die Funktionsfähigkeit der implementierten Motorsteuerung:
+
+\begin{itemize}
+	\item \textbf{Fernsteuerung:} Der Roboter lässt sich zuverlässig von außen kontrollieren. Die Übertragung der Steuerbefehle für Lenkung und Geschwindigkeit erfolgt latenzarm.
+	
+	\item \textbf{Manövrierfähigkeit:} Durch die differenzielle Ansteuerung ist ein sanftes Kurvenfahren sowie ein Drehen auf der Stelle möglich. Das frei bewegliche Stützrad folgt dabei der Bewegungsrichtung ohne nennenswerten Widerstand.
+	
+	\item \textbf{Geschwindigkeitsregelung:} Die Geschwindigkeit lässt sich stufenlos variieren, was ein präzises Navigieren auch bei niedrigen Geschwindigkeiten ermöglicht.
+\end{itemize}
+
+\subsection{Interaktion und Aktorik}
+
+Die "`Persönlichkeit"' des Roboters wird erfolgreich durch die implementierten audiovisuellen Komponenten vermittelt:
+
+\begin{itemize}
+\item \textbf{Visuelle Ausgabe:} Die Augen-Animationen auf dem Display-Kopf funktionieren wie geplant und können Humankörper verfolgen.
+	
+	\item \textbf{Akustische Ausgabe:} Das System kann definierte Roboter-Geräusche abspielen, was die Interaktion lebendiger gestaltet.
+	
+\end{itemize}
+
+
+
+\subsection{Systemintegration}
+
+Der Körper des Roboters (\textit{Body}) wurde vollständig aufgebaut und beherbergt die gesamte Antriebstechnik sowie die Energieversorgung. Die mechanische und elektrische Integration der Kopf-Einheit auf den Körper steht als finaler Arbeitsschritt noch aus. Die notwendigen Schnittstellen sind jedoch bereits definiert und vorbereitet.
+
+\section{Anforderungsabgleich\textcolor{brown}{FAIK}}
+
+
+Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) definierten Anforderungen wurden erfolgreich umgesetzt, mit Ausnahme der folgenden Punkte:
+
+\textbf{Fehlende Kopf-Integration (REQ-004, REQ-019, REQ-022, REQ-032, REQ-033):} Ein Großteil der noch offenen Anforderungen resultiert daraus, dass die finale Integration der Kopf-Einheit auf den Roboterkörper noch nicht vollzogen wurde. Da das Display für Statusanzeigen (REQ-004) im Kopf verbaut ist, besteht aktuell keine physische Datenverbindung zum Akku im Rumpf. Ebenso sind alle Anforderungen, die eine Drehung des Kopfes beinhalten, technisch vorbereitet, konnten aber mangels Montage noch nicht im Gesamtsystem demonstriert werden.
+
+\textbf{Sicherheitsfunktionen (REQ-009, REQ-017, REQ-028):} Die Sicherheit hatte eine hohe Priorität, konnte jedoch in der gegebenen Zeit nicht vollständig validiert werden. Besonders REQ-009 (Failsafe bei Signalverlust) zeigte in Tests unerwartetes Verhalten: Während der Software-Timeout korrekt funktionierte, führte ein Stromausfall am Empfänger selbst dazu, dass der Motortreiber das letzte gültige Signal beibehielt (Last-State-Hold), statt zu stoppen. Dieses Verhalten muss in einer zukünftigen Iteration hardwareseitig abgefangen werden. Auch der mechanische Schutz der Elektronik vor Erschütterungen (REQ-028) sowie das sensorgestützte automatische Stoppen (REQ-017) stehen noch auf der Agenda für die nächste Entwicklungsphase.
+
+\textbf{Erweiterte Funktionen (REQ-030, REQ-034):} Die Implementierung von KI-Funktionen (REQ-034) und die Anpassung an das spezifische DHBW-Design (REQ-030) wurden zugunsten einer stabilen Basisfunktionalität (Fahren und Steuern) zurückgestellt. Der aktuelle Holz-Prototyp dient als funktionaler Träger ("`Mule"'), dessen Design in späteren Schritten verfeinert wird.
+
+\section{Lessons Learned\textcolor{brown}{FAIK}}
+\begin{itemize}
+	\item \textbf{Frühzeitige Beschaffung:} Die späte Bestellung von Bauteilen führte zu Verzögerungen im Projektablauf. Dadurch verringerte sich die verfügbare Zeit für ausgiebige Tests, wodurch Sicherheitslücken (wie das Verhalten bei Stromausfall des Empfängers) erst spät erkannt wurden. Eine frühzeitige Materialbeschaffung ist essenziell ("`Frontloading"').
+	
+	\item \textbf{Gemeinsames Requirements Engineering:} Anforderungen sollten stets gemeinsam im Team (Brainstorming) definiert werden. Getrennte Überlegungen führten initial zu Redundanzen und Unklarheiten, die später konsolidiert werden mussten.
+	
+	\item \textbf{Klare Aufgabenverteilung:} Eine präzise Definition von Verantwortlichkeiten ist notwendig, um selbstständiges Arbeiten zu fördern. Unklare Zuständigkeiten führten phasenweise zu Ineffizienzen, da Teammitglieder auf Input warteten.
+	
+	\item \textbf{Regelmäßige Meetings:} Die Einführung eines wöchentlichen Jour fixe zur selben Uhrzeit könnte als kritischer Erfolgsfaktor dienen. Im Projektverlauf wurde deutlich, dass Kommunikationslücken bestanden und Fortschritte sowie Unterstützungsbedarf nicht rechtzeitig kommuniziert wurden. Regelmäßige Abstimmungen hätten diese Probleme frühzeitig aufdecken können.
+\end{itemize}
 \section{Kritische Reflexion}
 
 
