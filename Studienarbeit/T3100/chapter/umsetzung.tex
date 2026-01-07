@@ -302,8 +302,19 @@ Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) def
 	
 	\item \textbf{Regelmäßige Meetings:} Die Einführung eines wöchentlichen Jour fixe zur selben Uhrzeit könnte als kritischer Erfolgsfaktor dienen. Im Projektverlauf wurde deutlich, dass Kommunikationslücken bestanden und Fortschritte sowie Unterstützungsbedarf nicht rechtzeitig kommuniziert wurden. Regelmäßige Abstimmungen hätten diese Probleme frühzeitig aufdecken können.
 \end{itemize}
+
+
+
 \section{Kritische Reflexion}
-\textcolor{red}{Faik}
+\label{sec:kritische_reflexion}
+
+Die Entwicklung des Roboters war für unser Projektteam eine vielseitige Herausforderung. Rückblickend lässt sich das Ergebnis am besten in drei Bereichen bewerten: Technik, Methodik (Arbeitsweise) und Zeitmanagement. Technisch haben wir unser Hauptziel erreicht: Ein funktionierendes Grundsystem („Mule“) wurde fertiggestellt, das sich sicher bewegen und grundlegend interagieren kann. Die Entscheidung, den Antrieb über einen ESP32 zu steuern, hat sich als sehr zuverlässig erwiesen und sorgt für eine gute Manövrierfähigkeit. Auch die Aufteilung der Aufgaben – der ESP32 kümmert sich um den Antrieb, der Raspberry Pi um die Interaktion – war richtig. Dadurch haben wir Ressourcenkonflikte vermieden. Allerdings gibt es Unterschiede zwischen unserem ursprünglichen Plan und dem jetzigen Prototypen. Da die Zeit knapp wurde, konnten wir den Kopf des Roboters mechanisch noch nicht vollständig integrieren. Die Funktionen für die Kopf-Drehung sind zwar technisch vorbereitet, können aber am Gesamtsystem noch nicht vorgeführt werden.
+
+Ein wichtiger Punkt ist die Sicherheit. Softwareseitig funktionieren unsere Schutzmechanismen, wie zum Beispiel die definierten Totzonen („Deadzones“), sehr gut. In den Hardware-Tests zeigten sich jedoch Schwächen: Wenn der Empfänger den Strom verliert, behalten die Motortreiber das letzte Signal bei („Last-State-Hold“), anstatt den Roboter sofort zu stoppen. Dieses Risiko hatten wir in der Planungsphase nicht vorgesehen. Auch beim Gehäuse mussten wir Abstriche machen. Der Roboter besteht aktuell noch aus seinem hölzernen Grundgerüst. Die geplante Verkleidung aus dem 3D-Drucker haben wir zugunsten der Stabilität erst einmal zurückgestellt. Technisch funktioniert der Roboter zwar einwandfrei, aber für einen professionellen Auftritt auf einer Messe fehlt noch die passende Optik.
+
+Auch unsere Arbeitsweise liefert wichtige Erkenntnisse. Wir haben uns für eine Mischung aus dem strukturierten V-Modell und agilen Methoden entschieden. Das hatte Vor- und Nachteile. Einerseits konnten wir durch die agile Arbeitsweise schnell reagieren. Andererseits fehlten uns zu Beginn feste Abstimmungsrituale im Team. Das führte dazu, dass wir Probleme an den Schnittstellen zwischen Mechanik und Elektronik teilweise zu spät bemerkt haben, was am Ende den Aufwand beim Zusammenbau erhöhte. Eine der wichtigsten Lehren für uns ist deshalb: Anforderungen müssen von Anfang an gemeinsam im gesamten Team besprochen und festgelegt werden, damit alle vom selben Stand ausgehen.
+
+Beim Zeitmanagement war vor allem die Materialbeschaffung ein Engpass. Da wichtige Bauteile wie Motortreiber und Akkus verspätet geliefert wurden, blieb uns am Ende viel weniger Zeit zum Testen als geplant. Das bestätigt, wie wichtig es ist, kritische Komponenten sofort zu Projektbeginn zu bestellen und zu prüfen. Zusammenfassend lässt sich sagen: Der Roboter ist eine solide Plattform und der „Proof of Concept“ ist geglückt. Damit er jedoch wirklich auf einer Messe eingesetzt werden kann, ist eine zweite Entwicklungsrunde nötig, um die Sicherheitslücken zu schließen und das Design fertigzustellen.
 
 
 %Je nach Art der Arbeit kann diese Kapitelüberschrift auch \glqq Ergebnisse\grqq~lauten, z.~B. bei rein messtechnischen Aufgaben.
