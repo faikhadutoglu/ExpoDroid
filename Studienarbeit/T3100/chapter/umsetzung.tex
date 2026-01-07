@@ -230,12 +230,38 @@ Abschließend steuert die Logik die H-Brücken an. Da Gleichstrommotoren für di
 Wie aus der obigen Schnittstellenbeschreibung zu lesen \ref{fig:anschlussschema_rpi5}, ergibt sich, dass für die Benutzerschnittstellen Hardwareseitig erst einmal die Kamera zu nennen ist, da diese mit zum Beispiel Objekttracking eine direkte Benutzerschnittstelle ist. Dazu bietet das Display in der aktuellen Konfiguration ein Touchdisplay, welches den Raspberry Pi 5 mit Benutzereingaben füttern kann. 
 
 Hinzu kommt die Möglichkeit den Raspberry Pi über einen SSH oder VNC Client. Hierbei wird der HDMI Ausgang, welcher auch auf dem Display angezeigt wird remote auf ein anderes internetfähiges Gerät mit entsprechender Software gespiegelt. 
-\section{Systemintegration und Test \textcolor{red}{[Hai Nam]}}
+\section{Systemintegration und Test \textcolor{red}{[Hai Nam (Angus hat unterstützt)]}}
 \textcolor{red}{Hai Nam}
-\subsection{Integrationsstrategie \textcolor{red}{[Hai Nam]}}
+
+\subsection{Integrationsstrategie}
+Die Systemintegration und die zugehörigen Testaktivitäten orientieren sich am im Projekt verwendeten V-Modell als systems-ingenieurwissenschaftliche Vorgehensweise. Entsprechend diesem Modell wurden die einzelnen Systembestandteile zunächst getrennt voneinander entwickelt und getestet, bevor sie schrittweise zu einem Gesamtsystem integriert wurden.
+
+Zu Beginn der Entwicklung wurde das Gesamtsystem in klar abgegrenzte Module beziehungsweise Subsysteme unterteilt. Diese Module repräsentieren funktionale Einheiten des Roboters, die jeweils eine definierte Aufgabe erfüllen. Beispiele hierfür sind die Motoransteuerung, die Energieversorgung, die Steuerungslogik oder Anzeige- und Interaktionselemente. Durch diese Modularisierung konnte die Komplexität des Systems reduziert und die Entwicklung besser strukturiert werden.
+
+Jedes Modul wurde zunächst unabhängig entwickelt und in Form von Einzeltests überprüft. Ziel dieser Tests war es, sicherzustellen, dass die jeweilige Funktion die zugehörigen Anforderungen aus dem Anforderungskatalog korrekt erfüllt. Die Tests wurden dabei gezielt auf die relevanten funktionalen und nicht-funktionalen Requirements ausgerichtet, wodurch eine direkte Rückverfolgbarkeit zwischen Anforderungen und Implementierung gewährleistet werden konnte.
+
+Durch dieses Vorgehen konnten Fehler frühzeitig erkannt und lokalisiert werden, da sich Probleme eindeutig einem einzelnen Modul zuordnen ließen. Dies erleichterte die Fehlersuche erheblich und reduzierte den Aufwand für nachträgliche Korrekturen im Gesamtsystem. Gleichzeitig blieb der Überblick über den Entwicklungsstand der einzelnen Komponenten erhalten.
+
+Nach erfolgreichem Abschluss der Einzeltests wurden die getesteten Module schrittweise in das Gesamtsystem integriert. In diesem Integrationsschritt wurde überprüft, ob die einzelnen Komponenten korrekt zusammenarbeiten und sich wie vorgesehen gegenseitig ergänzen. Auf diese Weise konnte das Gesamtsystem iterativ aufgebaut und abgesichert werden.
+
+Dieses strukturierte Vorgehen aus modularer Entwicklung, modulbezogenen Tests und schrittweiser Integration trägt wesentlich zur Qualitätssicherung des Systems bei und entspricht dem grundlegenden Prinzip des V-Modells, bei dem jeder Entwicklungsstufe eine geeignete Verifikations- und Testaktivität zugeordnet ist.
+
+
+\subsection{Subsystemtests des Fahr- und Antriebssystems \textcolor{red}{[Hai Nam und Angus]}}
 \textcolor{red}{Hai Nam}
-\subsection{Funktionstests \textcolor{red}{[Hai Nam]}}
-\textcolor{red}{Hai Nam}
+
+
+Auch wenn einzelne Module und Subsysteme für sich genommen die vorgesehenen Funktionen erfüllen, können im integrierten Gesamtsystem weiterhin Fehler oder unerwartete Abweichungen auftreten. Diese ergeben sich häufig aus Integrationsproblemen, fehlerhaftem Verhalten an den Schnittstellen zwischen einzelnen Modulen oder aus falschen Annahmen hinsichtlich des Zusammenspiels der Komponenten. Darüber hinaus können auch logische Inkonsistenzen oder nicht berücksichtigte Randbedingungen erst im Gesamtsystem sichtbar werden.
+
+Aus diesem Grund ist es notwendig, neben den Einzel- und Integrationstests auch umfassende Gesamttests durchzuführen. Ziel dieser Testphase ist es, das Verhalten des Roboters als vollständiges System unter realistischen Einsatzbedingungen zu überprüfen.
+
+Im Rahmen dieses Projekts lag der Fokus der Gesamttests insbesondere auf den fahrrelevanten Funktionen des Roboters. Dazu zählten unter anderem die Lenkung, das allgemeine Fahrverhalten, das Beschleunigen und Abbremsen sowie das Zusammenspiel zwischen Antrieb, Steuerung und Energieversorgung. Die Tests wurden mit vollständig integriertem System durchgeführt, um das reale Verhalten des Roboters möglichst genau abzubilden.
+
+Ein wesentlicher Vorteil dieser ganzheitlichen Tests besteht darin, dass Schwachstellen oder Probleme identifiziert werden können, die während der Anforderungsdefinition oder der modularen Entwicklung nicht vorhersehbar waren. Insbesondere das Zusammenspiel mehrerer Teilsysteme kann zu Effekten führen, die sich erst im praktischen Betrieb zeigen, beispielsweise unerwartete Reaktionen bei Richtungswechseln, Verzögerungen in der Steuerung oder Abweichungen im Fahrverhalten.
+
+Die Ergebnisse der Gesamttests liefern somit wichtige Erkenntnisse darüber, wie sich die theoretisch geplanten Konzepte und technischen Lösungen in der praktischen Umsetzung bewähren. Diese Testphase stellt daher einen zentralen Bestandteil der Qualitätssicherung dar und bildet die Grundlage für gezielte Anpassungen und Optimierungen des Systems.
+
+
 \subsection{Fehleranalyse und Optimierung \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam}
 hier kann man zb sagen dass ohne empfangssigmnal verkakt und dass optimiertwerden soll und vllt kann man auch konzeptionsweise sagen wie... andere sachen die uns eingefallen ist dass zb durch einsütterung elektronik beschädigt wird (siehe anforderung REQ 028) und so weiter...
