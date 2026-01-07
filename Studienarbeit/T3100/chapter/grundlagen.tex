@@ -139,11 +139,11 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 
 \subsection{Regelung und Steuerung}
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
-\subsection{Motortreiber und PWM-Steuerung}
+\subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{Angus}}
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
 
 Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen.
-\subsubsection{H-Brücke}
+\subsubsection{H-Brücke \textcolor{blue}{Angus}}
 
 Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
 $V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt.
@@ -250,12 +250,12 @@ a
 \subsection{Sicherheitskonzepte (Sicherungen, Battery Management)}
 a
 
-\section{Additive Fertigungsverfahren}
-a
+\section{Additive Fertigungsverfahren \textcolor{blue}{Angus}}
+\textcolor{red}{Ist das nötig?}
 \subsection{3D-Druck-Technologien}
 a
-\subsection{Materialien und Nachbearbeitung}
-a
+
+
 
 \section{Human-Machine-Interaction [\textcolor{blue}{Hai Nam, WIP}]}
 
@@ -297,9 +297,9 @@ Im Zusammenhang mit einem Messroboter kann eine HMI beispielsweise auf einem int
 
 
 
-\section{Projekt \& Systems Engineering Methodik}
+\section{Projekt-/Systems Engineering Methodik \textcolor{blue}{Angus}}
 
-\subsection{Scrum}
+\subsection{Scrum \textcolor{blue}{Angus}}
 Scrum ist ein agiles Framework für das Projektmanagement und die Organisation von Entwicklungsprozessen, das insbesondere in der Software- und Systementwicklung Anwendung findet. Ziel von Scrum ist es, komplexe Projekte unter unsicheren oder sich verändernden Anforderungen effizient umzusetzen. Im Gegensatz zu klassischen, sequenziellen Vorgehensmodellen basiert Scrum auf iterativem und inkrementellem Arbeiten sowie auf regelmäßiger Überprüfung und Anpassung des Projektverlaufs.
 
 Kernidee von Scrum ist die Aufteilung des Projekts in kurze, zeitlich festgelegte Entwicklungszyklen, sogenannte Sprints. Ein Sprint dauert typischerweise zwischen einer und vier Wochen und verfolgt das Ziel, ein funktionsfähiges Teilergebnis zu erzeugen. Am Ende jedes Sprints wird das erreichte Ergebnis überprüft und bewertet, wodurch frühzeitig Rückmeldungen in den weiteren Projektverlauf einfließen können.
@@ -314,7 +314,7 @@ Ein zentrales Merkmal von Scrum ist seine hohe Flexibilität. Anforderungen kön
 
 Zusammenfassend stellt Scrum ein leichtgewichtiges, anpassungsfähiges Projektmanagement-Framework dar, das durch kurze Entwicklungszyklen, regelmäßige Abstimmung und kontinuierliche Verbesserung geprägt ist. Es bildet eine wichtige Grundlage moderner agiler Vorgehensweisen und wird häufig in Kombination mit strukturierten Entwicklungsmodellen eingesetzt.
 
-\subsection{V-Modell}
+\subsection{V-Modell \textcolor{blue}{Angus}}
 Das V-Modell im Projektmanagement und in der Systementwicklung
 
 Das V-Modell ist ein phasenorientiertes Vorgehensmodell zur Planung, Durchführung und Kontrolle von Entwicklungsprojekten. Es wird insbesondere im Software Engineering, in der Systementwicklung sowie im technischen Projektmanagement eingesetzt. Ziel des V-Modells ist es, Entwicklungsprozesse strukturiert abzubilden und die Qualität der entstehenden Systeme durch eine enge Verzahnung von Entwicklungs- und Testaktivitäten sicherzustellen.
