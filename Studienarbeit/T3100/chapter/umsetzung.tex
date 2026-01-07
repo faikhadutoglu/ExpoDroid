@@ -343,6 +343,22 @@ Auch unsere Arbeitsweise liefert wichtige Erkenntnisse. Wir haben uns für eine 
 Beim Zeitmanagement war vor allem die Materialbeschaffung ein Engpass. Da wichtige Bauteile wie Motortreiber und Akkus verspätet geliefert wurden, blieb uns am Ende viel weniger Zeit zum Testen als geplant. Das bestätigt, wie wichtig es ist, kritische Komponenten sofort zu Projektbeginn zu bestellen und zu prüfen. Zusammenfassend lässt sich sagen: Der Roboter ist eine solide Plattform und der „Proof of Concept“ ist geglückt. Damit er jedoch wirklich auf einer Messe eingesetzt werden kann, ist eine zweite Entwicklungsrunde nötig, um die Sicherheitslücken zu schließen und das Design fertigzustellen.
 
 
+\section{Mögliche Erweiterungen\textcolor{brown}{FAIK}}
+Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbegrenzte Erweiterung des Funktionsumfangs. Im Hinblick auf die technische Realisierbarkeit in der nahen Zukunft stehen jedoch folgende Optionen im Fokus, um den Einsatzbereich des Roboters sinnvoll zu vergrößern:
+
+\begin{itemize}
+	\item \textbf{Aktiver Notbremsassistent:} Durch die Integration von Umfeldsensorik (z. B. Ultraschall) kann eine Sicherheitsfunktion implementiert werden, die den Roboter bei Hinderniserkennung automatisch stoppt, um Kollisionen zu verhindern.
+	
+	\item \textbf{Mensch-Maschine-Interaktion mittels lokaler KI:} Durch den Einsatz kompakter Sprachmodelle (Small Language Models), die lokal auf dem Bordcomputer ausgeführt werden, kann eine natürliche Interaktion mit dem Menschen ermöglicht werden. Dies umfasst das Verstehen von Sprachbefehlen sowie die Generierung von Antworten, ohne auf eine permanente Internetverbindung angewiesen zu sein.
+	
+	\item \textbf{Autonomes Fahren mittels Kameratechnik:} Die Anbindung eines Kamerasystems ermöglicht die Erweiterung um bildverarbeitende Algorithmen. Damit können Funktionen wie Spurverfolgung (Line Tracking) oder visuelle Navigation realisiert werden, um autonom von einem Start- zu einem Zielpunkt zu navigieren.
+	
+	\item \textbf{Remote-Steuerung und Telemetrie:} Alternativ zur lokalen Signalverarbeitung kann eine Schnittstelle für drahtlose Kommunikation (WiFi/Bluetooth) geschaffen werden. Dies ermöglicht eine Fernsteuerung über mobile Endgeräte sowie die Rückübertragung von Telemetriedaten (z. B. Akkustand, Motorauslastung) an den Bediener.
+	
+\end{itemize}
+
+
+
 %Je nach Art der Arbeit kann diese Kapitelüberschrift auch \glqq Ergebnisse\grqq~lauten, z.~B. bei rein messtechnischen Aufgaben.
 %
 %Beschreibung der Umsetzung des zuvor gewählten Vorgehens (theoretische Untersuchung, Erhebungen, Durchführung von Experimenten, Prototypenaufbau, Implementierung eines Prozesses, etc.).

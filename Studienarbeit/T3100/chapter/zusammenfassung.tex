@@ -1,24 +1,10 @@
-\chapter{Zusammenfassung}
-\label{cha:zusammenfassung}
+\chapter{Zusammenfassung und Fazit\textcolor{brown}{FAIK}}
+\label{cha:zusammenfassung_fazit}
+Im Rahmen dieser Studienarbeit wurde ein mobiler mechatronischer Roboter konzipiert und als funktionsfähiger Prototyp realisiert, der zukünftig als interaktiver Technologieträger auf Hochschulmessen dienen soll. Der Fokus lag dabei auf der Entwicklung einer robusten Antriebsarchitektur sowie der Integration moderner Hardwarekomponenten. Das Ergebnis ist ein fahrbereites Grundsystem, das die Kernanforderungen an Mobilität und Steuerung erfüllt. Durch die Aufteilung der Rechenlast auf einen ESP32 für die Motorregelung und einen Raspberry Pi für die übergeordnete Logik konnte eine leistungsfähige Systemarchitektur geschaffen werden. Diese steuert nicht nur den Antrieb, sondern ermöglicht auch die Wiedergabe von Augenanimationen und Robotergeräuschen, was die Interaktion mit dem Publikum lebendig gestaltet. Die Implementierung der differenziellen Steuerung verleiht dem Roboter zudem die geforderte Wendigkeit, um sich in begrenzten Räumen zu bewegen.
 
-\section{Zusammenfassung}
-\textcolor{red}{Faik}
-\section{Mögliche Erweiterungen\textcolor{brown}{FAIK}}
-Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbegrenzte Erweiterung des Funktionsumfangs. Im Hinblick auf die technische Realisierbarkeit in der nahen Zukunft stehen jedoch folgende Optionen im Fokus, um den Einsatzbereich des Roboters sinnvoll zu vergrößern:
+Trotz dieser Erfolge zeigte der Projektabschluss, dass die Entwicklung eines komplexen mechatronischen Systems stark von externen Faktoren abhängig ist. Lieferverzögerungen bei kritischen Bauteilen führten dazu, dass die Testphasen verkürzt und die mechanische Integration des Kopf-Moduls nicht vollständig abgeschlossen werden konnten. Der aktuelle Prototyp beweist die technische Machbarkeit, entspricht in seiner optischen Erscheinung als Holzkonstruktion jedoch noch nicht dem finalen Designanspruch eines Messe-Exponats. Auch im Bereich der funktionalen Sicherheit wurden während der Validierung Schwachstellen in der Hardware identifiziert, insbesondere beim Verhalten der Motoren im Fehlerfall, die in einer folgenden Iteration behoben werden müssen.
 
-\begin{itemize}
-	\item \textbf{Aktiver Notbremsassistent:} Durch die Integration von Umfeldsensorik (z. B. Ultraschall) kann eine Sicherheitsfunktion implementiert werden, die den Roboter bei Hinderniserkennung automatisch stoppt, um Kollisionen zu verhindern.
-	
-	\item \textbf{Mensch-Maschine-Interaktion mittels lokaler KI:} Durch den Einsatz kompakter Sprachmodelle (Small Language Models), die lokal auf dem Bordcomputer ausgeführt werden, kann eine natürliche Interaktion mit dem Menschen ermöglicht werden. Dies umfasst das Verstehen von Sprachbefehlen sowie die Generierung von Antworten, ohne auf eine permanente Internetverbindung angewiesen zu sein.
-	
-	\item \textbf{Autonomes Fahren mittels Kameratechnik:} Die Anbindung eines Kamerasystems ermöglicht die Erweiterung um bildverarbeitende Algorithmen. Damit können Funktionen wie Spurverfolgung (Line Tracking) oder visuelle Navigation realisiert werden, um autonom von einem Start- zu einem Zielpunkt zu navigieren.
-	
-	\item \textbf{Remote-Steuerung und Telemetrie:} Alternativ zur lokalen Signalverarbeitung kann eine Schnittstelle für drahtlose Kommunikation (WiFi/Bluetooth) geschaffen werden. Dies ermöglicht eine Fernsteuerung über mobile Endgeräte sowie die Rückübertragung von Telemetriedaten (z. B. Akkustand, Motorauslastung) an den Bediener.
-	
-\end{itemize}
-
-\section{Fazit}
-\textcolor{red}{Faik}
+Zusammenfassend lässt sich festhalten, dass das Projektteam eine solide Basis für die Weiterentwicklung geschaffen hat. Die grundlegenden technischen Hürden wurden überwunden und das Zusammenspiel von Mechanik, Elektronik und Software ist etabliert. Für den erfolgreichen Einsatz als repräsentativer Demonstrator sind nun vor allem die ästhetische Verkleidung mittels additiver Fertigung sowie die Implementierung zusätzlicher Hardware-Sicherheitsmechanismen erforderlich. Mit diesen Anpassungen hat der Roboter das Potenzial, als Blickfang auf kommenden Messen zu fungieren und das technische Know-how der Hochschule eindrucksvoll zu repräsentieren.
 
 
 \chapter{NICHT VERGESSEN}
@@ -26,6 +12,7 @@ Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbe
 1) IMMER ERKLÄREN WARUM WIR SO ENTSCHIEDEN HABEN UND NICHT ANDERS(hat max mehrmals betont)
 
 
+2) \textcolor{red}{Simon} Geräusche vorgehensweise umsetzung. 
 
 
 
