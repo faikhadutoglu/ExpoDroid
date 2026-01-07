@@ -245,24 +245,26 @@ Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf paralle
 
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird\autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung\autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen – von stationären Speichern über Mobilitätslösungen bis hin zu Kleingeräten.
 
-\subsection{Spannungswandler und Stromverteilung}
-\textcolor{red}{Hai Nam}
-\subsection{Sicherheitskonzepte (Sicherungen, Battery Management)}
+\subsection{Spannungswandler und Stromverteilung \textcolor{red}{[Hai Nam]}}
+\textcolor{red}{[Hai Nam]}
+\subsection{Sicherheitskonzepte (Sicherungen, Battery Management) \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam}
 
-\section{Additive Fertigungsverfahren}
+\section{Additive Fertigungsverfahren \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam} 
-\subsection{3D-Druck-Technologien}
+\subsection{3D-Druck-Technologien \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam} Das sind grundlagen wir haben zwar kein 3D benutzt aber theoretisch kömnnte man machen einfach mit Quellen  Definition vor Nachteile usw kann man schrieben
-\subsection{Materialien und Nachbearbeitung}
+\subsection{Materialien und Nachbearbeitung \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam}
 
-\section{Human-Machine-Interaction [\textcolor{blue}{Hai Nam, WIP}]}
-
+\section{Human-Machine-Interaction [\textcolor{red}{Hai Nam, WIP}]}
 
 Die Mensch-Maschine-Interaktion (Human-Machine Interaction, HMI) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie autonome Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
 
-Das Entwurf einer HMI umfasst sowohl Hardwarekomponenten als auch Softwarekomponenten. Für ein optimales Entwurf der HMI müssen Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit und zeitnahe Rückmeldung berücksichtigt werden. \autocite{Taxi.2010}
+Das Entwurf einer HMI umfasst sowohl Hardwarekomponenten als auch Softwarekomponenten. Für ein optimales Entwurf der HMI müssen Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit und zeitnahe Rückmeldung berücksichtigt werden.
+
+Folgendes Zitat verdeutlicht die zunehmende Bedeutung und den erweiterten Anwendungsbereich der Mensch-Maschine-Interaktion, insbesondere im Hinblick auf die Vielfalt der Nutzergruppen, die auch für den Messeroboter relevant ist:
+\enquote{HCI (Human-computer interaction) expanded from its initial focus on individual and generic user behavior to include social and organizational computing, accessibility for the elderly, the cognitively and physically impaired, and for all people, and for the widest possible spectrum of human experiences and activities.} \autocite{Dix.2026}
 
 \subsection{Definitionen und Zielsetzung}
 
@@ -283,20 +285,59 @@ Zusammenfassend verfolgt die HMI folgende Kernziele:
 
 \subsection{Interaktionsformen}
 
-PENDING TEXTS
+Eine HMI besteht in der Regel aus Eingabe- und Ausgabeelementen. Zu den Ausgabeelementen gehören Textanzeigen, Status-LEDs und Kamerabilder, während Eingabeelemente Drucktasten, Softkeys auf einem Touchscreen oder Gestensteuerungen sein können. Die HMI kann auf verschiedene Arten erfolgen, abhängig von den eingesetzten Technologien und den Anforderungen des Systems. Grundsätzlich lassen sich drei Hauptformen unterscheiden.
 
-Ein HMI besteht typischerweise aus Ein- und Ausgabe­elementen. Zu den Ausgabeelementen gehören etwa Textanzeigen, Status‑LEDs, Diagramme oder Kamerabilder, während Eingabeelemente Taster, Softkeys auf einem Touchscreen, Slider, Menüs oder Gestensteuerungen sein können. QUELLE WIP
+\subparagraph{Visuelle Interaktion}
+Die visuelle Interaktion ist die häufigste Form der HMI. Sie erfolgt über Displays, grafische Benutzeroberflächen (englisch: Graphic user interface (GUI)) und visuelle Signale wie LEDs oder Statusanzeigen. Eine gut gestaltete visuelle Schnittstelle ermöglicht eine klare Darstellung von Informationen und eine intuitive Navigation. Für den Messroboter bedeutet dies die Integration eines Displays, das Betriebsmodi wie „Selfie-Modus“, „Debugging-Modus“ oder Statusinformationen anzeigt. Das Design sollte auf den Prinzipien der Benutzerfreundlichkeit basieren, um eine Überlastung durch zu viele Informationen zu vermeiden. \autocite{Nielsen.1994}
 
-In der Robotik lässt sich grob zwischen verschiedenen Arten von HMIs unterscheiden: klassische Bedienfelder (z. B. Teach-Pendant mit Tasten und Not-Aus-Schalter), fest installierte Touchpanels am System und mobile Geräte wie Tablets oder Smartphones. Jede Variante hat ihre eigenen Vor- und Nachteile in Bezug auf Ergonomie, Flexibilität und Sicherheit.
+\subparagraph{Auditive Interaktion}
+Auditive Interaktion nutzt akustische Signale oder Sprachsteuerung, um Informationen zu übermitteln oder Befehle zu empfangen. Beispiele hierfür sind Warnsignale, Bestätigungstöne oder Sprachbefehle. Diese Form der Interaktion ist besonders nützlich, wenn visuelle Aufmerksamkeit des Nutzers eingeschränkt ist oder schnelle Rückmeldungen erforderlich sind. Für den Messeroboter könnten akustische Signale zur Bestätigung von Eingaben oder zur Warnung bei Fehlfunktionen eingesetzt werden. \autocite{Dix.2004}
 
-Im Zusammenhang mit einem Messroboter kann eine HMI beispielsweise auf einem integrierten Display, einem Tablet oder einem PC-Panel ausgeführt werden. So können Betriebsmodi ausgewählt, Messprogramme gestartet, Diagnosedaten angezeigt oder zusätzliche Funktionen wie einen Debugging-Modus oder eine „Kamera-Selfie“-Ansicht genutzt werden. WIP
+\subparagraph{Haptische Interaktion}
+Haptische Interaktion erfolgt über physische Bedienelemente wie Tasten, Drehregler oder Touchscreens. Sie bietet den Vorteil einer direkten, taktilen Rückmeldung und ist oft robuster gegenüber Umgebungsbedingungen wie Licht oder Lärm. Im Messeroboter könnte ein Touchscreen als zentrale Eingabemöglichkeit dienen, ergänzt durch physische Not-Aus-Schalter zur Erhöhung der Sicherheit, wie es in der Norm ISO 9241-210 empfohlen wird.
 
-\subsection{Usability Test und Ergonomie (TITLE WIP)}
+\subsection{Nutzerzentriertes Design}
+
+Die Norm ISO 9241, die sich auf die Ergonomie der Mensch-System-Interaktion konzentriert, wird als grundlegende Referenz betrachtet. Sie umfasst mehrere Unterbereiche
+dieses allgemeinen Gestaltungsprinzips, darunter insbesondere die Prinzipien der menschzentrierten Gestaltung interaktiver Systeme bzw. des nutzerzentrierten Designs (englisch:
+User-centered design (UCD)), gemäß Teil 210 der ISO 9241. \autocite{Francis.2025}
+
+UCD sorgt dafür, dass technische Lösungen so gestaltet werden, dass sie für die Nutzer sowohl benutzerfreundlich als auch nützlich sind.
+Da der Fokus auf der User Experience (UX) liegt,
+die die Gesamtheit der Nutzererfahrungen bei der Interaktion mit einem System beschreibt, ist es besonders wichtig, die Anforderungen und Erwartungen
+der Endnutzer gezielt zu berücksichtigen. Zudem sollten vorhandenes Wissen und
+technische Umstände hinsichtlich ergonomischer Faktoren und der Bedienbarkeit in die Designentwicklung einfließen \autocite{Francis.2025}. Laut ISO 9241-11:2018 wird UX
+als die Wahrnehmung und Reaktion von Nutzern beschrieben, die sich aus der realen oder
+antizipierten Nutzung eines Systems, Produkts oder einer Dienstleistung ergibt \autocite{Guzman.2021}.
+
+Der sogenannte UCD-Prozess besteht aus sechs Schritten, die nicht zwangsläufig linear
+aufeinander folgen. Vielmehr handelt es sich um einen iterativen Prozess, bei dem bestimmte Schritte wiederholt werden können, um Anpassungsfähigkeit an sich ändernde
+Rahmenbedingungen zu gewährleisten.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/UCDprocess.png}
+	\vspace{10pt}
+	\caption{Flussdiagramm des UCD-Prozesses. \autocite{Rhein.2025}}
+	\label{fig:ucdp}
+\end{figure}
+
+Die Abbildung \ref{fig:ucdp} zeigt ein schematisches Prozessdiagramm des UCD-Prozesses nach
+ISO 9241-210:2019. Die durchgezogenen Pfeile zeigen den regulären Ablauf des Prozesses
+an, während die gestrichelten Pfeile die iterativen Rückkopplungsschleifen zwischen den
+einzelnen Schritten veranschaulichen.
+
+Der erste Schritt im UCD-Prozess besteht darin, zu ermitteln, wie viel Arbeitsaufwand erforderlich ist, um ein gewünschtes Niveau an Benutzerfreundlichkeit und Qualität der UX zu erreichen. Im nächsten Schritt wird der Nutzungskontext analysiert, um zu verstehen, wer die Endnutzer sind und in welcher Umgebung die jeweilige Funktion eingesetzt wird. Basierend auf der Analyse des Nutzungskontexts wird als Nächstes eine nutzerorientierte Anforderungsliste erstellt. Aus der Liste werden dann Entwurfskonzepte entwickelt, die diese Anforderungen erfüllen sollen. Schließlich werden diese Konzepte evaluiert, um ihre Gebrauchstauglichkeit und Relevanz für die Zielnutzer zu überprüfen. Echte Nutzer oder nicht projektbezogene Testpersonen spielen eine zentrale Rolle in diesem Prozess. Ihr Feedback ist besonders wertvoll, da sie zum einen täglich mit bestimmten Problemen konfrontiert sein können, die durch die entwickelten Konzepte behoben werden sollen. Zum anderen betrachten sie die Konzepte aus einer voreingenommenen Perspektive und können daher Informationen über Schwächen oder Verbesserungspotenziale liefern, die intern möglicherweise nicht wahrgenommen werden. Solche neuen Erkenntnisse und Feedback von den Probanden können dann dynamisch die Konzepte verbessern, indem der Entwicklungsprozess durch die iterativen Rückkopplungsschleifen auf bestimmte Schritte zurückgeführt werden darf. Üblicherweise wird eine Konzeptfunktion in Serienfahrzeugen als serienmäßige Funktion finalisiert, wenn kein weiteres Feedback mehr vorliegt und die Funktion endgültig die Nutzeranforderungen erfüllt. \autocite{Rhein.2025}
 
 \subsection{Visualisierung und Interaktionssystem}
 
+Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der Mensch-Maschine-Interaktion, da sie die Schnittstelle zwischen Benutzer und Roboter darstellen. Ziel ist es, Informationen klar und verständlich darzustellen und gleichzeitig eine intuitive Steuerung zu ermöglichen. Dies umfasst sowohl die Hardware (z. B. Displays, Touchscreens) als auch die Software (z. B. grafische Benutzeroberflächen und Interaktionslogik).
 
+\subparagraph{Display-Technologien} Moderne HMI-Systeme nutzen verschiedene Display-Technologien wie LCD, OLED oder TFT (WIP SHORTS EXPLAINED?), die sich in Auflösung, Energieverbrauch und Robustheit unterscheiden. Für den Messeroboter bietet ein kompaktes Touch-Display den Vorteil, mehrere Funktionen auf einer Oberfläche zu integrieren, wie die Auswahl von Betriebsmodi (\enquote{Selfie Mode}, \enquote{Debugging Mode}) oder die Anzeige von Statusinformationen. Die Wahl des Displays hängt von Faktoren wie Lesbarkeit, Energieeffizienz und Umgebungsbedingungen ab. \autocite{ISO.303}
 
+\subparagraph{Grafische Benutzeroberflächen (GUI)} Die Softwareseite der HMI wird durch grafische Benutzeroberflächen realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Frameworks wie \emph{Qt} oder \emph{LVGL} sind weit verbreitet, da sie plattformunabhängig und ressourcenschonend sind. \autocite{Qt.2024} autocite LVGLDocs
+
+\subparagraph{Kommunikationsschnittstellen} Für die Verbindung zwischen GUI und Robotersteuerung werden häufig Protokolle wie \emph{MQTT}, \emph{WebSocket} oder serielle Schnittstellen eingesetzt. Diese gewährleisten eine zuverlässige Datenübertragung und ermöglichen Echtzeit-Feedback, was für sicherheitskritische Anwendungen wie den Messeroboter essenziell ist. autocite MQTTStandard
 
 \section{Projekt \& Systems Engineering Methodik}
 
