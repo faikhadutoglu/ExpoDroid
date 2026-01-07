@@ -1,0 +1,66 @@
+\centering
+\hspace*{-1.1cm}
+\begin{adjustbox}{width=1.1\textwidth}
+	\begin{ganttchart}[
+		time slot format=isodate,
+		x unit=0.25cm,
+		y unit chart=1.4cm,
+		hgrid,
+		vgrid,
+		bar label font=\large,
+		bar/.append style={fill=green!35},
+		bar incomplete/.append style={fill=green!20},
+		milestone/.append style={fill=red!70}
+		]{2025-10-10}{2025-12-25}
+		
+		% Kopfzeile: Monate und Kalenderwochen
+		\gantttitlecalendar{year, month=shortname} \\
+		\gantttitle{KW 42}{7}
+		\gantttitle{KW 43}{7}
+		\gantttitle{KW 44}{7}
+		\gantttitle{KW 45}{7}
+		\gantttitle{KW 46}{7}
+		\gantttitle{KW 47}{7}
+		\gantttitle{KW 48}{7}
+		\gantttitle{KW 49}{7}
+		\gantttitle{KW 50}{7}
+		\gantttitle{KW 51}{7}
+		\gantttitle{KW 52}{7} \\
+		
+		
+		
+		% ====== Arbeitspaket: Anforderungen / Planung (nur sichtbarer Ausschnitt) ======
+		\ganttgroup{Organisatorisches}{2025-10-15}{2025-11-13} \\
+		\ganttbar{Projektplanung}{2025-10-15}{2025-10-27} \\
+		\ganttbar{\shortstack{Funktionale \& nicht-\\funktionale Anforderungen}}{2025-10-25}{2025-11-13}
+		\ganttmilestone[inline]{}{2025-11-18} \\
+		
+		% ====== Arbeitspaket: Motor-/Antriebsfunktionen ======
+		\ganttgroup{Motorsteuerungsfunktion}{2025-11-17}{2025-12-03} \\
+		\ganttbar{Integration von Motoren}{2025-11-17}{2025-11-24} 
+		\ganttmilestone[inline]{}{2025-11-25} \\
+		\ganttbar{\shortstack{Fernbedienung\\und Steuerung}}{2025-11-22}{2025-12-01} 
+		\ganttmilestone[inline]{}{2025-12-10} \\
+		\ganttbar{Lenkungsfunktion (Code)}{2025-11-25}{2025-12-01} 
+		\ganttmilestone[inline]{}{2025-12-10} \\
+		\ganttbar{Test Motorsteuerung}{2025-12-02}{2025-12-03} 
+		\ganttmilestone[inline]{}{2025-12-13} \\
+		
+		% ====== Arbeitspaket: Display / UI / Audio ======
+		\ganttgroup{Displayfunktionen}{2025-11-19}{2025-12-22} \\
+		\ganttbar{\shortstack{Raspberry Pi mit\\Display verbinden}}{2025-11-19}{2025-11-23}
+		\ganttmilestone[inline]{}{2025-11-27} \\
+		\ganttbar{Augenanimation}{2025-11-24}{2025-12-08} \\
+		\ganttbar{Display-Benutzerfläche}{2025-12-08}{2025-12-22} \\
+		\ganttbar{Audioausgabe}{2025-11-27}{2025-12-04} \\
+		\ganttbar{Kameraintegration}{2025-11-19}{2025-11-23}
+		\ganttmilestone[inline]{}{2025-11-27} \\
+		\ganttbar{\shortstack{Sicherstellung der\\Stromversorgung}}{2025-11-27}{2025-12-11} \\
+		
+		% ====== Arbeitspaket: Dokumentation ======
+		\ganttgroup{Dokumentation}{2025-11-08}{2025-11-18} \\
+		\ganttbar{\shortstack{Trait-Analysis für\\Komponenten}}{2025-11-08}{2025-11-18} \\
+		\ganttbar{\shortstack{3D-Modell für\\den Roboter}}{2025-11-08}{2025-11-18}
+		
+	\end{ganttchart}
+\end{adjustbox}
