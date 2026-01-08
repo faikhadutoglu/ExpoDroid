@@ -35,7 +35,7 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
 %Faik
 \section{Projektplanung und Meilensteine\textcolor{brown}{FAIK} \textcolor{red}{[Hai Nam]}}
 
-Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2-4-2} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form eines Gantt-Diagramms ermöglicht (siehe \textcolor{red}{HAI NAM }\textcolor{blue}{hier gantt diagramm einfügen, den text hier anhand Abbildung erweitern/anpassen}]).
+Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2-4-2} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form eines Gantt-Diagramms ermöglicht.
 
 Ein Gantt-Diagramm ist ein weit verbreitetes Planungskonzept im Projektmanagement. Es handelt sich um ein horizontales Balkendiagramm, bei dem die einzelnen Aufgaben eines Projekts auf der vertikalen Achse und die Zeitachse auf der horizontalen Achse dargestellt sind. Jeder Balken repräsentiert den Zeitraum, in dem eine Aufgabe beginnt und endet, und seine Länge entspricht der Dauer der Aufgabe. Moderne Gantt-Diagramme zeigen auch den Fortschritt in Prozent und Abhängigkeiten zwischen Aufgaben, z. B. durch Pfeilverbindungen oder Farbcodierungen. (QUELLE WIP)
 %[1](https://www.projectmanager.com/guides/gantt-chart) [2](https://en.wikipedia.org/wiki/Gantt\_chart).
@@ -71,8 +71,8 @@ Die Monatsübersicht und die Kalenderwochen am oberen Rand erleichtern die zeitl
 
 WIP TEXT FOR DESCRIBING NEEDS PROOF READING
 
-\subsection{Aufteilung der Arbeitspakete\textcolor{brown}{FAIK}}
-Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi zuständig. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
+\subsection{Aufteilung der Arbeitspakete \textcolor{brown}{FAIK}}
+Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi verantwortlich. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
 
 \subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
 Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
@@ -315,11 +315,13 @@ Ergebnis der Trade-off-Analyse ist der Hinterantrieb mit einem 3. frei beweglich
 Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren (siehe Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} VI), bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle Fernsteuerungssignale (englisch: Remote Control (RC)) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
 \subsection{Grundlegende Signalverarbeitung\textcolor{brown}{FAIK}}%Faik
-Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen enthalten über:
+Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen über:
 \begin{itemize}
 	\item die gewünschte Vortriebsrichtung und -intensität
 	\item die gewünschte Lenkrichtung und -intensität
 \end{itemize}
+enthalten.
+
 Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsichtlich Neutralstellung und Plausibilität bewertet werden, um unbeabsichtigte Bewegungen oder Störungen zu vermeiden.
 
 
@@ -333,7 +335,7 @@ Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsum
 	\item Bei \textbf{Kurvenfahrt} wird die Geschwindigkeit des kurveninneren Antriebs reduziert, während der kurvenäußere Antrieb seine Geschwindigkeit beibehält oder erhöht.
 \end{itemize}
 
-Dieses Mischverfahren (\textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
+Dieses Mischverfahren (englisch: \textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
 
 
 \subsection{Begrenzung und Schutzmechanismen\textcolor{brown}{FAIK}}%Faik
@@ -341,7 +343,7 @@ Dieses Mischverfahren (\textit{Mixing}) ermöglicht eine intuitive Steuerung, be
 Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden zu vermeiden, sieht das Konzept mehrstufige Schutzmechanismen in der Signalverarbeitung vor:
 
 \begin{itemize}
-	\item \textbf{Eingangsfilterung (Deadzone):} Mechanische Toleranzen der Fernsteuerungs-Joysticks und Rauschen im Übertragungssignal können zu ungewollten Minimalbewegungen führen. Um dies zu verhindern, wird um den Nullpunkt der Eingabewerte eine Totzone definiert, innerhalb derer die Motoren im Stillstand verbleiben.
+	\item \textbf{Eingangsfilterung (Deadzone):} Mechanische Toleranzen der RC-Joysticks und Rauschen im Übertragungssignal können zu ungewollten Minimalbewegungen führen. Um dies zu verhindern, wird um den Nullpunkt der Eingabewerte eine Totzone definiert, innerhalb derer die Motoren im Stillstand verbleiben.
 	
 	\item \textbf{Signalüberwachung (Failsafe):} Das System muss erkennen, ob ein gültiges Steuersignal vom Empfänger anliegt. Bei Signalverlust oder fehlerhaften Werten (z.\,B. durch Verbindungsabbruch oder Timeout) müssen die Antriebe unverzüglich in einen sicheren Zustand (Stopp) versetzt werden.
 	
@@ -361,11 +363,10 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 	\item anschließende Wiederholung des Zyklus bei neuen Eingaben.
 \end{enumerate}
 
-
-
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.9\linewidth]{images/konezpt_bewegung.png}
+	\vspace{0.3cm}
 	\caption{Flussdiagramm des Steuerungskonzepts für den Differentialantrieb. 
 		Die vertikale Joystickbewegung (Y-Achse) bestimmt die Basisgeschwindigkeit sowie Vorwärts- und Rückwärtsfahrt, 
 		während die horizontale Joystickbewegung (X-Achse) zur Richtungsänderung durch differenzielle Anpassung der Radgeschwindigkeiten genutzt wird.}
