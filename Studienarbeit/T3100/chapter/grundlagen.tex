@@ -139,7 +139,7 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 
 \subsubsection*{Regelung und Steuerung}
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
-\subsection{Motortreiber und PWM-Steuerung}
+\subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{[Angus]}}
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
 
 Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen.
@@ -272,7 +272,7 @@ Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf paralle
 \newpage
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird\autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung\autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen – von stationären Speichern über Mobilitätslösungen bis hin zu Kleingeräten.
 
-\subsection{Spannungswandler und Stromverteilung \textcolor{red}{[Hai Nam]}}
+\subsection{Spannungswandler und Stromverteilung \textcolor{blue}{[Angus]}}
 In mechatronischen Systemen wie mobilen Robotern werden unterschiedliche elektrische Verbraucher mit voneinander abweichenden Spannungs- und Stromanforderungen eingesetzt. Während Antriebsmotoren häufig mit höheren Spannungen und Strömen betrieben werden, benötigen Mikrocontroller, Sensoren und Kommunikationsmodule in der Regel stabile Niederspannungen. Zur Versorgung dieser Komponenten kommen Spannungswandler zum Einsatz, die die vorhandene Versorgungsspannung auf das jeweils benötigte Niveau anpassen.
 
 Spannungswandler lassen sich grundsätzlich in lineare Regler und getaktete Schaltregler unterteilen. Lineare Regler zeichnen sich durch eine einfache Schaltung und geringe Störanfälligkeit aus, weisen jedoch bei größeren Spannungsdifferenzen einen niedrigen Wirkungsgrad auf. Schaltregler hingegen arbeiten mit deutlich höherem Wirkungsgrad und eignen sich daher besonders für batteriebetriebene Systeme, da sie die Verlustleistung und somit die Wärmeentwicklung reduzieren.
