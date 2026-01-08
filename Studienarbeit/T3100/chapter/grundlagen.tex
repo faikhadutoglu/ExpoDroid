@@ -161,56 +161,57 @@ In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSF
 
 
 \section{Mikrocontroller und Steuerungseinheiten\textcolor{brown}{FAIK}} %Faik
-Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funktionen integriert enthalten. Sie entstanden Mitte der 1970er-Jahre aus den Mikroprozessoren\autocite{Brandes.2024}. Mikrocontroller können daher als kleine Computer auf einem Chip verstanden werden, die ohne komplexes Betriebssystem spezielle Aufgaben in eingebetteten Systemen übernehmen. Ein Mikrocontroller enthält neben einen Prozessor, Arbeitsspeicher (RAM) und einen Speicher (EEPROM) - in dem die Programme gespeichert werden, auch wenn das Gerät keinen Strom hat. Im Gegensatz zu Mikroprozessoren vereint der Mikrocontroller die Verarbeitung, den Speicher und verschiedene Ein- und Ausgabefunktionen wie Timer und Analog-Digital-Wandler in einer einzigen, kostengünstigen Einheit. Mikrocontroller sind für Steuerungsanwendungen geeignet, wie die Motor- und Sensorsteuerung oder die Kommunikation mit anderen Geräten\autocite{IBM_Microcontroller}.
+Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funktionen integriert enthalten. Sie entstanden Mitte der 1970er-Jahre aus den Mikroprozessoren\autocite{Brandes.2024}. Mikrocontroller können daher als kleine Computer auf einem Chip verstanden werden, die ohne komplexes Betriebssystem spezielle Aufgaben in eingebetteten Systemen übernehmen. Ein Mikrocontroller enthält neben einen Prozessor, Arbeitsspeicher (RAM) und einen Speicher (EEPROM) - in dem die Programme gespeichert werden, auch wenn das Gerät keinen Strom hat. Im Gegensatz zu Mikroprozessoren vereint der Mikrocontroller die Verarbeitung, den Speicher und verschiedene Ein- und Ausgabefunktionen wie Timer und Analog-Digital-Wandler in einer einzigen, kostengünstigen Einheit. Mikrocontroller sind für Steuerungsanwendungen geeignet, wie die Motor- und Sensorsteuerung oder die Kommunikation mit anderen Geräten \autocite{IBM_Microcontroller}.
+
 \subsection{ESP32\textcolor{brown}{FAIK}}%Faik
-Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien - Wi-Fi und Bluetooth - auszeichnet.\autocite{Cameron2023} Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt.\autocite{Cameron2023}
-In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Cameron betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist - vom einfachen Entwicklungsboard bis hin zu Modellen mit Display, GPS oder Kamera – und dadurch eine breite Palette an Anwendungen ermöglicht.\autocite{Cameron2023}
-Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht.\autocite{Cameron2023}
+Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien wie Wireless Local Area Network (WLAN) und Bluetooth auszeichnet \autocite{Cameron2023}. Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt \autocite{Cameron2023}.
+
+In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Es wird betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist, die von einfachen Entwicklungsboards bis hin zu Modellen mit Displays, Global Positioning System (GPS) oder Kameras reichen, was eine Vielzahl von Anwendungen ermöglicht \autocite{Cameron2023}. Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der sogenannten Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht \autocite{Cameron2023}.
 
 \paragraph{Vorteile}
 \begin{itemize}
-	\item Große Community und Open-Source-Software.
+	\item Große Community und Open-Source Software.
 	\item Hohe Konnektivität (WLAN, Bluetooth).
-%	\item Dual-Core Xtensa LX6 (bis 240 ,MHz) unterstützt parallele Aufgaben wie Sensorik, Regelung und Kommunikation.\autocite{EspressifESP32Datasheet} % [page:1]
-	\item Viele Peripherien on-chip: bis zu 34 GPIOs, 18 ADC-Kanäle (12-bit), zwei 8-bit DACs, LED-PWM (bis 16 Kanäle) und Motor-PWM.\autocite{EspressifESP32Datasheet} % [page:1]
-	\item Mehrere Energiesparmodi (u. a.\ Light-Sleep und Deep-Sleep) erlauben batterietaugliche Design.\autocite{EspressifESP32Datasheet} % [page:1]
-%	\item Sicherheitsfunktionen wie Secure Boot, Flash Encryption sowie Hardwarebeschleuniger (z.\,B.\ AES, SHA-2, RSA, ECC) sind integriert.\autocite{EspressifESP32Datasheet} % [page:1]
+	%	\item Dual-Core Xtensa LX6 (bis 240 ,MHz) unterstützt parallele Aufgaben wie Sensorik, Regelung und Kommunikation.\autocite{EspressifESP32Datasheet} % [page:1]
+	\item Viele Peripherien on-chip: bis zu 34 GPIOs, 18 ADC-Kanäle (12-bit), zwei 8-bit DACs, LED-PWM (bis 16 Kanäle) und Motor-PWM \autocite{EspressifESP32Datasheet}. % [page:1]
+	\item Mehrere Energiesparmodi (u. a.\ Light-Sleep und Deep-Sleep) erlauben batterietaugliche Design \autocite{EspressifESP32Datasheet}. % [page:1]
+	%	\item Sicherheitsfunktionen wie Secure Boot, Flash Encryption sowie Hardwarebeschleuniger (z.\,B.\ AES, SHA-2, RSA, ECC) sind integriert.\autocite{EspressifESP32Datasheet} % [page:1]
 \end{itemize}
 
 \paragraph{Nachteile}
 \begin{itemize}
-\item 3,3\,V-Logik: Die GPIO-Eingänge tolerieren maximal 3,6\,V; für Datensignale von 5\,V-Sensoren sind daher Pegelwandler erforderlich (auch wenn das Board 5\,V liefert).\autocite{EspressifESP32Datasheet}
-
-	
-		\item ADC-Genauigkeit ist chipabhängig\autocite{EspressifADCCalibration} %(Vref-Streuung); Espressif empfiehlt Kalibrierung, da die reale Referenzspannung zwischen Chips variieren kann. % [page:3]
-	
-	\item ADC ist empfindlich gegenüber Rauschen\autocite{EspressifADCCalibration} % [page:3] empfohlen werden z.\,B.\ ein Bypass-Kondensator am ADC-Pad und/oder Multisampling.\autocite{EspressifADCCalibration} % [page:3]
+	\item 3,3\,V-Logik: Die GPIO-Eingänge tolerieren maximal 3,6\,V; für Datensignale von 5\,V-Sensoren sind daher Pegelwandler erforderlich (auch wenn das Board 5\,V liefert) \autocite{EspressifESP32Datasheet}.
 	
 	
-%	\item GPIO-/Pin-Restriktionen durch Multifunktion und Strapping-Pins (Boot-Konfiguration) können das Pinout-Design einschränken.\autocite{EspressifESP32Datasheet} % [page:1]
-	\item RF-Coexistence: Wi-Fi und Bluetooth teilen sich ein 2{,}4\,GHz-RF-Modul; paralleler Betrieb wird per Time-Division (Zeitscheiben) gemanagt und kann je nach Szenario Performance beeinflussen.\autocite{EspressifESP32Coexistence} % [page:2]
-
-%	\item ADC2 kann mit Wi-Fi konkurrieren: Da ADC2 auch vom Wi-Fi genutzt wird, kann es bei gleichzeitiger Nutzung zu Blockierung/Timeout kommen.\autocite{EspressifADCGuide} % [page:4]
+	\item ADC-Genauigkeit ist chipabhängig \autocite{EspressifADCCalibration}. %(Vref-Streuung); Espressif empfiehlt Kalibrierung, da die reale Referenzspannung zwischen Chips variieren kann. % [page:3]
+	
+	\item ADC ist empfindlich gegenüber Rauschen \autocite{EspressifADCCalibration}. % [page:3] empfohlen werden z.\,B.\ ein Bypass-Kondensator am ADC-Pad und/oder Multisampling.\autocite{EspressifADCCalibration} % [page:3]
+	
+	
+	%	\item GPIO-/Pin-Restriktionen durch Multifunktion und Strapping-Pins (Boot-Konfiguration) können das Pinout-Design einschränken.\autocite{EspressifESP32Datasheet} % [page:1]
+	\item RF-Coexistence: WLAN und Bluetooth teilen sich ein 2{,}4\,GHz-RF-Modul; paralleler Betrieb wird per Time-Division (Zeitscheiben) gemanagt und kann je nach Szenario Performance beeinflussen \autocite{EspressifESP32Coexistence}. % [page:2]
+	
+	%	\item ADC2 kann mit Wi-Fi konkurrieren: Da ADC2 auch vom Wi-Fi genutzt wird, kann es bei gleichzeitiger Nutzung zu Blockierung/Timeout kommen.\autocite{EspressifADCGuide} % [page:4]
 \end{itemize}
 
 \subsection{Einplatinencomputer und Raspberry Pi}
 
 \subsection*{Einführung}
-Einplatinencomputer (Single-Board Computers, SBCs) sind vollständige Computersysteme, die alle wesentlichen Komponenten wie Prozessor, Speicher und Schnittstellen auf einer einzigen Platine vereinen. Diese kompakte Bauweise ermöglicht den Einsatz in eingebetteten Systemen, IoT-Anwendungen, Bildung und industriellen Steuerungen\autocite{Alvarez2022,Pajankar2017}. SBCs zeichnen sich durch geringe Kosten, Energieeffizienz und hohe Integrationsdichte aus, was sie für mobile und vernetzte Systeme attraktiv macht.
+Einplatinencomputer (englisch: Single-Board Computers, SBCs) sind vollständige Computersysteme, die alle wesentlichen Komponenten wie Prozessor, Speicher und Schnittstellen auf einer einzigen Platine vereinen. Diese kompakte Bauweise ermöglicht den Einsatz in eingebetteten Systemen, \enquote{Internet of Things} (IoT)-Anwendungen, Bildung und industriellen Steuerungen \autocite{Alvarez2022,Pajankar2017}. SBCs zeichnen sich durch geringe Kosten, Energieeffizienz und hohe Integrationsdichte aus, was sie für mobile und vernetzte Systeme attraktiv macht.
 
 \subsection*{Grundwissen und Architektur}
 Die Architektur eines SBC basiert typischerweise auf einem System-on-Chip (SoC), das CPU, GPU, Speichercontroller und Peripherie integriert. Weitere zentrale Komponenten sind:
 \begin{itemize}
 	\item \textbf{Arbeitsspeicher (RAM)} für Betriebssystem und Anwendungen.
 	\item \textbf{Massenspeicher} über microSD-Karten oder eMMC.
-	\item \textbf{Schnittstellen} wie HDMI, USB, Ethernet sowie GPIO-Pins für Sensoren und Aktoren\autocite{Pajankar2017}.
+	\item \textbf{Schnittstellen} wie HDMI, USB, Ethernet sowie GPIO-Pins für Sensoren und Aktoren \autocite{Pajankar2017}.
 \end{itemize}
 
 \subsection*{Einsatzbereiche}
 SBCs finden Anwendung in:
 \begin{itemize}
-	\item \textbf{Bildung}: Programmierkurse, Robotik und Elektronikprojekte\autocite{Alvarez2022}.
-	\item \textbf{IoT und Automatisierung}: Edge-Computing, Sensorsteuerung und Heimautomation\autocite{Matthews2018}.
+	\item \textbf{Bildung}: Programmierkurse, Robotik und Elektronikprojekte \autocite{Alvarez2022}.
+	\item \textbf{IoT und Automatisierung}: Edge-Computing, Sensorsteuerung und Heimautomation \autocite{Matthews2018}.
 	\item \textbf{Prototyping}: Schnelle Entwicklung von Steuerungen und Embedded-Systemen.
 \end{itemize}
 \begin{figure}[hbt]
@@ -220,36 +221,36 @@ SBCs finden Anwendung in:
 	\label{fig:Aufbau RP5}
 \end{figure}
 \subsection*{Fokus auf Raspberry Pi}
-Der Raspberry Pi ist der bekannteste SBC und wurde 2012 von der Raspberry Pi Foundation entwickelt, um Computerkenntnisse in Schulen zu fördern\autocite{Pajankar2017}. Seitdem hat sich die Plattform zu einem vielseitigen Werkzeug für Bildung, Forschung und Industrie entwickelt.
+Der Raspberry Pi ist der bekannteste SBC und wurde 2012 von der Raspberry Pi Foundation entwickelt, um Computerkenntnisse in Schulen zu fördern \autocite{Pajankar2017}. Seitdem hat sich die Plattform zu einem vielseitigen Werkzeug für Bildung, Forschung und Industrie entwickelt.
 
 \paragraph{Technische Entwicklung}
 \begin{itemize}
 	\item \textbf{Raspberry Pi 1 (2012)}: ARM11 CPU, 256--512 MB RAM.
 	\item \textbf{Raspberry Pi 3 (2016)}: Quad-Core ARM Cortex-A53, integriertes WLAN und Bluetooth.
-	\item \textbf{Raspberry Pi 4 (2019)}: Quad-Core Cortex-A72, bis zu 8 GB RAM, USB 3.0 und Dual-HDMI\autocite{Matthews2018}.
+	\item \textbf{Raspberry Pi 4 (2019)}: Quad-Core Cortex-A72, bis zu 8 GB RAM, USB 3.0 und Dual-HDMI \autocite{Matthews2018}.
 \end{itemize}
 
 \paragraph{Anwendungen}
 Der Raspberry Pi wird eingesetzt für:
 \begin{itemize}
-	\item \textbf{Lehre}: Informatik- und Technikunterricht, paralleles Rechnen\autocite{Matthews2018}.
+	\item \textbf{Lehre}: Informatik- und Technikunterricht, paralleles Rechnen \autocite{Matthews2018}.
 	\item \textbf{Forschung}: IoT, Edge-AI und Bildverarbeitung.
-	\item \textbf{Projekte}: Mediencenter, Heimautomation und Robotik\autocite{Pajankar2017}.
+	\item \textbf{Projekte}: Mediencenter, Heimautomation und Robotik \autocite{Pajankar2017}.
 \end{itemize}
 
 \paragraph{Vorteile}
 \begin{itemize}
 	\item Große Community und Open-Source-Software.
 	\item Hohe Konnektivität (GPIO, WLAN, Bluetooth).
-	\item Kostengünstig und energieeffizient\autocite{Alvarez2022}.
+	\item Kostengünstig und energieeffizient \autocite{Alvarez2022}.
 \end{itemize}
 
 \paragraph{Nachteile}
 Trotz der Vorteile bestehen auch Einschränkungen:
 \begin{itemize}
-	\item \textbf{Begrenzte Rechenleistung}: Für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet\autocite{Matthews2018}.
+	\item \textbf{Begrenzte Rechenleistung}: Für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet \autocite{Matthews2018}.
 	\item \textbf{Speicherlimitierungen}: Maximal 8 GB RAM begrenzt große Datenverarbeitungen.
-	\item \textbf{Fehlende industrielle Robustheit}: Nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt\autocite{Alvarez2022}.
+	\item \textbf{Fehlende industrielle Robustheit}: Nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt \autocite{Alvarez2022}.
 	\item \textbf{Leistungsaufnahme bei Volllast}: Höhere Last kann zusätzliche Kühlung erfordern.
 \end{itemize}
 
@@ -257,14 +258,16 @@ Trotz der Vorteile bestehen auch Einschränkungen:
 Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
 \subsection{Batterie\textcolor{brown}{FAIK}}%Faik
 Batterien stellen eine mobile und unabhängige Energiequelle dar und ermöglichen den zuverlässigen Betrieb elektronischer Systeme auch ohne feste Stromversorgung, weshalb sie insbesondere in mobilen oder autonomen Anwendungen eine zentrale Rolle einnehmen.
-Batterien gehören zu den elektrochemischen Speichern, bei denen chemisch gebundene Energie durch Redoxreaktionen in elektrische Energie umgewandelt wird. Sie stellen eine universell einsetzbare Form chemischer Speicher dar, deren Energiedichte im Vergleich zu anderen Technologien jedoch begrenzt ist\autocite{Kurzweil2015}.
+Batterien gehören zu den elektrochemischen Speichern, bei denen chemisch gebundene Energie durch Redoxreaktionen in elektrische Energie umgewandelt wird. Sie stellen eine universell einsetzbare Form chemischer Speicher dar, deren Energiedichte im Vergleich zu anderen Technologien jedoch begrenzt ist \autocite{Kurzweil2015}.
 
-Eine Batterie besteht aus drei wesentlichen Komponenten: einer negativen Elektrode (Anode), einer positiven Elektrode (Kathode) sowie einem Elektrolyten, der als Transportmedium für geladene Teilchen (Ionen) dient. Die elektrische Spannung, die eine Batterie liefert, entsteht durch den Unterschied im chemischen Potenzial zwischen den beiden Elektroden – also durch deren unterschiedliche Neigung, Elektronen abzugeben oder aufzunehmen. Dieser Potenzialunterschied wird beim Entladen genutzt, um elektrische Energie für den Betrieb von Geräten bereitzustellen\autocite{Kurzweil2015,BatteryEssentials2025}.
-Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf parallel ablaufenden, reversiblen Prozessen: Beim Entladevorgang fließen Elektronen als elektrischer Strom über den äußeren Stromkreis von der negativen zur positiven Elektrode und versorgen dabei den angeschlossenen Verbraucher mit Energie. Gleichzeitig findet im Inneren der Batterie eine Ionenwanderung statt – positiv geladene Ionen bewegen sich durch den Elektrolyten, um den Ladungsausgleich zu gewährleisten und den Stromfluss aufrechtzuerhalten (siehe Abbildung \ref{fig:LithiumIonenBatterie})\autocite{Kurzweil2015,BatteryEssentials2025}. Beim Ladevorgang laufen diese Prozesse in umgekehrter Richtung ab: Durch Anlegen einer externen Spannung werden Elektronen zur negativen Elektrode zurückgeführt, während die Ionen durch den Elektrolyten in die entgegengesetzte Richtung wandern. Dadurch wird die chemische Energie in der Batterie wiederhergestellt und sie kann erneut entladen werden\autocite{Kurzweil2015,BatteryEssentials2025}.
+Eine Batterie besteht aus drei wesentlichen Komponenten: einer negativen Elektrode (Anode), einer positiven Elektrode (Kathode) sowie einem Elektrolyten, der als Transportmedium für geladene Teilchen (Ionen) dient. Die elektrische Spannung, die eine Batterie liefert, entsteht durch den Unterschied im chemischen Potenzial zwischen den beiden Elektroden, also durch deren unterschiedliche Neigung, Elektronen abzugeben oder aufzunehmen. Dieser Potenzialunterschied wird beim Entladen genutzt, um elektrische Energie für den Betrieb von Geräten bereitzustellen \autocite{Kurzweil2015,BatteryEssentials2025}.
+
+Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf parallel ablaufenden, reversiblen Prozessen. Beim Entladevorgang fließen Elektronen als elektrischer Strom über den äußeren Stromkreis von der negativen zur positiven Elektrode und versorgen dabei den angeschlossenen Verbraucher mit Energie. Gleichzeitig findet innerhalb der Batterie eine Ionenwanderung statt, bei der sich positiv geladene Ionen durch den Elektrolyten bewegen, um den Ladungsausgleich zu gewährleisten und den Stromfluss aufrechtzuerhalten (siehe Abbildung \ref{fig:LithiumIonenBatterie}) \autocite{Kurzweil2015,BatteryEssentials2025}. Beim Ladevorgang laufen diese Prozesse in umgekehrter Richtung ab. Durch Anlegen einer externen Spannung werden Elektronen zur negativen Elektrode zurückgeführt, während die Ionen durch den Elektrolyten in die entgegengesetzte Richtung wandern. Dadurch wird die chemische Energie in der Batterie wiederhergestellt und sie kann erneut entladen werden \autocite{Kurzweil2015,BatteryEssentials2025}.
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Batterie.png}
+	\vspace{1cm}
 	\caption[\autocite{BatteryEssentials2025} Schematischer Aufbau einer Lithium-Ionen-Batterie.]{Schematischer Aufbau einer Lithium-Ionen-Batterie mit Anode (Li$_x$C), nicht-wässrigem Elektrolyt und Kathode (LiFePO$_4$/FePO$_4$). Während des Entladevorgangs fließen Elektronen (e$^-$) über den äußeren Stromkreis, während Lithium-Ionen durch den Elektrolyten wandern.}
 	\label{fig:LithiumIonenBatterie}
 \end{figure}
