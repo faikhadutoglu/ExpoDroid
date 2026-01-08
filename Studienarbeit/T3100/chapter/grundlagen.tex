@@ -388,6 +388,27 @@ Ein zentrales Merkmal von Scrum ist seine hohe Flexibilität. Anforderungen kön
 
 Zusammenfassend stellt Scrum ein leichtgewichtiges, anpassungsfähiges Projektmanagement-Framework dar, das durch kurze Entwicklungszyklen, regelmäßige Abstimmung und kontinuierliche Verbesserung geprägt ist. Es bildet eine wichtige Grundlage moderner agiler Vorgehensweisen und wird häufig in Kombination mit strukturierten Entwicklungsmodellen eingesetzt.
 
+\subsection{SWOT-Analyse}
+
+Die SWOT-Analyse ist ein strategisches Analyseinstrument zur strukturierten Bewertung eines Projekts oder Systems. Sie dient dazu, interne Stärken (englisch: strengths) und Schwächen (englisch: weaknesses) sowie externe Chancen (englisch: opportunities) und Risiken (englisch: threats) zu identifiziert.
+
+Die Stärken sind Eigenschaften, Ressourcen oder Fähigkeiten, die dem Projekt einen Wettbewerbsvorteil verschaffen oder die erfolgreiche Umsetzung begünstigen. Dazu zählen zum Beispiel technisches Fachwissen, effiziente Prozesse oder eine gute Gruppenorganisation. Schwächen hingegen sind interne Defizite, die den Projekterfolg gefährden können, beispielsweise fehlende Fachkenntnisse, begrenzte finanzielle Mittel oder unzureichende Infrastruktur.
+
+Chancen sind positive Einflüsse aus dem Umfeld des Projekts, die genutzt werden können, um den Erfolg zu steigern. Dazu gehören etwa technologische Entwicklungen oder Förderprogramme. Risiken hingegen sind externe Bedrohungen, die den Projektverlauf negativ beeinflussen können, wie gesetzliche Änderungen, starke Konkurrenz oder Lieferengpässe. \autocite{SWOT.2024}
+
+Durch die strukturierte Betrachtung dieser vier Dimensionen ermöglicht die SWOT-Analyse eine ganzheitliche Einschätzung der Ausgangslage. Im Rahmen dieses Projekts dient die SWOT-Analyse dazu, technische und konzeptionelle Entscheidungen frühzeitig zu validieren, Potenziale gezielt zu nutzen und mögliche Risiken frühzeitig in der Entwurfsphase zu berücksichtigen.
+
+\vspace{0.6cm}
+\begin{figure}[hbt]
+	\centering
+	\input{images/SWOT_example.tex}
+	\vspace{1cm}
+	\caption{Vorlage für die SWOT-Analyse}		
+	\label{fig:SWOTexample}
+\end{figure}
+
+Die Abbildung \ref{fig:SWOTexample} zeigt eine Vorlage für die Durchführung einer SWOT-Analyse. Sie ist in vier gleich große Felder unterteilt, die jeweils eine der Kategorien der Analyse darstellen. Diese sind Stärken (Strengths), Schwächen (Weaknesses), Chancen (Opportunities) und Risiken (Threats). Die beiden oberen Felder enthalten die internen Faktoren des Projekts, nämlich Stärken und Schwächen, während die unteren Felder die externen Faktoren Chancen und Risiken abbilden.
+
 \subsection{V-Modell}
 Das V-Modell im Projektmanagement und in der Systementwicklung
 
@@ -406,20 +427,29 @@ Aus Sicht des Projektmanagements bietet das V-Modell eine hohe Transparenz und N
 Im Kontext technischer Entwicklungsprojekte, wie etwa der Entwicklung eines Roboters, eignet sich das V-Modell besonders gut, da es sowohl Hardware- als auch Softwareaspekte systematisch berücksichtigt. Die strukturierte Vorgehensweise unterstützt eine klare Trennung von Konzept, Entwurf, Umsetzung und Test und trägt damit zu einer kontrollierten und nachvollziehbaren Projektabwicklung bei.
 
 Zusammenfassend stellt das V-Modell ein bewährtes Vorgehensmodell im Projektmanagement und in der Systementwicklung dar. Durch die enge Kopplung von Entwicklungs- und Testphasen sowie die klare Phasenstruktur bietet es eine solide Grundlage für qualitätsorientierte technische Projekte und bildet einen wichtigen Referenzrahmen für weiterführende Projektmanagementmethoden.
+
+\vspace{0.5cm}
 \begin{figure}[hbt]
 	\centering
 	\input{images/V_Modell.tex}
+	\vspace{0.5cm}
 	\caption{Struktur des V-Modells. In der Grafischen Ansicht lässt sich so auch das namensgebende "V-Modell"\ erkennen.}		
 	\label{fig:V_Modell}
 \end{figure}
 
-\subsection{Gantt-Diagramm \textcolor{red}{[von Angus, Hai Nam MUSS überprüfen]}}
+<<<<<<< HEAD
+\subsection{Gantt-Diagramm \textcolor{red}{[HN]}}
 
-Ein Gantt-Diagramm ist ein grafisches Planungswerkzeug zur zeitlichen Strukturierung von Projekten. Es stellt Aufgaben und Arbeitspakete entlang einer Zeitachse dar und zeigt deren geplanten Start, die Dauer sowie den Endzeitpunkt. Zusätzlich können Abhängigkeiten zwischen einzelnen Aufgaben visualisiert werden, wodurch der Ablauf des Projekts übersichtlich dargestellt wird.
+Ein Gantt-Diagramm ist ein weit verbreitetes Planungskonzept im Projektmanagement. Es handelt sich um ein horizontales Balkendiagramm, bei dem die einzelnen Aufgaben eines Projekts auf der vertikalen Achse und die Zeitachse auf der horizontalen Achse dargestellt sind. Jeder Balken repräsentiert den Zeitraum, in dem eine Aufgabe beginnt und endet, und seine Länge entspricht der Dauer der Aufgabe. Moderne Gantt-Diagramme zeigen auch den Fortschritt in Prozent und Abhängigkeiten zwischen Aufgaben, z. B. durch Pfeilverbindungen oder Farbcodierungen. \cite{Gantt.2024}
 
-Der Nutzen eines Gantt-Diagramms liegt insbesondere in der verbesserten Planbarkeit und Transparenz des Projektverlaufs. Fortschritte, Verzögerungen oder zeitliche Überschneidungen von Aufgaben lassen sich frühzeitig erkennen. Dadurch unterstützt das Gantt-Diagramm eine strukturierte Terminplanung, erleichtert die Koordination im Projektteam und dient als Hilfsmittel zur Überwachung des Projektfortschritts.
+Gantt‑Diagramme erfüllen im Projektmanagement mehrere zentrale Funktionen:
 
-
+\begin{itemize}
+	\item \textbf{Visualisierung des Projektzeitplans:} Sie ermöglichen einen schnellen Überblick über den Start, das Ende und den Zeitrahmen jeder Aufgabe, was bei komplexen Projekten mit vielen Teilaufgaben und Stakeholdern besonders hilfreich sind \autocite{APM.2024}.
+	\item \textbf{Aufzeigen von Abhängigkeiten:} Durch visuelle Verbindungen erkennt man leicht, welche Aufgaben nur starten können, nachdem andere abgeschlossen sind. Das ist hilfreich, um den kritischen Pfad zu identifizieren und Engpässe zu vermeiden. \autocite{APM.2024}.
+	\item \textbf{Fortschrittskontrolle:} Teilweise fertiggestellte Aufgaben werden durch Schattierungen oder Balkenabschnitte dargestellt. So lässt sich auf einen Blick erkennen, ob das Projekt im Zeitrahmen liegt \autocite{Gantt.2024}.
+	\item \textbf{Ressourcenplanung und Kommunikation:} Gantt‑Charts helfen, Verantwortlichkeiten, Deadlines oder benötigte Ressourcen darzustellen. Gleichzeitig dienen sie als Planungsinstrument für Teams und Stakeholder \autocite{Wadhwa.2024}.
+\end{itemize}
 
 \section{Anforderungsmanagement}
 
