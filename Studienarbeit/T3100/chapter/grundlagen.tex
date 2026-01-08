@@ -166,6 +166,33 @@ Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funkt
 Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien - Wi-Fi und Bluetooth - auszeichnet.\autocite{Cameron2023} Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt.\autocite{Cameron2023}
 In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Cameron betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist - vom einfachen Entwicklungsboard bis hin zu Modellen mit Display, GPS oder Kamera – und dadurch eine breite Palette an Anwendungen ermöglicht.\autocite{Cameron2023}
 Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht.\autocite{Cameron2023}
+
+\paragraph{Vorteile}
+\begin{itemize}
+	\item Große Community und Open-Source-Software.
+	\item Hohe Konnektivität (WLAN, Bluetooth).
+%	\item Dual-Core Xtensa LX6 (bis 240 ,MHz) unterstützt parallele Aufgaben wie Sensorik, Regelung und Kommunikation.\autocite{EspressifESP32Datasheet} % [page:1]
+	\item Viele Peripherien on-chip: bis zu 34 GPIOs, 18 ADC-Kanäle (12-bit), zwei 8-bit DACs, LED-PWM (bis 16 Kanäle) und Motor-PWM.\autocite{EspressifESP32Datasheet} % [page:1]
+	\item Mehrere Energiesparmodi (u. a.\ Light-Sleep und Deep-Sleep) erlauben batterietaugliche Design.\autocite{EspressifESP32Datasheet} % [page:1]
+%	\item Sicherheitsfunktionen wie Secure Boot, Flash Encryption sowie Hardwarebeschleuniger (z.\,B.\ AES, SHA-2, RSA, ECC) sind integriert.\autocite{EspressifESP32Datasheet} % [page:1]
+\end{itemize}
+
+\paragraph{Nachteile}
+\begin{itemize}
+\item 3,3\,V-Logik: Die GPIO-Eingänge tolerieren maximal 3,6\,V; für Datensignale von 5\,V-Sensoren sind daher Pegelwandler erforderlich (auch wenn das Board 5\,V liefert).\autocite{EspressifESP32Datasheet}
+
+	
+		\item ADC-Genauigkeit ist chipabhängig\autocite{EspressifADCCalibration} %(Vref-Streuung); Espressif empfiehlt Kalibrierung, da die reale Referenzspannung zwischen Chips variieren kann. % [page:3]
+	
+	\item ADC ist empfindlich gegenüber Rauschen\autocite{EspressifADCCalibration} % [page:3] empfohlen werden z.\,B.\ ein Bypass-Kondensator am ADC-Pad und/oder Multisampling.\autocite{EspressifADCCalibration} % [page:3]
+	
+	
+%	\item GPIO-/Pin-Restriktionen durch Multifunktion und Strapping-Pins (Boot-Konfiguration) können das Pinout-Design einschränken.\autocite{EspressifESP32Datasheet} % [page:1]
+	\item RF-Coexistence: Wi-Fi und Bluetooth teilen sich ein 2{,}4\,GHz-RF-Modul; paralleler Betrieb wird per Time-Division (Zeitscheiben) gemanagt und kann je nach Szenario Performance beeinflussen.\autocite{EspressifESP32Coexistence} % [page:2]
+
+%	\item ADC2 kann mit Wi-Fi konkurrieren: Da ADC2 auch vom Wi-Fi genutzt wird, kann es bei gleichzeitiger Nutzung zu Blockierung/Timeout kommen.\autocite{EspressifADCGuide} % [page:4]
+\end{itemize}
+
 \subsection{Einplatinencomputer und Raspberry Pi}
 
 \subsection*{Einführung}
