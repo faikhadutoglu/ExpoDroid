@@ -35,8 +35,9 @@ Der aktuelle Stand der mechanischen Konstruktion basiert auf einer groben Holzst
 \section{Elektronische Integration}
 \subsection{Schaltungsdesign und Verkabelung}
 \textcolor{red}{HAI-NAM} ich habe in repo verkablungsplan anhand dessen kann man diesen Abschnitt schrieben. Am besten in Latex zeichnen.
+\textcolor{blue}{Angus macht Zeichnung, Hai Nm macht Text}
 
-\subsection{Motoransteuerung und Treiber-Konfiguration}
+\subsection{Motoransteuerung und Treiber-Konfiguration \textcolor{red}{Faik \& Hai Nam, keine ahnung was davon schon in folgenden Kapiteln aufgegriffen oder erklährt wurde}}
 Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} über WLAN angesteuert. Die Bewegung des Joysticks wirkt sich wie folgend in Abbildung \ref{fig:Joystick_Controler} gezeigt aus. Bewegung des Sticks nach Norden bedeutet vorwärtsfahren und nach Süden Rückwärtsfahren. Die weite in die jeweilige Richtung bestimmt dabei die an den Motoren anliegende Spannung, damit die Geschwindigkeit. In Ruhelage, sprich in der Mitte stoppt der Roboter. Wird der Joystick nicht betätigt, geht dieser von alleine zurück in die Ruheposition, damit lässt sich der Roboter nur mit aktiver Eingabe des Benutzers in Bewegung versetzten.
 
 
@@ -230,12 +231,15 @@ Abschließend steuert die Logik die H-Brücken an. Da Gleichstrommotoren für di
 Wie aus der obigen Schnittstellenbeschreibung zu lesen \ref{fig:anschlussschema_rpi5}, ergibt sich, dass für die Benutzerschnittstellen Hardwareseitig erst einmal die Kamera zu nennen ist, da diese mit zum Beispiel Objekttracking eine direkte Benutzerschnittstelle ist. Dazu bietet das Display in der aktuellen Konfiguration ein Touchdisplay, welches den Raspberry Pi 5 mit Benutzereingaben füttern kann. 
 
 Hinzu kommt die Möglichkeit den Raspberry Pi über einen SSH oder VNC Client. Hierbei wird der HDMI Ausgang, welcher auch auf dem Display angezeigt wird remote auf ein anderes internetfähiges Gerät mit entsprechender Software gespiegelt. 
-\section{Systemintegration und Test \textcolor{red}{[Hai Nam (Angus hat unterstützt)]}}
-\textcolor{red}{Hai Nam}
+
+
+
+
+\section{Systemintegration und Test \textcolor{blue}{Angus }}
+\textcolor{red}{Hai Nam liest Korrektur, schaut nach Ergänzungen!!}
 
 \subsection{Integrationsstrategie}
 
-\textcolor{red}{Hai Nam bitte lies dir das mal durch ob das so passt}
 Die Systemintegration und die zugehörigen Testaktivitäten orientieren sich am im Projekt verwendeten V-Modell als systems-ingenieurwissenschaftliche Vorgehensweise. Entsprechend diesem Modell wurden die einzelnen Systembestandteile zunächst getrennt voneinander entwickelt und getestet, bevor sie schrittweise zu einem Gesamtsystem integriert wurden.
 
 Zu Beginn der Entwicklung wurde das Gesamtsystem in klar abgegrenzte Module beziehungsweise Subsysteme unterteilt. Diese Module repräsentieren funktionale Einheiten des Roboters, die jeweils eine definierte Aufgabe erfüllen. Beispiele hierfür sind die Motoransteuerung, die Energieversorgung, die Steuerungslogik oder Anzeige- und Interaktionselemente. Durch diese Modularisierung konnte die Komplexität des Systems reduziert und die Entwicklung besser strukturiert werden.
@@ -249,9 +253,7 @@ Nach erfolgreichem Abschluss der Einzeltests wurden die getesteten Module schrit
 Dieses strukturierte Vorgehen aus modularer Entwicklung, modulbezogenen Tests und schrittweiser Integration trägt wesentlich zur Qualitätssicherung des Systems bei und entspricht dem grundlegenden Prinzip des V-Modells, bei dem jeder Entwicklungsstufe eine geeignete Verifikations- und Testaktivität zugeordnet ist.
 
 
-\subsection{Subsystemtests des Fahr- und Antriebssystems \textcolor{red}{[Hai Nam und Angus]}}
-\textcolor{red}{Hai Nam bitte lies dir das mal durch ob das so passt}
-
+\subsection{Subsystemtests des Fahr- und Antriebssystems \textcolor{blue}{[Hai Nam und Angus]}}
 
 Auch wenn einzelne Module und Subsysteme für sich genommen die vorgesehenen Funktionen erfüllen, können im integrierten Betrieb weiterhin Fehler oder unerwartete Abweichungen auftreten. Diese entstehen häufig durch Integrationsprobleme, fehlerhaftes Verhalten an den Schnittstellen zwischen einzelnen Komponenten oder durch unzutreffende Annahmen über das Zusammenspiel der Teilsysteme. Zudem können logische Inkonsistenzen oder nicht berücksichtigte Randbedingungen erst im integrierten Betrieb sichtbar werden.
 

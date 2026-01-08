@@ -384,6 +384,52 @@ Zusammenfassend stellt das V-Modell ein bewährtes Vorgehensmodell im Projektman
 \subsection{Anforderungsmanagement}
 \textcolor{red}{Angus}?
 
+\section{Anforderungsmanagement}
+
+Das Anforderungsmanagement stellt eine zentrale Grundlage für die strukturierte Entwicklung des Roboters dar. Es beschreibt den Prozess der systematischen Erhebung, Dokumentation, Verwaltung und Weiterentwicklung von Anforderungen, die das System erfüllen soll. Im Kontext des verwendeten V-Modells bilden die Anforderungen den Ausgangspunkt für alle nachfolgenden Entwurfs-, Implementierungs- und Testaktivitäten.
+
+Ziel des Anforderungsmanagements ist es, sicherzustellen, dass die Erwartungen aller relevanten Interessengruppen klar erfasst und während des gesamten Projektverlaufs berücksichtigt werden. Zu den Stakeholdern zählen in diesem Projekt insbesondere die Duale Hochschule Baden-Württemberg als Auftraggeber, das Projektteam selbst sowie die späteren Nutzer und Messebesucher.
+
+Zu Beginn des Projekts wurden zunächst übergeordnete Hauptanforderungen definiert, die sich aus dem Einsatzzweck des Roboters im Messebetrieb ableiten. Diese umfassen unter anderem die Außenwirkung, die Interaktionsfähigkeit, die Betriebssicherheit sowie die technische Umsetzbarkeit im Rahmen eines studentischen Projekts. Auf Basis dieser Hauptanforderungen wurden im weiteren Verlauf konkrete funktionale und nicht-funktionale Requirements abgeleitet.
+
+Da das Projekt iterativ durchgeführt wurde, entwickelten sich die Anforderungen im Verlauf der Entwicklung weiter. Neue Erkenntnisse aus Designentscheidungen, Prototypentests und regelmäßigen Abstimmungen im Projektteam führten zu Anpassungen und Ergänzungen der Anforderungen. Dieses Vorgehen entspricht einem agilen Anforderungsverständnis, bei dem Requirements nicht als statisch betrachtet werden, sondern im Projektverlauf konkretisiert und verfeinert werden.
+
+Die dokumentierten Anforderungen dienen im weiteren Projektverlauf als verbindliche Referenz für technische Entscheidungen und bilden zugleich die Grundlage für die Planung und Durchführung von Tests. Im Sinne des V-Modells können die einzelnen Anforderungen den entsprechenden Verifikations- und Testaktivitäten zugeordnet werden, wodurch eine nachvollziehbare Rückverfolgbarkeit zwischen Anforderungen, Umsetzung und Testergebnissen gewährleistet wird.
+
+Die konkret definierten Requirements werden im folgenden Abschnitt in strukturierter Form dargestellt.
+
+-----------------
+
+Die Erkenntnisse der Anforderungsanalyse sind die Grundlage für die Formulierung von \textit{Requierments} (engl. für Anforderungen). Ein Requierment sagt eine
+genaue Anforderung aus, dabei ist diese einfach und verständlich formuliert. Wichtig
+ist, dass diese Anforderung überprüfbar oder messbar ist. Um sicher zu gehen, dass
+das fertige Produkt alle Anforderungen erfüllt, wird es auf die einzelnen Requierments
+getestet. Um auch überprüfbar zu sein, sind diese Eindeutig formuliert. Damit wird auf die Qualität geachtet und alle erforderlichen Funktionen werden möglichst zielgerecht integriert.
+Außerdem wird der Projektfortschritt sichtbar, Problematische stellen können identifiziert werden, um diesen mehr Zeit zuzuwenden. Es werden keine Funktionen integriert, die nicht in den Requierments verlangt werden, das hilft den Fokus auf das wesentliche zu richten und das Integrieren unnötiger Funktionen. Andererseits setzt das eine lückenlose Requiermentplanung voraus. Im Nachhinein können Requierments ergänzt oder angepasst werden, wenn neue Erkenntnisse aufkommen.
+
+Ein Requirement muss offen formuliert sein und darf nicht mit
+Hinblick auf eine spezielle Lösungsart verfassen werden. Der Grund für die Analyse ist die Anforderungen zu identifizieren und möglichst effektive Lösungen zu finden. Gibt man aber mit der Formulierung schon die genaue Richtung für die Umsetzung vor und versteift sich so nur auf diese Herangehensweise, nimmt man dem Projekt die Möglichkeit neue und innovative Lösungen zu finden. 
+Für dieses Projekt werden die Requierments in einer struktorierten Liste festgehalten, der Aufbau dieser Liste ist in Tabelle \ref{tab:Requirement}  gezeigt.
+
+
+
+\begin{table}[htbp]
+	\centering
+	\input{tables/Requirement.tex} % bringt das tabular mit
+	\caption[Layout Requirements]{Layout der Requirements}
+	\label{tab:Requirement} % nach der Caption platzieren
+\end{table}
+
+Die Requierments sind nach Themengebieten sortiert (Bsw. Entwicklungsumgebung, Interface).
+Dabei erhält jedes Requirement eine ID welche der Identifizierung dient. Die erste Zahl dieser gibt Auskunft über das Themengebiet, die folgenden über die Reihenfolge. 
+Der Requirement Text soll die Anforderung  aussagen. Zur genauen Erklärung ist das Feld Beschreibung. Zur Beschreibung gehört auch der Kontext sowie die Notwendigkeit der Anforderung.
+
+In der Spalte mit Requirement Text, steht das Requiremnt. Dieses ist kurz und prägnant gehalten und wird nach konventionellem Format geschrieben:
+<Bedingung> muss/soll <Subjekt> <Objekt> <zusätzliche Angaben> <Verb>.
+So also Beispielsweise: "Das Programm muss in Excel umgesetzt werden".
+Zur genauen Erklärung und der Begründung für die Notwendigkeit ist die Beschreibung gedacht. Die Beschreibung darf dabei auch ausführlicher ausfallen.
+
+Unter Testmethode wird eingeordnet wie das jeweilige Requierment getestet und verifiziert wird. Das Ergebnis der Tests wird als Status festgehalten. Dabei steht \textbf{OK} dafür, dass es funktioniert und \textbf{NOK} (\textbf{N}icht \textbf{OK}) dafür dass die Anforderung noch nicht erfüllt wird.
 
 
 %Zielgerichtete theoretische Grundlagen, sowohl fachliche, wie auch methodische.
