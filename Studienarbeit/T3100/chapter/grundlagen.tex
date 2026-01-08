@@ -289,7 +289,7 @@ Eine sorgfältige Auslegung der Spannungswandler und der Stromverteilung ist dah
 
 \section{Human-Machine-Interaction [\textcolor{red}{Hai Nam, WIP}]}
 
-Die Mensch-Maschine-Interaktion (Human-Machine Interaction, HMI) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie autonome Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
+Die Mensch-Maschine-Interaktion (englisch: Human-Machine Interaction (HMI)) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie autonome Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
 
 Das Entwurf einer HMI umfasst sowohl Hardwarekomponenten als auch Softwarekomponenten. Für ein optimales Entwurf der HMI müssen Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit und zeitnahe Rückmeldung berücksichtigt werden.
 
@@ -363,11 +363,11 @@ Der erste Schritt im UCD-Prozess besteht darin, zu ermitteln, wie viel Arbeitsau
 
 Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der Mensch-Maschine-Interaktion, da sie die Schnittstelle zwischen Benutzer und Roboter darstellen. Ziel ist es, Informationen klar und verständlich darzustellen und gleichzeitig eine intuitive Steuerung zu ermöglichen. Dies umfasst sowohl die Hardware (z. B. Displays, Touchscreens) als auch die Software (z. B. grafische Benutzeroberflächen und Interaktionslogik).
 
-\subparagraph{Display-Technologien} Moderne HMI-Systeme nutzen verschiedene Display-Technologien wie LCD, OLED oder TFT (WIP SHORTS EXPLAINED?), die sich in Auflösung, Energieverbrauch und Robustheit unterscheiden. Für den Messeroboter bietet ein kompaktes Touch-Display den Vorteil, mehrere Funktionen auf einer Oberfläche zu integrieren, wie die Auswahl von Betriebsmodi (\enquote{Selfie Mode}, \enquote{Debugging Mode}) oder die Anzeige von Statusinformationen. Die Wahl des Displays hängt von Faktoren wie Lesbarkeit, Energieeffizienz und Umgebungsbedingungen ab. %\autocite{ISO.303}
+\subparagraph{Display-Technologien} Moderne HMI-Systeme nutzen verschiedene Display-Technologien wie LCD, OLED oder TFT (WIP SHORTS EXPLAINED?), die sich in Auflösung, Energieverbrauch und Robustheit unterscheiden. Für den Messeroboter bietet ein kompaktes Touch-Display den Vorteil, mehrere Funktionen auf einer Oberfläche zu integrieren, wie die Auswahl von Betriebsmodi (\enquote{Selfie Mode}, \enquote{Debugging Mode}) oder die Anzeige von Statusinformationen. Die Wahl des Displays hängt von Faktoren wie Lesbarkeit, Energieeffizienz und Umgebungsbedingungen ab. \autocite{ISO.9241303}
 
-\subparagraph{Grafische Benutzeroberflächen (GUI)} Die Softwareseite der HMI wird durch grafische Benutzeroberflächen realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Frameworks wie \emph{Qt} oder \emph{LVGL} sind weit verbreitet, da sie plattformunabhängig und ressourcenschonend sind. %\autocite{Qt.2024} autocite LVGLDocs
+\subparagraph{Grafische Benutzeroberflächen (GUI)} Die Softwareseite der HMI wird durch grafische Benutzeroberflächen realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Frameworks wie \emph{Qt} oder \emph{LVGL} sind weit verbreitet, da sie plattformunabhängig und ressourcenschonend sind. \autocite{Qt.2024} \autocite{LVGL.2024}
 
-\subparagraph{Kommunikationsschnittstellen} Für die Verbindung zwischen GUI und Robotersteuerung werden häufig Protokolle wie \emph{MQTT}, \emph{WebSocket} oder serielle Schnittstellen eingesetzt. Diese gewährleisten eine zuverlässige Datenübertragung und ermöglichen Echtzeit-Feedback, was für sicherheitskritische Anwendungen wie den Messeroboter essenziell ist. autocite MQTTStandard
+\subparagraph{Kommunikationsschnittstellen} Für die Verbindung zwischen GUI und Robotersteuerung werden häufig Protokolle wie \emph{MQTT}, \emph{WebSocket} oder serielle Schnittstellen eingesetzt. Diese gewährleisten eine zuverlässige Datenübertragung und ermöglichen Echtzeit-Feedback, was für sicherheitskritische Anwendungen wie den Messeroboter essenziell ist. \autocite{MQTT.2024}
 
 \section{Projekt \& Systems Engineering Methodik}
 
