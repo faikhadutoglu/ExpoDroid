@@ -34,7 +34,7 @@ Der aktuelle Stand der mechanischen Konstruktion basiert auf einer groben Holzst
 \section{Elektronische Integration}
 \subsection{Schaltungsdesign und Verkabelung \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{HAI-NAM} ich habe in repo verkablungsplan anhand dessen kann man diesen Abschnitt schrieben. Am besten in Latex zeichnen.
-\textcolor{blue}{Angus macht Zeichnung, Hai Nm macht Text}
+\textcolor{blue}{Angus macht Zeichnung, Hai Nam macht Text}
 
 %\subsection{Motoransteuerung und Treiber-Konfiguration \textcolor{red}{Faik \& Hai Nam, keine ahnung was davon schon in folgenden Kapiteln aufgegriffen oder erklährt wurde ///Faiks comment:ich würd dieesen Abschnitt weglassen}}
 %Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} über WLAN angesteuert\textcolor{red}{[ist diese info nicht falsch ist das über Wlan?]} . Die Bewegung des Joysticks wirkt sich wie folgend in Abbildung \ref{fig:Joystick_Controler} gezeigt aus. Bewegung des Sticks nach Norden bedeutet vorwärtsfahren und nach Süden Rückwärtsfahren. Die weite in die jeweilige Richtung bestimmt dabei die an den Motoren anliegende Spannung, damit die Geschwindigkeit. In Ruhelage, sprich in der Mitte stoppt der Roboter. Wird der Joystick nicht betätigt, geht dieser von alleine zurück in die Ruheposition, damit lässt sich der Roboter nur mit aktiver Eingabe des Benutzers in Bewegung versetzten.
@@ -64,13 +64,10 @@ Der aktuelle Stand der mechanischen Konstruktion basiert auf einer groben Holzst
 \section{Motorsteuerung und Bewegungsalgorithmen\textcolor{brown}{FAIK}}
 Nachdem in der Konzeptionsphase (siehe Kapitel \ref{sec:Steuerungskonzept}) das Prinzip des Differentialantriebs festgelegt wurde, beschreibt dieser Abschnitt die konkrete softwareseitige Umsetzung auf dem Mikrocontroller. Ziel der Implementierung war es, die Steuersignale einer Standard-Modellbaufernsteuerung so zu verarbeiten, dass damit leistungsstarke Gleichstrommotoren über BTS7960-H-Brücken präzise geregelt werden können.
 
-
 \subsection{Fernsteuerungssystem und Signalübertragung}
 \label{sec:fernsteuerung}
 
-Als Mensch-Maschine-Schnittstelle (HMI) für die manuelle Teleoperation des Roboters kommt die Fernsteuerung \textbf{Spektrum NX8} zum Einsatz. Dieses Modell ermöglicht eine präzise Übermittlung der Steuerbefehle in Echtzeit.
-
-Die Kommunikation zwischen Sender und Roboter erfolgt drahtlos im \SI{2.4}{\giga\hertz}-Frequenzband unter Verwendung des DSMX-Protokolls.\autocite{NX8}
+Der Sender \textbf{Spektrum NX8} wird als HMI für die manuelle Fernsteuerung des Roboters verwendet. Dieses Modell ermöglicht eine präzise Übermittlung der Steuerbefehle in Echtzeit. Die Kommunikation zwischen Sender und Roboter erfolgt drahtlos im \SI{2.4}{\giga\hertz}-Frequenzband unter Verwendung des DSMX-Protokolls. \autocite{NX8}
 
 Hardwareseitig besteht das System aus zwei Hauptkomponenten:
 \begin{enumerate}
@@ -86,13 +83,13 @@ Das Steuerungsschema wurde intuitiv ausgelegt (siehe Mode-2-Konfiguration):
 
 
 \subsection{Programmablauf und Architektur\textcolor{brown}{FAIK}}
-Die Steuerung basiert auf einem zyklischen Algorithmus, der kontinuierlich die Eingabesignale überwacht und in Motorbewegungen umsetzt. Dieser Prozess ist in Abbildung \ref{fig:flowchart_motor} als Programmablaufplan (Flowchart) dargestellt. Er verdeutlicht den Weg vom rohen Sensorsignal bis zur physikalischen Ansteuerung der Motortreiber.
+Die Steuerung basiert auf einem zyklischen Algorithmus, der kontinuierlich die Eingabesignale überwacht und in Motorbewegungen umsetzt. Dieser Prozess ist in Abbildung \ref{fig:flowchart_motor} als Programmablaufplan (englisch: Flowchart) dargestellt. Er verdeutlicht den Weg vom rohen Sensorsignal bis zur physikalischen Ansteuerung der Motortreiber.
 
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=0.9\linewidth]{images/Motorflowchart.png
-	}
+	\includegraphics[width=0.9\linewidth]{images/Motorflowchart.png}
+	\vspace{0.1cm}
 	\caption{Programmablaufplan der implementierten Motorsteuerung: Vom RC-Signal zur Motorbewegung.}
 \label{fig:flowchart_motor}
 \end{figure}
@@ -110,7 +107,7 @@ Der implementierte Algorithmus lässt sich in vier logische Hauptphasen untertei
 \subsection{Detaillierte Implementierung\textcolor{brown}{FAIK}}
 
 \subsubsection{Signalerfassung und Kanalzuordnung\textcolor{brown}{FAIK}}
-Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (PWM), wobei die Information in der Länge des Pulses kodiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1000}{\micro\second} und \SI{2000}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
+Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (englisch: Pulse Width Modulation (PWM)), wobei die Information in der Länge des Pulses codiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1000}{\micro\second} und \SI{2000}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
 
 \begin{figure}[h!]
 	\centering
@@ -158,10 +155,10 @@ Um dies zu lösen, wird die \texttt{map()}-Funktion eingesetzt, welche den Werte
 	}
 \end{lstlisting}
 
-\textbf{Warum ist die Deadzone wichtig?} Mechanische Joysticks kehren oft nicht mikrometergenau in die absolute Mitte zurück, und auch das Funksignal kann leicht schwanken (Jitter). Ohne diese implementierte Totzone würde der Roboter im Stillstand \glqq zittern\grqq ~oder langsam wegrollen. Die Deadzone garantiert, dass der Roboter sicher stehen bleibt, solange der Nutzer den Joystick nicht bewusst bewegt.
+Es gibt einen Grund, warum die Deadzone notwendig ist. Mechanische Joysticks kehren oft nicht mikrometergenau in die absolute Mitte zurück, und auch das Funksignal kann leicht schwanken (Jitter). Ohne diese implementierte Totzone würde der Roboter im Stillstand \glqq zittern\grqq ~oder langsam wegrollen. Die Deadzone garantiert, dass der Roboter sicher stehen bleibt, solange der Nutzer den Joystick nicht bewusst bewegt.
 
 \subsubsection{Der Differential-Mixing-Algorithmus\textcolor{brown}{FAIK}}
-Da der Roboter über keine mechanische Lenkung (wie ein Auto) verfügt, muss eine Richtungsänderung durch unterschiedliche Drehzahlen der beiden Antriebsräder erzeugt werden. Diesen Vorgang nennt man \textit{Differential Steering}.
+Da der Roboter über keine mechanische Lenkung wie ein Auto verfügt, muss eine Richtungsänderung durch unterschiedliche Drehzahlen der beiden Antriebsräder erzeugt werden. Diesen Vorgang nennt man \textit{Differential Steering}.
 
 Der implementierte Algorithmus nimmt die Basisgeschwindigkeit (\texttt{baseSpeed}) und modifiziert diese für das linke und rechte Rad basierend auf dem Lenkeinschlag (\texttt{steering}).
 
@@ -181,7 +178,7 @@ Der implementierte Algorithmus nimmt die Basisgeschwindigkeit (\texttt{baseSpeed
 \end{lstlisting}
 
 \textbf{Funktionsweise:} Wenn der Roboter geradeaus fährt (\texttt{baseSpeed} > 0) und nach rechts gelenkt wird (\texttt{steering} > 0), reduziert der Algorithmus die Geschwindigkeit des rechten Rades (kurveninneres Rad).
-Beispiel: Bei vollem Lenkeinschlag (\texttt{steering = 100}\footnote{nach Mapping}) wird der Faktor $(100 - 100) / 100 = 0$. Das rechte Rad stoppt, während das linke weiterdreht – der Roboter dreht sich auf der Stelle um das rechte Rad. Dies ermöglicht sehr enge Wendemanöver.
+Zum Beispiel: Bei vollem Lenkeinschlag (\texttt{steering = 100}\footnote{nach Mapping}) wird der Faktor $(100 - 100) / 100 = 0$. Das rechte Rad stoppt, während das linke weiterdreht. Damit dreht der Roboter sich auf der Stelle um das rechte Rad. Dies ermöglicht enge Wendemanöver.
 
 \textbf{Abweichung von der Planung:} In der ursprünglichen Planung war eine additive Geschwindigkeitsreduktion vorgesehen (siehe Abbildung \ref{fig:flowchart_steuerung}). Diese wurde jedoch nach ersten Tests verworfen, da sie bei niedriger Geschwindigkeit zu übermäßiger Bremsung führte, während bei hoher Geschwindigkeit die Lenkwirkung unzureichend war. Die maßgebliche Implementierung nutzt daher eine multiplikative Methode (\texttt{baseSpeed * (100 - steering) / 100}), welche die Reduktion proportional zur aktuellen Fahrgeschwindigkeit durchführt und somit ein konsistentes Lenkverhalten über alle Geschwindigkeitsbereiche gewährleistet.
 
@@ -202,9 +199,9 @@ Bevor die berechneten Werte an die Hardware gesendet werden, durchlaufen sie ein
 
 Dieser Faktor dient dem Schutz der Motoren und der Elektronik vor Überspannung. Die verwendeten Motoren sind für eine maximale Betriebsspannung von \SI{12}{\volt} ausgelegt. Da jedoch ein vollgeladener 3S-LiPo-Akku eine Spannung von bis zu \SI{12,6}{\volt} liefert, muss das PWM-Signal entsprechend begrenzt werden, um die Motoren nicht zu beschädigen.
 
-Das maximal zulässige Tastverhältnis (Duty Cycle) ergibt sich aus dem Verhältnis der maximalen Motorspannung zur Akkuspannung: 
+Das maximal zulässige Tastverhältnis (englisch: Duty Cycle) ergibt sich aus dem Verhältnis der maximalen Motorspannung zur Akkuspannung: 
 \[
-\text{Duty Cycle}_{\text{max}} = \frac{U_{\text{Motor, max}}}{U_{\text{Akku, max}}} = \frac{\SI{12}{\volt}}{\SI{12,6}{\volt}} \approx 0{,}95
+\text{Duty Cycle}_{\text{max}} = \frac{U_{\text{Motor, max}}}{U_{\text{Akku, max}}} = \frac{\SI{12}{\volt}}{\SI{12,6}{\volt}} \approx 0{,}95 .
 \]
 
 In der Implementierung wurde ein Sicherheitsfaktor von $0{,}91$ gewählt, was einem maximalen Tastverhältnis von ca. 91\,\% entspricht. Dies liegt deutlich unter dem theoretischen Maximum von $0{,}95$ und bietet zusätzlichen Spielraum für Spannungsschwankungen während des Betriebs sowie einen Sicherheitspuffer gegen kurzzeitige Überlastung. Diese konservative Begrenzung sorgt zudem für ein sanfteres Fahrverhalten und schützt sowohl die Motoren als auch die H-Brücken vor vorzeitigem Verschleiß.
