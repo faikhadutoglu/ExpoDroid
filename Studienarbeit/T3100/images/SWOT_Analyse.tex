@@ -1,0 +1,32 @@
+% in der Präambel (falls noch nicht vorhanden):
+% \usepackage{tikz}
+
+\begin{tikzpicture}[font=\sffamily]
+	% Gesamtgröße
+	\def\W{14}   % Breite
+	\def\H{8}    % Höhe
+	
+	% Rahmen + Unterteilung
+	\draw (0,0) rectangle (\W,\H);
+	\draw (0,\H/2) -- (\W,\H/2);
+	\draw (\W/2,0) -- (\W/2,\H);
+	
+	% Überschriften (oben links in jedem Feld)
+	\node[anchor=north west] at (0.4,\H-0.4) {\textbf{Strengths (S)}};
+	\node[anchor=north west] at (\W/2+0.4,\H-0.4) {\textbf{Weaknesses (W)}};
+	\node[anchor=north west] at (0.4,\H/2-0.4) {\textbf{Opportunities (O)}};
+	\node[anchor=north west] at (\W/2+0.4,\H/2-0.4) {\textbf{Threats (T)}};
+	
+	% Beispiel-Platzhaltertext (optional – kannst du ersetzen/löschen)
+	\node[anchor=north west, align=left, text width=6.3cm] at (0.6,\H-1.2)
+	{• Punkt 1\\• Punkt 2\\• Punkt 3};
+	
+	\node[anchor=north west, align=left, text width=6.3cm] at (\W/2+0.6,\H-1.2)
+	{• Punkt 1\\• Punkt 2\\• Punkt 3};
+	
+	\node[anchor=north west, align=left, text width=6.3cm] at (0.6,\H/2-1.2)
+	{• Punkt 1\\• Punkt 2\\• Punkt 3};
+	
+	\node[anchor=north west, align=left, text width=6.3cm] at (\W/2+0.6,\H/2-1.2)
+	{• Punkt 1\\• Punkt 2\\• Punkt 3};
+\end{tikzpicture}
