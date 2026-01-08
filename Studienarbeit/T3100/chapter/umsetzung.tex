@@ -253,7 +253,7 @@ Für die Programmierung des Displays wird die Programmiersprache Python eingeset
 \subsection{Animations-Engine für Augen}
 Für die Animations Engine werden die Biblitoheken OpenCV, Pygame und der Kamerainput der Brio 500 Kamera verwendet. Auch dies kann man in Abbildung \ref{fig:anschlussschema_rpi5} erkennen. 
 
-Allgemewin soll die Grundanimation wie im Vorgehen schon erwähnt und in Abbildung \ref{fig:augenanimation} zu sehen, eine einfache Animation basierend auf zwei Kreisen mit beweglichem Punkt in der Mitte.
+Allgemewin soll die Grundanimation wie im Vorgehen schon erwähnt und in Abbildung \ref{fig:augenanimation_plain} zu sehen, eine einfache Animation basierend auf zwei Kreisen mit beweglichem Punkt in der Mitte.
 Hier nochmal eine Grafik dazu:
 \begin{figure}[ht]
 	\centering
@@ -448,7 +448,7 @@ Die Benutzerschnittstelle des Roboters ist ein zentraler Bestandteil für die In
 \newpage
 
 \section{Systemintegration und Test \textcolor{blue}{Angus} \textcolor{red}{[Hai Nam]}}
-\textcolor{red}{Hai Nam liest Korrektur, schaut nach Ergänzungen!!}
+
 
 \subsection{Integrationsstrategie}
 
@@ -465,7 +465,7 @@ Nach erfolgreichem Abschluss der Einzeltests wurden die getesteten Module schrit
 Dieses strukturierte Vorgehen aus modularer Entwicklung, modulbezogenen Tests und schrittweiser Integration trägt wesentlich zur Qualitätssicherung des Systems bei und entspricht dem grundlegenden Prinzip des V-Modells, bei dem jeder Entwicklungsstufe eine geeignete Verifikations- und Testaktivität zugeordnet ist.
 
 
-\subsection{Subsystemtests des Fahr- und Antriebssystems \textcolor{red}{[Hai Nam} \textcolor{blue}{ und Angus]}}
+\subsection{Subsystemtests des Fahr- und Antriebssystems  \textcolor{blue}{Angus}}
 
 Auch wenn einzelne Module und Subsysteme für sich genommen die vorgesehenen Funktionen erfüllen, können im integrierten Betrieb weiterhin Fehler oder unerwartete Abweichungen auftreten. Diese entstehen häufig durch Integrationsprobleme, fehlerhaftes Verhalten an den Schnittstellen zwischen einzelnen Komponenten oder durch unzutreffende Annahmen über das Zusammenspiel der Teilsysteme. Zudem können logische Inkonsistenzen oder nicht berücksichtigte Randbedingungen erst im integrierten Betrieb sichtbar werden.
 
@@ -492,6 +492,10 @@ Während der Testfahrten trat zudem ein sicherheitsrelevantes Problem auf. Durch
 Aus dieser Erkenntnis ergibt sich ein klarer Optimierungsbedarf in der Absicherung der Steuerungslogik. Zukünftig sollte die Steuerung kontinuierlich überprüfen, ob gültige und plausible Eingangssignale vorliegen. Im Falle von Signalverlusten oder fehlerhaften Zuständen muss das Fahr- und Antriebssystem automatisch in einen sicheren Zustand überführt und abgeschaltet werden. Zusätzlich sollte die mechanische Fixierung und Entlastung von Leitungen verbessert werden, um das Risiko von Kontaktverlusten durch Erschütterungen zu minimieren.
 
 Die durchgeführte Fehleranalyse verdeutlicht, dass Subsystemtests nicht nur der Funktionsprüfung dienen, sondern wertvolle Erkenntnisse über reale Betriebsbedingungen liefern. Die identifizierten Schwachstellen bilden eine wichtige Grundlage für gezielte technische und konzeptionelle Optimierungen des Systems.
+
+\subsection{Subsystemtests der Augenansteurung über Display und Kamera  \textcolor{blue}{Simon}}
+\subsubsection{Fehleranalyse und Optimierung}
+
 
 
 
