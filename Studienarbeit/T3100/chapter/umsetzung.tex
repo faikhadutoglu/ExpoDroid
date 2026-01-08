@@ -37,17 +37,17 @@ Der aktuelle Stand der mechanischen Konstruktion basiert auf einer groben Holzst
 \textcolor{red}{HAI-NAM} ich habe in repo verkablungsplan anhand dessen kann man diesen Abschnitt schrieben. Am besten in Latex zeichnen.
 \textcolor{blue}{Angus macht Zeichnung, Hai Nm macht Text}
 
-\subsection{Motoransteuerung und Treiber-Konfiguration \textcolor{red}{Faik \& Hai Nam, keine ahnung was davon schon in folgenden Kapiteln aufgegriffen oder erklährt wurde}}
-Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} über WLAN angesteuert. Die Bewegung des Joysticks wirkt sich wie folgend in Abbildung \ref{fig:Joystick_Controler} gezeigt aus. Bewegung des Sticks nach Norden bedeutet vorwärtsfahren und nach Süden Rückwärtsfahren. Die weite in die jeweilige Richtung bestimmt dabei die an den Motoren anliegende Spannung, damit die Geschwindigkeit. In Ruhelage, sprich in der Mitte stoppt der Roboter. Wird der Joystick nicht betätigt, geht dieser von alleine zurück in die Ruheposition, damit lässt sich der Roboter nur mit aktiver Eingabe des Benutzers in Bewegung versetzten.
-
-
-
-\begin{figure}[hbt]
-	\centering
-	\input{images/Joystick_Controler.tex}
-	\caption{Zeigt die Stelllagen des Steuerungs-Joysticks für Fahren und Lenken des Roboters}		
-	\label{fig:Joystick_Controler}
-\end{figure}
+%\subsection{Motoransteuerung und Treiber-Konfiguration \textcolor{red}{Faik \& Hai Nam, keine ahnung was davon schon in folgenden Kapiteln aufgegriffen oder erklährt wurde ///Faiks comment:ich würd dieesen Abschnitt weglassen}}
+%Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} über WLAN angesteuert\textcolor{red}{[ist diese info nicht falsch ist das über Wlan?]} . Die Bewegung des Joysticks wirkt sich wie folgend in Abbildung \ref{fig:Joystick_Controler} gezeigt aus. Bewegung des Sticks nach Norden bedeutet vorwärtsfahren und nach Süden Rückwärtsfahren. Die weite in die jeweilige Richtung bestimmt dabei die an den Motoren anliegende Spannung, damit die Geschwindigkeit. In Ruhelage, sprich in der Mitte stoppt der Roboter. Wird der Joystick nicht betätigt, geht dieser von alleine zurück in die Ruheposition, damit lässt sich der Roboter nur mit aktiver Eingabe des Benutzers in Bewegung versetzten.
+%
+%
+%
+%\begin{figure}[hbt]
+%	\centering
+%	\input{images/Joystick_Controler.tex}
+%	\caption{Zeigt die Stelllagen des Steuerungs-Joysticks für Fahren und Lenken des Roboters}		
+%	\label{fig:Joystick_Controler}
+%\end{figure}
 
 %\subsection{Energieversorgungssystem}
 %\subsection{Sicherheitsschaltungen}
@@ -63,8 +63,28 @@ Der Roboter wird mit der Fernbedienung \textcolor{blue}{[Modell Einsetzten]} üb
 
 
 \section{Motorsteuerung und Bewegungsalgorithmen\textcolor{brown}{FAIK}}
-
 Nachdem in der Konzeptionsphase (siehe Kapitel \ref{sec:Steuerungskonzept}) das Prinzip des Differentialantriebs festgelegt wurde, beschreibt dieser Abschnitt die konkrete softwareseitige Umsetzung auf dem Mikrocontroller. Ziel der Implementierung war es, die Steuersignale einer Standard-Modellbaufernsteuerung so zu verarbeiten, dass damit leistungsstarke Gleichstrommotoren über BTS7960-H-Brücken präzise geregelt werden können.
+
+
+\subsection{Fernsteuerungssystem und Signalübertragung}
+\label{sec:fernsteuerung}
+
+Als Mensch-Maschine-Schnittstelle (HMI) für die manuelle Teleoperation des Roboters kommt die Fernsteuerung \textbf{Spektrum NX8} zum Einsatz. Dieses Modell ermöglicht eine präzise Übermittlung der Steuerbefehle in Echtzeit.
+
+Die Kommunikation zwischen Sender und Roboter erfolgt drahtlos im \SI{2.4}{\giga\hertz}-Frequenzband unter Verwendung des DSMX-Protokolls.\autocite{NX8}
+
+Hardwareseitig besteht das System aus zwei Hauptkomponenten:
+\begin{enumerate}
+	\item \textbf{Sender (Spektrum NX8):} Erfasst die mechanischen Auslenkungen der Steuerknüppel und wandelt diese in digitale Datenpakete um.
+	\item \textbf{Empfänger:} Dieser ist fest auf dem Roboter verbaut und elektrisch direkt mit den GPIO-Pins des Mikrocontrollers verbunden. Er demoduliert das Hochfrequenzsignal und gibt es als PWM-Signale an die Steuereinheit weiter.
+\end{enumerate}
+
+Das Steuerungsschema wurde intuitiv ausgelegt (siehe Mode-2-Konfiguration):
+\begin{itemize}
+	\item \textbf{Linker Joystick (Y-Achse):} Steuert die translatorische Bewegung. Ein Auslenken nach oben bewirkt eine Vorwärtsfahrt, nach unten eine Rückwärtsfahrt(siehe Abbildung \ref{fig:joystick_pwm}).
+	\item \textbf{Rechter Joystick (X-Achse):} Steuert die rotatorische Bewegung. Eine Auslenkung nach rechts oder links induziert die entsprechende Lenkbewegung durch Differenzialsteuerung der Räder.
+\end{itemize}
+
 
 \subsection{Programmablauf und Architektur\textcolor{brown}{FAIK}}
 Die Steuerung basiert auf einem zyklischen Algorithmus, der kontinuierlich die Eingabesignale überwacht und in Motorbewegungen umsetzt. Dieser Prozess ist in Abbildung \ref{fig:flowchart_motor} als Programmablaufplan (Flowchart) dargestellt. Er verdeutlicht den Weg vom rohen Sensorsignal bis zur physikalischen Ansteuerung der Motortreiber.
@@ -96,7 +116,7 @@ Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (
 \begin{figure}[h!]
 	\centering
 	\input{images/Joystick_y_achse.tex}
-	\caption{PWM-Signalzuordnung bei der Fernsteuerung}
+	\caption{Y-Achsenbewegung: PWM-Signalzuordnung bei der Fernsteuerung}
 	\label{fig:joystick_pwm}
 \end{figure}
 
