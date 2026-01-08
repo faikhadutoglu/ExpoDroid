@@ -287,14 +287,14 @@ Eine sorgfältige Auslegung der Spannungswandler und der Stromverteilung ist dah
 \subsection{3D-Druck-Technologien \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam} Das sind grundlagen wir haben zwar kein 3D benutzt aber theoretisch kömnnte man machen einfach mit Quellen  Definition vor Nachteile usw kann man schrieben
 
-\section{Human-Machine-Interaction [\textcolor{red}{Hai Nam, WIP}]}
+\section{Human-Machine-Interaction [\textcolor{red}{HN}]}
 
 Die Mensch-Maschine-Interaktion (englisch: Human-Machine Interaction (HMI)) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie ein Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
 
 Der Entwurf einer HMI umfasst sowohl Hardwarekomponenten als auch Softwarekomponenten. Für ein optimales Entwurf der HMI müssen Aspekte wie Benutzerfreundlichkeit, Ergonomie, Sicherheit und zeitnahe Rückmeldung berücksichtigt werden.
 
 Folgendes Zitat verdeutlicht die zunehmende Bedeutung und den erweiterten Anwendungsbereich der Mensch-Maschine-Interaktion, insbesondere im Hinblick auf die Vielfalt der Nutzergruppen, die auch für den Messeroboter relevant ist:
-\enquote{HCI (Human-computer interaction) expanded from its initial focus on individual and generic user behavior to include social and organizational computing, accessibility for the elderly, the cognitively and physically impaired, and for all people, and for the widest possible spectrum of human experiences and activities.} \autocite{Dix.2026}
+\enquote{Mensch-Computer-Interaktion hat sich von seinem ursprünglichen Schwerpunkt auf individuelles und generisches Nutzerverhalten auf soziale und organisatorische Computeranwendungen, Barrierefreiheit für ältere Menschen, Menschen mit kognitiven und körperlichen Beeinträchtigungen sowie für alle Menschen und für ein möglichst breites Spektrum menschlicher Erfahrungen und Aktivitäten ausgeweitet.} \autocite{Dix.2026}
 
 \subsection{Definitionen und Zielsetzung}
 
@@ -359,15 +359,9 @@ einzelnen Schritten veranschaulichen.
 
 Der erste Schritt im UCD-Prozess besteht darin, zu ermitteln, wie viel Arbeitsaufwand erforderlich ist, um ein gewünschtes Niveau an Benutzerfreundlichkeit und Qualität der UX zu erreichen. Im nächsten Schritt wird der Nutzungskontext analysiert, um zu verstehen, wer die Endnutzer sind und in welcher Umgebung die jeweilige Funktion eingesetzt wird. Basierend auf der Analyse des Nutzungskontexts wird als Nächstes eine nutzerorientierte Anforderungsliste erstellt. Aus der Liste werden dann Entwurfskonzepte entwickelt, die diese Anforderungen erfüllen sollen. Schließlich werden diese Konzepte evaluiert, um ihre Gebrauchstauglichkeit und Relevanz für die Zielnutzer zu überprüfen. Echte Nutzer oder nicht projektbezogene Testpersonen spielen eine zentrale Rolle in diesem Prozess. Ihr Feedback ist besonders wertvoll, da sie zum einen täglich mit bestimmten Problemen konfrontiert sein können, die durch die entwickelten Konzepte behoben werden sollen. Zum anderen betrachten sie die Konzepte aus einer voreingenommenen Perspektive und können daher Informationen über Schwächen oder Verbesserungspotenziale liefern, die intern möglicherweise nicht wahrgenommen werden. Solche neuen Erkenntnisse und Feedback von den Probanden können dann dynamisch die Konzepte verbessern, indem der Entwicklungsprozess durch die iterativen Rückkopplungsschleifen auf bestimmte Schritte zurückgeführt werden darf. Üblicherweise wird eine Konzeptfunktion in Serienfahrzeugen als serienmäßige Funktion finalisiert, wenn kein weiteres Feedback mehr vorliegt und die Funktion endgültig die Nutzeranforderungen erfüllt. \autocite{Rhein.2025}
 
-\subsection{Visualisierung und Interaktionssystem (WIP RECHECK, TEXT NEEDED?)}
+\subsection{Visualisierung und Interaktionssystem}
 
-Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der Mensch-Maschine-Interaktion, da sie die Schnittstelle zwischen Benutzer und Roboter darstellen. Ziel ist es, Informationen klar und verständlich darzustellen und gleichzeitig eine intuitive Steuerung zu ermöglichen. Dies umfasst sowohl die Hardware (z. B. Displays, Touchscreens) als auch die Software (z. B. grafische Benutzeroberflächen und Interaktionslogik).
-
-\subparagraph{Display-Technologien} Moderne HMI-Systeme nutzen verschiedene Display-Technologien wie LCD, OLED oder TFT (WIP SHORTS EXPLAINED?), die sich in Auflösung, Energieverbrauch und Robustheit unterscheiden. Für den Messeroboter bietet ein kompaktes Touch-Display den Vorteil, mehrere Funktionen auf einer Oberfläche zu integrieren, wie die Auswahl von Betriebsmodi (\enquote{Selfie Mode}, \enquote{Debugging Mode}) oder die Anzeige von Statusinformationen. Die Wahl des Displays hängt von Faktoren wie Lesbarkeit, Energieeffizienz und Umgebungsbedingungen ab. \autocite{ISO.9241303}
-
-\subparagraph{Grafische Benutzeroberflächen (GUI)} Die Softwareseite der HMI wird durch grafische Benutzeroberflächen realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Frameworks wie \emph{Qt} oder \emph{LVGL} sind weit verbreitet, da sie plattformunabhängig und ressourcenschonend sind. \autocite{Qt.2024} \autocite{LVGL.2024}
-
-\subparagraph{Kommunikationsschnittstellen} Für die Verbindung zwischen GUI und Robotersteuerung werden häufig Protokolle wie \emph{MQTT}, \emph{WebSocket} oder serielle Schnittstellen eingesetzt. Diese gewährleisten eine zuverlässige Datenübertragung und ermöglichen Echtzeit-Feedback, was für sicherheitskritische Anwendungen wie den Messeroboter essenziell ist. \autocite{MQTT.2024}
+Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der Mensch-Maschine-Interaktion, da sie die Schnittstelle zwischen Benutzer und Roboter darstellen. Ziel ist es, Informationen klar und verständlich darzustellen und gleichzeitig eine intuitive Steuerung zu ermöglichen. Dies umfasst sowohl die Hardware (z. B. Displays, Touchscreens) als auch die Software (z. B. grafische Benutzeroberflächen und Interaktionslogik). Die Softwareseite der HMI wird durch GUI realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Frameworks wie \emph{Qt} oder \emph{LVGL} sind weit verbreitet, da sie plattformunabhängig und ressourcenschonend sind. \autocite{Qt.2024} \autocite{LVGL.2024}
 
 \section{Projekt \& Systems Engineering Methodik}
 
