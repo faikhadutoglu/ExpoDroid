@@ -376,9 +376,13 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 \clearpage
 
 \section{Interaktionsdesign}
-Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
-Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige grafische Benutzeroberfläche (GUI) bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
 
+Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher ferfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
+
+Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
+
+
+Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige grafische Benutzeroberfläche (GUI) bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[font=\sffamily]
@@ -391,22 +395,23 @@ Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da die
 		\definecolor{swPurple}{RGB}{230,210,250}
 		\definecolor{gpioYellow}{RGB}{250,240,180}
 		\definecolor{boxGray}{RGB}{235,235,235}
+		\definecolor{audioPink}{RGB}{255,210,230} % NEU: Farbe für USB-Audio
 		
 		% ---------- Knoten als einfache Rechtecke ----------
 		% Netzteil
 		\draw[fill=boxGray, thick] (0,0) rectangle +(4,1.5);
 		\node[anchor=west] at (0.2,1.15) {\textbf{Netzteil}};
-		\node[anchor=west] at (0.2,0.6) {5\,V / 5\,A (USB‑C)};
+		\node[anchor=west] at (0.2,0.6) {5\,V / 5\,A (USB-C)};
 		
 		% Raspberry Pi 5
 		\draw[fill=piBlue, thick] (6,0) rectangle +(5,2);
 		\node[anchor=west] at (6.2,1.6) {\textbf{Raspberry Pi 5}};
-		\node[anchor=west] at (6,1.05) {USB‑C (Power In), USB 3.0};
-		\node[anchor=west] at (6,0.55) {2$\times$ micro‑HDMI};
+		\node[anchor=west] at (6,1.05) {USB-C (Power In), USB 3.0};
+		\node[anchor=west] at (6,0.55) {2$\times$ micro-HDMI};
 		
 		% HDMI-Display
 		\draw[fill=dispGreen, thick] (13,0) rectangle +(5,2);
-		\node[anchor=west] at (13.2,1.6) {\textbf{HDMI‑Display}};
+		\node[anchor=west] at (13.2,1.6) {\textbf{HDMI-Display}};
 		\node[anchor=west] at (13.2,1.05) {Video/Audio via HDMI};
 		\node[anchor=west] at (13.2,0.55) {Strom über USB (5\,V)};
 		
@@ -415,16 +420,21 @@ Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da die
 		\node[anchor=west] at (8.7,5.4) {\textbf{Logitech Brio 500}};
 		\node[anchor=west] at (8.7,4.9) {USB 3.0 (UVC)};
 		
+		% NEU: USB-Audio (Soundkarte/Headset)
+		\draw[fill=audioPink, thick] (3.5,4) rectangle +(4,1.7);
+		\node[anchor=west] at (3.7,5.4) {\textbf{USB-Audio}};
+		\node[anchor=west] at (3.7,4.9) {USB 2.0/3.0 (UAC)};
+		
 		% Software-Block
 		\draw[fill=swPurple, thick] (6,-3) rectangle +(5,2);
-		\node[anchor=west] at (6.2,-1.2) {\textbf{Python‑Anwendung}};
+		\node[anchor=west] at (6.2,-1.2) {\textbf{Python-Anwendung}};
 		\node[anchor=west] at (6,-1.8) {GUI: Tkinter / PyQt / Kivy};
 		\node[anchor=west] at (6,-2.3) {Bildverarbeitung: OpenCV};
 		
-		% Optionale GPIO-Peripherie
-		%	\draw[fill=gpioYellow, thick] (13,-3) rectangle +(5,2);
-		%	\node[anchor=west] at (13.2,-1.1) {\textbf{Optionale GPIO‑Peripherie}};
-		%	\node[anchor=west] at (13.2,-1.6) {Taster / LED / Sensoren};
+		% Optionale GPIO-Peripherie (auskommentiert)
+		% \draw[fill=gpioYellow, thick] (13,-3) rectangle +(5,2);
+		% \node[anchor=west] at (13.2,-1.1) {\textbf{Optionale GPIO-Peripherie}};
+		% \node[anchor=west] at (13.2,-1.6) {Taster / LED / Sensoren};
 		
 		% ---------- Verbindungen (nur einfache Linien und Pfeile) ----------
 		% Netzteil -> Pi (Power)
@@ -439,27 +449,31 @@ Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da die
 		\draw[thick,->] (9,2) -- (9,4);
 		\node[anchor=west] at (9.1,3.1) {USB 3.0};
 		
-		% Pi -> Display (USB‑Power)
+		% Pi -> Display (USB-Power)
 		\draw[thick,->] (11,0.6) -- (13,0.6);
 		\node[anchor=north] at (12,0.5) {USB 5\,V};
 		
-		% Pi -> GPIO-Peripherie
-		%	\draw[thick,->] (11,-2) -- (13,-2);
-		%	\node[anchor=north] at (12,-2.1) {HDMI};
+		% NEU: Pi -> USB-Audio (USB)
+		\draw[thick,->] (7.5,2) -- (7.5,4); % trifft die rechte Kante des USB-Audio-Blocks
+		\node[anchor=west] at (7,3.1) {USB (Audio)};
 		
 		% Software-Datenflüsse (gestrichelt)
 		\draw[thick,dashed,->] (8.5,-1) -- (8.5,0);       % Python <-> Pi
 		\node[anchor=east] at (10,-0.75) {Frames/Events};
 		
 		\draw[thick,dashed,->] (11,-2.5) -- (15,-0.1);    % Python -> Display
-		%	\node[anchor=west] at (12.5,-1.6) {Fenster/Canvas};
+		% \node[anchor=west] at (12.5,-1.6) {Fenster/Canvas};
 		
-		\draw[thick,dashed,->] (10.5,-0.95) -- (10.5,4);     % Python -> Kamera (Stream)
-		%	\node[anchor=west] at (10.6,) {Videostream};
+		\draw[thick,dashed,->] (10.5,-0.95) -- (10.5,4);  % Python -> Kamera (Stream)
+		% \node[anchor=west] at (10.6,) {Videostream};
+		
+		% NEU: Python -> USB-Audio (Audio I/O)
+		\draw[thick,dashed,->] (7.5,-1.0) -- (5.5,4.0);
+		\node[anchor=east] at (6.3,1.7) {Audio I/O};
 		
 		% ---------- Legende ----------
 		\draw[thick] (0,-4.2) -- (2,-4.2);
-		\node[anchor=west] at (2.1,-4.2) {Hardware‑Verbindung};
+		\node[anchor=west] at (2.1,-4.2) {Hardware-Verbindung};
 		
 		\draw[thick,dashed] (0,-4.7) -- (2,-4.7);
 		\node[anchor=west] at (2.1,-4.7) {Software-/Datenfluss};
@@ -467,7 +481,7 @@ Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da die
 		\node[anchor=west] at (0,-5.3) {\textbf{Hinweis:} Je nach Leistungsbedarf kann das Display ein eigenes Netzteil benötigen.};
 		
 	\end{tikzpicture}
-	\caption{Anschlussplan Raspberry Pi}
+	\caption{Anschlussplan Raspberry Pi (inkl. USB-Audio).}
 	\label{fig:anschlussschema_rpi5}
 \end{figure}
 \newpage
@@ -503,6 +517,7 @@ Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. 
 
 
 \subsection{Augen-Animation und Emotionsdarstellung \textcolor{blue}{Angus}}
+\textcolor{blue}{Kann ich den Teil von dir noch übernehmen? LG Simon}
 
 Ein zentrales Ziel des Roboters ist es, auf Messebesucher freundlich, zugänglich und sympathisch zu wirken. Um diese Wirkung gezielt zu unterstützen, soll der Roboter über eine visuelle Darstellung von Augen verfügen. Augen stellen ein starkes Gestaltungselement dar, da sie beim Menschen unmittelbar Aufmerksamkeit erzeugen und häufig als Träger von Emotionen wahrgenommen werden. Wie bereits im vorherigen Abschnitt beschrieben, orientiert sich das Designkonzept dabei lose an bekannten Roboterfiguren mit klar ausgeprägten Augen (Bsp: Wall-E\reg), ohne diese direkt zu kopieren.
 
@@ -550,7 +565,7 @@ Unter Berücksichtigung von Außenwirkung, Interaktionsmöglichkeiten, technisch
 
 		
 \subsection{Benutzerinteraktion}
-
+Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine direkte Eingabe ermöglicht. Zusätzlich soll eine Remote-Steuerung über das lokale Netzwerk realisiert werden. Hierfür sind Schnittstellen wie SSH für Kommandozeilenbefehle sowie VNC für die grafische Oberfläche geplant. Hinzu kommt eine Möglichkeit Ton über USB mit Hilfe eines Lautsprechers abzuspielen. Dies ist in Abbildung \ref{fig:anschlussschema_rpi5} zu sehen.
 
 \textcolor{red}{Simon}?
 

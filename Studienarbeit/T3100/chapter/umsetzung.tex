@@ -223,17 +223,213 @@ Abschließend steuert die Logik die H-Brücken an. Da Gleichstrommotoren für di
 
 
 \section{Display-Programmierung}
-\textcolor{red}{Simon}
+Für die Display-Programmierung wird ein Raspberry Pi 5 verwendet, wie im Vorgehen beschrieben. Dieser Einplatinencomputer eignet sich aufgrund seiner umfangreichen Schnittstellen, die in Abbildung \ref{fig:Aufbau RP5} dargestellt sind. 
+
+Die Verkabelung und Datenflüsse sind in Abbildung \ref{fig:anschlussschema_rpi5}
+Die gewählte Variante mit 8,GB RAM bietet ausreichend Rechenleistung, um neben der Display-Ansteuerung auch komplexere Aufgaben wie Objektverfolgung oder die Integration einfacher KI-Modelle zu ermöglichen.
+Der Raspberry Pi 5 nutzt das Betriebssystem Raspberry Pi OS, eine auf Debian basierende Linux-Distribution, die speziell für den Raspberry Pi optimiert ist. Ein wesentlicher Vorteil dieser Plattform ist die integrierte grafische Benutzeroberfläche (GUI), die sowohl die Entwicklung als auch die Bedienung erleichtert. Dies ermöglicht nicht nur eine komfortable Programmierung, sondern auch eine einfache Handhabung durch Anwender ohne tiefgehende Linux-Kenntnisse. So können grundlegende Aufgaben wie das Starten des Systems oder die Fehlerdiagnose direkt über die grafische Oberfläche erfolgen.
+
+
+Die HDMI- bzw. Micro-HDMI-Schnittstellen des Raspberry Pi 5 ermöglichen den Anschluss handelsüblicher Displays. Dadurch kann eine flexible und kostengünstige Lösung für die visuelle Ausgabe realisiert werden, ohne auf proprietäre Hardware angewiesen zu sein.
+
+Für die Programmierung des Displays wird die Programmiersprache Python eingesetzt. Python bietet aufgrund ihrer umfangreichen Bibliotheken eine effiziente Möglichkeit zur Umsetzung grafischer und interaktiver Inhalte. Insbesondere die Bibliothek OpenCV ermöglicht die Verarbeitung von Kamerabildern, beispielsweise zur Realisierung von Augenbewegungen oder anderen bildbasierten Animationen. Für die Darstellung von grafischen Elementen und Animationen können Bibliotheken wie PyPlot und Pygame verwendet werden, die eine einfache Erstellung von visuellen Komponenten und dynamischen Effekten erlauben. Ein weiterer Vorteil von Python liegt in der hohen Verständlichkeit und der klaren Syntax, wodurch die Wartung und Fehlerbehebung auch für Anwender ohne tiefgehende Informatikkenntnisse erleichtert wird. Dies trägt zur langfristigen Nutzbarkeit und Erweiterbarkeit des Systems bei.
 
 \subsection{Animations-Engine für Augen}
-\textcolor{red}{Simon}
+Für die Animations Engine werden die Biblitoheken OpenCV, Pygame und der Kamerainput der Brio 500 Kamera verwendet. Auch dies kann man in Abbildung \ref{fig:anschlussschema_rpi5} erkennen. 
+
+Allgemewin soll die Grundanimation wie im Vorgehen schon erwähnt und in Abbildung \ref{fig:augenanimation} zu sehen, eine einfache Animation basierend auf zwei Kreisen mit beweglichem Punkt in der Mitte.
+Hier nochmal eine Grafik dazu:
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[font=\sffamily, scale=1.0]
+		% Einfache Stile (nur Standard-TikZ)
+		\tikzset{
+			eye/.style={draw, thick, fill=white},
+			iris/.style={draw, thick, fill=blue!20},
+			pupil/.style={draw, thick, fill=black},
+			boundary/.style={draw, dashed, gray!70, thick}
+		}
+		
+		% Parameter (direkt gesetzt, ohne Rechenbibliotheken)
+		\def\EyeR{2.0}      % Augenradius (Sklera)
+		\def\IrisR{1.0}     % Irisradius
+		\def\PupilR{0.45}   % Pupillenradius
+		\def\MaxBound{0.65} % Begrenzungsfaktor relativ zur Iris
+		
+		% Augen-Zentren
+		\coordinate (L) at (0,0);
+		\coordinate (R) at (5,0);
+		
+		% Beispiel-Blickrichtung (direkte Verschiebung, ohne Berechnung)
+		% Werte in etwa: dx, dy \in [-IrisR*MaxBound, IrisR*MaxBound]
+		\def\mx{0.65}  % Verschiebung x
+		\def\my{0.30}  % Verschiebung y
+		
+		% LINKES AUGE
+		\draw[eye] (L) circle (\EyeR);                  % Sklera
+		\draw[iris] (L) circle (\IrisR);                % Iris
+		\draw[boundary] (L) circle (\MaxBound*\IrisR);  % Bewegungsgrenze
+		\path (L) ++(\mx,\my) coordinate (LP);          % Pupillenposition (verschoben)
+		\draw[pupil] (LP) circle (\PupilR);             % Pupille
+		
+		% RECHTES AUGE
+		\draw[eye] (R) circle (\EyeR);
+		\draw[iris] (R) circle (\IrisR);
+		\draw[boundary] (R) circle (\MaxBound*\IrisR);
+		\path (R) ++(\mx,\my) coordinate (RP);
+		\draw[pupil] (RP) circle (\PupilR);
+		
+		% Einfache Beschriftungen (ohne calc)
+		\node[font=\footnotesize] at (0,2.6)  {Linkes Auge};
+		\node[font=\footnotesize] at (5,2.6)  {Rechtes Auge};
+		\node[font=\footnotesize, align=center] at (0,-2.9)
+		{Bewegungsgrenze \\ (\textit{MaxBound} \(\cdot\) Irisradius)};
+		
+		% Blickrichtungsvektor (optional, Standard-Pfeil)
+		\draw[->, thick, red!70] (L) -- (LP);
+		\draw[->, thick, red!70] (R) -- (RP);
+	\end{tikzpicture}
+	\caption{Grundanimation mit zwei Augen: Pupillen bewegen sich innerhalb einer begrenzten Zone (abhängig von \textit{MaxBound} und Irisradius) zur Simulation realistischer Augenbewegungen.}
+	\label{fig:augenanimation_plain}
+\end{figure}
+
+
+
+Die Animations-Engine basiert auf einer Kombination aus Bildverarbeitung und grafischer Darstellung. Mithilfe von OpenCV wird die Position eines Objekts im Kamerabild ermittelt. Diese Position wird in eine relative Blickrichtung transformiert und auf die Pupillenbewegung übertragen. Die Pupillen werden innerhalb eines definierten Bereichs verschoben, um eine realistische Augenbewegung zu simulieren. Die grafische Darstellung erfolgt framebasiert mit Python-Bibliotheken wie Pygame, wodurch eine flüssige Animation gewährleistet wird. Zusätzlich können zeitgesteuerte Effekte wie Blinzeln oder Zustandsanzeigen integriert werden.
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[font=\sffamily]
+		% Skalierungsfaktor nur für Nodes/Labels (Pfeile bleiben unskaliert)
+		\def\nodescale{1.7}
+		
+		% Stile (Standard-TikZ)
+		\tikzset{
+			box/.style={draw, rounded corners, thick, fill=blue!7, minimum width=3.6cm, minimum height=0.9cm, align=center},
+			smallbox/.style={draw, rounded corners, thick, fill=green!7, minimum width=3.4cm, minimum height=0.8cm, align=center},
+			io/.style={draw, thick, fill=orange!15, rounded corners, minimum width=3.2cm, minimum height=0.8cm, align=center}
+		}
+		
+		% ---------------------------
+		% Nodes + Labels (größer)
+		% ---------------------------
+		\begin{scope}[transform shape, scale=\nodescale]
+			% Vertikale Hauptkette
+			\node[io]   (cam)  at (0,  0.0) {Brio 500\\{\scriptsize RGB-Stream}};
+			\node[box]  (cv)   at (0, -1.6) {OpenCV\\{\scriptsize Erkennung \& Tracking}};
+			\node[box]  (map)  at (0, -3.2) {Mapping \& Filter\\{\scriptsize Normalisierung, Clamping}};
+			\node[box]  (pg)   at (0, -4.8) {Pygame Renderer\\{\scriptsize Frame-Zeichnung}};
+			\node[io]   (disp) at (0, -6.4) {Display/Panel\\{\scriptsize Augenanzeige}};
+			
+			% Seitliche Nebenpfade
+			\node[smallbox] (fx)  at (-3.6, -3.2) {Effekte \& Zustände\\{\scriptsize Blinzeln, Status}};
+			\node[smallbox] (tim) at ( 3.6, -4.8) {Timing \& Events\\{\scriptsize FPS, Timer, Loop}};
+			
+			% Kurze Hinweise (als Inhalt)
+			\node at (0,  0.9) {{\scriptsize USB, Auflösung, FPS}};
+			\node at (0, -0.5) {{\scriptsize Rauschen/Stabilität}};
+			\node at (0, -2.1) {{\scriptsize Begrenzter Pupillenradius}};
+			\node at (0, -5.7) {{\scriptsize Double Buffering}};
+		\end{scope}
+		
+		% ---------------------------
+		% Pfeile (NICHT skaliert)
+		% ---------------------------
+		\draw[->, thick] (cam) -- (cv);
+		\draw[->, thick] (cv)  -- (map);
+		\draw[->, thick] (map) -- (pg);
+		\draw[->, thick] (pg)  -- (disp);
+		
+		\draw[->, thick] (fx.east)  -- (map.west);
+		\draw[->, thick] (tim.west) -- (pg.east);
+	\end{tikzpicture}
+	\caption{Vertikale, kompakte Pipeline der Animations-Engine: Kamera \(\rightarrow\) OpenCV \(\rightarrow\) Mapping/Filter \(\rightarrow\) Pygame \(\rightarrow\) Anzeige. Effekte und Timing sind seitlich angebunden.}
+	\label{fig:animations_pipeline_vertical_plain}
+\end{figure}
+\newpage
+
 \subsection{Benutzerschnittstelle}
-Wie aus der obigen Schnittstellenbeschreibung zu lesen \ref{fig:anschlussschema_rpi5}, ergibt sich, dass für die Benutzerschnittstellen Hardwareseitig erst einmal die Kamera zu nennen ist, da diese mit zum Beispiel Objekttracking eine direkte Benutzerschnittstelle ist. Dazu bietet das Display in der aktuellen Konfiguration ein Touchdisplay, welches den Raspberry Pi 5 mit Benutzereingaben füttern kann. 
+Die Benutzerschnittstelle des Roboters ist ein zentraler Bestandteil für die Interaktion zwischen Benutzer und System. Sie umfasst sowohl lokale Hardware-Komponenten als auch Remote-Zugriffsmöglichkeiten. Im Folgenden werden die einzelnen Schnittstellen ausführlich beschrieben:
 
-Hinzu kommt die Möglichkeit den Raspberry Pi über einen SSH oder VNC Client. Hierbei wird der HDMI Ausgang, welcher auch auf dem Display angezeigt wird remote auf ein anderes internetfähiges Gerät mit entsprechender Software gespiegelt. 
+\begin{itemize}
+	\item \textbf{Kamera (Logitech Brio 500):} 
+	Die Kamera dient nicht nur zur Bildaufnahme, sondern auch als aktive Schnittstelle für Funktionen wie \textit{Objekterkennung} und \textit{Tracking}. Dadurch kann der Roboter auf Bewegungen oder Positionen reagieren und eine dynamische Interaktion mit dem Benutzer ermöglichen. Dies ist besonders für Anwendungen wie Blickrichtungssteuerung oder Gestenerkennung relevant.
+	
+	\item \textbf{Touchdisplay:} 
+	Das verbaute HDMI-Display ist in der aktuellen Konfiguration als \textit{Touchscreen} ausgeführt. Es erlaubt direkte Eingaben wie Menünavigation, Starten von Funktionen oder Einstellen von Parametern. Der große Vorteil liegt in der intuitiven Bedienung ohne zusätzliche Peripherie wie Maus oder Tastatur. Für den Messebetrieb ist dies besonders praktisch, da Besucher direkt mit dem Roboter interagieren können.
+	
+	\item \textbf{Audioausgabe über USB-Lautsprecher:} 
+	Ein externer USB-Lautsprecher ist integriert, um akustisches Feedback zu geben. Dies ermöglicht:
+	\begin{itemize}
+		\item Wiedergabe von Statusmeldungen (z.\,B. „System bereit“).
+		\item Akustische Hinweise bei Benutzeraktionen.
+		\item Optionale Sprachinteraktion oder Musik für Präsentationen.
+	\end{itemize}
+	Vorteile:
+	\begin{itemize}
+		\item Erhöhte Benutzerfreundlichkeit durch multisensorische Rückmeldung.
+		\item Bessere Wahrnehmung in lauten Umgebungen (z.\,B. Messe).
+		\item Möglichkeit zur Erweiterung um Sprachsteuerung.
+	\end{itemize}
+	
+	\item \textbf{Remote-Zugriff (SSH / VNC):} 
+	Für die Fernsteuerung des Raspberry Pi stehen zwei Hauptmethoden zur Verfügung:
+	\begin{itemize}
+		\item \textbf{SSH (Secure Shell):} 
+		SSH ermöglicht eine sichere, textbasierte Verbindung zum Raspberry Pi. Damit können Konfigurationen vorgenommen, Programme gestartet oder Diagnosen durchgeführt werden. SSH ist ressourcenschonend und benötigt nur geringe Bandbreite. Es eignet sich ideal für Wartung und schnelle Eingriffe.
+		
+		\item \textbf{VNC (Virtual Network Computing):} 
+		VNC erlaubt die Spiegelung des HDMI-Ausgangs auf ein anderes Gerät (Laptop, Tablet, Smartphone). Dadurch kann die grafische Oberfläche des Raspberry Pi remote bedient werden, als säße man direkt davor. VNC kann sogar als \textit{zweiter Desktop} genutzt werden, was zusätzliche Flexibilität für Präsentationen oder Messen bietet.
+	\end{itemize}
+	
+	\textbf{Vorteile des Remote-Zugriffs:}
+	\begin{itemize}
+		\item Permanente Überwachung des Systems während des Einsatzes (z.\,B. auf Messen).
+		\item Zugriff auf alle Funktionen ohne physische Nähe zum Roboter.
+		\item Zusätzliche Features wie Fernauslösen der Kamera, Live-Streaming oder Upload von Medien.
+		\item Möglichkeit zur schnellen Fehlerbehebung und Software-Updates.
+	\end{itemize}
+	
+	\textbf{Nachteile:}
+	\begin{itemize}
+		\item Abhängigkeit von stabiler Netzwerkverbindung.
+		\item Potenzielle Sicherheitsrisiken (erfordert Authentifizierung und ggf. VPN).
+		\item Höhere Latenz bei grafischen Anwendungen im Vergleich zur lokalen Bedienung.
+	\end{itemize}
+\end{itemize}
 
-
-
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[font=\sffamily, scale=1.0]
+		\tikzset{
+			block/.style={draw, thick, rounded corners, fill=blue!10, minimum width=3.5cm, minimum height=1cm, align=center},
+			io/.style={draw, thick, fill=orange!15, rounded corners, minimum width=3.2cm, minimum height=0.8cm, align=center}
+		}
+		
+		% Zentrale Einheit
+		\node[block] (rpi) at (0,0) {Raspberry Pi 5};
+		
+		% Direkte Schnittstellen
+		\node[io] (cam) at (0,2.5) {Kamera\\{\scriptsize Objekterkennung}};
+		\node[io] (touch) at (-4,-1.5) {Touchdisplay\\{\scriptsize Lokale Eingabe}};
+		\node[io] (audio) at (4,-1.5) {USB-Lautsprecher\\{\scriptsize Audioausgabe}};
+		
+		% Remote Schnittstellen
+		\node[io] (ssh) at (-4,3.5) {SSH / VNC\\{\scriptsize Remote-Steuerung}};
+		\node[io] (web) at (4,3.5) {Web-Interface\\{\scriptsize Browser/App}};
+		
+		% Pfeile
+		\draw[->, thick] (cam) -- (rpi);
+		\draw[->, thick] (touch) -- (rpi);
+		\draw[->, thick] (audio) -- (rpi);
+		\draw[->, thick] (ssh) -- (rpi);
+		\draw[->, thick] (web) -- (rpi);
+		
+	\end{tikzpicture}
+	\caption{Benutzerschnittstellen des Roboters: Kamera, Touchdisplay und USB-Audio lokal; SSH/VNC und Web-Interface für Remote-Zugriff.}
+	\label{fig:benutzerschnittstelle}
+\end{figure}
+\newpage
 
 \section{Systemintegration und Test \textcolor{blue}{Angus }}
 \textcolor{red}{Hai Nam liest Korrektur, schaut nach Ergänzungen!!}
