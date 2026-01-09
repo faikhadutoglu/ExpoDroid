@@ -537,7 +537,7 @@ Neber den Motoren für den Antrieb wertden auch welche für die Bewegung des Kop
 Der Roboter soll sich mit einer Fernbedienung (über WLAN,Funk?) steuern lassen. Dafür wird ein Microcomputer benötigt welcher die Signale der Fernbedinung empfängt und die Motoren ansteuert
 
 
-\subsubsection{Microcomputer Hühere Anwendungen \textcolor{red}{Name ändern}}
+\subsubsection{Microcomputer höhere Anwendungen \textcolor{red}{Name ändern!}}
 Der ESP32, welcher für die Ansteuerung der Motoren und für Kommunikation mit der Fernbedienung genutzt werden soll istz nicht in der Lage ein größeres Display zu ...? Daher muss ein geeignete leistungsstarke alternative gesucht werden. Die neben Display auch Kamera und Audioausgabe übernimmt...
 
 \subsubsection{Energieversorgung}
@@ -558,13 +558,17 @@ Powerbank
 	\label{fig:Konstruktions_Plan}
 \end{figure}
 
-Die Abbildung \ref{fig:Konstruktions_Plan} zeigt das Konstruktionskonzept des Messeroboters in der Frontsicht. Im oberen Bereich befindet sich das Display, das als zentrale Schnittstelle für die HMI dient. Direkt darunter ist die Kamera positioniert, die für die visuelle Erfassung der Umgebung verantwortlich ist. Die Steuerung des Systems erfolgt über den Raspberry Pi, der als Hauptrechner fungiert und die Datenverarbeitung übernimmt. Ergänzend dazu ist das ESP32-Modul integriert, das für drahtlose Kommunikation und zusätzliche Steuerungsfunktionen genutzt wird.
+Die Abbildung \ref{fig:Konstruktions_Plan} zeigt das funktionale Blockschaltbild der elektronischen Architektur des Messeroboters sowie die grobe Anordnung der zentralen elektronischen Komponenten. Die Darstellung dient der qualitativen Übersicht über die Systemstruktur und die Zusammenhänge zwischen den einzelnen Baugruppen.
 
-Zur Energieversorgung sind zwei separate Akkus vorgesehen, die unterschiedliche Komponenten versorgen, wobei Akku$_2$ eine Powerbank bzw. ein mobiler Ersatzakku ist. Die Motorsteuerung erfolgt über zwei Motortreiber, die die Antriebe der Räder regulieren. Insgesamt sind fünf Motoren verbaut: Zwei Hauptantriebsmotoren M$_1$ und M$_2$ für die Bewegung, zwei zusätzliche Motoren M$_3$ und M$_4$ für die Steuerung der Arme bzw. zusätzlichen Erweiterungen sowie ein weiterer Motor M$_5$ zum Rotieren der Kopfkomponente.
+Im Kopf des Roboters sind das Display, die Kamera sowie die Audioausgabe integriert. Das Display fungiert als zentrale Mensch-Maschine-Schnittstelle (HMI) und ermöglicht die visuelle Interaktion mit dem Roboter. Die darunter angeordnete Kamera dient der visuellen Erfassung der Umgebung. Ergänzend dazu ermöglicht die Audioausgabe eine akustische Rückmeldung. Diese Komponenten werden vom im Unterkörper verbauten Raspberry Pi angesteuert.
 
-Die Anordnung der Komponenten verdeutlicht die modulare Struktur des Systems, die eine einfache Erweiterung und Wartung ermöglicht. Falls gebraucht, zeigt die Darstellung ebenfalls potenzielle Optimierungsmöglichkeiten hinsichtlich Platzbedarf und Kabelmanagement, um die Effizienz und Zuverlässigkeit des Roboters im Messebetrieb zu erhöhen.
+Die Ansteuerung der Motoren erfolgt über den ESP32, welcher die Steuerbefehle von der Fernbedienung empfängt und verarbeitet. Die beiden Hauptantriebsmotoren M$_1$ und M$_2$, die für die Fortbewegung des Roboters verantwortlich sind, werden jeweils über einen Motortreiber angesteuert. Zusätzlich sind die Motoren M$_3$ und M$_4$ für die Bewegung der angedeuteten Arme vorgesehen. Ein weiterer Motor M$_5$ ermöglicht die Rotation der Kopfkomponente.
 
+Zur Energieversorgung sind zwei separate Energiequellen vorgesehen, die unterschiedliche Systemkomponenten versorgen. Akku$_1$ ist als Lithium-Polymer-Akku (LiPo) ausgeführt und zeichnet sich durch eine hohe Energiedichte sowie eine hohe Leistungsabgabe (\textcolor{red}{Faik, Simon wie viel nochmal?}) aus. Dieser Akku wird zur Versorgung der leistungsintensiven Hauptantriebsmotoren M$_1$ und M$_2$ eingesetzt. 
 
+Ein zweiter Akku (Akku$_2$), ausgeführt als Powerbank beziehungsweise mobiler Ersatzakku, dient der Versorgung der Steuerelektronik, insbesondere des Raspberry Pi und des ESP32. Die integrierte Spannungsversorgung der Mikrocontroller ist ausreichend dimensioniert, um die leistungsschwächeren Motoren M$_3$, M$_4$ und M$_5$ sowie die Peripheriekomponenten wie Display, Kamera und Audioausgabe zu betreiben.
+
+Die klare Strukturierung und durchdachte Planung der elektronischen Architektur unterstützt die Aufteilung abhängiger Arbeitspakete und erleichtert sowohl die Verkabelung als auch die Wartung des Systems. 
 
 
 \textcolor{red}{Angus}? 
