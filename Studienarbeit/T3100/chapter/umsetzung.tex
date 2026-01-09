@@ -485,7 +485,18 @@ Im Anschluss an die durchgeführten Subsystemtests wurden die beobachteten Ergeb
 
 Die Tests zeigten, dass sich das Fahrzeug in der aktuellen Umsetzung intuitiv und leicht verständlich steuern lässt. Das Fahrverhalten wird insgesamt als flüssig und stabil wahrgenommen. Einen wesentlichen Beitrag dazu leistet das einzelne, frei bewegliche Vorderrad, das eine sanfte und kontinuierliche Richtungsänderung ermöglicht. Auch Richtungswechsel, bei denen sich das Vorderrad um bis zu 180° neu ausrichten muss, erfolgen ohne abrupte Bewegungen. Dies ist unter anderem auf die vergleichsweise große Dimensionierung des Rades mit einem Durchmesser von \SI{10}{\centi\meter} zurückzuführen.
 
-Auch auf glatten Untergründen, wie sie typischerweise in Messehallen vorkommen, konnte sich das Fahrwerk bewähren. Die Lastverteilung auf drei Räder führt zu einem erhöhten Anpressdruck pro Rad, was sich positiv auf die Haftung auswirkt und das Auftreten von Schlupf reduziert. Gleichzeitig zeigte sich jedoch, dass die geometrische Anordnung der drei Räder welches kein ideales gleichseitiges Dreieck bildet zu einer schlechteren Kippstabilität führt. Der Abstand zwischen dem vorderen Rad und den beiden hinteren Rädern eher gleichschenklig, was potenziell zu einer ungleichmäßigen Belastung und zu Stabilitätsnachteilen führen kann. Dieser Aspekt stellt einen Ansatzpunkt für eine mögliche geometrische Optimierung des Fahrwerks dar.
+\begin{figure}[hbt]
+	\centering
+	\fbox{%
+		\input{images/Räder_Anordnung_Test.tex}
+	}
+	\caption{Zeigt die aktuelle Anordnung des Frontrades und die Optimierungsmöglichkeit aus der Draufsicht}		
+	\label{fig:Räder_Anordnung_Test}
+\end{figure}
+
+Auch auf glatten Untergründen, wie sie typischerweise in Messehallen vorkommen, konnte sich das Fahrwerk bewähren. Die Lastverteilung auf drei Räder führt offenbar zu einem erhöhten Anpressdruck pro Rad, was sich positiv auf die Haftung auswirkt und das Auftreten von Schlupf reduziert. Gleichzeitig zeigte sich jedoch, dass die geometrische Anordnung der drei Räder welches kein ideales gleichseitiges Dreieck bildet zu einer schlechteren Kippstabilität führt. Der Abstand zwischen dem vorderen Rad und den beiden hinteren Rädern ist kürzer, was offenbar zu einer ungleichmäßigen Belastung und zu Stabilitätsnachteilen führt. Dieser Aspekt stellt einen Ansatzpunkt für eine mögliche geometrische Optimierung des Fahrwerks dar. Dabei müsste Das Vorderrad um den nötigen Abstand weiter nach vorne montiert werden, wie in Abbildung \ref{fig:Räder_Anordnung_Test} dargestellt.
+
+
 
 Während der Testfahrten trat zudem ein sicherheitsrelevantes Problem auf. Durch Erschütterungen lösten sich einzelne elektrische Leitungen von der Steuerungselektronik, was in der Folge zu unkontrollierten Zuständen der Motoren führte. Diese Beobachtung ist insbesondere im Hinblick auf den vorgesehenen Messebetrieb kritisch, da unkontrollierte Bewegungen in Bereichen mit hohem Personenaufkommen ein erhebliches Sicherheitsrisiko darstellen.
 
