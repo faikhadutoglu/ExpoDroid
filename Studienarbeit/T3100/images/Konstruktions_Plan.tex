@@ -1,7 +1,7 @@
 \begin{tikzpicture}[thick, box/.style={
 		draw,				
 		align=center,
-		minimum width=2cm,
+		minimum width=1.48cm,
 		minimum height=0.8cm
 	}
 	]
@@ -20,20 +20,21 @@
 		\draw[] (0,0) rectangle (7,7);
 		%Motoren
 		\draw[] (0,0) rectangle (1.2,1.2);
-		\draw[] (0.6,0.6) circle (0.4) node[align=center] {M};
+		\draw[] (0.6,0.6) circle (0.4) node[align=center] {$\mathrm{M}_1$};
 		
 		\draw[] (5.8,0) rectangle (7,1.2);
-		\draw[] (6.4,0.6) circle (0.4) node[align=center] {M};
+		\draw[] (6.4,0.6) circle (0.4) node[align=center] {$M_2$};
 		
 		
 	
 		
 		
 		
-		
-		\node[box] (rasbe)  at (2,5)  {Raspberry Pi};
-				\node[box] (sys)  at (1,6) {ESP23};
-				\node[box] (sw)   at (3.5,0.6) {Batterie};
+				\node[box] (cam)   at (2.2,8.35) {Kamera};
+				\node[box] (rasbe)  at (3.5,4.5)  {Raspberry Pi};
+				\node[box] (esp)  at (1.5,3.5) {ESP23};
+				\node[box] (bat1)   at (3.5,0.6) {$\mathrm{Akku}_1$};
+				\node[box] (bat2)   at (5.5,3.5) {$\mathrm{Akku}_2$};
 				\node[box]     (M-treL) at (1.5,2) {Motortreiber};
 				\node[box]     (M-treR) at (5.5,2) {Motortreiber};
 		
@@ -43,19 +44,36 @@
 				
 				\draw[<-] (M-treL.east) -- ++ (0.3,0) -- ++ (0,-1);
 				\draw[<-] (M-treR.west) -- ++ (-0.3,0) -- ++ (0,-1);
-%				\draw[->] (int.north)  -- (acc.south);
-
+		
+		\draw[->] (bat2.west) -- (3.5,3.5) --  (rasbe.south);
+		\draw[->] (bat2.west) -- (esp.east);
+		
+		\draw[->] (rasbe.north) -- ++ (0,4);
+		\draw[->] (rasbe.north) -- ++ (0,3.45) -- (cam);
+%		\draw[->] (bat1.north) --  (rasbe.south);
+%		\draw[->] (bat1.north) -- ++ (0,2.5) -- (esp.east);
+		\draw[->] (esp.south) -- (M-treL.north);
+		\draw[->] (esp.south) -- ++ (0,-0.3) -- ++ (4,0) -- (M-treR.north);
+		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (-0.5,0);
+		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (4.5,0);
+		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (1.1,0) -- ++ (0,0.5);
 			
+		%Knotenpunkte
+		\draw[fill=black] (1.5,5.5) circle (0.1);
+		\draw[fill=black] (1.5,2.8) circle (0.1);
+		\draw[fill=black] (2.6,5.5) circle (0.1);
+		\draw[fill=black] (3.5,3.5) circle (0.1);
+		\draw[fill=black] (3.5,8.35) circle (0.1);	
 		
 		\end{scope}
 		
 		\begin{scope}[shift={(0,+5)}] 
 		%Arne
 		\draw[] (0,0) rectangle (1,1);
-		\draw[] (0.5,0.5) circle (0.4) node[align=center] {M};
+		\draw[] (0.5,0.5) circle (0.4) node[align=center] {$M_3$};
 		
 		\draw[] (6,0) rectangle (7,1);
-		\draw[] (6.5,0.5) circle (0.4) node[align=center] {M};
+		\draw[] (6.5,0.5) circle (0.4) node[align=center] {$M_4$};
 				
 				
 		\draw[]
@@ -70,11 +88,14 @@
 		
 		\begin{scope}[shift={(0,0)}] 
 		%	Kopf	♫
-		\draw[] (3.5-0.4,6.5) -- ++ (0,1.2) -- ++ (-2,0) -- ++ (0,2.5) -- ++ (4+0.8,0) -- ++ (0,-2.5) -- ++ (-2,0)-- (3.5+0.4,6.5);
+		\draw[] (3.5-0.4,6) -- ++ (0,1.7) -- ++ (-2,0) -- ++ (0,3.5) -- ++ (4+0.8,0) -- ++ (0,-3.5) -- ++ (-2,0)-- (3.5+0.4,6);
+		
+		\draw[] (3.5-1.4,6) rectangle (3.5-1.4+1,7);
+		\draw[] (3.5-1.4+0.5,6.5) circle (0.4) node[align=center] {$M_5$};
 		
 		%Display
 		\draw[line width=6pt]
-		(1.5,8) rectangle (5.5,9.9)
+		(1.5,9) rectangle (5.5,10.9)
 		node[midway, align=center] {Display};
 	
 	
