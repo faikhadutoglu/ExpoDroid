@@ -523,14 +523,22 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 
 \section{Konstruktionskonzept \textcolor{red}{[Hai Nam]}}
 
-\begin{figure}[hbt]
+\vspace{0.5cm}
+\begin{figure}[H]
 	\centering
-	\fbox{%
+	%\fbox{%
 		\input{images/Konstruktions_Plan.tex}
-	}
-	\caption{Zeigt die aktuelle Anordnung des Frontrades und die Optimierungsmöglichkeit aus der Draufsicht}		
+	%}
+	\vspace{1cm}
+	\caption{Zeigt die aktuelle Anordnung des Frontrades und die Optimierungsmöglichkeit aus der Frontsicht}		
 	\label{fig:Konstruktions_Plan}
 \end{figure}
+
+Die Abbildung \ref{fig:Konstruktions_Plan} zeigt das Konstruktionskonzept des Messeroboters in der Frontsicht. Im oberen Bereich befindet sich das Display, das als zentrale Schnittstelle für die HMI dient. Direkt darunter ist die Kamera positioniert, die für die visuelle Erfassung der Umgebung verantwortlich ist. Die Steuerung des Systems erfolgt über den Raspberry Pi, der als Hauptrechner fungiert und die Datenverarbeitung übernimmt. Ergänzend dazu ist das ESP32-Modul integriert, das für drahtlose Kommunikation und zusätzliche Steuerungsfunktionen genutzt wird.
+
+Zur Energieversorgung sind zwei separate Akkus vorgesehen, die unterschiedliche Komponenten versorgen, wobei Akku$_2$ eine Powerbank bzw. ein mobiler Ersatzakku ist. Die Motorsteuerung erfolgt über zwei Motortreiber, die die Antriebe der Räder regulieren. Insgesamt sind fünf Motoren verbaut: Zwei Hauptantriebsmotoren M$_1$ und M$_2$ für die Bewegung, zwei zusätzliche Motoren M$_3$ und M$_4$ für die Steuerung der Arme bzw. zusätzlichen Erweiterungen sowie ein weiterer Motor M$_5$ zum Rotieren der Kopfkomponente.
+
+Die Anordnung der Komponenten verdeutlicht die modulare Struktur des Systems, die eine einfache Erweiterung und Wartung ermöglicht. Falls gebraucht, zeigt die Darstellung ebenfalls potenzielle Optimierungsmöglichkeiten hinsichtlich Platzbedarf und Kabelmanagement, um die Effizienz und Zuverlässigkeit des Roboters im Messebetrieb zu erhöhen.
 
 \subsection{Komponentenauswahl \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam}
