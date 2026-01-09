@@ -325,7 +325,7 @@ Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, a
 Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
 
 
-Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige grafische Benutzeroberfläche (GUI) bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
+Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige GUI bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[font=\sffamily]
@@ -454,12 +454,13 @@ Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. 
 		\draw[<->, thick] (3.5,0.5) -- (9.2,0.5) node[midway, above] {USB (Power + Touch-Daten)};
 		
 	\end{tikzpicture}
+	\vspace{0.7cm}
 	\caption{Displayinteraktion: HDMI für Bildausgabe, USB für Stromversorgung und Touch-Rückmeldung.}
 	\label{fig:display_interaktion}
 \end{figure}
 
 
-\subsection{Augen-Animation und Emotionsdarstellung \textcolor{blue}{Angus} \textcolor{red}{[Hai Nam] check Augen}}
+\subsection{Augen-Animation und Emotionsdarstellung \textcolor{blue}{Angus}}
 
 
 Ein zentrales Ziel des Roboters ist es, auf Messebesucher freundlich, zugänglich und sympathisch zu wirken. Um diese Wirkung gezielt zu unterstützen, soll der Roboter über eine visuelle Darstellung von Augen verfügen. Augen stellen ein starkes Gestaltungselement dar, da sie beim Menschen unmittelbar Aufmerksamkeit erzeugen und häufig als Träger von Emotionen wahrgenommen werden. Wie bereits im vorherigen Abschnitt beschrieben, orientiert sich das Designkonzept dabei lose an bekannten Roboterfiguren mit klar ausgeprägten Augen (Bsp: Wall-E\reg), ohne diese direkt zu kopieren.
@@ -475,8 +476,9 @@ Eine weitere Möglichkeit ist die mechanische Nachbildung von Augen, etwa durch 
 \subparagraph{Darstellung der Augen über ein Display}
 Eine weitere und besonders flexible Möglichkeit besteht darin, die Augen beziehungsweise das Gesicht über ein Display darzustellen. Durch animierte Augenbewegungen und wechselnde Gesichtsausdrücke kann der Roboter scheinbar Emotionen darstellen, beispielsweise Neugier, Aufmerksamkeit oder Freude. So entsteht der Eindruck, dass der Roboter seine Umgebung wahrnimmt oder gezielt auf Personen reagiert, etwa indem er Messebesucher „anschaut“. Eine integrierte Kamera wäre in dem Fall zusätzlich nötig um Objekte und Personen zu erkennen.
 
-Ein wesentlicher Vorteil dieser Lösung liegt darin, dass die Umsetzung überwiegend softwareseitig erfolgt und nur geringe zusätzliche mechanische Komplexität erfordert. Dies erhöht die Robustheit und Wartbarkeit des Systems, was insbesondere für den Messebetrieb von Vorteil ist. Darüber hinaus bietet ein Display zusätzliche funktionale Möglichkeiten. Neben der Darstellung von Augen und Gesichtsausdrücken können beispielsweise Informationen über die Hochschule, QR-Codes zu Online-Angeboten oder Status- und Debug-Informationen für das Messepersonal angezeigt werden.
+Ein wesentlicher Vorteil der Darstellung über ein Display liegt darin, dass die Umsetzung überwiegend softwareseitig erfolgt und nur geringe zusätzliche mechanische Komplexität erfordert. Dies erhöht die Robustheit und Wartbarkeit des Systems, was insbesondere für den Messebetrieb von Vorteil ist. Darüber hinaus bietet ein Display zusätzliche funktionale Möglichkeiten. Neben der Darstellung von Augen und Gesichtsausdrücken können beispielsweise Informationen über die Hochschule, QR-Codes zu Online-Angeboten oder Status- und Debug-Informationen für das Messepersonal angezeigt werden.
 
+\vspace{0.7cm}
 \begin{figure}[htb]
 	\centering
 	\fbox{%
@@ -493,6 +495,7 @@ Ein wesentlicher Vorteil dieser Lösung liegt darin, dass die Umsetzung überwie
 			
 		\end{tabular}
 	}
+	\vspace{1cm}
 	\caption{Unterschiedliche Konzepte zur Umsetzung der Augenanimation:
 		(1) angedeutete Augen \cite{staugustinus2025pepper},
 		(2) mechanische Augen \cite{reddit2023animatroniceyes},
@@ -501,9 +504,9 @@ Ein wesentlicher Vorteil dieser Lösung liegt darin, dass die Umsetzung überwie
 	\label{fig:Augen_animation_Konzeptionierung}
 \end{figure}
 
-Unter Berücksichtigung von Außenwirkung, Interaktionsmöglichkeiten, technischem Aufwand und Wartbarkeit erscheint die Darstellung der Augen über ein Display als die geeignetste Lösung für dieses Projekt. Zusätzlich bietet diese Variante ein hohes Maß an Erweiterbarkeit, da Inhalte und Animationen nachträglich softwareseitig angepasst oder erweitert werden können. Damit trägt das Displaykonzept wesentlich dazu bei, dem Roboter eine lebendige und freundliche Ausstrahlung zu verleihen und den Hauptzweck des Systems – das Erzeugen positiver Aufmerksamkeit – effektiv zu unterstützen.
+Unter Berücksichtigung von Außenwirkung, Interaktionsmöglichkeiten, technischem Aufwand und Wartbarkeit erscheint die Darstellung der Augen über ein Display als die geeignetste Lösung für dieses Projekt. Zusätzlich bietet diese Variante ein hohes Maß an Anpassungsfähigkeit und Erweiterbarkeit, da Inhalte und Animationen nachträglich softwareseitig angepasst oder erweitert werden können, was den technischen Aufwand reduziert. Damit trägt das Displaykonzept wesentlich dazu bei, dem Roboter eine lebendige und freundliche Ausstrahlung zu verleihen und den Hauptzweck des Systems, also das Erzeugen positiver Aufmerksamkeit, effektiv zu unterstützen.
 
-HAI NAM: See how to bind it with HMI, GUI?
+Die gewählte Lösung zur Darstellung der Augen über ein Display ist ebenfalls eng mit den Konzepten der HMI und der GUI verknüpft. Das Display fungiert als zentrales Element der Interaktion zwischen dem Roboter und den Messebesuchern, da es bereits erwähnte detaillierte Informationen in einer für den Menschen intuitiv verständlichen Form bereitstellen kann. Durch die Integration einer GUI können nicht nur animierte Augenbewegungen und Gesichtsausdrücke realisiert werden, sondern auch zusätzliche Inhalte wie Statusinformationen oder Hinweise zur Bedienung des Roboters. Dies erweitert die Funktionalität des Systems erheblich und schafft eine flexible Plattform für Kommunikation und Interaktion.
 
 
 
