@@ -521,8 +521,32 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 
 
 
-\section{Konstruktionskonzept \textcolor{red}{[Hai Nam]}}
+\section{Systemarchitektur \textcolor{red}{[Hai Nam]}}
 
+\subsection{Komponentenauswahl \textcolor{red}{[Hai Nam]}}
+\textcolor{red}{Hai Nam}
+
+
+
+\subsubsection{Motoren Antrieb}
+Es werden Motoren für die Fortbewegung des Roboters benötig
+\subsubsection{Weitere Motoren}
+Neber den Motoren für den Antrieb wertden auch welche für die Bewegung des Kopfes als auch der beiden Arme benötigt.
+
+\subsubsection{Microcomputer Motorenansteuerung}
+Der Roboter soll sich mit einer Fernbedienung (über WLAN,Funk?) steuern lassen. Dafür wird ein Microcomputer benötigt welcher die Signale der Fernbedinung empfängt und die Motoren ansteuert
+
+
+\subsubsection{Microcomputer Hühere Anwendungen \textcolor{red}{Name ändern}}
+Der ESP32, welcher für die Ansteuerung der Motoren und für Kommunikation mit der Fernbedienung genutzt werden soll istz nicht in der Lage ein größeres Display zu ...? Daher muss ein geeignete leistungsstarke alternative gesucht werden. Die neben Display auch Kamera und Audioausgabe übernimmt...
+
+\subsubsection{Energieversorgung}
+
+LiPo-Akku
+Powerbank
+
+
+\subsection{Elektronische Architektur}
 \vspace{0.5cm}
 \begin{figure}[H]
 	\centering
@@ -530,7 +554,7 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 		\input{images/Konstruktions_Plan.tex}
 	%}
 	\vspace{1cm}
-	\caption{Zeigt die aktuelle Anordnung des Frontrades und die Optimierungsmöglichkeit aus der Frontsicht}		
+	\caption{Qualitative Darstellung der elektronischen Architektur des Roboters mit allen relevanten Komponenten}		
 	\label{fig:Konstruktions_Plan}
 \end{figure}
 
@@ -540,20 +564,14 @@ Zur Energieversorgung sind zwei separate Akkus vorgesehen, die unterschiedliche 
 
 Die Anordnung der Komponenten verdeutlicht die modulare Struktur des Systems, die eine einfache Erweiterung und Wartung ermöglicht. Falls gebraucht, zeigt die Darstellung ebenfalls potenzielle Optimierungsmöglichkeiten hinsichtlich Platzbedarf und Kabelmanagement, um die Effizienz und Zuverlässigkeit des Roboters im Messebetrieb zu erhöhen.
 
-\subsection{Komponentenauswahl \textcolor{red}{[Hai Nam]}}
-\textcolor{red}{Hai Nam}
 
-\subsection{Elektronische Architektur}
+
+
 \textcolor{red}{Angus}? 
 \subsection{Komponentenintegration \textcolor{red}{[Hai Nam]}}
 \textcolor{red}{Hai Nam}
 
-\begin{figure}[hbt]
-	\centering
-	\input{images/Elektronische_Verbindung.tex}
-	\caption{WIP TBD}		
-	\label{fig:Elektronische_Verbindung}
-\end{figure}
+
 
 \section{Kostenanalyse}
 
