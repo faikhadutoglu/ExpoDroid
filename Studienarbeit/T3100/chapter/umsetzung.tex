@@ -67,7 +67,7 @@ Hardwareseitig besteht das System aus zwei Hauptkomponenten:
 	\item \textbf{Empfänger:} Dieser ist fest auf dem Roboter verbaut und elektrisch direkt mit den GPIO-Pins des Mikrocontrollers verbunden. Er demoduliert das Hochfrequenzsignal und gibt es als PWM-Signale an die Steuereinheit weiter.
 \end{enumerate}
 
-Das Steuerungsschema wurde intuitiv ausgelegt (siehe Mode-2-Konfiguration):
+Das Steuerungsschema wurde intuitiv ausgelegt\footnote{Zusätzlich existiert ein weiterer Kanal zur Steuerung des Kopfes. Da der Kopf jedoch nicht in den Körper integriert wurde, wird darauf nicht näher eingegangen.}:
 \begin{itemize}
 	\item \textbf{Linker Joystick (Y-Achse):} Steuert die translatorische Bewegung. Ein Auslenken nach oben bewirkt eine Vorwärtsfahrt, nach unten eine Rückwärtsfahrt(siehe Abbildung \ref{fig:joystick_pwm}).
 	\item \textbf{Rechter Joystick (X-Achse):} Steuert die rotatorische Bewegung. Eine Auslenkung nach rechts oder links induziert die entsprechende Lenkbewegung durch Differenzialsteuerung der Räder.
@@ -99,7 +99,7 @@ Der implementierte Algorithmus lässt sich in vier logische Hauptphasen untertei
 \subsection{Detaillierte Implementierung\textcolor{brown}{FAIK}}
 
 \subsubsection{Signalerfassung und Kanalzuordnung\textcolor{brown}{FAIK}}
-Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (englisch: Pulse Width Modulation (PWM)), wobei die Information in der Länge des Pulses codiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1000}{\micro\second} und \SI{2000}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
+Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (englisch: Pulse Width Modulation (PWM)), wobei die Information in der Länge des Pulses codiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1100}{\micro\second} und \SI{1900}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
 
 \begin{figure}[h!]
 	\centering
