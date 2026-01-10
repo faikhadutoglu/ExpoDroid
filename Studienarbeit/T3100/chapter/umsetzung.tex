@@ -320,7 +320,7 @@ Die Animations-Engine basiert auf einer Kombination aus Bildverarbeitung und gra
 	\centering
 	\begin{tikzpicture}[font=\sffamily]
 		% Skalierungsfaktor nur für Nodes/Labels (Pfeile bleiben unskaliert)
-		\def\nodescale{1.7}
+		\def\nodescale{1.5}
 		
 		% Stile (Standard-TikZ)
 		\tikzset{
@@ -334,21 +334,21 @@ Die Animations-Engine basiert auf einer Kombination aus Bildverarbeitung und gra
 		% ---------------------------
 		\begin{scope}[transform shape, scale=\nodescale]
 			% Vertikale Hauptkette
-			\node[io]   (cam)  at (0,  0.0) {Brio 500\\{\scriptsize RGB-Stream}};
-			\node[box]  (cv)   at (0, -1.6) {OpenCV\\{\scriptsize Erkennung \& Tracking}};
-			\node[box]  (map)  at (0, -3.2) {Mapping \& Filter\\{\scriptsize Normalisierung, Clamping}};
-			\node[box]  (pg)   at (0, -4.8) {Pygame Renderer\\{\scriptsize Frame-Zeichnung}};
-			\node[io]   (disp) at (0, -6.4) {Display/Panel\\{\scriptsize Augenanzeige}};
+			\node[io]   (cam)  at (-1,  0.0) {Brio 500\\{\scriptsize RGB-Stream}};
+			\node[box]  (cv)   at (-1, -1.6) {OpenCV\\{\scriptsize Erkennung \& Tracking}};
+			\node[box]  (map)  at (-1, -3.2) {Mapping \& Filter\\{\scriptsize Normalisierung, Clamping}};
+			\node[box]  (pg)   at (-1, -4.8) {Pygame Renderer\\{\scriptsize Frame-Zeichnung}};
+			\node[io]   (disp) at (-1, -6.4) {Display/Panel\\{\scriptsize Augenanzeige}};
 			
 			% Seitliche Nebenpfade
-			\node[smallbox] (fx)  at (-3.6, -3.2) {Effekte \& Zustände\\{\scriptsize Blinzeln, Status}};
-			\node[smallbox] (tim) at ( 3.6, -4.8) {Timing \& Events\\{\scriptsize FPS, Timer, Loop}};
+			\node[smallbox] (fx)  at (-5, -3.2) {Effekte \& Zustände\\{\scriptsize Blinzeln, Status}};
+			\node[smallbox] (tim) at ( 3.2, -4.8) {Timing \& Events\\{\scriptsize FPS, Timer, Loop}};
 			
 			% Kurze Hinweise (als Inhalt)
-			\node at (0,  0.9) {{\scriptsize USB, Auflösung, FPS}};
-			\node at (0, -0.5) {{\scriptsize Rauschen/Stabilität}};
-			\node at (0, -2.1) {{\scriptsize Begrenzter Pupillenradius}};
-			\node at (0, -5.7) {{\scriptsize Double Buffering}};
+			\node at (-1,  0.9) {{\scriptsize USB, Auflösung, FPS}};
+			\node at (-1, -0.5) {{\scriptsize Rauschen/Stabilität}};
+			\node at (-1, -2.1) {{\scriptsize Begrenzter Pupillenradius}};
+			\node at (-1, -5.7) {{\scriptsize Double Buffering}};
 		\end{scope}
 		
 		% ---------------------------
@@ -507,7 +507,70 @@ Aus dieser Erkenntnis ergibt sich ein klarer Optimierungsbedarf in der Absicheru
 Die durchgeführte Fehleranalyse verdeutlicht, dass Subsystemtests nicht nur der Funktionsprüfung dienen, sondern wertvolle Erkenntnisse über reale Betriebsbedingungen liefern. Die identifizierten Schwachstellen bilden eine wichtige Grundlage für gezielte technische und konzeptionelle Optimierungen des Systems.
 
 \subsection{Subsystemtests der Augenansteurung über Display und Kamera  \textcolor{blue}{Simon}}
-\subsubsection{Fehleranalyse und Optimierung}
+\subsection{Integrationsstrategie}
+Die Integration erfolgt in mehreren Phasen:
+\begin{itemize}
+	\item \textbf{Phase~1 – Hardware-Basisprüfung:} Einzeltests von Raspberry~Pi~5, Kamera (Logitech Brio~500), HDMI‑Touchdisplay, USB‑Lautsprecher sowie Verkabelung und Stromversorgung.
+	\item \textbf{Phase~2 – Software-Grundlagen:} Installation und Konfiguration der Python‑Anwendung inkl. OpenCV/Pygame sowie Basistests (Starten, einfache Anzeige, Audio‑Testton).
+	\item \textbf{Phase~3 – Modul‑Integration:} Zusammenführung von Kamerastream, Bildverarbeitung (Tracking), Pupillen‑/Augenanimation, Touch‑Eingaben und Audiofeedback.
+	\item \textbf{Phase~4 – Systemtest:} End‑to‑End‑Szenarien (z.\,B. „Besucher vor Kamera \(\rightarrow\) Blickrichtungsanimation \(\rightarrow\) Touch‑Menü \(\rightarrow\) Audiofeedback“).
+	\item \textbf{Phase~5 – Stresstest/Dauerlauf:} Langzeittest unter typischer Last (Animation, Kamerastream, Audiohinweise), Beobachtung von Temperatur, Last und Stabilität.
+\end{itemize}
+
+\subsection{Testumgebung und Aufbau}
+\begin{itemize}
+	\item \textbf{Hardware:} Raspberry~Pi~5, HDMI‑Touchdisplay (Strom via USB), Logitech Brio~500 (USB~3.0/UVC), USB‑Lautsprecher (UAC), Verkabelung (USB‑C Power, HDMI, USB).
+	\item \textbf{Stromversorgung:} Netzteil 5\,V / 5\,A (USB‑C) und \textit{alternativ} Powerbank (mobil).
+	\item \textbf{Software:} Python‑Anwendung mit OpenCV/Pygame, Konfigurationsdateien/Parameter (Auflösung, FPS, Audio‑Volume).
+	\item \textbf{Umgebungsbedingungen:} Labor (kontrolliert) und angestrebte Messebedingungen (Publikumsverkehr, Umgebungsgeräusche, wechselnde Lichtverhältnisse).
+\end{itemize}
+
+\subsection{Testfälle und Akzeptanzkriterien}
+\begin{itemize}
+	\item \textbf{Funktionstests:} Kamera liefert stabile Frames, Touch registriert Eingaben, Audioausgabe ist klar und laut genug, Display zeigt flüssig an.
+	\item \textbf{Integrationstests:} Positions‑/Trackingdaten werden korrekt auf die Augenanimation gemappt.
+	\item \textbf{Systemtests:} End‑zu‑End‑Szenarien laufen ohne Ausfälle; Bedienfluss ist intuitiv; Reaktionszeiten liegen im geforderten Bereich.
+	\item \textbf{Stresstests/Dauerlauf:} Keine Instabilität über mehrere Stunden; Temperaturen bleiben im unkritischen Bereich; Framerate und Eingabelatenz stabil.
+\end{itemize}
+
+\subsection{Beobachtungen und Probleme}
+\textbf{Stromversorgung mit Powerbank:} Während der Tests ist ein Problem bei der Stromversorgung des Raspberry~Pi mit angeschlossener Peripherie (Kamera, Touchdisplay, USB‑Lautsprecher) aufgetreten. Beim Betrieb über eine Powerbank traten \textit{Unterspannungen/Brownouts} und sporadische Neustarts auf.
+\begin{itemize}
+	\item \textbf{Vermutete Ursache:} Kurzfristige Lastspitzen (v.\,a. Kamera/Display) überschreiten die Leistungsabgabe der Powerbank; Spannungsabfall bei Leitungs-/Steckerverlusten.
+	\item \textbf{Wirkung:} Instabiler Betrieb, Aussetzer beim Videostream, Audio‑Knacken, gelegentliche Reboots.
+	\item \textbf{Empfehlung:}
+	\begin{itemize}
+		\item Powerbank/Netzteil mit \(\geq\)5\,V und \(\geq\)5\,A \textit{echter} Dauerlast; ideal mit USB‑PD‑Profilen passend zum Pi~5.
+		\item Kurze, hochwertige Kabel (USB‑C/HDMI/USB), ggf. \(\leq\)0{,}5\,m.
+		\item Option: Separates Netzteil für Display (\emph{Last entkoppeln}).
+		\item Optionaler \emph{Power‑Budget‑Check}: Messung von durchschnittlichem und Peak‑Strom unter realen Szenarien.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Geplante Netzwerktests (SSH/VNC)}
+Die Netzwerktests sind vorgesehen, aber zum aktuellen Zeitpunkt \textbf{noch nicht durchgeführt}. Geplant sind:
+\begin{itemize}
+	\item \textbf{SSH (Secure Shell):}
+	\begin{itemize}
+		\item Verbindungsaufbau im lokalen Netz; Authentifizierung per Schlüssel.
+		\item Befehle: Systemstatus (CPU/RAM/Temp), Start/Stop der Anwendung, Log‑Abruf.
+		\item \textbf{Akzeptanzkriterien:} Verbindung innerhalb \(\leq\)2\,s aufgebaut; Latenz für Kommandoausführung \(\leq\)300\,ms; Stabilität über 2\,h Dauerverbindung.
+	\end{itemize}
+	\item \textbf{VNC (Virtual Network Computing):}
+	\begin{itemize}
+		\item Spiegelung des HDMI‑Desktops auf Laptop/Tablet/Smartphone; Test als \emph{zweiter Desktop}.
+		\item Szenario: Fernbedienung im Messebetrieb (Menübedienung, Live‑Monitoring).
+		\item \textbf{Akzeptanzkriterien:} Bedienbar bei \(\geq\)10\,FPS Remote‑GUI, Eingabelatenz \(\leq\)200\,ms bei 2{,}4/5\,GHz WLAN; keine Abbrüche über 2\,h.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Fehleranalyse und Optimierung}
+Die Fehleranalyse basiert auf den Beobachtungen während der Integration und den Stresstests:
+\begin{itemize}
+	\item \textbf{Hardware:}
+	\begin{itemize}
+		\item \emph{Stromversorgung:} Unterspannung durch Powerbank → Empfehlung: Netzteil mit stabiler 5\,A-Leistung oder Powerbank mit USB-PD-Profil.
+	\end{itemize}
 
 
 

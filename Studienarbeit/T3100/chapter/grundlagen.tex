@@ -65,21 +65,27 @@ Rotors, wodurch sich dieser in Rotation versetzt.
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.8\linewidth]{images/DC-motor-Example.jpg}
-	\caption{Aufbau und Funktionsweise eines Gleichstrommotors}
+	\caption{Aufbau und Funktionsweise eines Gleichstrommotors}\autocite{magneticinnovations2024dcmotor}
 	\label{fig:Lorenzkraft}
 \end{figure}
-
-
-
-
-
-
+\newpage
 Zur Bestimmung der Kraftrichtung wird die sogenannte \textbf{Linke-Hand-Regel} 
 verwendet: Zeigt der \emph{Daumen} in die Stromrichtung, der \emph{Zeigefinger} in 
 die Richtung des Magnetfeldes (von Nord nach Süd), so zeigt der \emph{Mittelfinger} 
 die Richtung der auf den Leiter wirkenden Lorentzkraft an. Dieses Prinzip erklärt, 
 warum die stromdurchflossenen Leiter im Magnetfeld ein Drehmoment erfahren und sich 
 der Rotor eines Elektromotors in Bewegung setzt.
+\section{BDC- und BLDC-Motoren: Grundlagen und Unterschiede}
+
+Brushed-DC-Motoren (BDC) und Brushless-DC-Motoren (BLDC) gehören zur Familie der Gleichstrommaschinen, unterscheiden sich jedoch grundlegend in Kommutierung und Bauweise. Ein BDC-Motor wandelt elektrische Energie in mechanische Energie um, wobei die Kommutierung mechanisch über Bürsten und einen Kommutator erfolgt. Die Bürsten übertragen den Strom auf den rotierenden Anker (Armatur), wodurch ein elektromagnetisches Drehmoment entsteht. Vorteile dieser Bauart sind die einfache Ansteuerung und geringe Kosten; Nachteile sind Bürstenverschleiß, Funkenbildung und damit verbundener Wartungsaufwand \cite{hughes2019electric}.
+
+Der BLDC-Motor verzichtet auf mechanische Bürsten; die Kommutierung erfolgt elektronisch über eine Steuerelektronik, die die Ströme in den Statorwicklungen schaltet. Der Rotor besteht in der Regel aus Permanentmagneten, der Stator aus mehrphasigen Wicklungen. Durch die elektronische Kommutierung werden eine höhere Effizienz, geringere Geräuschentwicklung und eine deutlich längere Lebensdauer erreicht. Zudem erlaubt die präzise Regelung eine exakte Drehzahl- und Drehmomentsteuerung, was BLDC-Motoren für Anwendungen in Elektrofahrzeugen, Drohnen und industriellen Antrieben prädestiniert—bei allerdings höherer Systemkomplexität und Kosten im Vergleich zu BDC \cite{hughes2019electric}\cite{voskov2023brushedvsbrushless}.
+
+
+
+
+
+
 
 \newpage
 
@@ -89,10 +95,10 @@ Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und ei
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.8\linewidth]{images/Regelkreis_Servo.png}
-	\caption{Regelkreis eines Servos \autocite{SteinkampServo}}
+	\caption{Regelkreis eines Servos} \autocite{steinkampServo}
 	\label{fig:Servoregelkreis}
 \end{figure}
-
+Die Abbildung zeigt die Kaskadenregelung eines Servoantriebs, bestehend aus Lage-, Drehzahl- und Stromregelkreis. Der Lageregler vergleicht den Soll-Lagewert mit dem Istwert und erzeugt eine Soll-Drehzahl. Diese wird im Drehzahlregler mit der gemessenen Drehzahl verglichen, woraus ein Sollstrom berechnet wird. Der Stromregler, als innerster und schnellster Regelkreis, regelt den Motorstrom über eine PWM-gesteuerte Leistungselektronik. Die PWM moduliert die Spannung für die Halbleiter, die den Motor versorgen. Die Istwerte für Lage und Drehzahl werden über einen Resolver erfasst und durch einen R/D-Wandler digitalisiert. Die hierarchische Struktur gewährleistet hohe Dynamik und Genauigkeit, da jede Regelungsebene Sollwerte für die nächste vorgibt. Typischerweise kommen PI-Regler in allen drei Regelkreisen zum Einsatz.
 \newpage
 
 
@@ -105,7 +111,7 @@ Hoverboards verwenden in der Regel \textbf{bürstenlose Gleichstrommotoren (BLDC
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.8\linewidth]{images/Howerboard.png}
-	\caption{Aufbau und Funktionsweise eines Hoverboards}
+	\caption{Aufbau und Funktionsweise eines Hoverboards}\cite{Jaulin2025}
 	\label{fig:Hoverboardaufbau}
 \end{figure}
 
