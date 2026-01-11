@@ -1,9 +1,11 @@
 \chapter{Umsetzung und Ergebnisse}
-\label{cha:umsetzung}
+\label{cha:Umsetzung und Ergebnisse}
 
 \section{Mechanische Konstruktion}
+\label{cha:Mechanische Konstruktion}
 
 \subsection{CAD-Modellierung}
+\label{cha:CAD-Modellierung}
 
 Vor der praktischen Umsetzung des Roboters wurde zunächst ein digitales CAD-Modell erstellt. Ziel dieser Modellierung war es, bereits in einer frühen Projektphase einen groben, jedoch strukturierten Bauplan zu entwickeln, der sowohl die äußere Gestaltung als auch den grundsätzlichen mechanischen Aufbau des Systems abbildet. Dadurch konnten gestalterische, konstruktive und funktionale Aspekte frühzeitig bewertet und iterativ angepasst werden.
 
@@ -16,6 +18,8 @@ Ein weiterer wichtiger Zweck der CAD-Modellierung bestand in der Abschätzung vo
 Die Verwendung eines digitalen Modells vor Beginn der mechanischen Fertigung trägt wesentlich zur Vermeidung von Konstruktionsfehlern bei. Größere Änderungen lassen sich im CAD-Modell mit vergleichsweise geringem Aufwand umsetzen, während nachträgliche Anpassungen am physischen Aufbau häufig mit erheblichem Zeit- und Kostenaufwand verbunden sind. Durch die vorgelagerte Modellierung konnten somit sowohl der Materialverbrauch als auch das Risiko eines vollständigen Neubaus reduziert werden.
 
 \subsection{Montage und Nachbearbeitung}
+\label{cha:Montage und Nachbearbeitung}
+
 Auf Basis des CAD-Modells wurde schließlich die Entscheidung für den Werkstoff Holz als primäres Konstruktionsmaterial getroffen. Holz bietet im Vergleich zu Metall ein geringeres Gewicht bei gleichzeitig ausreichender Stabilität für den geplanten Einsatzzweck. Zudem lässt es sich mit einfachen Werkzeugen bearbeiten und eignet sich daher besonders für die eigenständige Fertigung im Rahmen eines studentischen Projekts. Im Vergleich zu Kunststoffbauteilen aus dem 3D-Druck war das verfügbare Druckvolumen nicht ausreichend, um größere tragende Strukturelemente am Stück herzustellen.
 
 Der aktuelle Stand der mechanischen Konstruktion basiert auf einer groben Holzstruktur, die die grundlegende Form und Tragfähigkeit des Roboters vorgibt. Diese Struktur dient als funktionales Grundgerüst und soll in einem weiteren Schritt durch zusätzliche Verkleidungselemente ergänzt werden. Geplant ist, diese Verkleidung teilweise mittels additiver Fertigung herzustellen und auf die Holzstruktur aufzuschrauben, um die Optik zu verbessern.
@@ -55,20 +59,13 @@ Mit Rädern und Kopfelement erreicht der Roboter nach aktueller Auslegung eine G
 %\subsection{Sicherheitsschaltungen}
 %
 
-
-
-
-
-
-
-
-
-
 \section{Motorsteuerung und Bewegungsalgorithmen\textcolor{brown}{FAIK}}
+\label{cha:Motorsteuerung und Bewegungsalgorithmen}
+
 Nachdem in der Konzeptionsphase (siehe Kapitel \ref{sec:Steuerungskonzept}) das Prinzip des Differentialantriebs festgelegt wurde, beschreibt dieser Abschnitt die konkrete softwareseitige Umsetzung auf dem Mikrocontroller. Ziel der Implementierung war es, die Steuersignale einer Standard-Modellbaufernsteuerung so zu verarbeiten, dass damit leistungsstarke Gleichstrommotoren über BTS7960-H-Brücken präzise geregelt werden können.
 
 \subsection{Fernsteuerungssystem und Signalübertragung}
-\label{sec:fernsteuerung}
+\label{cha:Fernsteuerungssystem und Signalübertragung}
 
 Der Sender \textbf{Spektrum NX8} wird als HMI für die manuelle Fernsteuerung des Roboters verwendet. Dieses Modell ermöglicht eine präzise Übermittlung der Steuerbefehle in Echtzeit. Die Kommunikation zwischen Sender und Roboter erfolgt drahtlos im \SI{2.4}{\giga\hertz}-Frequenzband unter Verwendung des DSMX-Protokolls. \autocite{NX8}
 
@@ -86,6 +83,8 @@ Das Steuerungsschema wurde intuitiv ausgelegt\footnote{Zusätzlich existiert ein
 
 
 \subsection{Programmablauf und Architektur\textcolor{brown}{FAIK}}
+\label{cha:Programmablauf und Architektur}
+
 Die Steuerung basiert auf einem zyklischen Algorithmus, der kontinuierlich die Eingabesignale überwacht und in Motorbewegungen umsetzt. Dieser Prozess ist in Abbildung \ref{fig:flowchart_motor} als Programmablaufplan (englisch: Flowchart) dargestellt. Er verdeutlicht den Weg vom rohen Sensorsignal bis zur physikalischen Ansteuerung der Motortreiber.
 
 
@@ -108,6 +107,7 @@ Der implementierte Algorithmus lässt sich in vier logische Hauptphasen untertei
 \end{enumerate}
 
 \subsection{Detaillierte Implementierung\textcolor{brown}{FAIK}}
+\label{cha:Detaillierte Implementierung}
 
 \subsubsection{Signalerfassung und Kanalzuordnung\textcolor{brown}{FAIK}}
 Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (englisch: Pulse Width Modulation (PWM)), wobei die Information in der Länge des Pulses codiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1100}{\micro\second} und \SI{1900}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
@@ -240,8 +240,9 @@ Abschließend steuert die Logik die H-Brücken an. Da Gleichstrommotoren für di
 
 \clearpage
 
-
 \section{Display-Programmierung}
+\label{cha:Display-Programmierung}
+
 Für die Display-Programmierung wird ein Raspberry Pi 5 verwendet, wie im Vorgehen beschrieben. Dieser Einplatinencomputer eignet sich aufgrund seiner umfangreichen Schnittstellen, die in Abbildung \ref{fig:Aufbau RP5} dargestellt sind. 
 
 Die Verkabelung und Datenflüsse sind in Abbildung \ref{fig:anschlussschema_rpi5}
@@ -254,6 +255,8 @@ Die HDMI- bzw. Micro-HDMI-Schnittstellen des Raspberry Pi 5 ermöglichen den Ans
 Für die Programmierung des Displays wird die Programmiersprache Python eingesetzt. Python bietet aufgrund ihrer umfangreichen Bibliotheken eine effiziente Möglichkeit zur Umsetzung grafischer und interaktiver Inhalte. Insbesondere die Bibliothek OpenCV ermöglicht die Verarbeitung von Kamerabildern, beispielsweise zur Realisierung von Augenbewegungen oder anderen bildbasierten Animationen. Für die Darstellung von grafischen Elementen und Animationen können Bibliotheken wie PyPlot und Pygame verwendet werden, die eine einfache Erstellung von visuellen Komponenten und dynamischen Effekten erlauben. Ein weiterer Vorteil von Python liegt in der hohen Verständlichkeit und der klaren Syntax, wodurch die Wartung und Fehlerbehebung auch für Anwender ohne tiefgehende Informatikkenntnisse erleichtert wird. Dies trägt zur langfristigen Nutzbarkeit und Erweiterbarkeit des Systems bei.
 
 \subsection{Animations-Engine für Augen}
+\label{cha:Animations-Engine für Augen}
+
 Für die Animations Engine werden die Biblitoheken OpenCV, Pygame und der Kamerainput der Brio 500 Kamera verwendet. Auch dies kann man in Abbildung \ref{fig:anschlussschema_rpi5} erkennen. 
 
 Allgemewin soll die Grundanimation wie im Vorgehen schon erwähnt und in Abbildung \ref{fig:augenanimation_plain} zu sehen, eine einfache Animation basierend auf zwei Kreisen mit beweglichem Punkt in der Mitte.
@@ -368,6 +371,8 @@ Die Animations-Engine basiert auf einer Kombination aus Bildverarbeitung und gra
 \newpage
 
 \subsection{Benutzerschnittstelle}
+\label{cha:Benutzerschnittstelle}
+
 Die Benutzerschnittstelle des Roboters ist ein zentraler Bestandteil für die Interaktion zwischen Benutzer und System. Sie umfasst sowohl lokale Hardware-Komponenten als auch Remote-Zugriffsmöglichkeiten. Im Folgenden werden die einzelnen Schnittstellen ausführlich beschrieben:
 
 \begin{itemize}
@@ -451,8 +456,10 @@ Die Benutzerschnittstelle des Roboters ist ein zentraler Bestandteil für die In
 \newpage
 
 \section{Systemintegration und Test \textcolor{blue}{Angus}}
+\label{cha:Systemintegration und Test}
 
 \subsection{Integrationsstrategie}
+\label{cha:Integrationsstrategie}
 
 Die Systemintegration und die zugehörigen Testaktivitäten orientieren sich am im Projekt verwendeten V-Modell als systems-ingenieurwissenschaftliche Vorgehensweise. Entsprechend diesem Modell wurden die einzelnen Systembestandteile zunächst getrennt voneinander entwickelt und getestet, bevor sie schrittweise zu einem Gesamtsystem integriert wurden.
 
@@ -466,8 +473,8 @@ Nach erfolgreichem Abschluss der Einzeltests wurden die getesteten Module schrit
 
 Dieses strukturierte Vorgehen aus modularer Entwicklung, modulbezogenen Tests und schrittweiser Integration trägt wesentlich zur Qualitätssicherung des Systems bei und entspricht dem grundlegenden Prinzip des V-Modells, bei dem jeder Entwicklungsstufe eine geeignete Verifikations- und Testaktivität zugeordnet ist.
 
-
 \subsection{Subsystemtests des Fahr- und Antriebssystems  \textcolor{blue}{Angus}}
+\label{cha:Subsystemtests des Fahr- und Antriebssystems}
 
 Auch wenn einzelne Module und Subsysteme für sich genommen die vorgesehenen Funktionen erfüllen, können im integrierten Betrieb weiterhin Fehler oder unerwartete Abweichungen auftreten. Diese entstehen häufig durch Integrationsprobleme, fehlerhaftes Verhalten an den Schnittstellen zwischen einzelnen Komponenten oder durch unzutreffende Annahmen über das Zusammenspiel der Teilsysteme. Zudem können logische Inkonsistenzen oder nicht berücksichtigte Randbedingungen erst im integrierten Betrieb sichtbar werden.
 
@@ -615,10 +622,12 @@ Für den praktischen Messebetrieb wäre eine Erweiterung um eine optische oder a
 
 Die vorgeschlagene Optimierung verdeutlicht die Notwendigkeit, bereits in der Entwicklungsphase potenzielle Fehlerzustände systematisch zu analysieren und entsprechende Absicherungsmechanismen vorzusehen. Insbesondere bei autonomen oder ferngesteuerten Systemen, die in der Nähe von Personen operieren, müssen Fail-Safe-Konzepte integraler Bestandteil der Steuerungslogik sein.
 
-
-
 \subsection{Subsystemtests der Augenansteurung über Display und Kamera  \textcolor{blue}{Simon}}
-\subsection{Integrationsstrategie}
+\label{cha:Subsystemtests der Augenansteurung über Display und Kamera}
+
+\subsection{Integration}
+\label{cha:Integration}
+
 Die Integration erfolgt in mehreren Phasen:
 \begin{itemize}
 	\item \textbf{Phase~1 – Hardware-Basisprüfung:} Einzeltests von Raspberry~Pi~5, Kamera (Logitech Brio~500), HDMI‑Touchdisplay, USB‑Lautsprecher sowie Verkabelung und Stromversorgung.
@@ -629,6 +638,8 @@ Die Integration erfolgt in mehreren Phasen:
 \end{itemize}
 
 \subsection{Testumgebung und Aufbau}
+\label{cha:Testumgebung und Aufbau}
+
 \begin{itemize}
 	\item \textbf{Hardware:} Raspberry~Pi~5, HDMI‑Touchdisplay (Strom via USB), Logitech Brio~500 (USB~3.0/UVC), USB‑Lautsprecher (UAC), Verkabelung (USB‑C Power, HDMI, USB).
 	\item \textbf{Stromversorgung:} Netzteil 5\,V / 5\,A (USB‑C) und \textit{alternativ} Powerbank (mobil).
@@ -637,6 +648,8 @@ Die Integration erfolgt in mehreren Phasen:
 \end{itemize}
 
 \subsection{Testfälle und Akzeptanzkriterien}
+\label{cha:Testfälle und Akzeptanzkriterien}
+
 \begin{itemize}
 	\item \textbf{Funktionstests:} Kamera liefert stabile Frames, Touch registriert Eingaben, Audioausgabe ist klar und laut genug, Display zeigt flüssig an.
 	\item \textbf{Integrationstests:} Positions‑/Trackingdaten werden korrekt auf die Augenanimation gemappt.
@@ -645,6 +658,8 @@ Die Integration erfolgt in mehreren Phasen:
 \end{itemize}
 
 \subsection{Beobachtungen und Probleme}
+\label{cha:Beobachtungen und Probleme}
+
 \textbf{Stromversorgung mit Powerbank:} Während der Tests ist ein Problem bei der Stromversorgung des Raspberry~Pi mit angeschlossener Peripherie (Kamera, Touchdisplay, USB‑Lautsprecher) aufgetreten. Beim Betrieb über eine Powerbank traten \textit{Unterspannungen/Brownouts} und sporadische Neustarts auf.
 \begin{itemize}
 	\item \textbf{Vermutete Ursache:} Kurzfristige Lastspitzen (v.\,a. Kamera/Display) überschreiten die Leistungsabgabe der Powerbank; Spannungsabfall bei Leitungs-/Steckerverlusten.
@@ -659,6 +674,8 @@ Die Integration erfolgt in mehreren Phasen:
 \end{itemize}
 
 \subsection{Geplante Netzwerktests (SSH/VNC)}
+\label{cha:Geplante Netzwerktests (SSH/VNC)}
+
 Die Netzwerktests sind vorgesehen, aber zum aktuellen Zeitpunkt \textbf{noch nicht durchgeführt}. Geplant sind:
 \begin{itemize}
 	\item \textbf{SSH (Secure Shell):}
@@ -676,6 +693,8 @@ Die Netzwerktests sind vorgesehen, aber zum aktuellen Zeitpunkt \textbf{noch nic
 \end{itemize}
 
 \subsection{Fehleranalyse und Optimierung}
+\label{cha:Fehleranalyse und Optimierung}
+
 Die Fehleranalyse basiert auf den Beobachtungen während der Integration und den Stresstests:
 \begin{itemize}
 
@@ -686,19 +705,22 @@ Die Fehleranalyse basiert auf den Beobachtungen während der Integration und den
 	\end{itemize}
 
 
+%----------------------------------------------------------------------------------------------------
 
 
 \chapter{Ergebnisse und Diskussion\textcolor{brown}{FAIK}}
+\label{cha:Ergebnisse und Diskussion}
 
 In diesem Kapitel werden die realisierten Ergebnisse der Studienarbeit vorgestellt
 und kritisch bewertet. Dabei liegt der Fokus auf dem Vergleich zwischen den definierten Anforderungen und dem tatsächlich umgesetzten Funktionsstand des Roboters.
 
-
 \section{Funktionsnachweis und Leistungsbewertung\textcolor{brown}{FAIK}}
+\label{cha:Funktionsnachweis und Leistungsbewertung}
 
 Zum Abschluss der Entwicklungsphase wurde der Roboter einer Reihe von Funktionstests unterzogen, um die Leistungsfähigkeit der Teilsysteme sowie des Gesamtsystems zu validieren.
 
 \subsection{Antrieb und Fahrverhalten}
+\label{cha:Antrieb und Fahrverhalten}
 
 Das Chassis des Roboters wurde als stabile Holzkonstruktion realisiert, in welche die Antriebseinheit integriert ist. Diese besteht aus zwei unabhängig angesteuerten Gleichstrommotoren (DC-Motoren) für den Vortrieb sowie einem frei beweglichen Stützrad im hinteren Bereich, das für die nötige Stabilität sorgt. Die Tests bestätigten die Funktionsfähigkeit der implementierten Motorsteuerung:
 
@@ -711,6 +733,7 @@ Das Chassis des Roboters wurde als stabile Holzkonstruktion realisiert, in welch
 \end{itemize}
 
 \subsection{Interaktion und Aktorik}
+\label{cha:Interaktion und Aktorik}
 
 Die "`Persönlichkeit"' des Roboters wird erfolgreich durch die implementierten audiovisuellen Komponenten vermittelt:
 
@@ -721,14 +744,13 @@ Die "`Persönlichkeit"' des Roboters wird erfolgreich durch die implementierten 
 	
 \end{itemize}
 
-
-
 \subsection{Systemintegration}
+\label{cha:Systemintegration}
 
 Der Körper des Roboters (\textit{Body}) wurde vollständig aufgebaut und beherbergt die gesamte Antriebstechnik sowie die Energieversorgung. Die mechanische und elektrische Integration der Kopf-Einheit auf den Körper steht als finaler Arbeitsschritt noch aus. Die notwendigen Schnittstellen sind jedoch bereits definiert und vorbereitet.
 
 \section{Anforderungsabgleich\textcolor{brown}{FAIK}}
-
+\label{cha:Anforderungsabgleich}
 
 Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) definierten Anforderungen wurden erfolgreich umgesetzt, mit Ausnahme der folgenden Punkte:
 
@@ -739,6 +761,8 @@ Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) def
 \textbf{Erweiterte Funktionen (REQ-030, REQ-034):} Die Implementierung von KI-Funktionen (REQ-034) und die Anpassung an das spezifische DHBW-Design (REQ-030) wurden zugunsten einer stabilen Basisfunktionalität (Fahren und Steuern) zurückgestellt. Der aktuelle Holz-Prototyp dient als funktionaler Träger ("`Mule"'), dessen Design in späteren Schritten verfeinert wird.
 
 \section{Lessons Learned\textcolor{brown}{FAIK}}
+\label{cha:Lessons Learned}
+
 \begin{itemize}
 	\item \textbf{Frühzeitige Beschaffung:} Die späte Bestellung von Bauteilen führte zu Verzögerungen im Projektablauf. Dadurch verringerte sich die verfügbare Zeit für ausgiebige Tests, wodurch Sicherheitslücken (wie das Verhalten bei Stromausfall des Empfängers) erst spät erkannt wurden. Eine frühzeitige Materialbeschaffung ist essenziell ("`Frontloading"').
 	
@@ -749,10 +773,8 @@ Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) def
 	\item \textbf{Regelmäßige Meetings:} Die Einführung eines wöchentlichen Jour fixe zur selben Uhrzeit könnte als kritischer Erfolgsfaktor dienen. Im Projektverlauf wurde deutlich, dass Kommunikationslücken bestanden und Fortschritte sowie Unterstützungsbedarf nicht rechtzeitig kommuniziert wurden. Regelmäßige Abstimmungen hätten diese Probleme frühzeitig aufdecken können.
 \end{itemize}
 
-
-
 \section{Kritische Reflexion}
-\label{sec:kritische_reflexion}
+\label{cha:Kritische Reflexion}
 
 Die Entwicklung des Roboters war für unser Projektteam eine vielseitige Herausforderung. Rückblickend lässt sich das Ergebnis am besten in drei Bereichen bewerten: Technik, Methodik (Arbeitsweise) und Zeitmanagement. Technisch haben wir unser Hauptziel erreicht: Ein funktionierendes Grundsystem („Mule“) wurde fertiggestellt, das sich sicher bewegen und grundlegend interagieren kann. Die Entscheidung, den Antrieb über einen ESP32 zu steuern, hat sich als sehr zuverlässig erwiesen und sorgt für eine gute Manövrierfähigkeit. Auch die Aufteilung der Aufgaben – der ESP32 kümmert sich um den Antrieb, der Raspberry Pi um die Interaktion – war richtig. Dadurch haben wir Ressourcenkonflikte vermieden. Allerdings gibt es Unterschiede zwischen unserem ursprünglichen Plan und dem jetzigen Prototypen. Da die Zeit knapp wurde, konnten wir den Kopf des Roboters mechanisch noch nicht vollständig integrieren. Die Funktionen für die Kopf-Drehung sind zwar technisch vorbereitet, können aber am Gesamtsystem noch nicht vorgeführt werden.
 
@@ -762,8 +784,9 @@ Auch unsere Arbeitsweise liefert wichtige Erkenntnisse. Wir haben uns für eine 
 
 Beim Zeitmanagement war vor allem die Materialbeschaffung ein Engpass. Da wichtige Bauteile wie Motortreiber und Akkus verspätet geliefert wurden, blieb uns am Ende viel weniger Zeit zum Testen als geplant. Das bestätigt, wie wichtig es ist, kritische Komponenten sofort zu Projektbeginn zu bestellen und zu prüfen. Zusammenfassend lässt sich sagen: Der Roboter ist eine solide Plattform und der „Proof of Concept“ ist geglückt. Damit er jedoch wirklich auf einer Messe eingesetzt werden kann, ist eine zweite Entwicklungsrunde nötig, um die Sicherheitslücken zu schließen und das Design fertigzustellen.
 
-
 \section{Mögliche Erweiterungen\textcolor{brown}{FAIK}}
+\label{cha:Mögliche Erweiterungen}
+
 Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbegrenzte Erweiterung des Funktionsumfangs. Im Hinblick auf die technische Realisierbarkeit in der nahen Zukunft stehen jedoch folgende Optionen im Fokus, um den Einsatzbereich des Roboters sinnvoll zu vergrößern:
 
 \begin{itemize}

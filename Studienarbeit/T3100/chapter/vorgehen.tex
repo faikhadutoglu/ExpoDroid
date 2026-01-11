@@ -1,21 +1,17 @@
 \chapter{Vorgehensweise und Konzeption}
-\label{cha:vorgehen}
+\label{cha:Vorgehensweise und Konzeption}
 
 \section{Projektorganisation \textcolor{blue}{Angus}}
+\label{cha:Projektorganisation}
+
 In der praktischen Projektdurchführung wurde kein strikt sequenzielles umgesetzt. Stattdessen erfolgte die Arbeit in iterativen Zyklen mit regelmäßigen Abstimmungsmeetings, in denen der aktuelle Projektstand bewertet und die nächsten Arbeitsschritte geplant wurden. Die Anforderungen an das System wurden dabei im Verlauf des Projekts weiterentwickelt und verfeinert.
 
 Diese Vorgehensweise weist deutliche Parallelen zu agilen Projektmanagementmethoden, insbesondere zu Scrum, auf. Gleichzeitig diente das V-Modell als strukturierendes Referenzmodell für die Systementwicklung. Insbesondere die logische Zuordnung von Anforderungen, Entwurfsentscheidungen, Implementierung und zugehörigen Test- und Verifikationsschritten orientierte sich am V-Modell.
 
 Somit wurde ein hybrider Ansatz verfolgt, bei dem agile Projektmanagementmethoden mit einer V-Modell-orientierten Systemstruktur kombiniert wurden. Dieses Vorgehen ermöglichte sowohl Flexibilität in der Projektorganisation als auch eine systematische und nachvollziehbare Entwicklung des Gesamtsystems. 
 
-
-
-
-
-
-
-
 \section{Anforderungsanalyse}
+\label{cha:Anforderungsanalyse}
 
 Ziel des Anforderungsmanagements ist es, sicherzustellen, dass die Erwartungen aller relevanten Interessengruppen klar erfasst und während des gesamten Projektverlaufs berücksichtigt werden. Zu den zentralen Stakeholdern zählen in diesem Projekt insbesondere die Duale Hochschule Baden-Württemberg (DHBW) als Auftraggeber, das Projektteam selbst sowie die späteren Nutzer und Messebesucher.
 
@@ -35,10 +31,8 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
  
 Die Requierments-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requierments} betrachten.
 
-
-
-
 \section{Designkonzept[\textcolor{blue}{Angus}]}
+\label{cha:Designkonzept}
 
 Bei der Entwicklung eines Roboters für den Einsatz auf Messen spielt das äußere Design sowie das visuelle Erscheinungsbild eine zentrale Rolle, insbesondere wenn es darum geht, Aufmerksamkeit zu erzeugen und Interesse zu wecken. Da eine der Hauptaufgaben des Roboters darin besteht, potenzielle neue Studierende für die Duale Hochschule Baden-Württemberg (DHBW) im technischen Bereich zu begeistern, wird der Ästhetik des Systems ein besonderes Augenmerk gewidmet.
 
@@ -81,14 +75,6 @@ Darüber hinaus stellt die Fertigung einer sphärischen Außenhülle eine zusät
 
 Zusätzlich schränkt die kugelförmige Geometrie die nutzbare Innenraumstruktur erheblich ein, wodurch die Integration von Elektronik, Akkumulatoren und weiteren Komponenten erschwert wird. Auch kontrollierte Bewegungen bei niedrigen Geschwindigkeiten sowie ein sicheres Anhalten in Menschenmengen sind bei diesem Konzept nur mit erhöhtem Regelungs- und Sensorikaufwand realisierbar.
 
-
-
-
-
-
-
-
-
 \paragraph{Plattformbasierter Roboter}
 Vor diesem Hintergrund erscheint ein kompakter, fahrzeugähnlicher Aufbau mit klar definierter Standfläche und aufgesetzten Interaktionselementen als besonders praktikabel. Konzepte, bei denen eine stabile Plattform die Basis bildet und darüber ein separater Oberkörper oder Kopf zur Interaktion angeordnet ist, bieten eine ausgewogene Balance zwischen technischer Umsetzbarkeit und ansprechender Außenwirkung. Die funktionale Trennung zwischen Fahrwerk und Interaktionseinheit erlaubt es, Bewegung und Gestaltung weitgehend unabhängig voneinander zu optimieren.
 
@@ -118,12 +104,8 @@ Wie in Abbildung~\ref{fig:Demo_Konzeption} dargestellt, besteht die Plattform de
 
 Insgesamt stellt dieses Plattformkonzept einen geeigneten Kompromiss zwischen Wiedererkennbarkeit, technischer Machbarkeit und funktionaler Robustheit dar. Die konkrete Ausgestaltung der Fortbewegungseinheit, insbesondere die Entscheidung zwischen Rad- oder Kettenantrieb, wird im folgenden Abschnitt im Rahmen einer systematischen Analyse näher untersucht.
 
-
-
-
-
-
 \subsection{Vergleich: Räder vs. Ketten}
+\label{cha:Vergleich: Räder vs. Ketten}
 
 Die Entscheidung für eine geeignete Antriebsart fällt im Rahmen dieses Projekts auf eine fahrzeugnahe Umsetzung. In Betracht gezogen werden dabei insbesondere radbasierte Antriebskonzepte in unterschiedlichen Konfigurationen sowie ein Kettenantrieb. Die Wahl der Antriebsart beeinflusst maßgeblich die Beweglichkeit, das Lenkverhalten sowie die befahrbaren Untergründe des Roboters und stellt somit eine grundlegende Entwurfsentscheidung dar.
 
@@ -182,6 +164,7 @@ Vorteilhaft sind der geringe Bauteilaufwand sowie eine hohe Wendigkeit, insbeson
 
 
 \subsection{Entscheidungsfindung und Begründung}
+\label{cha:Entscheidungsfindung und Begründung}
 
 Zur Auswahl des geeignetsten Antriebskonzepts werden die betrachteten Varianten im Rahmen einer Trade-off-Analyse systematisch miteinander verglichen. Ziel ist es, auf Basis klar definierter Kriterien eine möglichst objektive und nachvollziehbare Entscheidungsgrundlage für die weitere Umsetzung des Projekts zu schaffen.
 
@@ -226,12 +209,15 @@ Die Bewertung der einzelnen Antriebskonzepte erfolgt durch das Projektteam nach 
 
 Ergebnis der Trade-off-Analyse (Abbildung \ref{tab:tradeoff_Antriebsart}) ist dass der Hinterantrieb mit einem 3. frei beweglichen Vorderrad für die Umsetztung in diesem Projekt am geeignetsten erscheint. 
 
-
 \section{Steuerungskonzept\textcolor{brown}{FAIK}}%Faik
+\label{cha:Steuerungskonzept}
+
 \label{sec:Steuerungskonzept}
 Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren (siehe Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} VI), bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle Fernsteuerungssignale (englisch: Remote Control (RC)) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
 \subsection{Grundlegende Signalverarbeitung\textcolor{brown}{FAIK}}%Faik
+\label{cha:Grundlegende Signalverarbeitung}
+
 Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen über:
 \begin{itemize}
 	\item die gewünschte Vortriebsrichtung und -intensität
@@ -241,8 +227,8 @@ enthalten.
 
 Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsichtlich Neutralstellung und Plausibilität bewertet werden, um unbeabsichtigte Bewegungen oder Störungen zu vermeiden.
 
-
 \subsection{Differenzielle Bewegungssteuerung\textcolor{brown}{FAIK}}%Faik
+\label{cha:Differenzielle Bewegungssteuerung}
 
 Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsumsetzung über eine differenzielle Ansteuerung der beiden Antriebseinheiten (\textit{Differential Drive}). Das mathematische Grundprinzip basiert darauf, dass die zuvor ermittelte Basisgeschwindigkeit für jede Seite individuell angepasst wird:
 
@@ -254,8 +240,8 @@ Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsum
 
 Dieses Mischverfahren (englisch: \textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
 
-
 \subsection{Begrenzung und Schutzmechanismen\textcolor{brown}{FAIK}}%Faik
+\label{cha:Begrenzung und Schutzmechanismen}
 
 Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden zu vermeiden, sieht das Konzept mehrstufige Schutzmechanismen in der Signalverarbeitung vor:
 
@@ -270,6 +256,8 @@ Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden z
 Zusätzlich ist die Software-Architektur so ausgelegt, dass spätere Erweiterungen, wie beispielsweise eine aktive Notbremsung durch Sensorik, modular integriert werden können.
 
 \subsection{Ablaufbasierte Steuerungslogik\textcolor{brown}{FAIK}}
+\label{cha:Ablaufbasierte Steuerungslogik}
+
 Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
 \begin{enumerate}
 	\item kontinuierliche Erfassung der Eingabesignale,
@@ -293,6 +281,7 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 \clearpage
 
 \section{Interaktionsdesign}
+\label{cha:Interaktionsdesign}
 
 Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher ferfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
 
@@ -403,8 +392,9 @@ Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da die
 \end{figure}
 \newpage
 
-
 \subsection{Display-Integration}
+\label{cha:Display-Integration}
+
 Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. Dazu soll das Display im Fehlerfall auch weitere Daten anzeigen können. Für die Displayinteraktion sind mehrere Schnittstellen angedacht. Hierzu zählt die Verbindung über HDMI zum Raspberry Pi, welche für die Datenübertragung in Richtung Display sorgt. Zusätzlich zu dieser gibt es aber noch eine USB Verbindung, welche neben der Stromversorgung für das Display auch gleichzeitig für die Rückmeldung der Toucheingabe für den Raspberry Pi genutzt werden kann. Auch dies ist aus Abbildung \ref{fig:display_interaktion} ersichtlich. 
 
 \begin{figure}[ht]
@@ -433,9 +423,8 @@ Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. 
 	\label{fig:display_interaktion}
 \end{figure}
 
-
 \subsection{Augen-Animation und Emotionsdarstellung \textcolor{blue}{Angus}}
-
+\label{cha:Augen-Animation und Emotionsdarstellung}
 
 Ein zentrales Ziel des Roboters ist es, auf Messebesucher freundlich, zugänglich und sympathisch zu wirken. Um diese Wirkung gezielt zu unterstützen, soll der Roboter über eine visuelle Darstellung von Augen verfügen. Augen stellen ein starkes Gestaltungselement dar, da sie beim Menschen unmittelbar Aufmerksamkeit erzeugen und häufig als Träger von Emotionen wahrgenommen werden. Wie bereits im vorherigen Abschnitt beschrieben, orientiert sich das Designkonzept dabei lose an bekannten Roboterfiguren mit klar ausgeprägten Augen (Bsp: Wall-E\reg), ohne diese direkt zu kopieren.
 
@@ -482,19 +471,18 @@ Unter Berücksichtigung von Außenwirkung, Interaktionsmöglichkeiten, technisch
 
 Die gewählte Lösung zur Darstellung der Augen über ein Display ist ebenfalls eng mit den Konzepten der HMI und der GUI verknüpft. Das Display fungiert als zentrales Element der Interaktion zwischen dem Roboter und den Messebesuchern, da es bereits erwähnte detaillierte Informationen in einer für den Menschen intuitiv verständlichen Form bereitstellen kann. Durch die Integration einer GUI können nicht nur animierte Augenbewegungen und Gesichtsausdrücke realisiert werden, sondern auch zusätzliche Inhalte wie Statusinformationen oder Hinweise zur Bedienung des Roboters. Dies erweitert die Funktionalität des Systems erheblich und schafft eine flexible Plattform für Kommunikation und Interaktion.
 
-
-
-
-		
 \subsection{Benutzerinteraktion}
+\label{cha:Benutzerinteraktion}
+
 Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine direkte Eingabe ermöglicht. Zusätzlich soll eine Remote-Steuerung über das lokale Netzwerk realisiert werden. Hierfür sind Schnittstellen wie SSH für Kommandozeilenbefehle sowie VNC für die grafische Oberfläche geplant. Hinzu kommt eine Möglichkeit Ton über USB mit Hilfe eines Lautsprechers abzuspielen. Dies ist in Abbildung \ref{fig:anschlussschema_rpi5} zu sehen. Durch die Integration des Touchdisplays lassen sich Betriebsmodi wie „Selfie-Modus“, „Debugging-Modus“ oder die Anzeige von Statusinformationen implementieren. Dennoch sollte das Design jedoch auf den Prinzipien der Benutzerfreundlichkeit basieren, um eine Überlastung durch zu viele Informationen zu vermeiden \autocite{Nielsen.1994}. Über die Lautsprecher werden ebenfalls akustische Signale zur Bestätigung von Eingaben oder zur Warnung bei Fehlfunktionen ausgeben \autocite{Dix.2004}. Für den Fall einer kritischen Betriebsstörung wird zusätzlich ein Not-Aus-Schalter eingebaut.
 
 \section{Systemarchitektur}
+\label{cha:Systemarchitektur}
 
-\subsection{Komponentenauswahl }
+\subsection{Komponentenauswahl}
+\label{cha:Komponentenauswahl}
 
 In diesem Abschnitt wird die Auswahl der zentralen Hardwarekomponenten begründet. Die Entscheidung für spezifische Bauteile basierte auf einer Abwägung zwischen technischer Leistungsfähigkeit, Verfügbarkeit und den spezifischen Anforderungen der Teilbereiche Antrieb, Interaktion und Energieversorgung.
-
 
 \subsubsection{Motoren Antrieb}
 Es werden Motoren für die Fortbewegung des Roboters benötig \textcolor{red}{SIMON}
@@ -526,8 +514,9 @@ Für den Antrieb kommen LiPo-Akkus (Lithium-Polymer) zum Einsatz. Diese Akkumula
 
 Für die Versorgung des Raspberry Pi und der Peripherie wird zusätzlich eine Powerbank mit 20.000 mAh verwendet. Diese Trennung hat den Vorteil, dass Spannungseinbrüche durch die Motoren nicht zum Absturz des Computers führen. Zudem entlastet die Powerbank den LiPo-Akku erheblich. Insbesondere im Hinblick auf geplante Erweiterungen, wie das Ausführen von KI-Modellen auf dem Raspberry Pi, gewährleistet die hohe Kapazität der Powerbank, dass der Roboter auch bei hoher Rechenlast über längere Zeiträume betriebsbereit bleibt, ohne dass die Antriebsbatterie vorzeitig entladen wird.
 
-
 \subsection{Elektronische Architektur}
+\label{cha:Elektronische Architektur}
+
 \vspace{0.5cm}
 \begin{figure}[H]
 	\centering
@@ -552,6 +541,7 @@ Ein zweiter Akku (Akku$_2$), ausgeführt als Powerbank beziehungsweise mobiler E
 Die klare Strukturierung und durchdachte Planung der elektronischen Architektur unterstützt die Aufteilung abhängiger Arbeitspakete und erleichtert sowohl die Verkabelung als auch die Wartung des Systems. 
 
 \subsection{Umsetzungsmöglichkeiten innerhalb der Praxisphase \textcolor{red}{[Hai Nam]}}
+\label{cha:Umsetzungsmöglichkeiten innerhalb der Praxisphase}
 
 Die Konzeption des Roboters steht nun soweit und wird sich auch in nächsten Bearbeitungsphasen noch weiter entwickeln. Da die Bearbeitungszeit für diese Praxisphase auf drei Monate begrenzt ist, ist die vollständige Umsetzung des Roboters innerhalb dieses Zeitraums nicht realistisch. Aus diesem Grund erfolgt eine Priorisierung der Arbeitspakete, um die wichtigsten Funktionen zu realisieren und gleichzeitig eine solide Basis für spätere Erweiterungen zu schaffen.
 
@@ -559,8 +549,8 @@ In der aktuellen Phase liegt der Fokus auf der mechanischen Grundstruktur, der I
 
 Die Implementierung der Arme, Fertigstellung der Kopfkomponenten mit dem Servomotor, Optimierung der Benutzeroberfläche sowie die Integration zusätzlicher Funktionen wie Künstliche-Intelligenz (KI)-basierte Sprachfunktion und Hinderniserkennung mittels Ultraschallsensoren werden in späteren Bearbeitungsphasen umgesetzt. Diese Erweiterungen erfordern zusätzliche Zeit und Ressourcen.
 
-%Faik
 \section{Projektplanung und Meilensteine}
+\label{cha:Projektplanung und Meilensteine}
 
 Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam das zuvor erläuterte Gantt-Diagramm zum Einsatz, die eine visuelle Darstellung des Projektverlaufs ermöglicht (siehe Abbildung \ref{fig:Gantt1}).
 
@@ -584,9 +574,13 @@ Das Diagramm macht deutlich, dass das Projekt in mehrere Phasen gegliedert ist. 
 Die Monatsübersicht und die Kalenderwochen am oberen Rand erleichtern die zeitliche Orientierung. Durch die farbliche Kodierung, also grün für Arbeitspakete, schwarz für Gruppierungen und rot für Meilensteine, wird die Struktur des Projekts intuitiv erkennbar. Das Gantt-Diagramm dient als zentrales Werkzeug zur Visualisierung des Projektablaufs, unterstützt die Koordination von Aufgaben und zeigt Abhängigkeiten sowie kritische Zeitpunkte. Es ist ein wichtiges Kommunikationsinstrument für das Team und trägt zur Einhaltung des Zeitplans bei.
 
 \subsection{Aufteilung der Arbeitspakete \textcolor{brown}{FAIK}}
+\label{cha:Aufteilung der Arbeitspakete}
+
 Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi verantwortlich. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
 
 \subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
+\label{cha:Definition von Meilensteinen}
+
 Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
 
 \begin{itemize}
@@ -598,13 +592,11 @@ Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig
 
 Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stellte sicher, dass der Fokus auf den wesentlichen Projektzielen lag und bei zeitlichen Abweichungen rechtzeitig gegengesteuert werden konnte.
 
-
-
-
-
 \section{Kostenanalyse}
+\label{cha:Kostenanalyse}
 
 \subsection{Budgetplanung \textcolor{blue}{Angus}}
+\label{cha:Budgetplanung}
 
 Für die Entwicklung und Umsetzung des Projekts stellt die Duale Hochschule Baden-Württemberg (DHBW) ein Budget von bis zu \num{500}\,\euro\;zur Verfügung. Dieses Budget definiert den finanziellen Rahmen, innerhalb dessen der Zukauf von benötigten Komponenten und Materialien erfolgen muss.
 
@@ -613,12 +605,14 @@ Da es sich um ein studentisches Projekt handelt und alle Projektteilnehmer ihre 
 Eine sorgfältige Budgetplanung ist insbesondere im Hinblick auf die Auswahl der eingesetzten Komponenten von Bedeutung, da unnötige Ausgaben die Umsetzung anderer Projektbereiche einschränken können. Das Budget stellt somit eine wesentliche Randbedingung für die technische Konzeption und Realisierung des Systems dar.
 
 \subsection{Aktuelle Kostenschätzung \textcolor{red}{[HN]}}
+\label{cha:Aktuelle Kostenschätzung}
 
 Die geschätzten Einzelpreise werden für jede Komponente angegeben, wobei die teuersten Artikel das Ladegerät für den LiPo-Akku (62,95 €), das Display (62,99 €) und der Raspberry Pi 5 (84,50 €) sind. Der Motor kostet als Einzelkomponente zwar relativ wenig, jedoch steigen die Kosten bei der Bestellung mehrerer Motoren deutlich an. Die Gesamtkosten für alle aufgeführten Komponenten betragen 600,25 €, ohne Versandkosten. Die Teileliste lässt sich in Abschnitt \ref{sec:Stückliste} einsehen.
 
 Trotz einer sorgfältigen Kostenplanung, musste die Gesamtsumme überschritten werden. Diese Entscheidung resultiert aus der Notwendigkeit, qualitativ hochwertige Komponenten zu verwenden, um die Funktionalität und Zuverlässigkeit des Messerroboters sicherzustellen. Ein striktes Festhalten am Budget hätte den Einsatz minderwertiger Bauteile erfordert, was langfristig zu höheren Kosten durch Ausfälle oder Ersatzbeschaffungen geführt hätte. Dieses Prinzip wird häufig mit dem Ausdruck \enquote{Buy cheap, buy twice.} beschrieben \autocite{Farlex.2024}. Insbesondere zentrale Elemente wie der Raspberry Pi, das Display und die Motorsteuerung sind entscheidend für die Leistungsfähigkeit des Systems und können nicht durch günstigere Alternativen ersetzt werden, ohne die Projektziele zu gefährden.
 
 \section{Bewertung des Projekts aus Hochschulsicht}
+\label{cha:Bewertung des Projekts aus Hochschulsicht}
 
 Aufbauend auf den erläuterten Grundlagen der SWOT-Analyse wird im Folgenden die Bewertung des Projekts aus zwei Perspektiven fortgeführt. 
 
@@ -628,6 +622,7 @@ Diese zweistufige Betrachtung ermöglicht eine ganzheitliche Einschätzung. Wäh
 
 
 \subsection{SWOT-Analyse des Messeroboters}
+\label{cha:SWOT-Analyse des Messeroboters}
 
 \begin{figure}[hbt]
 	\centering
@@ -653,6 +648,7 @@ Als Bedrohungen sind insbesondere sicherheits- und betriebstechnische Risiken zu
 
 
 \subsection{SWOT-Analyse des Projekts aus Sicht der Hochschule \textcolor{red}{[Hai Nam] need final judgement comment}}
+\label{cha:SWOT-Analyse des Projekts aus Sicht der Hochschule}
 
 \begin{figure}[hbt]
 	\centering

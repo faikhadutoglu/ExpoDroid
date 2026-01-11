@@ -1,8 +1,9 @@
 \chapter{Grundlagen}
 \label{cha:Grundlagen}
 
-
 \section{Mechatronische Systeme}
+\label{cha:Mechatronische Systeme}
+
 Folgendes Zitat verdeutlicht die Herkunft und Entstehung des Worts Mechatronik:
 \enquote{The word, mechatronics is composed of \emph{mecha} from mechanics and \emph{tronics}
 	from electronics. In other words, technologies and developed products will be incorporating
@@ -10,7 +11,10 @@ Folgendes Zitat verdeutlicht die Herkunft und Entstehung des Worts Mechatronik:
 	to tell where one ends and the other begins.}\autocite{Mori1969}
 
 Zur historischen Einordnung siehe auch die Darstellung in \autocite{Comerford1994} und gängige Lehrmaterialien, die dieses Memo zitieren \autocite{NYUIntroMechatronics}.
+
 \subsection{Definition und Systemarchitektur}
+\label{cha:Definition und Systemarchitektur}
+
 Mechatronische Systeme sind integrierte technische Systeme, die Mechanik, Elektronik, Regelungstechnik und Informatik synergetisch verbinden, um intelligente Funktionen zu realisieren. Ziel ist eine höhere Funktionalität, Präzision und Automatisierung. Typische Anwendungsbereiche sind Industrieroboter, CNC-Maschinen und Fahrerassistenzsysteme.
 
 Die Systemarchitektur umfasst folgende Hauptkomponenten:
@@ -24,6 +28,8 @@ Die Systemarchitektur umfasst folgende Hauptkomponenten:
 \end{itemize}
 
 \subsection{Interdisziplinäre Integration}
+\label{cha:Interdisziplinäre Integration}
+
 Die Mechatronik vereint mehrere Disziplinen:
 \begin{itemize}
 	\item \textbf{Mechanik:} Konstruktion, Dynamik und Werkstoffkunde.
@@ -35,8 +41,13 @@ Die Mechatronik vereint mehrere Disziplinen:
 Die Vorteile dieser Integration liegen in der Kompaktheit, Effizienz und Zuverlässigkeit moderner Systeme. Sie ermöglicht Anwendungen wie autonome Fahrzeuge, Robotik und Smart Devices.
 
 \section{Elektrische Antriebstechnik}
+\label{cha:Elektrische Antriebstechnik}
+
 Die elektrische Antriebstechnik befasst sich mit der Umwandlung elektrischer Energie in mechanische Bewegung und stellt damit eine zentrale Grundlage moderner mechatronischer Systeme dar. Sie umfasst den Aufbau, die Funktionsweise und die Steuerung elektrischer Maschinen, die in zahlreichen Anwendungen – von industriellen Produktionsanlagen bis hin zu Fahrzeugantrieben – eingesetzt werden. Ziel dieses Kapitels ist es, die grundlegenden Prinzipien elektrischer Antriebe sowie deren Komponenten und Wirkungszusammenhänge zu erläutern.
+
 \subsection{Funktionsweise von Elektromotoren (DC)}
+\label{cha:Funktionsweise von Elektromotoren (DC)}
+
 Das Grundprinzip des Elektromotors basiert auf der Lorentzkraft, 
 die im Jahr 1895 von dem niederländischen Physiker Hendrik Antoon Lorentz
 entdeckt wurde\cite{Kressierer.2011}. Sie beschreibt die Kraftwirkung auf bewegte elektrische Ladungen 
@@ -75,21 +86,17 @@ die Richtung des Magnetfeldes (von Nord nach Süd), so zeigt der \emph{Mittelfin
 die Richtung der auf den Leiter wirkenden Lorentzkraft an. Dieses Prinzip erklärt, 
 warum die stromdurchflossenen Leiter im Magnetfeld ein Drehmoment erfahren und sich 
 der Rotor eines Elektromotors in Bewegung setzt.
+
 \section{BDC- und BLDC-Motoren: Grundlagen und Unterschiede}
+\label{cha:BDC- und BLDC-Motoren: Grundlagen und Unterschiede}
 
 Brushed-DC-Motoren (BDC) und Brushless-DC-Motoren (BLDC) gehören zur Familie der Gleichstrommaschinen, unterscheiden sich jedoch grundlegend in Kommutierung und Bauweise. Ein BDC-Motor wandelt elektrische Energie in mechanische Energie um, wobei die Kommutierung mechanisch über Bürsten und einen Kommutator erfolgt. Die Bürsten übertragen den Strom auf den rotierenden Anker (Armatur), wodurch ein elektromagnetisches Drehmoment entsteht. Vorteile dieser Bauart sind die einfache Ansteuerung und geringe Kosten; Nachteile sind Bürstenverschleiß, Funkenbildung und damit verbundener Wartungsaufwand \cite{hughes2019electric}.
 
 Der BLDC-Motor verzichtet auf mechanische Bürsten; die Kommutierung erfolgt elektronisch über eine Steuerelektronik, die die Ströme in den Statorwicklungen schaltet. Der Rotor besteht in der Regel aus Permanentmagneten, der Stator aus mehrphasigen Wicklungen. Durch die elektronische Kommutierung werden eine höhere Effizienz, geringere Geräuschentwicklung und eine deutlich längere Lebensdauer erreicht. Zudem erlaubt die präzise Regelung eine exakte Drehzahl- und Drehmomentsteuerung, was BLDC-Motoren für Anwendungen in Elektrofahrzeugen, Drohnen und industriellen Antrieben prädestiniert—bei allerdings höherer Systemkomplexität und Kosten im Vergleich zu BDC \cite{hughes2019electric}\cite{voskov2023brushedvsbrushless}.
 
-
-
-
-
-
-
-
-
 \subsection{Servomotoren}
+\label{cha:Servomotoren}
+
 Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und eines Regelkreises präzise Positionen anfahren können. Hierfür sind komplexe Regelstrecken wie in Abbildung zu sehen. Dabei kann der Motor entweder als bürstenbehafteter Gleichstrommotor oder als bürstenloser Gleichstrommotor (BLDC) ausgeführt sein. Servomotoren sind im Vergleich zu einfachen Motoren kostenintensiver und erfordern eine komplexere Steuerung. Sie werden vor allem in Anwendungen eingesetzt, die eine hohe bis sehr hohe Genauigkeit erfordern, wie beispielsweise CNC-Maschinen, Industrieroboter oder automatisierte Fertigungssysteme.
 
 \begin{figure}[hbt]
@@ -100,11 +107,8 @@ Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und ei
 \end{figure}
 Die Abbildung zeigt die Kaskadenregelung eines Servoantriebs, bestehend aus Lage-, Drehzahl- und Stromregelkreis. Der Lageregler vergleicht den Soll-Lagewert mit dem Istwert und erzeugt eine Soll-Drehzahl. Diese wird im Drehzahlregler mit der gemessenen Drehzahl verglichen, woraus ein Sollstrom berechnet wird. Der Stromregler, als innerster und schnellster Regelkreis, regelt den Motorstrom über eine PWM-gesteuerte Leistungselektronik. Die PWM moduliert die Spannung für die Halbleiter, die den Motor versorgen. Die Istwerte für Lage und Drehzahl werden über einen Resolver erfasst und durch einen R/D-Wandler digitalisiert. Die hierarchische Struktur gewährleistet hohe Dynamik und Genauigkeit, da jede Regelungsebene Sollwerte für die nächste vorgibt. Typischerweise kommen PI-Regler in allen drei Regelkreisen zum Einsatz.
 
-
-
-
 \subsection{Hoverboard-Motoren}
-
+\label{cha:Hoverboard-Motoren}
 
 Hoverboards verwenden in der Regel \textbf{bürstenlose Gleichstrommotoren (BLDC-Hub-Motoren)}, die direkt in die Radnabe integriert sind. Diese Bauweise ermöglicht einen kompakten Aufbau und eine hohe Effizienz, da keine mechanischen Getriebe erforderlich sind\autocite{Zhang2025}.
 
@@ -147,9 +151,12 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
 
 \subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{[Angus]}}
+\label{cha:Motortreiber und PWM-Steuerung}
+
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten. 
 
 Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren \cite{schröder2018leistungselektronik}. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen \cite{bolton2015mechatronics}.
+
 \subsubsection{H-Brücke}
 
 Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
@@ -164,14 +171,14 @@ Dabei dürfen die beiden Schalterpaare einer Halbbrücke (z. B. S1 und S2) niema
 $V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
 In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen. \cite{hughes2019electricmotors}\cite{schröder2018leistungselektronik}
 
-
-
-
-
 \section{Mikrocontroller und Steuerungseinheiten\textcolor{brown}{FAIK}} %Faik
+\label{cha:Mikrocontroller und Steuerungseinheiten}
+
 Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funktionen integriert enthalten. Sie entstanden Mitte der 1970er-Jahre aus den Mikroprozessoren\autocite{Brandes.2024}. Mikrocontroller können daher als kleine Computer auf einem Chip verstanden werden, die ohne komplexes Betriebssystem spezielle Aufgaben in eingebetteten Systemen übernehmen. Ein Mikrocontroller enthält neben einen Prozessor, Arbeitsspeicher (RAM) und einen Speicher (EEPROM) - in dem die Programme gespeichert werden, auch wenn das Gerät keinen Strom hat. Im Gegensatz zu Mikroprozessoren vereint der Mikrocontroller die Verarbeitung, den Speicher und verschiedene Ein- und Ausgabefunktionen wie Timer und Analog-Digital-Wandler in einer einzigen, kostengünstigen Einheit. Mikrocontroller sind für Steuerungsanwendungen geeignet, wie die Motor- und Sensorsteuerung oder die Kommunikation mit anderen Geräten \autocite{IBM_Microcontroller}.
 
 \subsection{ESP32\textcolor{brown}{FAIK}}%Faik
+\label{cha:ESP32}
+
 Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien wie Wireless Local Area Network (WLAN) und Bluetooth auszeichnet \autocite{Cameron2023}. Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt \autocite{Cameron2023}.
 
 In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordaten erfassen und Motoren ansteuern kann, während er parallel über WLAN oder Bluetooth mit einem Smartphone, einem Server oder einem anderen Gerät kommuniziert. Es wird betont, dass der ESP32 in zahlreichen Formfaktoren verfügbar ist, die von einfachen Entwicklungsboards bis hin zu Modellen mit Displays, Global Positioning System (GPS) oder Kameras reichen, was eine Vielzahl von Anwendungen ermöglicht \autocite{Cameron2023}. Diese Vielfalt hat dazu geführt, dass der ESP32 sowohl in der sogenannten Maker-Community als auch in Forschung und Industrie große Verbreitung gefunden hat. Durch die offene Softwareunterstützung, die Arduino-Kompatibilität und niedrige Einstiegshürden ist er für viele Anwender besonders zugänglich, was seine Popularität weiter erhöht \autocite{Cameron2023}.
@@ -203,6 +210,7 @@ In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordat
 \end{itemize}
 
 \subsection{Einplatinencomputer und Raspberry Pi}
+\label{cha:Einplatinencomputer und Raspberry Pi}
 
 \subsection*{Einführung}
 Einplatinencomputer (englisch: Single-Board Computers, SBCs) sind vollständige Computersysteme, die alle wesentlichen Komponenten wie Prozessor, Speicher und Schnittstellen auf einer einzigen Platine vereinen. Diese kompakte Bauweise ermöglicht den Einsatz in eingebetteten Systemen, \enquote{Internet of Things} (IoT)-Anwendungen, Bildung und industriellen Steuerungen \autocite{Alvarez2022,Pajankar2017}. SBCs zeichnen sich durch geringe Kosten, Energieeffizienz und hohe Integrationsdichte aus, was sie für mobile und vernetzte Systeme attraktiv macht.
@@ -263,8 +271,13 @@ Trotz der Vorteile bestehen auch Einschränkungen:
 \end{itemize}
 
 \section{Energieversorgung\textcolor{brown}{FAIK}}%Faik
+\label{cha:Energieversorgung}
+	
 Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
+
 \subsection{Batterie\textcolor{brown}{FAIK}}%Faik
+\label{cha:Batterie}
+
 Batterien stellen eine mobile und unabhängige Energiequelle dar und ermöglichen den zuverlässigen Betrieb elektronischer Systeme auch ohne feste Stromversorgung, weshalb sie insbesondere in mobilen oder autonomen Anwendungen eine zentrale Rolle einnehmen.
 Batterien gehören zu den elektrochemischen Speichern, bei denen chemisch gebundene Energie durch Redoxreaktionen in elektrische Energie umgewandelt wird. Sie stellen eine universell einsetzbare Form chemischer Speicher dar, deren Energiedichte im Vergleich zu anderen Technologien jedoch begrenzt ist \autocite{Kurzweil2015}.
 
@@ -284,6 +297,8 @@ Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf paralle
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird \autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung \autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen, darunter stationäre Speichersysteme, Mobilitätslösungen und kleine Geräte.
 
 \subsection{Spannungswandler und Stromverteilung \textcolor{blue}{[Angus]}}
+\label{cha:Spannungswandler und Stromverteilung}
+	
 In mechatronischen Systemen wie mobilen Robotern werden unterschiedliche elektrische Verbraucher mit voneinander abweichenden Spannungs- und Stromanforderungen eingesetzt. Während Antriebsmotoren häufig mit höheren Spannungen und Strömen betrieben werden, benötigen Mikrocontroller, Sensoren und Kommunikationsmodule in der Regel stabile Niederspannungen. Zur Versorgung dieser Komponenten kommen Spannungswandler zum Einsatz, die die vorhandene Versorgungsspannung auf das jeweils benötigte Niveau anpassen. \cite{erickson2001fundamentals}
 
 Spannungswandler lassen sich grundsätzlich in lineare Regler und getaktete Schaltregler unterteilen. Lineare Regler zeichnen sich durch eine einfache Schaltung und geringe Störanfälligkeit aus, weisen jedoch bei größeren Spannungsdifferenzen einen niedrigen Wirkungsgrad auf. Schaltregler hingegen arbeiten mit deutlich höherem Wirkungsgrad und eignen sich daher besonders für batteriebetriebene Systeme, da sie die Verlustleistung und somit die Wärmeentwicklung reduzieren. \cite{erickson2001fundamentals}
@@ -294,6 +309,7 @@ Eine sorgfältige Auslegung der Spannungswandler und der Stromverteilung ist dah
 %\textcolor{red}{Hai Nam}
 
 \section{Additive Fertigungsverfahren (3D-Druck)\textcolor{blue}{Angus}}
+\label{cha:Additive Fertigungsverfahren}
 
 Additive Fertigungsverfahren, häufig als 3D-Druck bezeichnet, ermöglichen die schichtweise Herstellung von Bauteilen auf Basis digitaler Konstruktionsdaten. Im Gegensatz zu klassischen subtraktiven Fertigungsverfahren wird Material gezielt nur dort aufgebaut, wo es für die gewünschte Geometrie benötigt wird. Dadurch eignen sich additive Verfahren besonders für die schnelle Umsetzung von Prototypen und Einzelstücken. \cite{gebhardt2016additive}
 
@@ -304,6 +320,7 @@ Demgegenüber stehen auch Einschränkungen additiver Fertigungsverfahren. Die ma
 Insgesamt stellen additive Fertigungsverfahren eine geeignete Ergänzung zu klassischen Herstellungsverfahren dar. Insbesondere in frühen Entwicklungsphasen und bei prototypischen Anwendungen bieten sie große Vorteile hinsichtlich Flexibilität, Geschwindigkeit und Kosten, während ihre Grenzen bei Bauraum, Materialeigenschaften und Serienfertigung berücksichtigt werden müssen.
 
 \section{Human-Machine-Interaction \textcolor{red}{[HN]}}
+\label{cha:Human-Machine-Interaction}
 
 Die Mensch-Maschine-Interaktion (englisch: Human-Machine Interaction (HMI)) ist ein zentrales Element moderner technischer Systeme und bestimmt, wie Benutzer mit Maschinen kommunizieren. Sie umfasst die Gestaltung von Schnittstellen, die den Informationsaustausch zwischen Mensch und Maschine ermöglichen. In der Robotik ist HMI besonders wichtig, da komplexe Systeme wie ein Roboter nur dann praktikabel eingesetzt werden können, wenn die Bedienung intuitiv und sicher erfolgt.
 
@@ -313,6 +330,7 @@ Folgendes Zitat verdeutlicht die zunehmende Bedeutung und den erweiterten Anwend
 \enquote{Mensch-Computer-Interaktion hat sich von seinem ursprünglichen Schwerpunkt auf individuelles und generisches Nutzerverhalten auf soziale und organisatorische Computeranwendungen, Barrierefreiheit für ältere Menschen, Menschen mit kognitiven und körperlichen Beeinträchtigungen sowie für alle Menschen und für ein möglichst breites Spektrum menschlicher Erfahrungen und Aktivitäten ausgeweitet.} \autocite{Dix.2026}
 
 \subsection{Definitionen und Zielsetzung}
+\label{cha:Definitionen und Zielsetzung}
 
 HMI bezeichnet die Schnittstelle, über die Menschen mit technischen Systemen kommunizieren und miteinander interagieren. Dazu zählen alle Methoden und Technologien, die den Austausch von Informationen zwischen Benutzern und Maschinen ermöglichen. Die Norm International Organization for Standardization (ISO) 9241-210:2019 \autocite{Francis.2025} bietet einen strukturierten Überblick über die Entwicklung interaktiver Systeme auf der Grundlage des Prinzips des nutzerzentrierten Entwurfs (englisch: User-centered design (UCD)). Damit wird HMI als „Gestaltung interaktiver Systeme, die den Nutzer in den Mittelpunkt stellt, um Effektivität, Effizienz und Zufriedenheit zu gewährleisten“ definiert. \autocite{Francis.2025}
 
@@ -330,6 +348,7 @@ Zusammenfassend verfolgt die HMI folgende Kernziele:
 \end{itemize}
 
 \subsection{Interaktionsformen}
+\label{cha:Interaktionsformen}
 
 Eine HMI besteht in der Regel aus Eingabe- und Ausgabeelementen. Zu den Ausgabeelementen gehören Textanzeigen, Status-LEDs und Kamerabilder, während Eingabeelemente Drucktasten, Softkeys auf einem Touchscreen oder Gestensteuerungen sein können. Die HMI kann auf verschiedene Arten erfolgen, abhängig von den eingesetzten Technologien und den Anforderungen des Systems. Grundsätzlich lassen sich drei Hauptformen unterscheiden.
 
@@ -343,6 +362,7 @@ Auditive Interaktion nutzt akustische Signale oder Sprachsteuerung, um Informati
 Haptische Interaktion erfolgt über physische Bedienelemente wie Tasten, Drehregler oder Touchscreens. Sie bietet den Vorteil einer direkten, taktilen Rückmeldung und ist oft robuster gegenüber Umgebungsbedingungen wie Licht oder Lärm. \autocite{Teather.2010}
 
 \subsection{Nutzerzentriertes Design}
+\label{cha:Nutzerzentriertes Design}
 
 Die Norm ISO 9241, die sich auf die Ergonomie der Mensch-System-Interaktion konzentriert, wird als grundlegende Referenz betrachtet. Sie umfasst mehrere Unterbereiche
 dieses allgemeinen Gestaltungsprinzips, darunter insbesondere die Prinzipien der menschzentrierten Gestaltung interaktiver Systeme bzw. des nutzerzentrierten Designs (englisch:
@@ -376,12 +396,16 @@ einzelnen Schritten veranschaulichen.
 Der erste Schritt im UCD-Prozess besteht darin, zu ermitteln, wie viel Arbeitsaufwand erforderlich ist, um ein gewünschtes Niveau an Benutzerfreundlichkeit und Qualität der UX zu erreichen. Im nächsten Schritt wird der Nutzungskontext analysiert, um zu verstehen, wer die Endnutzer sind und in welcher Umgebung die jeweilige Funktion eingesetzt wird. Basierend auf der Analyse des Nutzungskontexts wird als Nächstes eine nutzerorientierte Anforderungsliste erstellt. Aus der Liste werden dann Entwurfskonzepte entwickelt, die diese Anforderungen erfüllen sollen. Schließlich werden diese Konzepte evaluiert, um ihre Gebrauchstauglichkeit und Relevanz für die Zielnutzer zu überprüfen. Echte Nutzer oder nicht projektbezogene Testpersonen spielen eine zentrale Rolle in diesem Prozess. Ihr Feedback ist besonders wertvoll, da sie zum einen täglich mit bestimmten Problemen konfrontiert sein können, die durch die entwickelten Konzepte behoben werden sollen. Zum anderen betrachten sie die Konzepte aus einer voreingenommenen Perspektive und können daher Informationen über Schwächen oder Verbesserungspotenziale liefern, die intern möglicherweise nicht wahrgenommen werden. Solche neuen Erkenntnisse und Feedback von den Probanden können dann dynamisch die Konzepte verbessern, indem der Entwicklungsprozess durch die iterativen Rückkopplungsschleifen auf bestimmte Schritte zurückgeführt werden darf. Üblicherweise wird eine Konzeptfunktion in Serienfahrzeugen als serienmäßige Funktion finalisiert, wenn kein weiteres Feedback mehr vorliegt und die Funktion endgültig die Nutzeranforderungen erfüllt. \autocite{Rhein.2025}
 
 \subsection{Visualisierung und Interaktionssystem}
+\label{cha:Visualisierung und Interaktionssystem}
 
 Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der Mensch-Maschine-Interaktion, da sie die Schnittstelle zwischen Benutzer und Roboter darstellen. Ziel ist es, Informationen klar und verständlich darzustellen und gleichzeitig eine intuitive Steuerung zu ermöglichen. Dies umfasst sowohl die Hardware (z. B. Displays, Touchscreens) als auch die Software (z. B. grafische Benutzeroberflächen und Interaktionslogik). Die Softwareseite der HMI wird durch GUI realisiert, die eine strukturierte und benutzerfreundliche Navigation ermöglichen. Zur Entwicklung grafischer Benutzeroberflächen werden häufig Frameworks wie \emph{Qt} oder \emph{LVGL} (Abkürzung für \enquote{Light and Versatile Graphics Library}) eingesetzt. Dabei handelt es sich um Software Frameworks, die eine plattformunabhängige Gestaltung von Benutzeroberflächen ermöglichen und zugleich ressourcenschonend arbeiten \autocite{Qt.2024} \autocite{LVGL.2024}. Ein Framework stellt eine strukturierte Sammlung von Softwarekomponenten bereit, die als Grundlage für die Entwicklung von Anwendungen dient \autocite{AWS.2026}.
 
 \section{Projekt \& Systems Engineering Methodik}
+\label{cha:Projekt & Systems Engineering Methodik}
 
 \subsection{Scrum}
+\label{cha:Scrum}
+
 Scrum ist ein agiles Framework für das Projektmanagement und die Organisation von Entwicklungsprozessen, das insbesondere in der Software- und Systementwicklung Anwendung findet. Ziel von Scrum ist es, komplexe Projekte unter unsicheren oder sich verändernden Anforderungen effizient umzusetzen. Im Gegensatz zu klassischen, sequenziellen Vorgehensmodellen basiert Scrum auf iterativem und inkrementellem Arbeiten sowie auf regelmäßiger Überprüfung und Anpassung des Projektverlaufs. \cite{schwaber2020scrumguide}\cite{poppendieck2013leanagile}
 
 Kernidee von Scrum ist die Aufteilung des Projekts in kurze, zeitlich festgelegte Entwicklungszyklen, sogenannte Sprints. Ein Sprint dauert typischerweise zwischen einer und vier Wochen und verfolgt das Ziel, ein funktionsfähiges Teilergebnis zu erzeugen. Am Ende jedes Sprints wird das erreichte Ergebnis überprüft und bewertet, wodurch frühzeitig Rückmeldungen in den weiteren Projektverlauf einfließen können.
@@ -399,6 +423,8 @@ Zusammenfassend stellt Scrum ein leichtgewichtiges, anpassungsfähiges Projektma
 
 
 \subsection{V-Modell}
+\label{cha:V-Modell}
+
 Das V-Modell im Projektmanagement und in der Systementwicklung
 
 Das V-Modell ist ein phasenorientiertes Vorgehensmodell zur Planung, Durchführung und Kontrolle von Entwicklungsprojekten. Es wird insbesondere im Software Engineering, in der Systementwicklung sowie im technischen Projektmanagement eingesetzt. Ziel des V-Modells ist es, Entwicklungsprozesse strukturiert abzubilden und die Qualität der entstehenden Systeme durch eine enge Verzahnung von Entwicklungs- und Testaktivitäten sicherzustellen. \cite{friedrich2024vmodellxt}\cite{cioBund2023vmodellxt}
@@ -427,6 +453,7 @@ Zusammenfassend stellt das V-Modell ein bewährtes Vorgehensmodell im Projektman
 \end{figure}
 
 \subsection{SWOT-Analyse}
+\label{cha:SWOT-Analyse}
 
 Die SWOT-Analyse ist ein strategisches Analyseinstrument zur strukturierten Bewertung eines Projekts oder Systems. Sie dient dazu, interne Stärken (englisch: strengths) und Schwächen (englisch: weaknesses) sowie externe Chancen (englisch: opportunities) und Risiken (englisch: threats) zu identifiziert.
 
@@ -450,6 +477,7 @@ Die Abbildung \ref{fig:SWOTexample} zeigt eine Vorlage für die Durchführung ei
 
 
 \subsection{Gantt-Diagramm \textcolor{red}{[HN]}}
+\label{cha:Gantt-Diagramm}
 
 Ein Gantt-Diagramm ist ein weit verbreitetes Planungskonzept im Projektmanagement. Es handelt sich um ein horizontales Balkendiagramm, bei dem die einzelnen Aufgaben eines Projekts auf der vertikalen Achse und die Zeitachse auf der horizontalen Achse dargestellt sind. Jeder Balken repräsentiert den Zeitraum, in dem eine Aufgabe beginnt und endet, und seine Länge entspricht der Dauer der Aufgabe. Moderne Gantt-Diagramme zeigen auch den Fortschritt in Prozent und Abhängigkeiten zwischen Aufgaben, z. B. durch Pfeilverbindungen oder Farbcodierungen. \cite{Gantt.2024}
 
