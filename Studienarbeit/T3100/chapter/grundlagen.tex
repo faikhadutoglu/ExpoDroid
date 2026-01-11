@@ -87,7 +87,7 @@ Der BLDC-Motor verzichtet auf mechanische Bürsten; die Kommutierung erfolgt ele
 
 
 
-\newpage
+
 
 \subsection{Servomotoren}
 Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und eines Regelkreises präzise Positionen anfahren können. Hierfür sind komplexe Regelstrecken wie in Abbildung zu sehen. Dabei kann der Motor entweder als bürstenbehafteter Gleichstrommotor oder als bürstenloser Gleichstrommotor (BLDC) ausgeführt sein. Servomotoren sind im Vergleich zu einfachen Motoren kostenintensiver und erfordern eine komplexere Steuerung. Sie werden vor allem in Anwendungen eingesetzt, die eine hohe bis sehr hohe Genauigkeit erfordern, wie beispielsweise CNC-Maschinen, Industrieroboter oder automatisierte Fertigungssysteme.
@@ -99,7 +99,7 @@ Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und ei
 	\label{fig:Servoregelkreis}
 \end{figure}
 Die Abbildung zeigt die Kaskadenregelung eines Servoantriebs, bestehend aus Lage-, Drehzahl- und Stromregelkreis. Der Lageregler vergleicht den Soll-Lagewert mit dem Istwert und erzeugt eine Soll-Drehzahl. Diese wird im Drehzahlregler mit der gemessenen Drehzahl verglichen, woraus ein Sollstrom berechnet wird. Der Stromregler, als innerster und schnellster Regelkreis, regelt den Motorstrom über eine PWM-gesteuerte Leistungselektronik. Die PWM moduliert die Spannung für die Halbleiter, die den Motor versorgen. Die Istwerte für Lage und Drehzahl werden über einen Resolver erfasst und durch einen R/D-Wandler digitalisiert. Die hierarchische Struktur gewährleistet hohe Dynamik und Genauigkeit, da jede Regelungsebene Sollwerte für die nächste vorgibt. Typischerweise kommen PI-Regler in allen drei Regelkreisen zum Einsatz.
-\newpage
+
 
 
 

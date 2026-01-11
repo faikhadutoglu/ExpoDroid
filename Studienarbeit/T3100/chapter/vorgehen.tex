@@ -36,45 +36,6 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
 Die Requierments-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requierments} betrachten.
 
 
-%Faik
-\section{Projektplanung und Meilensteine}
-
-Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2-4-2} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form des Gantt-Diagramms ermöglicht (siehe Abbildung \ref{fig:Gantt1}).
-
-\newpage
-%\vspace{3cm}
-\begin{figure}[H]
-	\input{images/Gantt1.tex}
-	\vspace{1cm}
-	\caption{Gantt-Diagramm für das Projekt}		
-	\label{fig:Gantt1}
-\end{figure}
-
-\newpage
-
-Das dargestellte Gantt-Diagramm in der Abbildung \ref{fig:Gantt1} visualisiert den zeitlichen Ablauf des Projekts zur Entwicklung des Messeroboters. Auf der horizontalen Achse sind die Monate Oktober bis Dezember sowie die Kalenderwochen (KW 42 bis KW 52) abgebildet. Die vertikale Achse zeigt die einzelnen Arbeitspakete und übergeordneten Themenbereiche.
-
-Schwarze Balken kennzeichnen die Gruppierungen wie „Motorsteuerungsfunktion“ und „Dokumentation“. Diese dienen der logischen Strukturierung des Projekts und fassen zusammengehörige Aufgaben. Grüne Balken repräsentieren konkrete Arbeitspakete, beispielsweise „Projektplanung“, „Integration von Motoren“ oder „Display-Benutzerfläche“. Die Länge des Balkens zeigt die geplante Dauer der Aufgabe. Rote Rauten markieren Meilensteine, also wichtige Ereignisse oder Entscheidungspunkte, wie die Fertigstellung der Anforderungen oder die erfolgreiche Integration von Hardware-Komponenten.
-
-Das Diagramm macht deutlich, dass das Projekt in mehrere Phasen gegliedert ist. Zunächst erfolgt die organisatorische Vorbereitung mit Projektplanung und der Definition funktionaler und nicht-funktionaler Anforderungen. Anschließend beginnt die technische Umsetzung. Ab Kalenderwoche 47 startet die Integration der Motoren sowie die Entwicklung der Fernsteuerung und Lenkungsfunktion. Parallel dazu werden die Displayfunktionen implementiert, darunter die Verbindung des Raspberry Pi mit dem Display, die Augenanimation und die Benutzeroberfläche. Gegen Ende des Projekts, in den Kalenderwochen 50 bis 52, wird die Dokumentation erstellt, einschließlich Trait-Analyse und 3D-Modellierung des Roboters.
-
-Die Monatsübersicht und die Kalenderwochen am oberen Rand erleichtern die zeitliche Orientierung. Durch die farbliche Kodierung, also grün für Arbeitspakete, schwarz für Gruppierungen und rot für Meilensteine, wird die Struktur des Projekts intuitiv erkennbar. Das Gantt-Diagramm dient als zentrales Werkzeug zur Visualisierung des Projektablaufs, unterstützt die Koordination von Aufgaben und zeigt Abhängigkeiten sowie kritische Zeitpunkte. Es ist ein wichtiges Kommunikationsinstrument für das Team und trägt zur Einhaltung des Zeitplans bei.
-
-\subsection{Aufteilung der Arbeitspakete \textcolor{brown}{FAIK}}
-Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi verantwortlich. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
-
-\subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
-Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
-
-\begin{itemize}
-	\item Fertigstellung des mechanischen Aufbaus.
-	\item Erste Inbetriebnahme der Motoren und der Steuerelektronik.
-	\item Implementierung der Basis-Software für das Display.
-
-\end{itemize}
-
-Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stellte sicher, dass der Fokus auf den wesentlichen Projektzielen lag und bei zeitlichen Abweichungen rechtzeitig gegengesteuert werden konnte.
-
 
 
 \section{Designkonzept[\textcolor{blue}{Angus}]}
@@ -331,7 +292,7 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 
 \clearpage
 
-\section{Interaktionsdesign \textcolor{red}{[Hai Nam] REALOCATE FROM HMI PUNKTE}}
+\section{Interaktionsdesign}
 
 Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher ferfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
 
@@ -598,6 +559,49 @@ In der aktuellen Phase liegt der Fokus auf der mechanischen Grundstruktur, der I
 
 Die Implementierung der Arme, Fertigstellung der Kopfkomponenten mit dem Servomotor, Optimierung der Benutzeroberfläche sowie die Integration zusätzlicher Funktionen wie Künstliche-Intelligenz (KI)-basierte Sprachfunktion und Hinderniserkennung mittels Ultraschallsensoren werden in späteren Bearbeitungsphasen umgesetzt. Diese Erweiterungen erfordern zusätzliche Zeit und Ressourcen.
 
+%Faik
+\section{Projektplanung und Meilensteine}
+
+Für die strukturierte Durchführung der Studienarbeit und die Einhaltung des vorgegebenen Zeitrahmens war eine sorgfältige Projektplanung unerlässlich. Als Planungswerkzeug kam die Excel-Vorlage \textit{Projektplan-Light V2-4-2} zum Einsatz, die eine visuelle Darstellung des Projektverlaufs in Form des Gantt-Diagramms ermöglicht (siehe Abbildung \ref{fig:Gantt1}).
+
+\newpage
+%\vspace{3cm}
+\begin{figure}[H]
+	\input{images/Gantt1.tex}
+	\vspace{1cm}
+	\caption{Gantt-Diagramm für das Projekt}		
+	\label{fig:Gantt1}
+\end{figure}
+
+\newpage
+
+Das dargestellte Gantt-Diagramm in der Abbildung \ref{fig:Gantt1} visualisiert den zeitlichen Ablauf des Projekts zur Entwicklung des Messeroboters. Auf der horizontalen Achse sind die Monate Oktober bis Dezember sowie die Kalenderwochen (KW 42 bis KW 52) abgebildet. Die vertikale Achse zeigt die einzelnen Arbeitspakete und übergeordneten Themenbereiche.
+
+Schwarze Balken kennzeichnen die Gruppierungen wie „Motorsteuerungsfunktion“ und „Dokumentation“. Diese dienen der logischen Strukturierung des Projekts und fassen zusammengehörige Aufgaben. Grüne Balken repräsentieren konkrete Arbeitspakete, beispielsweise „Projektplanung“, „Integration von Motoren“ oder „Display-Benutzerfläche“. Die Länge des Balkens zeigt die geplante Dauer der Aufgabe. Rote Rauten markieren Meilensteine, also wichtige Ereignisse oder Entscheidungspunkte, wie die Fertigstellung der Anforderungen oder die erfolgreiche Integration von Hardware-Komponenten.
+
+Das Diagramm macht deutlich, dass das Projekt in mehrere Phasen gegliedert ist. Zunächst erfolgt die organisatorische Vorbereitung mit Projektplanung und der Definition funktionaler und nicht-funktionaler Anforderungen. Anschließend beginnt die technische Umsetzung. Ab Kalenderwoche 47 startet die Integration der Motoren sowie die Entwicklung der Fernsteuerung und Lenkungsfunktion. Parallel dazu werden die Displayfunktionen implementiert, darunter die Verbindung des Raspberry Pi mit dem Display, die Augenanimation und die Benutzeroberfläche. Gegen Ende des Projekts, in den Kalenderwochen 50 bis 52, wird die Dokumentation erstellt, einschließlich Trait-Analyse und 3D-Modellierung des Roboters.
+
+Die Monatsübersicht und die Kalenderwochen am oberen Rand erleichtern die zeitliche Orientierung. Durch die farbliche Kodierung, also grün für Arbeitspakete, schwarz für Gruppierungen und rot für Meilensteine, wird die Struktur des Projekts intuitiv erkennbar. Das Gantt-Diagramm dient als zentrales Werkzeug zur Visualisierung des Projektablaufs, unterstützt die Koordination von Aufgaben und zeigt Abhängigkeiten sowie kritische Zeitpunkte. Es ist ein wichtiges Kommunikationsinstrument für das Team und trägt zur Einhaltung des Zeitplans bei.
+
+\subsection{Aufteilung der Arbeitspakete \textcolor{brown}{FAIK}}
+Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi verantwortlich. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
+
+\subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
+Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
+
+\begin{itemize}
+	\item Fertigstellung des mechanischen Aufbaus.
+	\item Erste Inbetriebnahme der Motoren und der Steuerelektronik.
+	\item Implementierung der Basis-Software für das Display.
+	
+\end{itemize}
+
+Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stellte sicher, dass der Fokus auf den wesentlichen Projektzielen lag und bei zeitlichen Abweichungen rechtzeitig gegengesteuert werden konnte.
+
+
+
+
+
 \section{Kostenanalyse}
 
 \subsection{Budgetplanung \textcolor{blue}{Angus}}
@@ -610,7 +614,7 @@ Eine sorgfältige Budgetplanung ist insbesondere im Hinblick auf die Auswahl der
 
 \subsection{Aktuelle Kostenschätzung \textcolor{red}{[HN]}}
 
-Die geschätzten Einzelpreise werden für jede Komponente angegeben, wobei die teuersten Artikel das Ladegerät für den Lithium-Polymer-Akku (LiPo) (62,95 €), das Display (62,99 €) und der Raspberry Pi 5 (84,50 €) sind. Der Motor kostet als Einzelkomponente zwar relativ wenig, jedoch steigen die Kosten bei der Bestellung mehrerer Motoren deutlich an. Die Gesamtkosten für alle aufgeführten Komponenten betragen 588,45 €, zuzüglich Versandkosten.
+Die geschätzten Einzelpreise werden für jede Komponente angegeben, wobei die teuersten Artikel das Ladegerät für den LiPo-Akku (62,95 €), das Display (62,99 €) und der Raspberry Pi 5 (84,50 €) sind. Der Motor kostet als Einzelkomponente zwar relativ wenig, jedoch steigen die Kosten bei der Bestellung mehrerer Motoren deutlich an. Die Gesamtkosten für alle aufgeführten Komponenten betragen 588,45 €, zuzüglich Versandkosten. Die Teileliste lässt sich in Abschnitt \ref{sec:Stückliste} einsehen.
 
 Trotz einer sorgfältigen Kostenplanung, musste die Gesamtsumme überschritten werden. Diese Entscheidung resultiert aus der Notwendigkeit, qualitativ hochwertige Komponenten zu verwenden, um die Funktionalität und Zuverlässigkeit des Messerroboters sicherzustellen. Ein striktes Festhalten am Budget hätte den Einsatz minderwertiger Bauteile erfordert, was langfristig zu höheren Kosten durch Ausfälle oder Ersatzbeschaffungen geführt hätte. Dieses Prinzip wird häufig mit dem Ausdruck \enquote{Buy cheap, buy twice.} beschrieben \autocite{Farlex.2024}. Insbesondere zentrale Elemente wie der Raspberry Pi, das Display und die Motorsteuerung sind entscheidend für die Leistungsfähigkeit des Systems und können nicht durch günstigere Alternativen ersetzt werden, ohne die Projektziele zu gefährden.
 
@@ -622,8 +626,8 @@ Zunächst wird eine Analyse des geplanten Roboters selbst durchgeführt, um sein
 
 Diese zweistufige Betrachtung ermöglicht eine ganzheitliche Einschätzung. Während die erste Analyse die technische und konzeptionelle Machbarkeit bewertet, liefert die zweite Analyse eine strategische Grundlage für die Entscheidung, ob das Projekt den gewünschten Mehrwert für die Hochschule bietet. Die Ergebnisse dienen somit als Basis für die Priorisierung von Maßnahmen und die Ableitung einer fundierten Empfehlung.
 
-\newpage
-\subsection{SWOT-Analyse des Messeroboters \textcolor{red}{[Hai Nam] adapt text}}
+
+\subsection{SWOT-Analyse des Messeroboters}
 
 \begin{figure}[hbt]
 	\centering
