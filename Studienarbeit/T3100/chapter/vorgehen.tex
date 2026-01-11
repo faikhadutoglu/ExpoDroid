@@ -536,27 +536,40 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 
 \section{Systemarchitektur}
 
-\subsection{Komponentenauswahl \textcolor{red}{[Hai Nam]}}
-\textcolor{red}{Hai Nam}
+\subsection{Komponentenauswahl }
 
+In diesem Abschnitt wird die Auswahl der zentralen Hardwarekomponenten begründet. Die Entscheidung für spezifische Bauteile basierte auf einer Abwägung zwischen technischer Leistungsfähigkeit, Verfügbarkeit und den spezifischen Anforderungen der Teilbereiche Antrieb, Interaktion und Energieversorgung.
 
 
 \subsubsection{Motoren Antrieb}
-Es werden Motoren für die Fortbewegung des Roboters benötig
+Es werden Motoren für die Fortbewegung des Roboters benötig \textcolor{red}{SIMON}
 \subsubsection{Weitere Motoren}
 Neben den Motoren für den Antrieb werden auch welche für die Bewegung des Kopfes als auch der beiden Arme benötigt. Bei diesen Motoren handelt es sich um Servo Motoren, da bei der Beweglichkeit des Kopfs und den Armen keine hohe Geschwindigkeit benötigt wird. Hingegen wird aber eine genaue Ansteuerung mit genauen Positionen erforderlich. Zusätzlich eignen sich Servomotoren für diese beweglichen Teile gut, da keine vollständigen Umdrehungen, also Umdrehungen mit Winkel über 360° benötigt wird.  
+\textcolor{red}{SIMON}
+
 
 \subsubsection{Microcomputer Motorenansteuerung}
-Der Roboter soll sich mit einer Fernbedienung (über WLAN,Funk?) steuern lassen. Dafür wird ein Microcomputer benötigt welcher die Signale der Fernbedinung empfängt und die Motoren ansteuert
+Für die hardwarenahe Ansteuerung der Motoren und die Verarbeitung der Steuersignale fiel die Wahl auf den ESP32. Ein entscheidender Vorteil dieses Mikrocontrollers ist das bereits integrierte WLAN- und Bluetooth-Modul. Dies ermöglicht es, den Roboter ohne zusätzliche Hardware-Erweiterungen drahtlos zu kommunizieren. Dadurch eröffnet sich die Möglichkeit, den Roboter zukünftig auch flexibel über eine Smartphone-App oder andere mobile Endgeräte zu steuern.
 
+Zusätzlich verfügt der ESP32 über eine sehr große und aktive Entwickler-Community. Diese stellt eine Vielzahl an Bibliotheken, Beispielen und Dokumentationen zur Verfügung, was die Implementierung, Fehlersuche und spätere Erweiterung des Systems erheblich erleichtert und die Entwicklungszeit reduziert.
 
-\subsubsection{Microcomputer höhere Anwendungen \textcolor{red}{Name ändern!}}
-Der ESP32, welcher für die Ansteuerung der Motoren und für Kommunikation mit der Fernbedienung genutzt werden soll istz nicht in der Lage ein größeres Display zu ...? Daher muss ein geeignete leistungsstarke alternative gesucht werden. Die neben Display auch Kamera und Audioausgabe übernimmt...
+Zudem bietet der ESP32 mit seinen zwei Prozessorkernen genügend Rechenleistung, um die PWM-Signale für die Motortreiber in Echtzeit zu generieren und gleichzeitig die Kommunikation mit der Fernsteuerung aufrechtzuerhalten, was ihn zur idealen Schnittstelle für das Antriebssystem macht.
+
+\subsubsection{Microcomputer höhere Anwendungen \textcolor{red}{(Vorschlag: Einplatinencomputer für Interaktion)}}
+
+Während der ESP32 für die Motorsteuerung prädestiniert ist, stößt er bei rechenintensiven Multimedia-Anwendungen an seine Grenzen. Er ist nicht in der Lage, ein hochauflösendes Display flüssig anzusteuern oder Videodaten in Echtzeit zu verarbeiten. Da der Roboter jedoch über ein Display verfügen soll, das Augenanimationen darstellt, und zusätzlich eine Kamera sowie Audioausgabe zur Interaktion nutzen soll, musste eine leistungsstarke Alternative gefunden werden.
+
+Aus diesem Grund wurde der Raspberry Pi 5 ausgewählt. Als vollwertiger Einplatinencomputer bietet er die notwendige Rechenleistung für das Rendering der Grafiken, die Bildverarbeitung der Kameradaten (z. B. mit OpenCV) und die Audioausgabe. Er fungiert somit als das „Gehirn“ des Roboters für alle höheren Anwendungen, die über die reine Fortbewegung hinausgehen.
+
 
 \subsubsection{Energieversorgung}
 
-LiPo-Akku
-Powerbank
+
+Die Energieversorgung des Roboters wurde in zwei unabhängige Kreise aufgeteilt, um Stabilität und Laufzeit zu optimieren.
+
+Für den Antrieb kommen LiPo-Akkus (Lithium-Polymer) zum Einsatz. Diese Akkumulatoren zeichnen sich durch ihre hohe Energiedichte und vor allem durch ihre Fähigkeit aus, hohe Ströme abzugeben, wie sie von den Motoren unter Last benötigt werden. Ein wesentlicher Faktor für diese Entscheidung war auch ein finanzieller Aspekt: Geeignete LiPo-Akkus standen seitens der Hochschule bereits zur Verfügung. Für das Projekt mussten lediglich ein kompatibles Ladegerät sowie eine LiPo-Schutztasche (Safety Bag) beschafft werden, was eine deutliche finanzielle Entlastung für das Projektbudget bedeutete.
+
+Für die Versorgung des Raspberry Pi und der Peripherie wird zusätzlich eine Powerbank mit 20.000 mAh verwendet. Diese Trennung hat den Vorteil, dass Spannungseinbrüche durch die Motoren nicht zum Absturz des Computers führen. Zudem entlastet die Powerbank den LiPo-Akku erheblich. Insbesondere im Hinblick auf geplante Erweiterungen, wie das Ausführen von KI-Modellen auf dem Raspberry Pi, gewährleistet die hohe Kapazität der Powerbank, dass der Roboter auch bei hoher Rechenlast über längere Zeiträume betriebsbereit bleibt, ohne dass die Antriebsbatterie vorzeitig entladen wird.
 
 
 \subsection{Elektronische Architektur}
