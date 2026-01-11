@@ -169,9 +169,9 @@ Die Entscheidung für eine geeignete Antriebsart fällt im Rahmen dieses Projekt
 Im Folgenden werden die betrachteten Antriebskonzepte vorgestellt und hinsichtlich ihrer Eigenschaften, Vorteile und Einschränkungen gegenübergestellt.
 
 \paragraph{I. Kettenantrieb}
-Der Kettenantrieb entspricht dem Fahrprinzip eines Vollkettenfahrzeugs, wie es beispielsweise von Kettenpanzern oder schweren landwirtschaftlichen Maschinen bekannt ist. Durch die großflächige Aufstandsfläche wird das Gesamtgewicht sehr gleichmäßig verteilt, was bei schweren Fahrzeugen eine hohe Geländegängigkeit auf unebenem Untergrund ermöglicht.
+Der Kettenantrieb entspricht dem Fahrprinzip eines Vollkettenfahrzeugs, wie es beispielsweise von Kettenpanzern oder schweren landwirtschaftlichen Maschinen bekannt ist. Durch die großflächige Aufstandsfläche wird das Gesamtgewicht sehr gleichmäßig verteilt, was bei schweren Fahrzeugen eine hohe Geländegängigkeit auf unebenem Untergrund ermöglicht. \cite{wong2001theory}\cite{siegwart2011introduction}
 
-Bei vergleichsweise leichten Systemen, wie einem für den Messebetrieb konzipierten Roboter, kann diese Eigenschaft jedoch auch nachteilig sein. Auf glatten Böden, wie sie in Messehallen üblich sind, kann es zu erhöhtem Schlupf kommen, wodurch die Fortbewegung weniger effizient wird. Gleichzeitig bietet der Kettenantrieb den Vorteil, dass unterschiedliche Untergrundarten – etwa Teppich, Gras oder sandiger Untergrund – grundsätzlich befahrbar sind.
+Bei vergleichsweise leichten Systemen, wie einem für den Messebetrieb konzipierten Roboter, kann diese Eigenschaft jedoch auch nachteilig sein. Auf glatten Böden, wie sie in Messehallen üblich sind, kann es zu erhöhtem Schlupf kommen, wodurch die Fortbewegung weniger effizient wird. Gleichzeitig bietet der Kettenantrieb den Vorteil, dass unterschiedliche Untergrundarten, etwa Teppich, Gras oder sandiger Untergrund, grundsätzlich befahrbar sind \cite{wong2001theory}.
 
 Ein weiterer Vorteil ist die Möglichkeit, den Roboter durch gegenläufige Ansteuerung der Ketten auf der Stelle um die eigene Achse zu drehen. Dies erleichtert das Manövrieren in engen oder stark frequentierten Bereichen, wie sie auf Messen oder in Menschenmengen häufig vorkommen.
 
@@ -180,19 +180,19 @@ Optisch vermittelt ein kettengetriebenes Fahrzeug Robustheit und technische Leis
 \paragraph{Radantrieb}
 Alternativ zum Kettenantrieb kann der Roboter mit Rädern ausgestattet werden. Eine gängige Grundkonfiguration ist der Einsatz von vier Rädern, vergleichbar mit einem konventionellen Kraftfahrzeug, wobei jeweils zwei Räder auf der linken und rechten Seite angeordnet sind. Abhängig von der Anordnung und Ansteuerung können verschiedene Antriebskonzepte realisiert werden, etwa Vorder-, Hinter- oder Allradantrieb. Darüber hinaus sind auch differenzielle oder diagonal angetriebene Varianten möglich.
 
-Räder ermöglichen auf ebenen und festen Untergründen, wie glatten Hallenböden, eine sehr effiziente und energiearme Fortbewegung. Zudem ist der mechanische Aufbau eines Radantriebs in der Regel einfacher, kostengünstiger und wartungsärmer als der eines Kettenantriebs.
+Räder ermöglichen auf ebenen und festen Untergründen, wie glatten Hallenböden, eine sehr effiziente und energiearme Fortbewegung. Zudem ist der mechanische Aufbau eines Radantriebs in der Regel einfacher, kostengünstiger und wartungsärmer als der eines Kettenantriebs. \cite{siegwart2011introduction}
 
 Darüber hinaus wirkt ein radgetriebenes System optisch weniger aggressiv und lässt sich gestalterisch vielseitiger in ein freundliches und einladendes Gesamtdesign integrieren. Einschränkungen ergeben sich hingegen bei der Geländegängigkeit, da Räder auf stark unebenem oder losem Untergrund schneller an ihre Grenzen stoßen.
 
 Zur detaillierteren Betrachtung werden im Folgenden verschiedene Radkonfigurationen vorgestellt, die in Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} schematisch dargestellt sind. Die Konzepte unterscheiden sich insbesondere hinsichtlich Antriebsverteilung, Wendigkeit, mechanischem Aufwand und Einsatzszenario.
 
 \subparagraph{II. Allradantrieb}
-Beim Allradantrieb sind alle vier Räder aktiv angetrieben. Diese Konfiguration ermöglicht eine gleichmäßige Kraftverteilung und bietet ein hohes Maß an Traktion sowie ein stabiles Fahrverhalten. Insbesondere bei wechselnden Untergründen kann dies von Vorteil sein.
+Beim Allradantrieb sind alle vier Räder aktiv angetrieben. Diese Konfiguration ermöglicht eine gleichmäßige Kraftverteilung und bietet ein hohes Maß an Traktion sowie ein stabiles Fahrverhalten. Insbesondere bei wechselnden Untergründen kann dies von Vorteil sein. \cite{siegwart2011introduction}\cite{wong2001theory}
 
 Dem stehen ein erhöhter mechanischer und elektrischer Aufwand sowie ein höherer Energiebedarf gegenüber, da vier Antriebseinheiten erforderlich sind. Für den überwiegend ebenen Einsatz auf Messeflächen kann diese Lösung daher als technisch leistungsfähig, jedoch potenziell überdimensioniert angesehen werden.
 
 \subparagraph{III. Vorder- oder Hinterradantrieb}
-Bei dieser Konfiguration werden entweder die beiden vorderen oder die beiden hinteren Räder angetrieben, während die jeweils anderen Räder passiv mitlaufen. Dieses Konzept entspricht dem klassischen Aufbau vieler Straßenfahrzeuge.
+Bei dieser Konfiguration werden entweder die beiden vorderen oder die beiden hinteren Räder angetrieben, während die jeweils anderen Räder passiv mitlaufen. Dieses Konzept entspricht dem klassischen Aufbau vieler Straßenfahrzeuge. \cite{wong2001theory}
 
 Der Vorteil liegt im vergleichsweise einfachen mechanischen Aufbau bei gleichzeitig gut kontrollierbarem Fahrverhalten. Der Energiebedarf ist geringer als beim Allradantrieb, da nur zwei Motoren eingesetzt werden. Einschränkungen ergeben sich bei der Traktion, insbesondere bei ungünstiger Lastverteilung oder sehr glatten Untergründen. Für den Einsatz auf ebenen Messeflächen stellt diese Variante jedoch eine praktikable und bewährte Lösung dar.
 
@@ -484,7 +484,7 @@ Die Frage, wie Augen oder ein Gesicht technisch und gestalterisch umgesetzt werd
 Eine einfache Möglichkeit besteht darin, Augen oder Gesichtszüge lediglich anzudeuten, beispielsweise durch Aussparungen im Gehäuse, Bemalung oder den Einsatz statischer LEDs. Diese Lösung ist technisch wenig aufwendig und kostengünstig umzusetzen. Allerdings sind die gestalterischen Möglichkeiten stark eingeschränkt, da die Augen keine oder nur sehr begrenzte Veränderungen darstellen können. Die Wirkung bleibt dadurch statisch und erinnert eher an eine Maske als an ein lebendiges oder interaktives Gesicht, was dem Ziel einer sympathischen und aufmerksamkeitsstarken Darstellung nur eingeschränkt gerecht wird.
 
 \subparagraph{Mechanische Augen}
-Eine weitere Möglichkeit ist die mechanische Nachbildung von Augen, etwa durch bewegliche Augäpfel oder Linsen. Solche Konzepte können sehr innovativ wirken und eine hohe Aufmerksamkeit erzeugen, da sie eine direkte Bewegung und scheinbare Blickrichtung ermöglichen. Gleichzeitig ist diese Variante jedoch mit einem erheblichen mechanischen und regelungstechnischen Aufwand verbunden. Die langfristige Wartbarkeit stellt insbesondere im Rahmen eines studentischen Projekts eine Herausforderung dar. Zudem besteht bei unzureichender mechanischer Qualität die Gefahr, dass die Umsetzung den Gesamteindruck des Roboters eher verschlechtert als verbessert.
+Eine weitere Möglichkeit ist die mechanische Nachbildung von Augen, etwa durch bewegliche Augäpfel oder Linsen. Solche Konzepte können sehr innovativ wirken und eine hohe Aufmerksamkeit erzeugen, da sie eine direkte Bewegung und scheinbare Blickrichtung ermöglichen. Gleichzeitig ist diese Variante jedoch mit einem erheblichen mechanischen und regelungstechnischen Aufwand verbunden. Die langfristige Wartbarkeit stellt insbesondere im Rahmen eines studentischen Projekts eine Herausforderung dar. Zudem besteht bei unzureichender mechanischer Qualität die Gefahr, dass die Umsetzung den Gesamteindruck des Roboters eher verschlechtert als verbessert. 
 
 \subparagraph{Darstellung der Augen über ein Display}
 Eine weitere und besonders flexible Möglichkeit besteht darin, die Augen beziehungsweise das Gesicht über ein Display darzustellen. Durch animierte Augenbewegungen und wechselnde Gesichtsausdrücke kann der Roboter scheinbar Emotionen darstellen, beispielsweise Neugier, Aufmerksamkeit oder Freude. So entsteht der Eindruck, dass der Roboter seine Umgebung wahrnimmt oder gezielt auf Personen reagiert, etwa indem er Messebesucher „anschaut“. Eine integrierte Kamera wäre in dem Fall zusätzlich nötig um Objekte und Personen zu erkennen.

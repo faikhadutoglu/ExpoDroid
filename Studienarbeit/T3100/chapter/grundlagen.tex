@@ -145,14 +145,15 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 
 \subsubsection*{Regelung und Steuerung}
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
-\subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{[Angus]}}
-Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten.
 
-Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen.
+\subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{[Angus]}}
+Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten. 
+
+Neben der Bereitstellung der erforderlichen Leistung ermöglicht der Motortreiber die Steuerung der Drehrichtung. Dies wird bei Gleichstrommotoren typischerweise durch eine integrierte H-Brücke realisiert, welche die Polarität der Motorspannung umschalten kann. Auf diese Weise lassen sich Vorwärts- und Rückwärtsbewegungen sowie gezieltes Bremsen realisieren \cite{schröder2018leistungselektronik}. Zusätzlich verarbeitet der Motortreiber PWM-Signale (Pulsweitenmodulation), die eine präzise Regelung der Motordrehzahl erlauben und damit sanftes Beschleunigen und Abbremsen ermöglichen \cite{bolton2015mechatronics}.
 \subsubsection{H-Brücke}
 
 Eine H-Brücke ist eine elektrische Brückenschaltung, die aus vier Schaltern besteht und es ermöglicht, die Polarität der Spannung am Motor umzuschalten (vgl. Abb. \ref{fig:H-Brücke}). Der Motor ist dabei zwischen den beiden Halbbrücken angeschlossen. Durch das gezielte Schalten diagonal gegenüberliegender Schalterpaare (S1 und S4 bzw. S2 und S3) wird die Versorgungsspannung 
-$V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt.
+$V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, wodurch sich die Drehrichtung des Motors steuern lässt. \cite{hughes2019electricmotors}\cite{schröder2018leistungselektronik}
 \begin{figure}[hbt]
 	\input{images/H-Brücke.tex}
 	\caption{Aufbau und Funktion einer H-Brücke. Hier drei H-Brücken in jeweils unterschiedlicher Schaltposition}		
@@ -160,7 +161,7 @@ $V_{\mathrm{CC}}$ jeweils in entgegengesetzter Richtung an den Motor angelegt, w
 \end{figure}
 Dabei dürfen die beiden Schalterpaare einer Halbbrücke (z. B. S1 und S2) niemals gleichzeitig leitend sein, da dies zu einem direkten Kurzschluss zwischen 
 $V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
-In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen.
+In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen. \cite{hughes2019electricmotors}\cite{schröder2018leistungselektronik}
 
 
 
@@ -282,22 +283,22 @@ Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf paralle
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird \autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung \autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen, darunter stationäre Speichersysteme, Mobilitätslösungen und kleine Geräte.
 
 \subsection{Spannungswandler und Stromverteilung \textcolor{blue}{[Angus]}}
-In mechatronischen Systemen wie mobilen Robotern werden unterschiedliche elektrische Verbraucher mit voneinander abweichenden Spannungs- und Stromanforderungen eingesetzt. Während Antriebsmotoren häufig mit höheren Spannungen und Strömen betrieben werden, benötigen Mikrocontroller, Sensoren und Kommunikationsmodule in der Regel stabile Niederspannungen. Zur Versorgung dieser Komponenten kommen Spannungswandler zum Einsatz, die die vorhandene Versorgungsspannung auf das jeweils benötigte Niveau anpassen.
+In mechatronischen Systemen wie mobilen Robotern werden unterschiedliche elektrische Verbraucher mit voneinander abweichenden Spannungs- und Stromanforderungen eingesetzt. Während Antriebsmotoren häufig mit höheren Spannungen und Strömen betrieben werden, benötigen Mikrocontroller, Sensoren und Kommunikationsmodule in der Regel stabile Niederspannungen. Zur Versorgung dieser Komponenten kommen Spannungswandler zum Einsatz, die die vorhandene Versorgungsspannung auf das jeweils benötigte Niveau anpassen. \cite{erickson2001fundamentals}
 
-Spannungswandler lassen sich grundsätzlich in lineare Regler und getaktete Schaltregler unterteilen. Lineare Regler zeichnen sich durch eine einfache Schaltung und geringe Störanfälligkeit aus, weisen jedoch bei größeren Spannungsdifferenzen einen niedrigen Wirkungsgrad auf. Schaltregler hingegen arbeiten mit deutlich höherem Wirkungsgrad und eignen sich daher besonders für batteriebetriebene Systeme, da sie die Verlustleistung und somit die Wärmeentwicklung reduzieren.
+Spannungswandler lassen sich grundsätzlich in lineare Regler und getaktete Schaltregler unterteilen. Lineare Regler zeichnen sich durch eine einfache Schaltung und geringe Störanfälligkeit aus, weisen jedoch bei größeren Spannungsdifferenzen einen niedrigen Wirkungsgrad auf. Schaltregler hingegen arbeiten mit deutlich höherem Wirkungsgrad und eignen sich daher besonders für batteriebetriebene Systeme, da sie die Verlustleistung und somit die Wärmeentwicklung reduzieren. \cite{erickson2001fundamentals}
 
-Die Stromverteilung innerhalb des Systems stellt sicher, dass alle Komponenten zuverlässig und entsprechend ihrer Leistungsanforderungen versorgt werden. Dabei ist eine klare Trennung von Leistungs- und Steuerversorgung sinnvoll, um Störeinflüsse zu minimieren. Zusätzlich müssen Schutzmaßnahmen wie Sicherungen, Strombegrenzungen oder Verpolungsschutz berücksichtigt werden, um Schäden an der Elektronik bei Fehlzuständen zu vermeiden.
+Die Stromverteilung innerhalb des Systems stellt sicher, dass alle Komponenten zuverlässig und entsprechend ihrer Leistungsanforderungen versorgt werden. Dabei ist eine klare Trennung von Leistungs- und Steuerversorgung sinnvoll, um Störeinflüsse zu minimieren. Zusätzlich müssen Schutzmaßnahmen wie Sicherungen, Strombegrenzungen oder Verpolungsschutz berücksichtigt werden, um Schäden an der Elektronik bei Fehlzuständen zu vermeiden \cite{erickson2001fundamentals}.
 Eine sorgfältige Auslegung der Spannungswandler und der Stromverteilung ist daher entscheidend für die Betriebssicherheit, Effizienz und Zuverlässigkeit des Gesamtsystems.
 %\subsection{Sicherheitskonzepte (Sicherungen, Battery Management) \textcolor{red}{[Hai Nam]}}
 %\textcolor{red}{Hai Nam}
 
 \section{Additive Fertigungsverfahren (3D-Druck)\textcolor{blue}{Angus}}
 
-Additive Fertigungsverfahren, häufig als 3D-Druck bezeichnet, ermöglichen die schichtweise Herstellung von Bauteilen auf Basis digitaler Konstruktionsdaten. Im Gegensatz zu klassischen subtraktiven Fertigungsverfahren wird Material gezielt nur dort aufgebaut, wo es für die gewünschte Geometrie benötigt wird. Dadurch eignen sich additive Verfahren besonders für die schnelle Umsetzung von Prototypen und Einzelstücken.
+Additive Fertigungsverfahren, häufig als 3D-Druck bezeichnet, ermöglichen die schichtweise Herstellung von Bauteilen auf Basis digitaler Konstruktionsdaten. Im Gegensatz zu klassischen subtraktiven Fertigungsverfahren wird Material gezielt nur dort aufgebaut, wo es für die gewünschte Geometrie benötigt wird. Dadurch eignen sich additive Verfahren besonders für die schnelle Umsetzung von Prototypen und Einzelstücken. \cite{gebhardt2016additive}
 
-Ein wesentlicher Vorteil des 3D-Drucks liegt in der hohen Gestaltungsfreiheit. Komplexe Geometrien, funktionsintegrierte Bauteile oder individuell angepasste Komponenten können ohne zusätzlichen Fertigungsaufwand realisiert werden. Zudem lassen sich Designänderungen schnell umsetzen, was iterative Entwicklungsprozesse unterstützt und Entwicklungszeiten verkürzt. Gerade in studentischen Projekten ermöglicht dies eine kosteneffiziente und flexible Fertigung von Bauteilen wie Gehäusen, Halterungen oder Abdeckungen.
+Ein wesentlicher Vorteil des 3D-Drucks liegt in der hohen Gestaltungsfreiheit. Komplexe Geometrien, funktionsintegrierte Bauteile oder individuell angepasste Komponenten können ohne zusätzlichen Fertigungsaufwand realisiert werden. Zudem lassen sich Designänderungen schnell umsetzen, was iterative Entwicklungsprozesse unterstützt und Entwicklungszeiten verkürzt \cite{gebhardt2016additive}. Gerade in studentischen Projekten ermöglicht dies eine kosteneffiziente und flexible Fertigung von Bauteilen wie Gehäusen, Halterungen oder Abdeckungen.
 
-Demgegenüber stehen auch Einschränkungen additiver Fertigungsverfahren. Die maximale Bauteilgröße ist durch den Bauraum des jeweiligen Druckers begrenzt, wodurch größere Strukturen häufig in mehrere Teilstücke zerlegt und anschließend montiert werden müssen. Darüber hinaus weisen gedruckte Bauteile je nach Verfahren und Druckorientierung anisotrope Materialeigenschaften auf, was die mechanische Belastbarkeit beeinflussen kann. Auch Oberflächenqualität und Maßhaltigkeit sind häufig geringer als bei konventionell gefertigten Bauteilen und erfordern gegebenenfalls Nachbearbeitung.
+Demgegenüber stehen auch Einschränkungen additiver Fertigungsverfahren. Die maximale Bauteilgröße ist durch den Bauraum des jeweiligen Druckers begrenzt, wodurch größere Strukturen häufig in mehrere Teilstücke zerlegt und anschließend montiert werden müssen. Darüber hinaus weisen gedruckte Bauteile je nach Verfahren und Druckorientierung anisotrope Materialeigenschaften auf, was die mechanische Belastbarkeit beeinflussen kann. Auch Oberflächenqualität und Maßhaltigkeit sind häufig geringer als bei konventionell gefertigten Bauteilen und erfordern gegebenenfalls Nachbearbeitung. \cite{gebhardt2016additive}
 
 Insgesamt stellen additive Fertigungsverfahren eine geeignete Ergänzung zu klassischen Herstellungsverfahren dar. Insbesondere in frühen Entwicklungsphasen und bei prototypischen Anwendungen bieten sie große Vorteile hinsichtlich Flexibilität, Geschwindigkeit und Kosten, während ihre Grenzen bei Bauraum, Materialeigenschaften und Serienfertigung berücksichtigt werden müssen.
 
@@ -380,19 +381,49 @@ Die Visualisierung und das Interaktionssystem bilden die zentrale Komponente der
 \section{Projekt \& Systems Engineering Methodik}
 
 \subsection{Scrum}
-Scrum ist ein agiles Framework für das Projektmanagement und die Organisation von Entwicklungsprozessen, das insbesondere in der Software- und Systementwicklung Anwendung findet. Ziel von Scrum ist es, komplexe Projekte unter unsicheren oder sich verändernden Anforderungen effizient umzusetzen. Im Gegensatz zu klassischen, sequenziellen Vorgehensmodellen basiert Scrum auf iterativem und inkrementellem Arbeiten sowie auf regelmäßiger Überprüfung und Anpassung des Projektverlaufs.
+Scrum ist ein agiles Framework für das Projektmanagement und die Organisation von Entwicklungsprozessen, das insbesondere in der Software- und Systementwicklung Anwendung findet. Ziel von Scrum ist es, komplexe Projekte unter unsicheren oder sich verändernden Anforderungen effizient umzusetzen. Im Gegensatz zu klassischen, sequenziellen Vorgehensmodellen basiert Scrum auf iterativem und inkrementellem Arbeiten sowie auf regelmäßiger Überprüfung und Anpassung des Projektverlaufs. \cite{schwaber2020scrumguide}\cite{poppendieck2013leanagile}
 
 Kernidee von Scrum ist die Aufteilung des Projekts in kurze, zeitlich festgelegte Entwicklungszyklen, sogenannte Sprints. Ein Sprint dauert typischerweise zwischen einer und vier Wochen und verfolgt das Ziel, ein funktionsfähiges Teilergebnis zu erzeugen. Am Ende jedes Sprints wird das erreichte Ergebnis überprüft und bewertet, wodurch frühzeitig Rückmeldungen in den weiteren Projektverlauf einfließen können.
+\cite{schwaber2020scrumguide}
 
-Die Arbeitsgrundlage in Scrum bildet das Product Backlog, in dem alle bekannten Anforderungen, Funktionen und Aufgaben in priorisierter Form festgehalten werden. Zu Beginn eines Sprints werden aus diesem Backlog diejenigen Aufgaben ausgewählt, die im kommenden Sprint umgesetzt werden sollen. Diese Auswahl erfolgt unter Berücksichtigung der verfügbaren Ressourcen und bildet das sogenannte Sprint Backlog.
+Die Arbeitsgrundlage in Scrum bildet das Product Backlog, in dem alle bekannten Anforderungen, Funktionen und Aufgaben in priorisierter Form festgehalten werden. Zu Beginn eines Sprints werden aus diesem Backlog diejenigen Aufgaben ausgewählt, die im kommenden Sprint umgesetzt werden sollen. Diese Auswahl erfolgt unter Berücksichtigung der verfügbaren Ressourcen und bildet das sogenannte Sprint Backlog. 
 
 Ein wesentliches Element von Scrum sind regelmäßige Meetings, die der Transparenz und Abstimmung dienen. Dazu zählen insbesondere das Sprint Planning zur Planung des kommenden Sprints, das Daily Scrum zur täglichen Abstimmung innerhalb des Teams sowie das Sprint Review und die Sprint Retrospektive am Ende eines Sprints. Während im Review das erzielte Ergebnis betrachtet wird, dient die Retrospektive der Reflexion und kontinuierlichen Verbesserung der Zusammenarbeit.
 
 Scrum definiert darüber hinaus klar abgegrenzte Rollen. Der Product Owner ist für die Priorisierung der Anforderungen und die fachliche Zielsetzung verantwortlich, während das Entwicklungsteam die Umsetzung der Aufgaben übernimmt. Der Scrum Master unterstützt den Prozess, stellt die Einhaltung der Scrum-Prinzipien sicher und hilft dabei, Hindernisse im Arbeitsablauf zu beseitigen.
 
-Ein zentrales Merkmal von Scrum ist seine hohe Flexibilität. Anforderungen können während des Projektverlaufs angepasst oder erweitert werden, sofern sie in die Sprint-Planung integriert werden. Dadurch eignet sich Scrum besonders für Projekte, bei denen die vollständigen Anforderungen zu Beginn nicht abschließend definiert werden können oder sich im Verlauf weiterentwickeln.
+Ein zentrales Merkmal von Scrum ist seine hohe Flexibilität. Anforderungen können während des Projektverlaufs angepasst oder erweitert werden, sofern sie in die Sprint-Planung integriert werden. Dadurch eignet sich Scrum besonders für Projekte, bei denen die vollständigen Anforderungen zu Beginn nicht abschließend definiert werden können oder sich im Verlauf weiterentwickeln. \cite{schwaber2020scrumguide}
 
 Zusammenfassend stellt Scrum ein leichtgewichtiges, anpassungsfähiges Projektmanagement-Framework dar, das durch kurze Entwicklungszyklen, regelmäßige Abstimmung und kontinuierliche Verbesserung geprägt ist. Es bildet eine wichtige Grundlage moderner agiler Vorgehensweisen und wird häufig in Kombination mit strukturierten Entwicklungsmodellen eingesetzt.
+
+
+\subsection{V-Modell}
+Das V-Modell im Projektmanagement und in der Systementwicklung
+
+Das V-Modell ist ein phasenorientiertes Vorgehensmodell zur Planung, Durchführung und Kontrolle von Entwicklungsprojekten. Es wird insbesondere im Software Engineering, in der Systementwicklung sowie im technischen Projektmanagement eingesetzt. Ziel des V-Modells ist es, Entwicklungsprozesse strukturiert abzubilden und die Qualität der entstehenden Systeme durch eine enge Verzahnung von Entwicklungs- und Testaktivitäten sicherzustellen. \cite{friedrich2024vmodellxt}\cite{cioBund2023vmodellxt}
+
+Die Bezeichnung „V-Modell“ ergibt sich aus der grafischen Darstellung des Modells in Form eines „V“, wie in Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} gezeigt. Auf der linken Seite des Modells werden die Phasen der Anforderungsdefinition und des Systementwurfs abgebildet, während auf der rechten Seite die zugehörigen Prüf- und Testphasen angeordnet sind. Die untere Spitze des V stellt die Implementierungs- beziehungsweise Realisierungsphase dar. Jede Entwicklungsphase ist dabei einer konkreten Test- oder Verifikationsphase gegenübergestellt.
+
+Der Projektablauf beginnt im V-Modell mit der Anforderungsanalyse. In dieser Phase werden die funktionalen und nicht-funktionalen Anforderungen an das System erfasst, dokumentiert und abgestimmt. Darauf aufbauend folgen die System- und Architekturentwürfe, in denen das Gesamtsystem sowie seine Subsysteme strukturiert beschrieben werden. Anschließend werden die einzelnen Komponenten detailliert ausgearbeitet, bevor in der Implementierungsphase die tatsächliche Umsetzung erfolgt. \cite{friedrich2024vmodellxt}\cite{cioBund2023vmodellxt}
+
+Nach der Implementierung folgt die rechte Seite des V-Modells, in der die zuvor definierten Entwicklungsstufen schrittweise überprüft werden. Zunächst werden einzelne Komponenten getestet, anschließend erfolgt die Integration und der Systemtest. Den Abschluss bildet die Validierung, bei der überprüft wird, ob das entwickelte System die ursprünglich festgelegten Anforderungen erfüllt und für den vorgesehenen Einsatzzweck geeignet ist.
+
+Ein zentrales Merkmal des V-Modells ist die frühzeitige Planung von Test- und Prüfaktivitäten. Bereits in den frühen Projektphasen werden Testfälle und Akzeptanzkriterien definiert, die später zur Überprüfung der jeweiligen Entwicklungsstufen herangezogen werden. Dadurch können Fehler und Abweichungen frühzeitig erkannt und korrigiert werden, was zu einer höheren Gesamtqualität des Systems beiträgt. \cite{friedrich2024vmodellxt}
+
+Aus Sicht des Projektmanagements bietet das V-Modell eine hohe Transparenz und Nachvollziehbarkeit. Die klar definierten Phasen und Meilensteine erleichtern die Planung von Zeit, Kosten und Ressourcen sowie die Dokumentation des Projektfortschritts. Gleichzeitig ist das Modell vergleichsweise wenig flexibel gegenüber nachträglichen Änderungen, da Anpassungen an Anforderungen häufig Auswirkungen auf mehrere Phasen haben. 
+
+Im Kontext technischer Entwicklungsprojekte, wie etwa der Entwicklung eines Roboters, eignet sich das V-Modell besonders gut, da es sowohl Hardware- als auch Softwareaspekte systematisch berücksichtigt. Die strukturierte Vorgehensweise unterstützt eine klare Trennung von Konzept, Entwurf, Umsetzung und Test und trägt damit zu einer kontrollierten und nachvollziehbaren Projektabwicklung bei.
+
+Zusammenfassend stellt das V-Modell ein bewährtes Vorgehensmodell im Projektmanagement und in der Systementwicklung dar. Durch die enge Kopplung von Entwicklungs- und Testphasen sowie die klare Phasenstruktur bietet es eine solide Grundlage für qualitätsorientierte technische Projekte und bildet einen wichtigen Referenzrahmen für weiterführende Projektmanagementmethoden.
+
+\vspace{0.5cm}
+\begin{figure}[hbt]
+	\centering
+	\input{images/V_Modell.tex}
+	\vspace{0.5cm}
+	\caption{Struktur des V-Modells. In der Grafischen Ansicht lässt sich so auch das namensgebende "V"\ erkennen.}		
+	\label{fig:V_Modell}
+\end{figure}
 
 \subsection{SWOT-Analyse}
 
@@ -415,34 +446,6 @@ Durch die strukturierte Betrachtung dieser vier Dimensionen ermöglicht die SWOT
 \end{figure}
 
 Die Abbildung \ref{fig:SWOTexample} zeigt eine Vorlage für die Durchführung einer SWOT-Analyse. Sie ist in vier gleich große Felder unterteilt, die jeweils eine der Kategorien der Analyse darstellen. Diese sind Stärken (Strengths), Schwächen (Weaknesses), Chancen (Opportunities) und Risiken (Threats). Die beiden oberen Felder enthalten die internen Faktoren des Projekts, nämlich Stärken und Schwächen, während die unteren Felder die externen Faktoren Chancen und Risiken abbilden.
-
-\subsection{V-Modell}
-Das V-Modell im Projektmanagement und in der Systementwicklung
-
-Das V-Modell ist ein phasenorientiertes Vorgehensmodell zur Planung, Durchführung und Kontrolle von Entwicklungsprojekten. Es wird insbesondere im Software Engineering, in der Systementwicklung sowie im technischen Projektmanagement eingesetzt. Ziel des V-Modells ist es, Entwicklungsprozesse strukturiert abzubilden und die Qualität der entstehenden Systeme durch eine enge Verzahnung von Entwicklungs- und Testaktivitäten sicherzustellen.
-
-Die Bezeichnung „V-Modell“ ergibt sich aus der grafischen Darstellung des Modells in Form eines „V“, wie in Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} gezeigt. Auf der linken Seite des Modells werden die Phasen der Anforderungsdefinition und des Systementwurfs abgebildet, während auf der rechten Seite die zugehörigen Prüf- und Testphasen angeordnet sind. Die untere Spitze des V stellt die Implementierungs- beziehungsweise Realisierungsphase dar. Jede Entwicklungsphase ist dabei einer konkreten Test- oder Verifikationsphase gegenübergestellt.
-
-Der Projektablauf beginnt im V-Modell mit der Anforderungsanalyse. In dieser Phase werden die funktionalen und nicht-funktionalen Anforderungen an das System erfasst, dokumentiert und abgestimmt. Darauf aufbauend folgen die System- und Architekturentwürfe, in denen das Gesamtsystem sowie seine Subsysteme strukturiert beschrieben werden. Anschließend werden die einzelnen Komponenten detailliert ausgearbeitet, bevor in der Implementierungsphase die tatsächliche Umsetzung erfolgt.
-
-Nach der Implementierung folgt die rechte Seite des V-Modells, in der die zuvor definierten Entwicklungsstufen schrittweise überprüft werden. Zunächst werden einzelne Komponenten getestet, anschließend erfolgt die Integration und der Systemtest. Den Abschluss bildet die Validierung, bei der überprüft wird, ob das entwickelte System die ursprünglich festgelegten Anforderungen erfüllt und für den vorgesehenen Einsatzzweck geeignet ist.
-
-Ein zentrales Merkmal des V-Modells ist die frühzeitige Planung von Test- und Prüfaktivitäten. Bereits in den frühen Projektphasen werden Testfälle und Akzeptanzkriterien definiert, die später zur Überprüfung der jeweiligen Entwicklungsstufen herangezogen werden. Dadurch können Fehler und Abweichungen frühzeitig erkannt und korrigiert werden, was zu einer höheren Gesamtqualität des Systems beiträgt.
-
-Aus Sicht des Projektmanagements bietet das V-Modell eine hohe Transparenz und Nachvollziehbarkeit. Die klar definierten Phasen und Meilensteine erleichtern die Planung von Zeit, Kosten und Ressourcen sowie die Dokumentation des Projektfortschritts. Gleichzeitig ist das Modell vergleichsweise wenig flexibel gegenüber nachträglichen Änderungen, da Anpassungen an Anforderungen häufig Auswirkungen auf mehrere Phasen haben.
-
-Im Kontext technischer Entwicklungsprojekte, wie etwa der Entwicklung eines Roboters, eignet sich das V-Modell besonders gut, da es sowohl Hardware- als auch Softwareaspekte systematisch berücksichtigt. Die strukturierte Vorgehensweise unterstützt eine klare Trennung von Konzept, Entwurf, Umsetzung und Test und trägt damit zu einer kontrollierten und nachvollziehbaren Projektabwicklung bei.
-
-Zusammenfassend stellt das V-Modell ein bewährtes Vorgehensmodell im Projektmanagement und in der Systementwicklung dar. Durch die enge Kopplung von Entwicklungs- und Testphasen sowie die klare Phasenstruktur bietet es eine solide Grundlage für qualitätsorientierte technische Projekte und bildet einen wichtigen Referenzrahmen für weiterführende Projektmanagementmethoden.
-
-\vspace{0.5cm}
-\begin{figure}[hbt]
-	\centering
-	\input{images/V_Modell.tex}
-	\vspace{0.5cm}
-	\caption{Struktur des V-Modells. In der Grafischen Ansicht lässt sich so auch das namensgebende "V"\ erkennen.}		
-	\label{fig:V_Modell}
-\end{figure}
 
 
 \subsection{Gantt-Diagramm \textcolor{red}{[HN]}}
