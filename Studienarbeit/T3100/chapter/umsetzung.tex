@@ -506,6 +506,117 @@ Aus dieser Erkenntnis ergab sich ein unmittelbarer Handlungsbedarf auf zwei Eben
 
 Die durchgeführte Fehleranalyse verdeutlicht, dass Subsystemtests nicht nur der Funktionsprüfung dienen, sondern wertvolle Erkenntnisse über reale Betriebsbedingungen liefern. Die identifizierten Schwachstellen bilden eine wichtige Grundlage für gezielte technische und konzeptionelle Optimierungen des Systems.
 
+
+\subsubsection{Implementierung eines Failsafe-Mechanismus}
+
+Die während der Testfahrten aufgetretenen unkontrollierten Fahrzeugbewegungen machten deutlich, dass die ursprüngliche Implementierung der Motorsteuerung keine ausreichende Absicherung gegen Signalverluste besaß. Eine detaillierte Codeanalyse offenbarte die Ursache dieses sicherheitskritischen Verhaltens.
+
+\paragraph{Problemanalyse}
+In der ursprünglichen Implementation wurden die Steuersignale für Geschwindigkeit und Lenkung in statischen Variablen gespeichert:
+
+\begin{lstlisting}[style=motorStyle, caption={Problematische Signalspeicherung ohne Validierung}]
+	static int lastSteeringPulse = 1500;
+	static int lastSpeedPulse = 1500;
+	
+	// Signaleinlesen in der Hauptschleife
+	if(pulseLength_us != 0){ 
+		if(i == ENGINE){
+			lastSteeringPulse = pulseLength_us;
+		}
+		else if(i == AILERON){
+			lastSpeedPulse = pulseLength_us;
+		}
+	}
+\end{lstlisting}
+
+Das fundamentale Problem dieser Implementierung liegt in der Verwendung von \texttt{static}-Variablen ohne Gültigkeitsprüfung. Statische Variablen behalten ihre Werte über mehrere Funktionsaufrufe hinweg bei. Wenn das Eingangssignal aufgrund einer gelösten Leitung oder eines Empfängerausfalls wegfällt, gibt die \texttt{pulseIn()}-Funktion zwar den Wert 0 zurück, jedoch werden die gespeicherten Werte \texttt{lastSteeringPulse} und \texttt{lastSpeedPulse} nicht aktualisiert. Die Motorsteuerung verwendet somit weiterhin die zuletzt empfangenen gültigen Werte und führt die Fahrt mit unveränderter Geschwindigkeit und Richtung fort -- ohne jegliche Möglichkeit zur Intervention durch den Bediener.
+
+Dieses Verhalten stellt ein erhebliches Sicherheitsrisiko dar, insbesondere im vorgesehenen Messebetrieb mit hohem Personenaufkommen. Ein Fahrzeug, das sich unkontrolliert weiterbewegt, kann zu Kollisionen mit Personen oder Ausstellungsobjekten führen.
+
+\paragraph{Lösungsansatz: Failsafe-Mechanismus}
+Zur Behebung dieser Schwachstelle sollte ein mehrstufiger Failsafe-Mechanismus implementiert werden, der auf drei Säulen basiert:
+
+\begin{enumerate}
+	\item \textbf{Signalvalidierung}: Kontinuierliche Überprüfung der Gültigkeit eingehender Steuersignale
+	\item \textbf{Timeout-Überwachung}: Zeitbasierte Erkennung von Signalverlusten
+	\item \textbf{Sicherer Systemzustand}: Automatisches Überführen der Motoren in einen definierten Stopp-Zustand
+\end{enumerate}
+
+Eine mögliche Implementierung würde die Steuerungslogik um einen Zeitstempel erweitern, der bei jedem gültigen Signalempfang aktualisiert wird:
+
+\begin{lstlisting}[style=motorStyle, caption={Vorschlag für erweiterte Signalverarbeitung mit Gültigkeitsprüfung}]
+	static int lastSteeringPulse = 1500;
+	static int lastSpeedPulse = 1500;
+	static uint32_t lastValidSignalTime = 0;
+	const uint32_t SIGNAL_TIMEOUT_MS = 500;
+	
+	bool validSteeringSignal = false;
+	bool validSpeedSignal = false;
+	
+	// In der Signalverarbeitungsschleife
+	if(pulseLength_us != 0){ 
+		if(i == ENGINE){
+			lastSteeringPulse = pulseLength_us;
+			validSteeringSignal = true;
+		}
+		else if(i == AILERON){
+			lastSpeedPulse = pulseLength_us;
+			validSpeedSignal = true;
+		}
+		// Weitere Verarbeitung...
+	}
+	
+	// Timer-Update nur bei gültigen Signalen
+	if(validSteeringSignal && validSpeedSignal) {
+		lastValidSignalTime = millis();
+	}
+\end{lstlisting}
+
+Der kritische Aspekt dieser Lösung wäre die explizite Unterscheidung zwischen dem Vorhandensein eines Signals (\texttt{pulseLength\_us != 0}) und der Aktualisierung des Zeitstempels. Nur wenn beide erforderlichen Signalkanäle (Lenkung und Geschwindigkeit) gültige Werte liefern, würde der Zeitstempel erneuert.
+
+Vor der eigentlichen Motoransteuerung müsste eine Timeout-Prüfung erfolgen:
+
+\begin{lstlisting}[style=motorStyle, caption={Vorschlag für Failsafe-Aktivierung bei Signalverlust}]
+	if(millis() - lastValidSignalTime > SIGNAL_TIMEOUT_MS) {
+		// Alle Motoren sofort stoppen
+		analogWrite(PIN_BTS1_RPWM, 0);
+		analogWrite(PIN_BTS1_LPWM, 0);
+		analogWrite(PIN_BTS2_RPWM, 0);
+		analogWrite(PIN_BTS2_LPWM, 0);
+		
+		Serial.println("FAILSAFE: Kein Signal - Motoren gestoppt!");
+		return;
+	}
+	
+	// Normale Motorsteuerung wird nur ausgefuehrt, 
+	// wenn Failsafe nicht aktiv ist
+	int baseSpeed = 0;
+	// ... weitere Steuerungslogik
+\end{lstlisting}
+
+Die gewählte Timeout-Dauer von \SI{500}{\milli\second} würde einen Kompromiss zwischen Reaktionsgeschwindigkeit und Störfestigkeit darstellen. Sie wäre kurz genug, um bei einem tatsächlichen Signalverlust schnell zu reagieren, aber lang genug, um kurzzeitige Signalstörungen oder Verzögerungen in der Signalverarbeitung nicht fälschlicherweise als Fehler zu interpretieren.
+
+\paragraph{Zusätzliche Absicherungsmaßnahmen}
+Ergänzend zur Timeout-Überwachung sollte eine Plausibilitätsprüfung der empfangenen Pulslängen implementiert werden:
+
+\begin{lstlisting}[style=motorStyle, caption={Vorschlag für Validierung der Signalplausibilität}]
+	// Unrealistische Werte abfangen
+	if(pulseLength_us < 900 || pulseLength_us > 2100) {
+		pulseLength_us = 0;  // Als ungueltig markieren
+	}
+\end{lstlisting}
+
+Diese Prüfung würde Messwerte herausfiltern, die außerhalb des physikalisch möglichen Bereichs für PWM-Steuersignale liegen. Typische RC-Empfänger generieren Pulse zwischen \SI{1000}{\micro\second} und \SI{2000}{\micro\second}. Werte außerhalb des erweiterten Bereichs von \SI{900}{\micro\second} bis \SI{2100}{\micro\second} würden auf Messfehler oder elektrische Störungen hindeuten und sollten als ungültig verworfen werden.
+
+\paragraph{Bewertung der Lösung}
+Die vorgeschlagene Failsafe-Logik würde das identifizierte Sicherheitsproblem auf mehreren Ebenen adressieren. Sie könnte Signalverluste zuverlässig erkennen und das System innerhalb von \SI{500}{\milli\second} in einen sicheren Zustand überführen. Die zusätzliche Plausibilitätsprüfung würde die Robustheit gegenüber elektrischen Störungen und fehlerhaften Messwerten erhöhen.
+
+Für den praktischen Messebetrieb wäre eine Erweiterung um eine optische oder akustische Warnmeldung sinnvoll, die den Bediener über den aktivierten Failsafe-Zustand informiert. Dies könnte beispielsweise durch schnelles Blinken der Autopilot-LED oder einen Signalton realisiert werden.
+
+Die vorgeschlagene Optimierung verdeutlicht die Notwendigkeit, bereits in der Entwicklungsphase potenzielle Fehlerzustände systematisch zu analysieren und entsprechende Absicherungsmechanismen vorzusehen. Insbesondere bei autonomen oder ferngesteuerten Systemen, die in der Nähe von Personen operieren, müssen Fail-Safe-Konzepte integraler Bestandteil der Steuerungslogik sein.
+
+
+
 \subsection{Subsystemtests der Augenansteurung über Display und Kamera  \textcolor{blue}{Simon}}
 \subsection{Integrationsstrategie}
 Die Integration erfolgt in mehreren Phasen:
