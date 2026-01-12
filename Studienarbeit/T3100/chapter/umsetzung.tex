@@ -750,7 +750,7 @@ Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requirements}) def
 
 \textbf{Sicherheitsfunktionen (REQ-018, REQ-020, REQ-022):} Die Sicherheit hatte eine hohe Priorität, konnte jedoch in der gegebenen Zeit nicht vollständig validiert werden. Besonders REQ-018 (Failsafe bei Signalverlust) zeigte in Tests unerwartetes Verhalten: Während der Software-Timeout korrekt funktionierte, führte ein Stromausfall am Empfänger selbst dazu, dass der Motortreiber das letzte gültige Signal beibehielt (Last-State-Hold), statt zu stoppen. Dieses Verhalten muss in einer zukünftigen Iteration hardwareseitig abgefangen werden. Auch der mechanische Schutz der Elektronik vor Erschütterungen (REQ-022) sowie das sensorgestützte automatische Stoppen (REQ-020) stehen noch auf der Agenda für die nächste Entwicklungsphase.
 
-\textbf{Erweiterte Funktionen (REQ-032, REQ-009):} Die Implementierung von KI-Funktionen (REQ-009) und die Anpassung an das spezifische DHBW-Design (REQ-032) wurden zugunsten einer stabilen Basisfunktionalität (Fahren und Steuern) zurückgestellt. Der aktuelle Holz-Prototyp dient als funktionaler Träger ("`Mule"'), dessen Design in späteren Schritten verfeinert wird.
+\textbf{Erweiterte Funktionen (REQ-032, REQ-009):} Die Implementierung von KI-Funktionen (REQ-009) und die Anpassung an das spezifische DHBW-Design (REQ-032) wurden zugunsten einer stabilen Basisfunktionalität (Fahren und Steuern) zurückgestellt. Der aktuelle Holz-Prototyp dient als funktionaler Träger, dessen Design in späteren Schritten verfeinert wird.
 
 \section{Lessons Learned}
 \label{cha:Lessons Learned}
@@ -788,9 +788,9 @@ Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbe
 	
 	\item \textbf{Autonomes Fahren mittels Kameratechnik:} Die Anbindung eines Kamerasystems ermöglicht die Erweiterung um bildverarbeitende Algorithmen. Damit können Funktionen wie Spurverfolgung (Line Tracking) oder visuelle Navigation realisiert werden, um autonom von einem Start- zu einem Zielpunkt zu navigieren.
 	
-	\item \textbf{Remote-Steuerung und Telemetrie:} Alternativ zur lokalen Signalverarbeitung kann eine Schnittstelle für drahtlose Kommunikation (WiFi/Bluetooth) geschaffen werden. Dies ermöglicht eine Fernsteuerung über mobile Endgeräte sowie die Rückübertragung von Telemetriedaten (z. B. Akkustand, Motorauslastung) an den Bediener.
+	\item \textbf{Remote-Steuerung und Telemetrie:} Alternativ zur lokalen Signalverarbeitung kann eine Schnittstelle für drahtlose Kommunikation (WLAN/Bluetooth) geschaffen werden. Dies ermöglicht eine Fernsteuerung über mobile Endgeräte sowie die Rückübertragung von Telemetriedaten (z. B. Akkustand, Motorauslastung) an den Bediener.
 	
-	\item \textbf{Arm-Module:} Passend zur Inspirationsquelle Wall-E\reg können bewegliche Arme montiert werden. Diese könnten simple Winkbewegungen erlauben. Damit würde der Optische Eindruck abgerundet und interessanter gestaltet.
+	\item \textbf{Arm-Module:} Passend zur Inspirationsquelle Wall-E\reg können bewegliche Arme montiert werden. Diese könnten simple Winkbewegungen erlauben. Damit würde der optische Eindruck abgerundet und interessanter gestaltet.
 \end{itemize}
 
 
