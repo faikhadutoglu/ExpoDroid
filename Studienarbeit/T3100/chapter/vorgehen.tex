@@ -545,6 +545,15 @@ Während der ESP32 für die Motorsteuerung prädestiniert ist, stößt er bei re
 
 Aus diesem Grund wurde der Raspberry Pi 5 ausgewählt. Als vollwertiger Einplatinencomputer bietet er die notwendige Rechenleistung für das Rendering der Grafiken, die Bildverarbeitung der Kameradaten (z. B. mit OpenCV) und die Audioausgabe. Er fungiert somit als das „Gehirn“ des Roboters für alle höheren Anwendungen, die über die reine Fortbewegung hinausgehen.
 
+\subsubsection{Peripherie Raspberry Pi}
+
+Für die Interaktion auf der Messe wurden zusätzliche Peripheriegeräte wie Kamera, Lautsprecher und Display benötigt. Als Anzeigeeinheit wurde ein 10,1-Zoll-HDMI-Display gewählt, das über USB mit Strom versorgt wird. Diese Lösung bietet den Vorteil, dass kein separater Netzanschluss erforderlich ist, da die Energieversorgung direkt über den Raspberry Pi erfolgt. Zudem wird durch die kabelgebundene HDMI-Verbindung eine stabile und unkomplizierte Signalübertragung gewährleistet, was die Inbetriebnahme des Systems erheblich vereinfacht. Die Displaygröße wurde so gewählt, dass sie in einem angemessenen Verhältnis zur Kopfgröße des Roboters steht und eine gute visuelle Darstellung ermöglicht.
+
+
+Auch beim Lautsprecher fiel die Entscheidung auf eine kabelgebundene Variante, um die Komplexität beim Betrieb zu reduzieren. Das ausgewählte Modell benötigt lediglich eine USB-A-Verbindung, die sowohl die Stromversorgung als auch die Audioausgabe sicherstellt. 
+
+
+Für die Bildaufnahme wurde die \textbf{Logitech Brio 500} Kamera eingesetzt. Diese Wahl erfolgte aufgrund der hohen Bildqualität sowie einer Empfehlung des Product Owners. Die Kamera verfügt über einen USB-Typ-C-Anschluss, weshalb für den Betrieb mit dem Raspberry Pi ein Adapter von USB-Typ-C auf USB-A erforderlich ist. Diese Lösung gewährleistet eine zuverlässige Verbindung und eine qualitativ hochwertige Videoübertragung.
 
 \subsubsection{Energieversorgung}
 
