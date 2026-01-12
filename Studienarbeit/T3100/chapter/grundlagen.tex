@@ -1,21 +1,10 @@
 \chapter{Grundlagen}
 \label{cha:Grundlagen}
 
-\section{Mechatronische Systeme}
-\label{cha:Mechatronische Systeme}
-
-Folgendes Zitat verdeutlicht die Herkunft und Entstehung des Worts Mechatronik:
-\enquote{The word, mechatronics is composed of \emph{mecha} from mechanics and \emph{tronics}
-	from electronics. In other words, technologies and developed products will be incorporating
-	electronics more and more into mechanisms, intimately and organically, and making it impossible
-	to tell where one ends and the other begins.} \autocite{Mori1969}
-
-Zur historischen Einordnung siehe auch die Darstellung in \autocite{Comerford1994} und gängige Lehrmaterialien, die dieses Memo zitieren \autocite{NYUIntroMechatronics}.
-
 \subsection{Definition und Systemarchitektur}
 \label{cha:Definition und Systemarchitektur}
 
-Mechatronische Systeme sind integrierte technische Systeme, die Mechanik, Elektronik, Regelungstechnik und Informatik synergetisch verbinden, um intelligente Funktionen zu realisieren. Ziel ist eine höhere Funktionalität, Präzision und Automatisierung. Typische Anwendungsbereiche sind Industrieroboter, CNC-Maschinen und Fahrerassistenzsysteme. 
+Mechatronische Systeme sind integrierte technische Systeme, die Mechanik, Elektronik, Regelungstechnik und Informatik synergetisch verbinden, um intelligente Funktionen zu realisieren. Ziel ist eine höhere Funktionalität, Präzision und Automatisierung. \autocite{hering2015tb} Typische Anwendungsbereiche sind Industrieroboter, CNC-Maschinen und Fahrerassistenzsysteme.\autocite{UNBEHAUEN1998145}
 
 Die Systemarchitektur umfasst folgende Hauptkomponenten:
 \begin{itemize}
@@ -38,12 +27,12 @@ Die Mechatronik vereint mehrere Disziplinen:
 	\item \textbf{Regelungstechnik:} Steuerung und Rückkopplungssysteme.
 \end{itemize}
 
-Die Vorteile dieser Integration liegen in der Kompaktheit, Effizienz und Zuverlässigkeit moderner Systeme. Sie ermöglicht Anwendungen wie autonome Fahrzeuge, Robotik und Smart Devices.
+Die Vorteile dieser Integration liegen in der Kompaktheit, Effizienz und Zuverlässigkeit moderner Systeme. Sie ermöglicht Anwendungen wie autonome Fahrzeuge, Robotik und Smart Devices. \autocite{Samanta2023}
 
 \section{Elektrische Antriebstechnik}
 \label{cha:Elektrische Antriebstechnik}
 
-Die elektrische Antriebstechnik befasst sich mit der Umwandlung elektrischer Energie in mechanische Bewegung und stellt damit eine zentrale Grundlage moderner mechatronischer Systeme dar. Sie umfasst den Aufbau, die Funktionsweise und die Steuerung elektrischer Maschinen, die in zahlreichen Anwendungen - von industriellen Produktionsanlagen bis hin zu Fahrzeugantrieben - eingesetzt werden. Ziel dieses Kapitels ist es, die grundlegenden Prinzipien elektrischer Antriebe sowie deren Komponenten und Wirkungszusammenhänge zu erläutern.
+Die elektrische Antriebstechnik befasst sich mit der Umwandlung elektrischer Energie in mechanische Bewegung und stellt damit eine zentrale Grundlage moderner mechatronischer Systeme dar. \autocite{Trzesniowski2017} Sie umfasst den Aufbau, die Funktionsweise und die Steuerung elektrischer Maschinen, die in zahlreichen Anwendungen - von industriellen Produktionsanlagen bis hin zu Fahrzeugantrieben - eingesetzt werden. Ziel dieses Kapitels ist es, die grundlegenden Prinzipien elektrischer Antriebe sowie deren Komponenten und Wirkungszusammenhänge zu erläutern.
 
 \subsection{Funktionsweise von Elektromotoren (DC)}
 \label{cha:Funktionsweise von Elektromotoren (DC)}
@@ -97,7 +86,7 @@ Der BLDC-Motor verzichtet auf mechanische Bürsten; die Kommutierung erfolgt ele
 \subsection{Servomotoren}
 \label{cha:Servomotoren}
 
-Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und eines Regelkreises präzise Positionen anfahren können. Hierfür sind komplexe Regelstrecken wie in Abbildung zu sehen. Dabei kann der Motor entweder als bürstenbehafteter Gleichstrommotor oder als bürstenloser Gleichstrommotor (BLDC) ausgeführt sein. Servomotoren sind im Vergleich zu einfachen Motoren kostenintensiver und erfordern eine komplexere Steuerung. Sie werden vor allem in Anwendungen eingesetzt, die eine hohe bis sehr hohe Genauigkeit erfordern, wie beispielsweise CNC-Maschinen, Industrieroboter oder automatisierte Fertigungssysteme.
+Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und eines Regelkreises präzise Positionen anfahren können. Hierfür sind komplexe Regelstrecken wie in Abbildung zu sehen. Dabei kann der Motor entweder als bürstenbehafteter Gleichstrommotor oder als bürstenloser Gleichstrommotor (BLDC) ausgeführt sein. Servomotoren sind im Vergleich zu einfachen Motoren kostenintensiver und erfordern eine komplexere Steuerung. Sie werden vor allem in Anwendungen eingesetzt, die eine hohe bis sehr hohe Genauigkeit erfordern, wie beispielsweise CNC-Maschinen, Industrieroboter oder automatisierte Fertigungssysteme. \cite{ServoPaper}
 
 \begin{figure}[hbt]
 	\centering
@@ -105,7 +94,7 @@ Servomotoren sind Gleichstrommotoren, die mithilfe einer Positionsmessung und ei
 	\caption{Regelkreis eines Servos} \autocite{steinkampServo}
 	\label{fig:Servoregelkreis}
 \end{figure}
-Die Abbildung zeigt die Kaskadenregelung eines Servoantriebs, bestehend aus Lage-, Drehzahl- und Stromregelkreis. Der Lageregler vergleicht den Soll-Lagewert mit dem Istwert und erzeugt eine Soll-Drehzahl. Diese wird im Drehzahlregler mit der gemessenen Drehzahl verglichen, woraus ein Sollstrom berechnet wird. Der Stromregler, als innerster und schnellster Regelkreis, regelt den Motorstrom über eine PWM-gesteuerte Leistungselektronik. Die PWM moduliert die Spannung für die Halbleiter, die den Motor versorgen. Die Istwerte für Lage und Drehzahl werden über einen Resolver erfasst und durch einen R/D-Wandler digitalisiert. Die hierarchische Struktur gewährleistet hohe Dynamik und Genauigkeit, da jede Regelungsebene Sollwerte für die nächste vorgibt. Typischerweise kommen PI-Regler in allen drei Regelkreisen zum Einsatz.
+Die Abbildung zeigt die Kaskadenregelung eines Servoantriebs, bestehend aus Lage-, Drehzahl- und Stromregelkreis. Der Lageregler vergleicht den Soll-Lagewert mit dem Istwert und erzeugt eine Soll-Drehzahl. Diese wird im Drehzahlregler mit der gemessenen Drehzahl verglichen, woraus ein Sollstrom berechnet wird. Der Stromregler, als innerster und schnellster Regelkreis, regelt den Motorstrom über eine PWM-gesteuerte Leistungselektronik. Die PWM moduliert die Spannung für die Halbleiter, die den Motor versorgen. Die Istwerte für Lage und Drehzahl werden über einen Resolver erfasst und durch einen R/D-Wandler digitalisiert. Die hierarchische Struktur gewährleistet hohe Dynamik und Genauigkeit, da jede Regelungsebene Sollwerte für die nächste vorgibt. Typischerweise kommen PI-Regler in allen drei Regelkreisen zum Einsatz. \autocite{app14062579}
 
 \subsection{Hoverboard-Motoren}
 \label{cha:Hoverboard-Motoren}
