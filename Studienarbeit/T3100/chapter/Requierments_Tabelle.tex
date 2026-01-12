@@ -194,27 +194,27 @@
 	\hline
 	REQ-001 & Bewegung & Der Roboter muss vorwärts und rückwärts fahren können. & High \\
 	\hline
-	REQ-013 & Lenkung & Der Roboter muss in Fahrtrichtung lenken und Kurven fahren können (links/rechts). & High \\
+	REQ-001 & Lenkung & Der Roboter muss in Fahrtrichtung lenken und Kurven fahren können (links/rechts). & High \\
 	\hline
 	REQ-003 & Drehen & Der Roboter muss gleichmäßig nach links und rechts drehen können. & Medium \\
 	\hline
-	REQ-014 & Rotation & Der Roboter muss sich auf der Stelle um die eigene Achse drehen können. & High \\
+	REQ-004 & Rotation & Der Roboter muss sich auf der Stelle um die eigene Achse drehen können. & High \\
 	\hline
-	REQ-015 & Fahrprofil & Der Roboter muss sanft beschleunigen und verlangsamen (ruckfreier Übergang). & Medium \\
+	REQ-005 & Fahrprofil & Der Roboter muss sanft beschleunigen und verlangsamen (ruckfreier Übergang). & Medium \\
 	\hline
-	REQ-002 & Fernsteuerung & Der Roboter muss über eine Fernsteuerung (z.\,B. ESP32 + Fernbedienung oder App) steuerbar sein. & High \\
+	REQ-006 & Fernsteuerung & Der Roboter muss über eine Fernsteuerung (z.\,B. ESP32 + Fernbedienung oder App) steuerbar sein. & High \\
 	\hline
-	REQ-004 & Anzeige & Das Display muss Statusinformationen (z.\,B. Akkustand und Verbindungsstatus) anzeigen können. & Medium \\
+	REQ-007 & Anzeige & Das Display muss Statusinformationen (z.\,B. Akkustand und Verbindungsstatus) anzeigen können. & Medium \\
 	\hline
-	REQ-011 & Sensorik/Kamera & Eine Kamera muss Bilddaten für einen Mikrocomputer bereitstellen können. & Medium \\
+	REQ-008 & Sensorik/Kamera & Eine Kamera muss Bilddaten für einen Mikrocomputer bereitstellen können. & Medium \\
 	\hline
-	REQ-034 & Rechnerfunktionen & Ein Microcontroller muss Display und Audio ansteuern sowie KI-Funktionen ausführen können. & Medium \\
+	REQ-009 & Rechnerfunktionen & Ein Microcontroller muss Display und Audio ansteuern sowie KI-Funktionen ausführen können. & Medium \\
 	\hline
-	REQ-019 & Kopfbewegung & Der Kopf muss sich horizontal drehen können. & High \\
+	REQ-010 & Kopfbewegung & Der Kopf muss sich horizontal drehen können. & High \\
 	\hline
-	REQ-022 & Kopfbewegung & Der Kopf muss sich vertikal drehen können. & Low \\
+	REQ-011 & Kopfbewegung & Der Kopf muss sich vertikal drehen können. & Low \\
 	\hline
-	REQ-032 & Kopfbewegung & Der Kopf muss sich um mindestens 180\textdegree{} drehen können. & Medium \\
+	REQ-012 & Kopfbewegung & Der Kopf muss sich um mindestens 180\textdegree{} drehen können. & Medium \\
 	\hline
 	
 	% =========================================================
@@ -222,15 +222,15 @@
 	% =========================================================
 	\multicolumn{4}{|l|}{\textbf{Nicht-funktionale Anforderungen (Performance/Technik)}} \\
 	\hline
-	REQ-005 & Reaktionszeit & Die Motorsteuerung muss eine Verzögerung von weniger als 0{,}5\,s zwischen Steuersignal und Reaktion aufweisen. & High \\
+	REQ-101 & Reaktionszeit & Die Motorsteuerung muss eine Verzögerung von weniger als 0{,}5\,s zwischen Steuersignal und Reaktion aufweisen. & High \\
 	\hline
-	REQ-006 & Nutzlast & Der Roboter muss mindestens 7\,kg Gesamtmasse (inkl.\ Eigengewicht) sicher bewegen können. & High \\
+	REQ-102 & Nutzlast & Der Roboter muss mindestens 7\,kg Gesamtmasse (inkl.\ Eigengewicht) sicher bewegen können. & High \\
 	\hline
-	REQ-007 & Maximalgeschwindigkeit & Die maximale technische Geschwindigkeit darf 10\,km/h nicht überschreiten. & Medium \\
+	REQ-103 & Maximalgeschwindigkeit & Die maximale technische Geschwindigkeit darf 10\,km/h nicht überschreiten. & Medium \\
 	\hline
-	REQ-008 & Reichweite & Die Fernsteuerung muss in einer Entfernung von mindestens 10\,m zuverlässig funktionieren. & Low \\
+	REQ-104 & Reichweite & Die Fernsteuerung muss in einer Entfernung von mindestens 10\,m zuverlässig funktionieren. & Low \\
 	\hline
-	REQ-033 & Positionsgenauigkeit & Servomotoren müssen eine Positionsgenauigkeit von \(\pm 2\textdegree\) erreichen. & High \\
+	REQ-105 & Positionsgenauigkeit & Servomotoren müssen eine Positionsgenauigkeit von \(\pm 2\textdegree\) erreichen. & High \\
 	\hline
 	
 	% =========================================================
@@ -238,15 +238,15 @@
 	% =========================================================
 	\multicolumn{4}{|l|}{\textbf{Sicherheitsanforderungen (Safety)}} \\
 	\hline
-	REQ-009 & Fail-Safe & Wird kein Fahrsignal erkannt, muss der Roboter selbstständig anhalten. & High \\
+	REQ-201 & Fail-Safe & Wird kein Fahrsignal erkannt, muss der Roboter selbstständig anhalten. & High \\
 	\hline
-	REQ-016 & Messebetrieb & Im Messebetrieb muss die Geschwindigkeit softwareseitig auf maximal 5\,km/h begrenzt werden. & High \\
+	REQ-202 & Messebetrieb & Im Messebetrieb muss die Geschwindigkeit softwareseitig auf maximal 5\,km/h begrenzt werden. & High \\
 	\hline
-	REQ-017 & Hinderniserkennung & Der Roboter soll bei Hindernissen automatisch anhalten. & Low \\
+	REQ-203 & Hinderniserkennung & Der Roboter soll bei Hindernissen automatisch anhalten. & Low \\
 	\hline
-	REQ-026 & Zugriffsschutz & Die innere Elektronik muss vor unbefugtem Zugriff geschützt sein. & Medium \\
+	REQ-204 & Zugriffsschutz & Die innere Elektronik muss vor unbefugtem Zugriff geschützt sein. & Medium \\
 	\hline
-	REQ-028 & Erschütterungsschutz & Erschütterungen dürfen keine Beschädigungen an Elektronik oder Verdrahtung verursachen. & Medium \\
+	REQ-205 & Erschütterungsschutz & Erschütterungen dürfen keine Beschädigungen an Elektronik oder Verdrahtung verursachen. & Medium \\
 	\hline
 	
 	% =========================================================
@@ -254,13 +254,13 @@
 	% =========================================================
 	\multicolumn{4}{|l|}{\textbf{Qualitätsanforderungen}} \\
 	\hline
-	REQ-018 & Tragstruktur & Die Struktur muss das gesamte Systemgewicht sicher tragen können. & High \\
+	REQ-301 & Tragstruktur & Die Struktur muss das gesamte Systemgewicht sicher tragen können. & High \\
 	\hline
-	REQ-020 & Überlastschutz & Die Elektronik darf bei hoher Belastung nicht ausfallen oder beschädigt werden. & High \\
+	REQ-302 & Überlastschutz & Die Elektronik darf bei hoher Belastung nicht ausfallen oder beschädigt werden. & High \\
 	\hline
-	REQ-021 & Dynamikfestigkeit & Die Struktur muss plötzliche Kräfte- und Geschwindigkeitsänderungen aushalten können. & High \\
+	REQ-303 & Dynamikfestigkeit & Die Struktur muss plötzliche Kräfte- und Geschwindigkeitsänderungen aushalten können. & High \\
 	\hline
-	REQ-012 & Drehmoment & Der Antrieb muss über ausreichendes Drehmoment verfügen, um den Roboter sicher fortzubewegen. & High \\
+	REQ-304 & Drehmoment & Der Antrieb muss über ausreichendes Drehmoment verfügen, um den Roboter sicher fortzubewegen. & High \\
 	\hline
 	
 	% =========================================================
@@ -268,15 +268,15 @@
 	% =========================================================
 	\multicolumn{4}{|l|}{\textbf{Wartbarkeit und Betrieb}} \\
 	\hline
-	REQ-023 & Bedienbarkeit & Die Bedienung muss einfach und selbsterklärend sein. & Medium \\
+	REQ-401 & Bedienbarkeit & Die Bedienung muss einfach und selbsterklärend sein. & Medium \\
 	\hline
-	REQ-024 & Akkuwechsel & Der Akku muss sicher und werkzeugarm wechselbar sein. & High \\
+	REQ-402 & Akkuwechsel & Der Akku muss sicher und werkzeugarm wechselbar sein. & High \\
 	\hline
-	REQ-025 & Schutz & Beim Akkuwechsel darf die Elektronik nicht beschädigt werden können. & Medium \\
+	REQ-403 & Schutz & Beim Akkuwechsel darf die Elektronik nicht beschädigt werden können. & Medium \\
 	\hline
-	REQ-027 & Umweltschutz & Die innere Elektronik muss vor Schmutz und Umwelteinflüssen geschützt sein. & Medium \\
+	REQ-404 & Umweltschutz & Die innere Elektronik muss vor Schmutz und Umwelteinflüssen geschützt sein. & Medium \\
 	\hline
-	REQ-029 & Verschleiß & Der Antrieb darf keinen hohen Verschleiß aufweisen. & Medium \\
+	REQ-405 & Verschleiß & Der Antrieb darf keinen hohen Verschleiß aufweisen. & Medium \\
 	\hline
 	
 	% =========================================================
@@ -284,11 +284,11 @@
 	% =========================================================
 	\multicolumn{4}{|l|}{\textbf{Design und Außenwirkung}} \\
 	\hline
-	REQ-030 & Visuelle Gestaltung & Das Erscheinungsbild soll der DHBW-Designsprache entsprechen. & Low \\
+	REQ-501 & Visuelle Gestaltung & Das Erscheinungsbild soll der DHBW-Designsprache entsprechen. & Low \\
 	\hline
 %	REQ-010 & Darstellung & Das Display soll Augen darstellen können. & Low \\
 %	\hline
-	REQ-031 & Animation & Das Display soll animierte Augenbewegungen darstellen. & Low \\
+	REQ-502 & Animation & Das Display soll animierte Augenbewegungen darstellen. & Low \\
 	\hline
 	
 \end{longtable}
