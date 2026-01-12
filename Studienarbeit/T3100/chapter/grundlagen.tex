@@ -90,7 +90,7 @@ der Rotor eines Elektromotors in Bewegung setzt.
 \section{BDC- und BLDC-Motoren: Grundlagen und Unterschiede}
 \label{cha:BDC- und BLDC-Motoren: Grundlagen und Unterschiede}
 
-Brushed-DC-Motoren (BDC) und Brushless-DC-Motoren (BLDC) gehören zur Familie der Gleichstrommaschinen, unterscheiden sich jedoch grundlegend in Kommutierung und Bauweise. Ein BDC-Motor wandelt elektrische Energie in mechanische Energie um, wobei die Kommutierung mechanisch über Bürsten und einen Kommutator erfolgt. Die Bürsten übertragen den Strom auf den rotierenden Anker (Armatur), wodurch ein elektromagnetisches Drehmoment entsteht. Vorteile dieser Bauart sind die einfache Ansteuerung und geringe Kosten; Nachteile sind Bürstenverschleiß, Funkenbildung und damit verbundener Wartungsaufwand \cite{hughes2019electric}.
+Brushed-DC-Motoren (BDC) und Brushless-DC-Motoren (BLDC) gehören zur Familie der Gleichstrommaschinen, unterscheiden sich jedoch grundlegend in Kommutierung und Bauweise. Ein BDC-Motor wandelt elektrische Energie in mechanische Energie um, wobei die Kommutierung mechanisch über Bürsten und einen Kommutator erfolgt. Die Bürsten übertragen den Strom auf den rotierenden Anker (Armatur), wodurch ein elektromagnetisches Drehmoment entsteht. Vorteile dieser Bauart sind die einfache Ansteuerung und geringe Kosten die Nachteile hingegen sind Bürstenverschleiß, Funkenbildung und damit verbundener Wartungsaufwand \cite{hughes2019electric}.
 
 Der BLDC-Motor verzichtet auf mechanische Bürsten; die Kommutierung erfolgt elektronisch über eine Steuerelektronik, die die Ströme in den Statorwicklungen schaltet. Der Rotor besteht in der Regel aus Permanentmagneten, der Stator aus mehrphasigen Wicklungen. Durch die elektronische Kommutierung werden eine höhere Effizienz, geringere Geräuschentwicklung und eine deutlich längere Lebensdauer erreicht. Zudem erlaubt die präzise Regelung eine exakte Drehzahl- und Drehmomentsteuerung, was BLDC-Motoren für Anwendungen in Elektrofahrzeugen, Drohnen und industriellen Antrieben prädestiniert—bei allerdings höherer Systemkomplexität und Kosten im Vergleich zu BDC \cite{hughes2019electric}\cite{voskov2023brushedvsbrushless}.
 
@@ -118,7 +118,7 @@ Hoverboards verwenden in der Regel \textbf{bürstenlose Gleichstrommotoren (BLDC
 	\caption{Aufbau und Funktionsweise eines Hoverboards}\cite{Jaulin2025}
 	\label{fig:Hoverboardaufbau}
 \end{figure}
-
+Bei den Hoverboard- Motoren handelt es sich um BLDC-Motoren, welche mit komplexer Sensorik sowie Regelung ausgestattet sind.
 \subsubsection*{Aufbau und Bauform}
 Die Motoren sind als \emph{Hub-Motoren} ausgeführt, wobei der Rotor entweder innen oder außen angeordnet sein kann:
 \begin{itemize}
@@ -210,65 +210,25 @@ In der praktischen Anwendung bedeutet das, dass ein ESP32 gleichzeitig Sensordat
 \end{itemize}
 
 \subsection{Einplatinencomputer und Raspberry Pi}
-\label{cha:Einplatinencomputer und Raspberry Pi}
 
-\subsection*{Einführung}
 Einplatinencomputer (englisch: Single-Board Computers, SBCs) sind vollständige Computersysteme, die alle wesentlichen Komponenten wie Prozessor, Speicher und Schnittstellen auf einer einzigen Platine vereinen. Diese kompakte Bauweise ermöglicht den Einsatz in eingebetteten Systemen, \enquote{Internet of Things} (IoT)-Anwendungen, Bildung und industriellen Steuerungen \autocite{Alvarez2022,Pajankar2017}. SBCs zeichnen sich durch geringe Kosten, Energieeffizienz und hohe Integrationsdichte aus, was sie für mobile und vernetzte Systeme attraktiv macht.
 
-\subsection*{Grundwissen und Architektur}
-Die Architektur eines SBC basiert typischerweise auf einem System-on-Chip (SoC), das CPU, GPU, Speichercontroller und Peripherie integriert. Weitere zentrale Komponenten sind:
-\begin{itemize}
-	\item \textbf{Arbeitsspeicher (RAM)} für Betriebssystem und Anwendungen.
-	\item \textbf{Massenspeicher} über microSD-Karten oder eMMC.
-	\item \textbf{Schnittstellen} wie HDMI, USB, Ethernet sowie GPIO-Pins für Sensoren und Aktoren \autocite{Pajankar2017}.
-\end{itemize}
+Die Architektur eines SBC basiert typischerweise auf einem System-on-Chip (SoC), das CPU, GPU, Speichercontroller und Peripherie integriert. Weitere zentrale Komponenten sind der Arbeitsspeicher (RAM) für Betriebssystem und Anwendungen, Massenspeicher über microSD-Karten oder eMMC sowie Schnittstellen wie HDMI, USB, Ethernet und GPIO-Pins für Sensoren und Aktoren \autocite{Pajankar2017}. 
 
-\subsection*{Einsatzbereiche}
-SBCs finden Anwendung in:
-\begin{itemize}
-	\item \textbf{Bildung}: Programmierkurse, Robotik und Elektronikprojekte \autocite{Alvarez2022}.
-	\item \textbf{IoT und Automatisierung}: Edge-Computing, Sensorsteuerung und Heimautomation \autocite{Matthews2018}.
-	\item \textbf{Prototyping}: Schnelle Entwicklung von Steuerungen und Embedded-Systemen.
-\end{itemize}
+SBCs finden Anwendung in verschiedenen Bereichen: In der Bildung werden sie für Programmierkurse, Robotik und Elektronikprojekte genutzt \autocite{Alvarez2022}. Im IoT und in der Automatisierung dienen sie als Plattform für Edge-Computing, Sensorsteuerung und Heimautomation \autocite{Matthews2018}. Darüber hinaus sind sie für das Prototyping geeignet, da sie eine schnelle Entwicklung von Steuerungen und Embedded-Systemen ermöglichen.
+
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=1\linewidth]{images/RP5_Anschluss.png}
 	\caption{Platinenbelegung Raspberry Pi 5}
 	\label{fig:Aufbau RP5}
 \end{figure}
-\subsection*{Fokus auf Raspberry Pi}
-Der Raspberry Pi ist der bekannteste SBC und wurde 2012 von der Raspberry Pi Foundation entwickelt, um Computerkenntnisse in Schulen zu fördern \autocite{Pajankar2017}. Seitdem hat sich die Plattform zu einem vielseitigen Werkzeug für Bildung, Forschung und Industrie entwickelt.
 
-\paragraph{Technische Entwicklung}
-\begin{itemize}
-	\item \textbf{Raspberry Pi 1 (2012)}: ARM11 CPU, 256--512 MB RAM.
-	\item \textbf{Raspberry Pi 3 (2016)}: Quad-Core ARM Cortex-A53, integriertes WLAN und Bluetooth.
-	\item \textbf{Raspberry Pi 4 (2019)}: Quad-Core Cortex-A72, bis zu 8 GB RAM, USB 3.0 und Dual-HDMI \autocite{Matthews2018}.
-\end{itemize}
+Der Raspberry Pi ist der bekannteste SBC und wurde 2012 von der Raspberry Pi Foundation entwickelt, um Computerkenntnisse in Schulen zu fördern \autocite{Pajankar2017}. Seitdem hat sich die Plattform zu einem vielseitigen Werkzeug für Bildung, Forschung und Industrie entwickelt. Die technische Entwicklung umfasst mehrere Generationen: Der Raspberry Pi 1 (2012) verfügte über eine ARM11-CPU und 256--512 MB RAM. Der Raspberry Pi 3 (2016) brachte einen Quad-Core ARM Cortex-A53 sowie integriertes WLAN und Bluetooth. Der Raspberry Pi 4 (2019) bietet einen Quad-Core Cortex-A72, bis zu 8 GB RAM, USB 3.0 und Dual-HDMI \autocite{Matthews2018}.
 
-\paragraph{Anwendungen}
-Der Raspberry Pi wird eingesetzt für:
-\begin{itemize}
-	\item \textbf{Lehre}: Informatik- und Technikunterricht, paralleles Rechnen \autocite{Matthews2018}.
-	\item \textbf{Forschung}: IoT, Edge-AI und Bildverarbeitung.
-	\item \textbf{Projekte}: Mediencenter, Heimautomation und Robotik \autocite{Pajankar2017}.
-\end{itemize}
+Die Anwendungen des Raspberry Pi sind vielfältig. In der Lehre wird er für Informatik- und Technikunterricht sowie paralleles Rechnen eingesetzt \autocite{Matthews2018}. In der Forschung dient er für IoT, Edge-AI und Bildverarbeitung. Typische Projekte sind Mediencenter, Heimautomation und Robotik \autocite{Pajankar2017}.
 
-\paragraph{Vorteile}
-\begin{itemize}
-	\item Große Community und Open-Source-Software.
-	\item Hohe Konnektivität (GPIO, WLAN, Bluetooth).
-	\item Kostengünstig und energieeffizient \autocite{Alvarez2022}.
-\end{itemize}
-
-\paragraph{Nachteile}
-Trotz der Vorteile bestehen auch Einschränkungen:
-\begin{itemize}
-	\item \textbf{Begrenzte Rechenleistung}: Für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet \autocite{Matthews2018}.
-	\item \textbf{Speicherlimitierungen}: Maximal 8 GB RAM begrenzt große Datenverarbeitungen.
-	\item \textbf{Fehlende industrielle Robustheit}: Nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt \autocite{Alvarez2022}.
-	\item \textbf{Leistungsaufnahme bei Volllast}: Höhere Last kann zusätzliche Kühlung erfordern.
-\end{itemize}
+Zu den Vorteilen des Raspberry Pi zählen die große Community und Open-Source-Software, seine hohe Konnektivität (GPIO, WLAN, Bluetooth) sowie seine Kostengünstigkeit und Energieeffizienz \autocite{Alvarez2022}. Trotz dieser Vorteile bestehen auch Einschränkungen: Die begrenzte Rechenleistung macht ihn für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet \autocite{Matthews2018}. Speicherlimitierungen von maximal 8 GB RAM erschweren große Datenverarbeitungen. Zudem fehlt ihm die industrielle Robustheit, wodurch er nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt ist \autocite{Alvarez2022}. Schließlich kann die Leistungsaufnahme bei Volllast eine zusätzliche Kühlung erfordern.
 
 \section{Energieversorgung\textcolor{brown}{FAIK}}%Faik
 \label{cha:Energieversorgung}
