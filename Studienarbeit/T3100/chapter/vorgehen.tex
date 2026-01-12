@@ -27,7 +27,7 @@ Eine weitere Hauptanforderung ergibt sich aus den Rahmenbedingungen des Messebet
 
 Besondere Bedeutung kommt zudem dem Aspekt der Sicherheit zu. Der Roboter darf im Betrieb keine Gefährdung für Anwender oder Messebesucher darstellen. Dies betrifft sowohl den regulären Betrieb als auch mögliche Fehl- oder Störfälle. Bewegungen, Geschwindigkeiten und mechanische Ausführungen sind daher so zu gestalten, dass Verletzungsrisiken nach Möglichkeit ausgeschlossen werden.
 
-Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließende detaillierte Definition einzelner funktionaler sowie nicht-funktionaler Anforderungen. Letztere werden zur besseren Strukturierung in Unterkategorien wie Qualitäts-, Sicherheits-, Performance- und Wartbarkeitsanforderungen unterteilt. Diese werden im weiteren Projektverlauf konkretisiert, priorisiert und dokumentiert und dienen als verbindliche Referenz für Entwurfs-, Implementierungs- und Testentscheidungen.
+Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließende detaillierte Definition einzelner funktionaler und nicht-funktionaler Requirements. Diese werden im weiteren Projektverlauf konkretisiert, priorisiert und dokumentiert und dienen als verbindliche Referenz für Entwurfs-, Implementierungs- und Testentscheidungen.
  
 Die Requirements-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requirements} betrachten.
 
@@ -164,11 +164,12 @@ Vorteilhaft sind der geringe Bauteilaufwand sowie eine hohe Wendigkeit, insbeson
 
 \begin{figure}[hbt]
 	\centering
-	\input{images/Antriebskonzepte_Ketten_Räder.tex}
+	\input{images/Antribskonzepte_Ketten_Räder.tex}
 	\vspace{0.6cm}
 	\caption{Zeigt die unterschiedlichen vorgestellten Antriebskonzepte in der Draufsicht}		
-	\label{fig:Antriebskonzepte_Ketten_Räder}
+	\label{fig:Antribskonzepte_Ketten_Räder}
 \end{figure}
+
 
 \subsection{Entscheidungsfindung und Begründung}
 \label{cha:Entscheidungsfindung und Begründung}
@@ -292,6 +293,7 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher ferfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
 
 Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
+
 
 Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige GUI bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
 \begin{figure}[ht]
@@ -447,7 +449,7 @@ Eine weitere und besonders flexible Möglichkeit besteht darin, die Augen bezieh
 Ein wesentlicher Vorteil der Darstellung über ein Display liegt darin, dass die Umsetzung überwiegend softwareseitig erfolgt und nur geringe zusätzliche mechanische Komplexität erfordert. Dies erhöht die Robustheit und Wartbarkeit des Systems, was insbesondere für den Messebetrieb von Vorteil ist. Darüber hinaus bietet ein Display zusätzliche funktionale Möglichkeiten. Neben der Darstellung von Augen und Gesichtsausdrücken können beispielsweise Informationen über die Hochschule, QR-Codes zu Online-Angeboten oder Status- und Debug-Informationen für das Messepersonal angezeigt werden.
 
 \vspace{0.7cm}
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\fbox{%
 		\begin{tabular}{>{\centering\arraybackslash}m{1cm} >{\centering\arraybackslash}m{0.7\linewidth}}
@@ -472,7 +474,6 @@ Ein wesentlicher Vorteil der Darstellung über ein Display liegt darin, dass die
 	\label{fig:Augen_animation_Konzeptionierung}
 \end{figure}
 
-\newpage
 Unter Berücksichtigung von Außenwirkung, Interaktionsmöglichkeiten, technischem Aufwand und Wartbarkeit erscheint die Darstellung der Augen über ein Display als die geeignetste Lösung für dieses Projekt. Zusätzlich bietet diese Variante ein hohes Maß an Anpassungsfähigkeit und Erweiterbarkeit, da Inhalte und Animationen nachträglich softwareseitig angepasst oder erweitert werden können, was den technischen Aufwand reduziert. Damit trägt das Displaykonzept wesentlich dazu bei, dem Roboter eine lebendige und freundliche Ausstrahlung zu verleihen und den Hauptzweck des Systems, also das Erzeugen positiver Aufmerksamkeit, effektiv zu unterstützen.
 
 Die gewählte Lösung zur Darstellung der Augen über ein Display ist ebenfalls eng mit den Konzepten der HMI und der GUI verknüpft. Das Display fungiert als zentrales Element der Interaktion zwischen dem Roboter und den Messebesuchern, da es bereits erwähnte detaillierte Informationen in einer für den Menschen intuitiv verständlichen Form bereitstellen kann. Durch die Integration einer GUI können nicht nur animierte Augenbewegungen und Gesichtsausdrücke realisiert werden, sondern auch zusätzliche Inhalte wie Statusinformationen oder Hinweise zur Bedienung des Roboters. Dies erweitert die Funktionalität des Systems erheblich und schafft eine flexible Plattform für Kommunikation und Interaktion.
@@ -482,7 +483,6 @@ Die gewählte Lösung zur Darstellung der Augen über ein Display ist ebenfalls 
 
 Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine direkte Eingabe ermöglicht. Zusätzlich soll eine Remote-Steuerung über das lokale Netzwerk realisiert werden. Hierfür sind Schnittstellen wie SSH für Kommandozeilenbefehle sowie VNC für die grafische Oberfläche geplant. Hinzu kommt eine Möglichkeit Ton über USB mit Hilfe eines Lautsprechers abzuspielen. Dies ist in Abbildung \ref{fig:anschlussschema_rpi5} zu sehen. Durch die Integration des Touchdisplays lassen sich Betriebsmodi wie „Selfie-Modus“, „Debugging-Modus“ oder die Anzeige von Statusinformationen implementieren. Dennoch sollte das Design jedoch auf den Prinzipien der Benutzerfreundlichkeit basieren, um eine Überlastung durch zu viele Informationen zu vermeiden \autocite{Nielsen.1994}. Über die Lautsprecher werden ebenfalls akustische Signale zur Bestätigung von Eingaben oder zur Warnung bei Fehlfunktionen ausgeben \autocite{Dix.2004}. Für den Fall einer kritischen Betriebsstörung wird zusätzlich ein Not-Aus-Schalter eingebaut.
 
-\newpage
 \section{Systemarchitektur}
 \label{cha:Systemarchitektur}
 
@@ -492,10 +492,44 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 In diesem Abschnitt wird die Auswahl der zentralen Hardwarekomponenten begründet. Die Entscheidung für spezifische Bauteile basierte auf einer Abwägung zwischen technischer Leistungsfähigkeit, Verfügbarkeit und den spezifischen Anforderungen der Teilbereiche Antrieb, Interaktion und Energieversorgung.
 
 \subsubsection{Motoren Antrieb}
-Es werden Motoren für die Fortbewegung des Roboters benötig. %\textcolor{red}{SIMON}
+Für die Fortbewegung unseres Roboters setzen wir zwei Gleichstrommotoren aus handelsüblichen Kinderfahrzeugen ein. Diese Wahl passt sehr gut zu unserem Konzept: Wir betreiben den Antrieb mit einem LiPo-Akku und steuern die Motoren über eine H-Brücke direkt vom Microcontroller aus. Damit bleibt die Elektronik bewusst schlank und robust, ohne komplexe Regelalgorithmen oder teure Spezialtreiber. Kinderauto-Motoren sind kostengünstig, weit verbreitet und bieten ein für unser Einsatzszenario vorteilhaftes Drehmoment, insbesondere wenn es darum geht, ein höheres Gesamtgewicht sicher und kontrolliert zu bewegen. Im Vergleich zu Servoantrieben oder Brushless-Systemen akzeptieren wir dafür bewusst einfachere Regelgüte, geringere Effizienz und eine etwas höhere Geräuschkulisse. Letzteres ist im vorgesehenen Einsatz allerdings unkritisch: Der Roboter soll auf Messen nur langsam und mit geringer Leistungsanforderung fahren, wodurch die wahrgenommene Geräuschentwicklung in der Messeumgebung wenig ins Gewicht fällt. 
+
+Um die Leistungsabgabe sanft zu gestalten, planen wir in der Software einen Exponentialfilter für die Steuerung. Dieser Filter sorgt dafür, dass die Motoren nicht abrupt auf hohe Drehzahlen beschleunigen, sondern die Sollwerte geglättet und mit einer exponentiellen Annäherung umgesetzt werden. Dadurch werden mechanische Belastungsspitzen reduziert, die Fahrbewegung wirkt harmonischer und die Steuerung bleibt einfach umsetzbar, ohne komplexe Regelkreise zu implementieren.
+
+Durch die oben genannten Vorteile konnten im Design einfache wege und Lösungen gefunden werden: Die Ansteuerung ist rein drehzahl- bzw. spannungsbasiert und damit nicht positionsgenau, für präzise Manöver wären zusätzliche Sensoren sinnvoll, die wir jedoch für den geplanten Einsatzzweck nicht benötigen. Auch der Wirkungsgrad einfacher DC-Getriebemotoren liegt typischerweise unter dem von Brushless-Antrieben, was sich in höherem Energieverbrauch bemerkbar macht; in unserem kurzzeitigen, langsamen Messebetrieb ist dieser Effekt jedoch gut beherrschbar. Insgesamt ergibt sich eine robuste, kosteneffiziente und integrationsfreundliche Lösung, die unsere Anforderungen an einfache Steuerung, Verfügbarkeit und ausreichendes Drehmoment erfüllt, ohne den Entwicklungs- und Budgetrahmen zu sprengen.
+
+\subsection*{Vergleich der Antriebsoptionen}
+
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+		\hline
+		\textbf{Kriterium} & \textbf{Kinderauto-DC} & \textbf{Servomotor} & \textbf{Brushless-DC} \\
+		\hline
+		Kosten & Sehr günstig & Hochpreisig & Mittel bis hoch \\
+		\hline
+		Ansteuerung & Einfach (H-Brücke) & Komplex & Mittel (ESC nötig) \\
+		\hline
+		Drehmoment & Gut & Sehr gut & Sehr gut \\
+		\hline
+		Präzision & Niedrig & Sehr hoch & Hoch möglich \\
+		\hline
+		Effizienz/Geräusch & Weniger effizient, lauter & Gut & Sehr gut, leise \\
+		\hline
+		Integrationsaufwand & Gering & Hoch & Mittel \\
+		\hline
+		Eignung Messebetrieb & Sehr gut & zu teuer & zu komplexe Steuerung \\
+		\hline
+	\end{tabular}
+	\caption{Vergleich der Antriebsoptionen für den Roboter}
+\end{table}
 \subsubsection{Weitere Motoren}
-Neben den Motoren für den Antrieb werden auch welche für die Bewegung des Kopfes als auch der beiden Arme benötigt. Bei diesen Motoren handelt es sich um Servo Motoren, da bei der Beweglichkeit des Kopfs und den Armen keine hohe Geschwindigkeit benötigt wird. Hingegen wird aber eine genaue Ansteuerung mit genauen Positionen erforderlich. Zusätzlich eignen sich Servomotoren für diese beweglichen Teile gut, da keine vollständigen Umdrehungen, also Umdrehungen mit Winkel über 360° benötigt wird.  
-%\textcolor{red}{SIMON}
+Für die Bewegung des Kopfes sowie der beiden Arme werden Servomotoren eingesetzt. Die Anforderungen an diese Achsen unterscheiden sich grundlegend von denen des Fahrantriebs: Es wird keine hohe Drehzahl benötigt, sondern eine präzise und reproduzierbare Positionierung innerhalb eines begrenzten Winkelbereichs. Servomotoren sind hierfür besonders geeignet, da sie ein integriertes System aus Motor, Getriebe, Positionssensor und Regelungselektronik darstellen. Die Ansteuerung erfolgt über ein PWM-Signal, das direkt die Zielposition vorgibt, wodurch eine einfache und zuverlässige Implementierung möglich ist.
+
+Ein weiterer Vorteil liegt in der mechanischen Auslegung: Für die Kopfbewegung wurde ein Servomotor mit einer Traglast von bis zu 25\,kg gewählt, um das Gewicht des Kopfes sicher zu tragen und eine stabile Halteposition zu gewährleisten. Da keine vollständigen Umdrehungen über 360° erforderlich sind, sondern lediglich definierte Winkelstellungen, ist die Beschränkung des Stellbereichs bei Servomotoren kein Nachteil. Die integrierte Positionsregelung ermöglicht sanfte Bewegungen und eine hohe Wiederholgenauigkeit, was für die geplanten Präsentationsbewegungen auf einer Messe entscheidend ist.
+
+Zusammenfassend bieten Servomotoren eine kompakte, kosteneffiziente und präzise Lösung für die Kopf- und Armkinematik. Sie erfüllen die Anforderungen an Positionsgenauigkeit und Haltemoment, ohne komplexe externe Regelungen oder zusätzliche Sensorik zu erfordern.  
 
 
 \subsubsection{Microcomputer Motorenansteuerung}
@@ -505,12 +539,21 @@ Zusätzlich verfügt der ESP32 über eine sehr große und aktive Entwickler-Comm
 
 Zudem bietet der ESP32 mit seinen zwei Prozessorkernen genügend Rechenleistung, um die PWM-Signale für die Motortreiber in Echtzeit zu generieren und gleichzeitig die Kommunikation mit der Fernsteuerung aufrechtzuerhalten, was ihn zur idealen Schnittstelle für das Antriebssystem macht.
 
-\subsubsection{Microcomputer höhere Anwendungen} % \textcolor{red}{(Vorschlag: Einplatinencomputer für Interaktion)}
+\subsubsection{Microcomputer höhere Anwendungen \textcolor{red}{(Vorschlag: Einplatinencomputer für Interaktion)}}
 
 Während der ESP32 für die Motorsteuerung prädestiniert ist, stößt er bei rechenintensiven Multimedia-Anwendungen an seine Grenzen. Er ist nicht in der Lage, ein hochauflösendes Display flüssig anzusteuern oder Videodaten in Echtzeit zu verarbeiten. Da der Roboter jedoch über ein Display verfügen soll, das Augenanimationen darstellt, und zusätzlich eine Kamera sowie Audioausgabe zur Interaktion nutzen soll, musste eine leistungsstarke Alternative gefunden werden.
 
 Aus diesem Grund wurde der Raspberry Pi 5 ausgewählt. Als vollwertiger Einplatinencomputer bietet er die notwendige Rechenleistung für das Rendering der Grafiken, die Bildverarbeitung der Kameradaten (z. B. mit OpenCV) und die Audioausgabe. Er fungiert somit als das „Gehirn“ des Roboters für alle höheren Anwendungen, die über die reine Fortbewegung hinausgehen.
 
+\subsubsection{Peripherie Raspberry Pi}
+
+Für die Interaktion auf der Messe wurden zusätzliche Peripheriegeräte wie Kamera, Lautsprecher und Display benötigt. Als Anzeigeeinheit wurde ein 10,1-Zoll-HDMI-Display gewählt, das über USB mit Strom versorgt wird. Diese Lösung bietet den Vorteil, dass kein separater Netzanschluss erforderlich ist, da die Energieversorgung direkt über den Raspberry Pi erfolgt. Zudem wird durch die kabelgebundene HDMI-Verbindung eine stabile und unkomplizierte Signalübertragung gewährleistet, was die Inbetriebnahme des Systems erheblich vereinfacht. Die Displaygröße wurde so gewählt, dass sie in einem angemessenen Verhältnis zur Kopfgröße des Roboters steht und eine gute visuelle Darstellung ermöglicht.
+
+
+Auch beim Lautsprecher fiel die Entscheidung auf eine kabelgebundene Variante, um die Komplexität beim Betrieb zu reduzieren. Das ausgewählte Modell benötigt lediglich eine USB-A-Verbindung, die sowohl die Stromversorgung als auch die Audioausgabe sicherstellt. 
+
+
+Für die Bildaufnahme wurde die \textbf{Logitech Brio 500} Kamera eingesetzt. Diese Wahl erfolgte aufgrund der hohen Bildqualität sowie einer Empfehlung des Product Owners. Die Kamera verfügt über einen USB-Typ-C-Anschluss, weshalb für den Betrieb mit dem Raspberry Pi ein Adapter von USB-Typ-C auf USB-A erforderlich ist. Diese Lösung gewährleistet eine zuverlässige Verbindung und eine qualitativ hochwertige Videoübertragung.
 
 \subsubsection{Energieversorgung}
 
@@ -537,11 +580,11 @@ Für die Versorgung des Raspberry Pi und der Peripherie wird zusätzlich eine Po
 
 Die Abbildung \ref{fig:Konstruktions_Plan} zeigt den funktionale Schaltplan der elektronischen Architektur des Messeroboters sowie die grobe Anordnung der zentralen elektronischen Komponenten. Die Darstellung dient der qualitativen Übersicht über die Systemstruktur und die Zusammenhänge zwischen den einzelnen Baugruppen.
 
-Im Kopf des Roboters sind das Display, die Kamera sowie die Audioausgabe integriert. Das Display fungiert als zentrale HMI und ermöglicht die visuelle Interaktion mit dem Roboter. Die darunter angeordnete Kamera dient der visuellen Erfassung der Umgebung. Ergänzend dazu ermöglicht die Audioausgabe eine akustische Rückmeldung. Diese Komponenten werden vom im Unterkörper verbauten Raspberry Pi angesteuert.
+Im Kopf des Roboters sind das Display, die Kamera sowie die Audioausgabe integriert. Das Display fungiert als zentrale Mensch-Maschine-Schnittstelle (HMI) und ermöglicht die visuelle Interaktion mit dem Roboter. Die darunter angeordnete Kamera dient der visuellen Erfassung der Umgebung. Ergänzend dazu ermöglicht die Audioausgabe eine akustische Rückmeldung. Diese Komponenten werden vom im Unterkörper verbauten Raspberry Pi angesteuert.
 
 Die Ansteuerung der Motoren erfolgt über den ESP32, welcher die Steuerbefehle von der Fernbedienung empfängt und verarbeitet. Die beiden Hauptantriebsmotoren M$_1$ und M$_2$, die für die Fortbewegung des Roboters verantwortlich sind, werden jeweils über einen Motortreiber angesteuert. Zusätzlich sind die Motoren M$_3$ und M$_4$ für die Bewegung der angedeuteten Arme vorgesehen. Ein weiterer Motor M$_5$ ermöglicht die Rotation der Kopfkomponente.
 
-Zur Energieversorgung sind zwei separate Energiequellen vorgesehen, die unterschiedliche Systemkomponenten versorgen. Akku$_1$ ist als Lithium-Polymer-Akku (LiPo) ausgeführt und zeichnet sich durch eine hohe Energiedichte sowie eine hohe Leistungsabgabe aus. Dieser Akku wird zur Versorgung der leistungsintensiven Hauptantriebsmotoren M$_1$ und M$_2$ eingesetzt. % (\textcolor{red}{Faik, Simon wie viel nochmal?})
+Zur Energieversorgung sind zwei separate Energiequellen vorgesehen, die unterschiedliche Systemkomponenten versorgen. Akku$_1$ ist als Lithium-Polymer-Akku (LiPo) ausgeführt und zeichnet sich durch eine hohe Energiedichte sowie eine hohe Leistungsabgabe (\textcolor{red}{Faik, Simon wie viel nochmal?}) aus. Dieser Akku wird zur Versorgung der leistungsintensiven Hauptantriebsmotoren M$_1$ und M$_2$ eingesetzt. 
 
 Ein zweiter Akku (Akku$_2$), ausgeführt als Powerbank beziehungsweise mobiler Ersatzakku, dient der Versorgung der Steuerelektronik, insbesondere des Raspberry Pi und des ESP32. Die integrierte Spannungsversorgung der Mikrocontroller ist ausreichend dimensioniert, um die leistungsschwächeren Motoren M$_3$, M$_4$ und M$_5$ sowie die Peripheriekomponenten wie Display, Kamera und Audioausgabe zu betreiben.
 
@@ -605,7 +648,7 @@ Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stell
 \subsection{Budgetplanung}
 \label{cha:Budgetplanung}
 
-Für die Entwicklung und Umsetzung des Projekts stellt die DHBW ein Budget von bis zu \num{500}\,\euro\;zur Verfügung. Dieses Budget definiert den finanziellen Rahmen, innerhalb dessen der Zukauf von benötigten Komponenten und Materialien erfolgen muss.
+Für die Entwicklung und Umsetzung des Projekts stellt die Duale Hochschule Baden-Württemberg (DHBW) ein Budget von bis zu \num{500}\,\euro\;zur Verfügung. Dieses Budget definiert den finanziellen Rahmen, innerhalb dessen der Zukauf von benötigten Komponenten und Materialien erfolgen muss.
 
 Da es sich um ein studentisches Projekt handelt und alle Projektteilnehmer ihre Arbeit im Rahmen des Studiums beziehungsweise in ihrer Freizeit erbringen, fallen keine Personalkosten an. Die Budgetplanung beschränkt sich daher ausschließlich auf die Kosten für Materialien, Bauteile und gegebenenfalls notwendige Hilfsmittel für die Umsetzung des Roboters.
 
@@ -647,7 +690,7 @@ Auf der Chancenseite bietet der Messeroboter die Möglichkeit, wertvolle Erkennt
 
 Als externe Bedrohungen sind insbesondere betriebliche und sicherheitsrelevante Risiken zu nennen. Dazu zählen mögliche Beschädigungen empfindlicher Komponenten, beispielsweise der eingesetzten LiPo-Akkus, sowie Unfallrisiken in der Messeumgebung mit hohem Personenaufkommen. Zusätzlich können ein erhöhter Wartungsbedarf und technische Ausfälle während öffentlicher Vorführungen den zuverlässigen Einsatz des Roboters beeinträchtigen. Die Analyse verdeutlicht somit, dass neben der technischen Umsetzung auch Aspekte der Betriebssicherheit und Wartung eine zentrale Rolle für den erfolgreichen Einsatz des Messeroboters spielen.
 
-\newpage
+
 \subsection{SWOT-Analyse des Projekts aus Sicht der Hochschule}
 \label{cha:SWOT-Analyse des Projekts aus Sicht der Hochschule}
 
