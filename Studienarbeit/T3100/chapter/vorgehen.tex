@@ -290,9 +290,9 @@ Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werd
 \section{Interaktionsdesign}
 \label{cha:Interaktionsdesign}
 
-Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher ferfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
+Für die Interaktion mit anderen soll der Roboter ein Anzeigedisplay erhalten, auf welchem er in Form von Augenanimationen kommuniziert. Zusätzlich soll der Roboter über einen Lautsprecher verfügen mit dessen Hilfe er Töne oder Sätze ausgeben kann.
 
-Hierzu wurde folgendes Konzept entwicklt und dazu eine Abbildung mit Abhängigkeiten erstellt:
+Hierzu wurde folgendes Konzept entwickelt und dazu eine Abbildung mit Abhängigkeiten erstellt:
 
 
 Für die Ansteuerung des HDMI-Displays wird ein Raspberry Pi 5 verwendet, da dieser über ausreichende Rechenleistung verfügt, um auch größere Bildschirme zuverlässig und mit hoher Geschwindigkeit zu betreiben. Zusätzlich dient der Raspberry Pi als Stromversorgung für das Display. Das System läuft unter Raspberry Pi OS, einer für den Raspberry Pi optimierten Linux-Distribution, die eine vollständige GUI bietet. Die Anzeige wird mithilfe der Programmiersprache Python realisiert, da diese eine breite Unterstützung für die Entwicklung grafischer Oberflächen und Bildverarbeitungsanwendungen bietet. Python stellt verschiedene Bibliotheken wie beispielsweise Tkinter, PyQt oder Kivy für die Erstellung von Benutzeroberflächen bereit. Für die Integration der Kamera, in diesem Fall einer Logitech Brio 500, kann die Bibliothek OpenCV verwendet werden, um Live-Bilder oder Bildverarbeitungsfunktionen darzustellen. Die Kombination aus Raspberry Pi, HDMI-Display und Python ermöglicht eine flexible und kosteneffiziente Lösung für die Visualisierung und Interaktion in Embedded-System-Anwendungen. Die Hardware- und Softwarearchitektur ist in Abbildung \ref{fig:anschlussschema_rpi5} dargestellt.
