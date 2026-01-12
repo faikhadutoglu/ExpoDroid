@@ -514,8 +514,8 @@ Aus dieser Erkenntnis ergab sich ein unmittelbarer Handlungsbedarf auf zwei Eben
 Die durchgeführte Fehleranalyse verdeutlicht, dass Subsystemtests nicht nur der Funktionsprüfung dienen, sondern wertvolle Erkenntnisse über reale Betriebsbedingungen liefern. Die identifizierten Schwachstellen bilden eine wichtige Grundlage für gezielte technische und konzeptionelle Optimierungen des Systems.
 
 
-\subsection{Implementierung eines Failsafe-Mechanismus}
-\label{cha:Implementierung eines Failsafe-Mechanismus}
+\subsubsection{Implementierung eines Failsafe-Mechanismus}
+
 Die während der Testfahrten aufgetretenen unkontrollierten Fahrzeugbewegungen machten deutlich, dass die ursprüngliche Implementierung der Motorsteuerung keine ausreichende Absicherung gegen Signalverluste besaß. Eine detaillierte Codeanalyse offenbarte die Ursache dieses sicherheitskritischen Verhaltens.
 
 \paragraph{Problemanalyse}
@@ -625,7 +625,7 @@ Die vorgeschlagene Optimierung verdeutlicht die Notwendigkeit, bereits in der En
 \subsection{Subsystemtests der Augenansteurung über Display und Kamera  \textcolor{blue}{Simon}}
 \label{cha:Subsystemtests der Augenansteurung über Display und Kamera}
 
-\subsubsection{Integration}
+\subsection{Integration}
 \label{cha:Integration}
 
 Die Integration erfolgt in mehreren Phasen:
@@ -637,7 +637,7 @@ Die Integration erfolgt in mehreren Phasen:
 	\item \textbf{Phase~5 – Stresstest/Dauerlauf:} Langzeittest unter typischer Last (Animation, Kamerastream, Audiohinweise), Beobachtung von Temperatur, Last und Stabilität.
 \end{itemize}
 
-\subsubsection{Testumgebung und Aufbau}
+\subsection{Testumgebung und Aufbau}
 \label{cha:Testumgebung und Aufbau}
 
 \begin{itemize}
@@ -647,7 +647,7 @@ Die Integration erfolgt in mehreren Phasen:
 	\item \textbf{Umgebungsbedingungen:} Labor (kontrolliert) und angestrebte Messebedingungen (Publikumsverkehr, Umgebungsgeräusche, wechselnde Lichtverhältnisse).
 \end{itemize}
 
-\subsubsection{Testfälle und Akzeptanzkriterien}
+\subsection{Testfälle und Akzeptanzkriterien}
 \label{cha:Testfälle und Akzeptanzkriterien}
 
 \begin{itemize}
@@ -657,7 +657,7 @@ Die Integration erfolgt in mehreren Phasen:
 	\item \textbf{Stresstests/Dauerlauf:} Keine Instabilität über mehrere Stunden; Temperaturen bleiben im unkritischen Bereich; Framerate und Eingabelatenz stabil.
 \end{itemize}
 
-\subsubsection{Beobachtungen und Probleme}
+\subsection{Beobachtungen und Probleme}
 \label{cha:Beobachtungen und Probleme}
 
 \textbf{Stromversorgung mit Powerbank:} Während der Tests ist ein Problem bei der Stromversorgung des Raspberry~Pi mit angeschlossener Peripherie (Kamera, Touchdisplay, USB‑Lautsprecher) aufgetreten. Beim Betrieb über eine Powerbank traten \textit{Unterspannungen/Brownouts} und sporadische Neustarts auf.
@@ -673,7 +673,7 @@ Die Integration erfolgt in mehreren Phasen:
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{Geplante Netzwerktests (SSH/VNC)}
+\subsection{Geplante Netzwerktests (SSH/VNC)}
 \label{cha:Geplante Netzwerktests (SSH/VNC)}
 
 Die Netzwerktests sind vorgesehen, aber zum aktuellen Zeitpunkt \textbf{noch nicht durchgeführt}. Geplant sind:
@@ -692,7 +692,7 @@ Die Netzwerktests sind vorgesehen, aber zum aktuellen Zeitpunkt \textbf{noch nic
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{Fehleranalyse und Optimierung}
+\subsection{Fehleranalyse und Optimierung}
 \label{cha:Fehleranalyse und Optimierung}
 
 Die Fehleranalyse basiert auf den Beobachtungen während der Integration und den Stresstests:

@@ -4,7 +4,7 @@
 \section{Projektorganisation \textcolor{blue}{Angus}}
 \label{cha:Projektorganisation}
 
-In der praktischen Projektdurchführung wurde kein strikt sequenzielles umgesetzt. Stattdessen erfolgte die Arbeit in iterativen Zyklen mit regelmäßigen Abstimmungsmeetings, in denen der aktuelle Projektstand bewertet und die nächsten Arbeitsschritte geplant wurden. Die Anforderungen an das System wurden dabei im Verlauf des Projekts weiterentwickelt und verfeinert.
+In der praktischen Projektdurchführung wurde kein strikt sequenzieller Ansatz umgesetzt. Stattdessen erfolgte die Arbeit in iterativen Zyklen mit regelmäßigen Abstimmungsmeetings, in denen der aktuelle Projektstand bewertet und die nächsten Arbeitsschritte geplant wurden. Die Anforderungen an das System wurden dabei im Verlauf des Projekts weiterentwickelt und verfeinert.
 
 Diese Vorgehensweise weist deutliche Parallelen zu agilen Projektmanagementmethoden, insbesondere zu Scrum, auf. Gleichzeitig diente das V-Modell als strukturierendes Referenzmodell für die Systementwicklung. Insbesondere die logische Zuordnung von Anforderungen, Entwurfsentscheidungen, Implementierung und zugehörigen Test- und Verifikationsschritten orientierte sich am V-Modell.
 
@@ -29,48 +29,53 @@ Besondere Bedeutung kommt zudem dem Aspekt der Sicherheit zu. Der Roboter darf i
 
 Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließende detaillierte Definition einzelner funktionaler sowie nicht-funktionaler Anforderungen. Letztere werden zur besseren Strukturierung in Unterkategorien wie Qualitäts-, Sicherheits-, Performance- und Wartbarkeitsanforderungen unterteilt. Diese werden im weiteren Projektverlauf konkretisiert, priorisiert und dokumentiert und dienen als verbindliche Referenz für Entwurfs-, Implementierungs- und Testentscheidungen.
  
-Die Requierments-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requierments} betrachten.
+Die Requirements-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requirements} betrachten.
 
 \section{Designkonzept[\textcolor{blue}{Angus}]}
 \label{cha:Designkonzept}
 
-Bei der Entwicklung eines Roboters für den Einsatz auf Messen spielt das äußere Design sowie das visuelle Erscheinungsbild eine zentrale Rolle, insbesondere wenn es darum geht, Aufmerksamkeit zu erzeugen und Interesse zu wecken. Da eine der Hauptaufgaben des Roboters darin besteht, potenzielle neue Studierende für die Duale Hochschule Baden-Württemberg (DHBW) im technischen Bereich zu begeistern, wird der Ästhetik des Systems ein besonderes Augenmerk gewidmet.
+Bei der Entwicklung eines Roboters für den Einsatz auf Messen spielt das äußere Design sowie das visuelle Erscheinungsbild eine zentrale Rolle, insbesondere wenn es darum geht, Aufmerksamkeit zu erzeugen und Interesse zu wecken. Da eine der Hauptaufgaben des Roboters darin besteht, potenzielle neue Studierende für die DHBW im technischen Bereich zu begeistern, wird der Ästhetik des Systems ein besonderes Augenmerk gewidmet.
 
-Neben der reinen Außenwirkung beeinflussen Größe, Form und gestalterische Elemente auch maßgeblich die Auslegung der technischen Komponenten sowie die Auswahl geeigneter Materialien. Aus diesem Grund ist die Designsprache – also die gestalterische Gesamtwirkung und visuelle Identität des Roboters – eines der ersten Aspekte, die im Rahmen der Konzeption grundlegend definiert werden müssen.
+Neben der reinen Außenwirkung beeinflussen Größe, Form und gestalterische Elemente auch maßgeblich die Auslegung der technischen Komponenten sowie die Auswahl geeigneter Materialien. Aus diesem Grund ist die Designsprache, also die gestalterische Gesamtwirkung und visuelle Identität des Roboters, eines der ersten Aspekte, die im Rahmen der Konzeption grundlegend definiert werden müssen.
 
-Der Roboter soll gezielt Aufmerksamkeit auf sich ziehen und idealerweise den Eindruck einer intelligenten Maschine vermitteln (im Sinne einer Durchdachten und technisch anspruchsvolleren Umsetzung). Durch gezielte Gestaltungselemente, beispielsweise in Form eines abstrahierten Gesichts oder einfacher Mimik, kann zusätzlich der Eindruck einer emotionalen Tiefe erzeugt werden. Dies kann die Interaktion mit Messebesuchern erleichtern und die Hemmschwelle zur Kontaktaufnahme senken. Dabei ist es vorteilhaft bekannte und leichtverständliche Designelemente zuverwenden, es handelt sich hierbei um ein breites Publikum und keine kleine kleine künstzlerisch begeisterte gemeinde, die anspruchsvolle und revulotionäre designideen erwartet. Beospielsweise Den Roboter an einw bekanntes
+Der Roboter soll gezielt Aufmerksamkeit auf sich ziehen und idealerweise den Eindruck einer intelligenten Maschine vermitteln, im Sinne einer Durchdachten und technisch anspruchsvolleren Umsetzung. Durch gezielte Gestaltungselemente, beispielsweise in Form eines abstrahierten Gesichts oder einfacher Mimik, kann zusätzlich der Eindruck einer emotionalen Tiefe erzeugt werden. Dies kann die Interaktion mit Messebesuchern erleichtern und die Hemmschwelle zur Kontaktaufnahme senken. Dabei ist es vorteilhaft bekannte und leichtverständliche Designelemente zuverwenden, es handelt sich hierbei um ein breites Publikum und keine kleine kleine künstzlerisch begeisterte gemeinde, die anspruchsvolle und revulotionäre designideen erwartet. %Beospielsweise Den Roboter an einw bekanntes
 
-Für die Entwicklung eines geeigneten Designkonzepts bietet es sich an, bestehende Roboterkonzepte als Inspirationsquelle heranzuziehen. Insbesondere der Science-Fiction-Bereich stellt eine Vielzahl unterschiedlicher Gestaltungsansätze bereit. Diese reichen von humanoid wirkenden, zweibeinig laufenden Robotern über fahrende Systeme mit Rädern oder Ketten – wie sie beispielsweise in der Raumfahrt eingesetzt werden – bis hin zu unkonventionelleren Konzepten, etwa kugelförmigen Robotern mit interner Antriebseinheit.
+Für die Entwicklung eines geeigneten Designkonzepts bietet es sich an, bestehende Roboterkonzepte als Inspirationsquelle heranzuziehen. Insbesondere der Science-Fiction-Bereich stellt eine Vielzahl unterschiedlicher Gestaltungsansätze bereit. Diese reichen von humanoid wirkenden, zweibeinig laufenden Robotern über fahrende Systeme mit Rädern oder Ketten, wie sie beispielsweise in der Raumfahrt eingesetzt werden, bis hin zu unkonventionelleren Konzepten, etwa kugelförmigen Robotern mit interner Antriebseinheit.
 
 Eine der grundlegendsten Entscheidungen im Designprozess betrifft die Art der Fortbewegung. Diese hat direkten Einfluss auf die geometrische Gestaltung, die Abmessungen sowie auf die Auswahl und Anordnung der verwendbaren Bauteile und Komponenten. Darüber hinaus wirkt sich die Fortbewegungsart maßgeblich auf den technischen und finanziellen Ressourcenbedarf sowie auf die Robustheit und Fehlertoleranz des Systems aus.
 
 \paragraph{Humanoider Roboter} 
-Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt werden, vermitteln zwar ein hohes Maß an Vertrautheit und Wiedererkennungswert. Als humanoid werden dabei Robotersysteme bezeichnet, deren Aufbau und Bewegungsform in wesentlichen Aspekten an den menschlichen Körper angelehnt sind, insbesondere durch einen aufrechten, zweibeinigen Gang sowie anthropomorphe Strukturen wie Arme und Oberkörper. Aus technischer Sicht sind solche Systeme jedoch äußerst komplex. Die mechanische Umsetzung, Regelung und Stabilisierung humanoider Fortbewegung stellt hohe Anforderungen an Konstruktion, Sensorik und Software. Dies zeigt sich auch an den langjährigen Entwicklungsarbeiten großer Forschungs- und Industrieprojekte im Bereich humanoider Robotik (Bsp. \emph{Tesla}\reg{} oder \emph{Boston Dynamics}\reg{} \textcolor{red}{Dazugehörende Quelle einfügen}).
+Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt werden, vermitteln zwar ein hohes Maß an Vertrautheit und Wiedererkennungswert. Als humanoid werden dabei Robotersysteme bezeichnet, deren Aufbau und Bewegungsform in wesentlichen Aspekten an den menschlichen Körper angelehnt sind, insbesondere durch einen aufrechten, zweibeinigen Gang sowie anthropomorphe Strukturen wie Arme und Oberkörper. Aus technischer Sicht sind solche Systeme jedoch äußerst komplex. Die mechanische Umsetzung, Regelung und Stabilisierung humanoider Fortbewegung stellt hohe Anforderungen an Konstruktion, Sensorik und Software. Dies zeigt sich auch an den langjährigen Entwicklungsarbeiten großer Forschungs- und Industrieprojekte im Bereich humanoider Robotik (Bsp. \emph{Tesla}\reg{} oder \emph{Boston Dynamics}\reg{} \textcolor{red}{WIP Dazugehörende Quelle einfügen}).
 
 \begin{figure}[htb]
 	\centering
 	\fbox{%
 		\includegraphics[width=0.7\linewidth]{images/humanoider_Roboter.jpg}
 	}
-	\caption{Entwicklung eines fortschrittlichen humanoider Roboters von \emph{Boston Dynamics}\reg{},\cite{bostonDynamicsAtlas2025}}
+	\vspace{0.6cm}
+	\caption{Entwicklung eines fortschrittlichen humanoider Roboters von \emph{Boston Dynamics}\reg{}. \cite{bostonDynamicsAtlas2025}}
 	\label{fig:humanoider_Roboter}
 \end{figure}
 Im Rahmen einer studentischen Studienarbeit muss daher die Umsetzbarkeit stets kritisch bewertet werden. Konzepte mit hoher mechanischer und softwareseitiger Komplexität sind unter gegebenen zeitlichen, finanziellen und personellen Rahmenbedingungen nur eingeschränkt realisierbar. Aus diesem Grund liegt der Fokus des Designkonzepts auf einer ausgewogenen Kombination aus ansprechender Gestaltung, technischer Machbarkeit und funktionaler Zuverlässigkeit.
 
 
 \paragraph{Sphärische Roboter}
-Ein häufig zitiertes Beispiel aus dem Bereich populärer Roboterkonzepte ist ein kugelförmiger Roboter mit interner Antriebseinheit, wie er unter anderem durch die Figur BB-8\reg{} (Abbildung \ref{fig:sphaerischer_roboter}) aus dem Science-Fiction-Bereich bekannt geworden ist. Dieses Konzept zeichnet sich durch eine geschlossene, sphärische Außenhülle aus, innerhalb derer sich die Antriebseinheit bewegt, während der Kopf magnetisch oder mechanisch stabilisiert auf der Oberfläche gehalten wird.
+Ein häufig zitiertes Beispiel aus dem Bereich populärer Roboterkonzepte ist ein kugelförmiger Roboter mit interner Antriebseinheit, wie er unter anderem durch die Figur BB-8\reg{} (siehe Abbildung \ref{fig:sphaerischer_roboter}) aus dem Science-Fiction-Bereich bekannt geworden ist. Dieses Konzept zeichnet sich durch eine geschlossene, sphärische Außenhülle aus, innerhalb derer sich die Antriebseinheit bewegt, während der Kopf magnetisch oder mechanisch stabilisiert auf der Oberfläche gehalten wird.
 
 Aus gestalterischer Sicht bietet dieses Konzept eine hohe Wiedererkennbarkeit und wirkt auf viele Betrachter innovativ und verspielt. Für den geplanten Einsatz im Messebetrieb ergeben sich jedoch mehrere praktische Nachteile. Die Umsetzung eines kugelförmigen Antriebssystems ist mechanisch vergleichsweise aufwendig und erfordert eine präzise Abstimmung zwischen interner Bewegung, Stabilisierung und externer Darstellung.
-\begin{figure}[htb]
+
+\vspace{1cm}
+\begin{figure}[H]
 	\centering
 	\fbox{%
 %		\includegraphics[width=0.5\linewidth]{images/Sphärischer_Roboter.jpg}
 		\includegraphics[width=0.5\linewidth]{images/Sphärischer_Roboter2.jpg}
 	}
-	\caption{Beispielhafter Aufbau eines Sphärischen Roboters.\cite{polygon2015bb8}\cite{dfrobot2016bb8diy}}
+	\vspace{0.6cm}
+	\caption{Beispielhafter Aufbau eines Sphärischen Roboters. \cite{polygon2015bb8}\cite{dfrobot2016bb8diy}}
 	\label{fig:sphaerischer_roboter}
 \end{figure}
+
 Darüber hinaus stellt die Fertigung einer sphärischen Außenhülle eine zusätzliche Herausforderung dar. Eine präzise Herstellung halbrunder Geometrien ist selbst mit hochwertigen additiven Fertigungsverfahren nur eingeschränkt möglich und häufig mit sichtbaren Ungenauigkeiten verbunden. Alternative Fertigungsverfahren, wie das Gießen oder Spritzgießen von Kunststoffbauteilen, würden aufgrund der notwendigen Werkzeuge und Formen den finanziellen Rahmen des Projekts deutlich überschreiten. Eine vereinfachte Umsetzung beispielsweise aus Papier oder kartonähnlichen Materialien wäre zwar kostengünstig realisierbar, jedoch anfällig gegenüber Umwelteinflüssen wie Feuchtigkeit und mechanischer Beanspruchung und somit für den dauerhaften Messebetrieb nur bedingt geeignet.
 
 Zusätzlich schränkt die kugelförmige Geometrie die nutzbare Innenraumstruktur erheblich ein, wodurch die Integration von Elektronik, Akkumulatoren und weiteren Komponenten erschwert wird. Auch kontrollierte Bewegungen bei niedrigen Geschwindigkeiten sowie ein sicheres Anhalten in Menschenmengen sind bei diesem Konzept nur mit erhöhtem Regelungs- und Sensorikaufwand realisierbar.
@@ -80,27 +85,29 @@ Vor diesem Hintergrund erscheint ein kompakter, fahrzeugähnlicher Aufbau mit kl
 
 Ein solches Design ermöglicht es, dem Roboter eine erkennbare „Persönlichkeit“ zu verleihen, beispielsweise durch einen beweglichen Kopf, Anzeigeelemente oder Arme für einfache Gesten, ohne die mechanische Komplexität unnötig zu erhöhen. Gleichzeitig steht ausreichend Bauraum für Elektronik, Energieversorgung und mechanische Komponenten zur Verfügung. Die Fortbewegung erfolgt über ein differenziell angetriebenes Fahrwerk, bei dem die linke und rechte Fahrzeugseite unabhängig voneinander angesteuert werden. Dadurch kann der Roboter durch unterschiedliche Drehzahlen der Antriebe lenken und sich bei Bedarf sogar um die eigene Achse drehen, ohne dass zusätzliche Lenkeinheiten erforderlich sind. Dies reduziert den konstruktiven Aufwand und erhöht die Robustheit des Systems.
 
-Gestalterische Inspiration für diese Bauweise bezog das Projektteam unter anderem aus bekannten Roboterdarstellungen der Populärkultur, wie dem Roboter Wall-E\reg{} (Abbildung~\ref{fig:Wall-E}) und R2-D2\reg{}. Beide Konzepte basieren auf einem klar strukturierten Plattformkörper, an dem Fahrwerk und Interaktionselemente befestigt sind, und werden von Zuschauern überwiegend positiv wahrgenommen. Aufgrund ihrer freundlichen und nicht-bedrohlichen Erscheinung eignen sie sich daher gut als gestalterische Referenz für einen Messe-Roboter.
-
-\begin{figure}[htb]
+\newpage
+\begin{figure}[H]
 	\centering
 	\fbox{%
 		%		\includegraphics[width=0.5\linewidth]{images/Sphärischer_Roboter.jpg}
-		\includegraphics[width=0.5\linewidth]{images/Wall-E.jpg}
+		\includegraphics[width=0.4\linewidth]{images/Wall-E.jpg}
 	}
-	\caption{Darstellung der Inspirationsquelle Wall-E für das Konzept eines Plattformbasierten Ansatzes \cite{turbosquid2022walle}}
+	\vspace{0.5cm}
+	\caption{Darstellung der Inspirationsquelle Wall-E\reg{} für das Konzept eines Plattformbasierten Ansatzes. \cite{turbosquid2022walle}}
 	\label{fig:Wall-E}
 \end{figure}
 
+Gestalterische Inspiration für diese Bauweise bezog das Projektteam unter anderem aus bekannten Roboterdarstellungen der Populärkultur, wie dem Roboter Wall-E\reg{} (siehe Abbildung~\ref{fig:Wall-E}) und R2-D2\reg{}. Beide Konzepte basieren auf einem klar strukturierten Plattformkörper, an dem Fahrwerk und Interaktionselemente befestigt sind, und werden von Zuschauern überwiegend positiv wahrgenommen. Aufgrund ihrer freundlichen und nicht-bedrohlichen Erscheinung eignen sie sich daher gut als gestalterische Referenz für einen Messe-Roboter.
 
-Wie in Abbildung~\ref{fig:Demo_Konzeption} dargestellt, besteht die Plattform des entwickelten Messe-Roboters aus einem kompakten, quaderförmigen Grundkörper, der als zentrales Trageelement dient. An diesem sind Fahrwerk, Arme und Kopf modular befestigt. Der menschenähnliche Aufbau mit klar erkennbaren Elementen wie Kopf und Armen greift ein vertrautes Motiv auf und erleichtert die intuitive Wahrnehmung des Roboters als interaktives System. Gleichzeitig ermöglicht der quaderförmige Körper die einfache Montage von Verkleidungselementen, die sowohl farblich als auch gestalterisch mit Verzierungen angepasst werden können. Der Plattformkörper übernimmt dabei primär strukturelle Aufgaben und dient dem Schutz der innenliegenden Elektronik.
-
-\begin{figure}[hbt]
+\begin{figure}[H]
 	\centering
 	\input{images/Demo_Konzeption.tex}
+	\vspace{0.6cm}
 	\caption{Zeigt den geplanten Aufbau einer kastenförmigen Plattform (grau), die als Grundgerüst dient und mit sämtlichen Komponenten (Kopf, Armen, Fahrwerk) bestückt werden kann.}		
 	\label{fig:Demo_Konzeption}
 \end{figure}
+
+Wie in Abbildung~\ref{fig:Demo_Konzeption} dargestellt, besteht die Plattform des entwickelten Messe-Roboters aus einem kompakten, quaderförmigen Grundkörper, der als zentrales Trageelement dient. An diesem sind Fahrwerk, Arme und Kopf modular befestigt. Der menschenähnliche Aufbau mit klar erkennbaren Elementen wie Kopf und Armen greift ein vertrautes Motiv auf und erleichtert die intuitive Wahrnehmung des Roboters als interaktives System. Gleichzeitig ermöglicht der quaderförmige Körper die einfache Montage von Verkleidungselementen, die sowohl farblich als auch gestalterisch mit Verzierungen angepasst werden können. Der Plattformkörper übernimmt dabei primär strukturelle Aufgaben und dient dem Schutz der innenliegenden Elektronik.
 
 Insgesamt stellt dieses Plattformkonzept einen geeigneten Kompromiss zwischen Wiedererkennbarkeit, technischer Machbarkeit und funktionaler Robustheit dar. Die konkrete Ausgestaltung der Fortbewegungseinheit, insbesondere die Entscheidung zwischen Rad- oder Kettenantrieb, wird im folgenden Abschnitt im Rahmen einer systematischen Analyse näher untersucht.
 
@@ -140,7 +147,7 @@ Bei dieser Konfiguration werden entweder die beiden vorderen oder die beiden hin
 Der Vorteil liegt im vergleichsweise einfachen mechanischen Aufbau bei gleichzeitig gut kontrollierbarem Fahrverhalten. Der Energiebedarf ist geringer als beim Allradantrieb, da nur zwei Motoren eingesetzt werden. Einschränkungen ergeben sich bei der Traktion, insbesondere bei ungünstiger Lastverteilung oder sehr glatten Untergründen. Für den Einsatz auf ebenen Messeflächen stellt diese Variante jedoch eine praktikable und bewährte Lösung dar.
 
 \subparagraph{IV. Diagonalantrieb}
-Beim Diagonalantrieb werden zwei diagonal gegenüberliegende Räder aktiv angetrieben. Diese Konfiguration stellt einen Kompromiss zwischen Allrad- und Zweiradantrieb dar und ermöglicht – ähnlich wie beim Allradantrieb – prinzipiell ein Drehen auf der Stelle.
+Beim Diagonalantrieb werden zwei diagonal gegenüberliegende Räder aktiv angetrieben. Diese Konfiguration stellt einen Kompromiss zwischen Allrad- und Zweiradantrieb dar und ermöglicht, ähnlich wie beim Allradantrieb, prinzipiell ein Drehen auf der Stelle.
 
 Allerdings ist das Fahr- und Lenkverhalten schwerer vorhersehbar und erfordert eine präzise Regelung, um ungleichmäßige Kraftverteilungen auszugleichen. Der erhöhte Regelungsaufwand sowie die geringe Verbreitung dieses Konzepts sprechen eher gegen den Einsatz im Rahmen eines studentischen Projekts.
 
@@ -158,6 +165,7 @@ Vorteilhaft sind der geringe Bauteilaufwand sowie eine hohe Wendigkeit, insbeson
 \begin{figure}[hbt]
 	\centering
 	\input{images/Antribskonzepte_Ketten_Räder.tex}
+	\vspace{0.6cm}
 	\caption{Zeigt die unterschiedlichen vorgestellten Antriebskonzepte in der Draufsicht}		
 	\label{fig:Antribskonzepte_Ketten_Räder}
 \end{figure}
@@ -166,48 +174,47 @@ Vorteilhaft sind der geringe Bauteilaufwand sowie eine hohe Wendigkeit, insbeson
 \subsection{Entscheidungsfindung und Begründung}
 \label{cha:Entscheidungsfindung und Begründung}
 
-Zur Auswahl des geeignetsten Antriebskonzepts werden die betrachteten Varianten im Rahmen einer Trade-off-Analyse systematisch miteinander verglichen. Ziel ist es, auf Basis klar definierter Kriterien eine möglichst objektive und nachvollziehbare Entscheidungsgrundlage für die weitere Umsetzung des Projekts zu schaffen.
+Zur Auswahl des passendsten Antriebskonzepts werden die betrachteten Varianten im Rahmen einer Trade-off-Analyse systematisch miteinander verglichen. Ziel ist es, auf Basis klar definierter Kriterien eine möglichst objektive und nachvollziehbare Entscheidungsgrundlage für die weitere Umsetzung des Projekts zu schaffen.
 
 Die Bewertung erfolgt anhand mehrerer Disziplinen, die im Folgenden erläutert werden. Um deren unterschiedliche Relevanz für den Messebetrieb und den Projektkontext abzubilden, werden die einzelnen Kriterien unterschiedlich gewichtet.
 
 \paragraph{Fahreigenschaften}
-Die Fahreigenschaften beschreiben das allgemeine Fahrverhalten des Roboters, insbesondere im Hinblick auf eine intuitive Bedienbarkeit. Ein leicht verständliches Lenk- und Fahrverhalten erleichtert den sicheren Einsatz des Roboters und reduziert den Schulungsaufwand für das Bedienpersonal. Daher eine Gewichtung von 3.
+Die Fahreigenschaften beschreiben das allgemeine Fahrverhalten des Roboters, insbesondere im Hinblick auf eine intuitive Bedienbarkeit. Ein leicht verständliches Lenk- und Fahrverhalten erleichtert den sicheren Einsatz des Roboters und reduziert den Schulungsaufwand für das Bedienpersonal. Daher eine Gewichtung von III.
 
 \paragraph{Wendigkeit}
-Die Wendigkeit beschreibt die Fähigkeit des Roboters, enge Manöver auszuführen, kleine Wendekreise zu realisieren oder sich im Idealfall auf der Stelle zu drehen. Auf Messen ist mit begrenztem Platzangebot und hohem Personenaufkommen zu rechnen, weshalb eine hohe Wendigkeit für den sicheren Betrieb von großer Bedeutung ist. Diese wird mit 3 gewichtet.
+Die Wendigkeit beschreibt die Fähigkeit des Roboters, enge Manöver auszuführen, kleine Wendekreise zu realisieren oder sich im Idealfall auf der Stelle zu drehen. Auf Messen ist mit begrenztem Platzangebot und hohem Personenaufkommen zu rechnen, weshalb eine hohe Wendigkeit für den sicheren Betrieb von großer Bedeutung ist. Diese wird mit III gewichtet.
 
 \paragraph{Geländefähigkeit}
-Dieses Kriterium beschreibt die Fähigkeit des Roboters, unebene, weiche oder lose Untergründe wie Sand oder Gras zu befahren. Da der primäre Einsatzort des Roboters in Messehallen liegt, wird dieser Aspekt im Vergleich zu anderen Kriterien als weniger relevant eingestuft und daher mit einem geringen Gewicht von 1 berücksichtigt.
+Dieses Kriterium beschreibt die Fähigkeit des Roboters, unebene, weiche oder lose Untergründe wie Sand oder Gras zu befahren. Da der primäre Einsatzort des Roboters in Messehallen liegt, wird dieser Aspekt im Vergleich zu anderen Kriterien als weniger relevant eingestuft und daher mit einem geringen Gewicht von I berücksichtigt.
 
 \paragraph{Haftung auf glatten Oberflächen}
-Im Gegensatz zur Geländefähigkeit ist in Messehallen überwiegend mit glatten oder potenziell rutschigen Böden zu rechnen. Eine ausreichende Haftung auf solchen Oberflächen ist entscheidend für ein kontrolliertes Fahrverhalten und die Sicherheit im Betrieb. Dieses Kriterium wird daher mit einer Gewichtung von 2 bewertet.
+Im Gegensatz zur Geländefähigkeit ist in Messehallen überwiegend mit glatten oder potenziell rutschigen Böden zu rechnen. Eine ausreichende Haftung auf solchen Oberflächen ist entscheidend für ein kontrolliertes Fahrverhalten und die Sicherheit im Betrieb. Dieses Kriterium wird daher mit einer Gewichtung von II bewertet.
 
 \paragraph{Technischer Aufwand}
-Der technische Aufwand ist ein zentraler Faktor für die erfolgreiche Umsetzung des Projekts. Insbesondere im Rahmen eines studentischen Projekts stehen begrenzte Ressourcen hinsichtlich Zeit, Personal, Material und verfügbarer Fertigungsmöglichkeiten zur Verfügung. Die Machbarkeit der Umsetzung hat daher einen hohen Stellenwert und wird mit einer Gewichtung von 3 berücksichtigt.
+Der technische Aufwand ist ein zentraler Faktor für die erfolgreiche Umsetzung des Projekts. Insbesondere im Rahmen eines studentischen Projekts stehen begrenzte Ressourcen hinsichtlich Zeit, Personal, Material und verfügbarer Fertigungsmöglichkeiten zur Verfügung. Die Machbarkeit der Umsetzung hat daher einen hohen Stellenwert und wird mit einer Gewichtung von III berücksichtigt.
 
 \paragraph{Kostenabschätzung}
-Die entstehenden Projektkosten müssen im vorgesehenen Rahmen bleiben, da unnötige Ausgaben die Umsetzung anderer Projektbereiche einschränken können. Gleichzeitig soll die Wahl des Antriebskonzepts innovative Ansätze nicht grundsätzlich verhindern. Aus diesem Grund wird die Kostenabschätzung mit einer Gewichtung von 2 in die Bewertung einbezogen.
+Die entstehenden Projektkosten müssen im vorgesehenen Rahmen bleiben, da unnötige Ausgaben die Umsetzung anderer Projektbereiche einschränken können. Gleichzeitig soll die Wahl des Antriebskonzepts innovative Ansätze nicht grundsätzlich verhindern. Aus diesem Grund wird die Kostenabschätzung mit einer Gewichtung von II in die Bewertung einbezogen.
 
 \paragraph{Wartbarkeit}
-Die Wartbarkeit ist im Hinblick auf eine langfristige Nutzung des Roboters von großer Bedeutung. Nur ein System, das zuverlässig betrieben, gewartet und bei Bedarf repariert werden kann, bietet einen nachhaltigen Mehrwert für die Hochschule. Dieses Kriterium wird daher mit einer Gewichtung von 3 bewertet.
+Die Wartbarkeit ist im Hinblick auf eine langfristige Nutzung des Roboters von großer Bedeutung. Nur ein System, das zuverlässig betrieben, gewartet und bei Bedarf repariert werden kann, bietet einen nachhaltigen Mehrwert für die Hochschule. Dieses Kriterium wird daher mit einer Gewichtung von III bewertet.
 
 \paragraph{Optischer Eindruck}
-Der Hauptzweck des Roboters besteht darin, positive Aufmerksamkeit zu erzeugen und Interesse zu wecken. Der optische Eindruck stellt somit das wichtigste Bewertungskriterium dar und erhält eine Gewichtung von 3. Die Bewertung dieses Aspekts erfolgt zwangsläufig subjektiv, wird jedoch im Projektteam gemeinschaftlich durch mehrere Personen getroffen.
+Der Hauptzweck des Roboters besteht darin, positive Aufmerksamkeit zu erzeugen und Interesse zu wecken. Der optische Eindruck stellt somit das wichtigste Bewertungskriterium dar und erhält eine Gewichtung von III. Die Bewertung dieses Aspekts erfolgt zwangsläufig subjektiv, wird jedoch im Projektteam gemeinschaftlich durch mehrere Personen getroffen.
 
 \paragraph{Unkonventionalität}
-Eng verbunden mit dem optischen Eindruck ist der Grad der Unkonventionalität des Antriebskonzepts. Innovative oder weniger verbreitete Ansätze können dazu beitragen, sich von anderen Messeexponaten oder potenziellen Konkurrenzangeboten abzuheben. Gleichzeitig fördern sie den Innovationscharakter des Projekts. Dieses Kriterium wird mit einer Gewichtung von 2 berücksichtigt.
+Eng verbunden mit dem optischen Eindruck ist der Grad der Unkonventionalität des Antriebskonzepts. Innovative oder weniger verbreitete Ansätze können dazu beitragen, sich von anderen Messeexponaten oder potenziellen Konkurrenzangeboten abzuheben. Gleichzeitig fördern sie den Innovationscharakter des Projekts. Dieses Kriterium wird mit einer Gewichtung von II berücksichtigt.
 
-
-
-\begin{table}[hbt]
+\begin{table}[H]
 	\centering
 	\input{images/tradeoff_Analyse_Antriebsart.tex}
 	\caption{Trade-off-Analyse der betrachteten Antriebskonzepte}		
 	\label{tab:tradeoff_Antriebsart}
 \end{table}
+
 Die Bewertung der einzelnen Antriebskonzepte erfolgt durch das Projektteam nach bestem Wissen und Gewissen. Für jedes Kriterium werden Punkte auf einer Skala von eins bis fünf vergeben, wobei eins einer sehr schlechten und fünf einer sehr guten Bewertung entspricht. Die vergebenen Punkte werden mit der jeweiligen Gewichtung des Kriteriums multipliziert und anschließend für jedes Antriebskonzept aufsummiert. Die Antriebsart mit der höchsten Gesamtpunktzahl wird als bevorzugte Lösung für die Umsetzung im Projekt ausgewählt.
 
-Ergebnis der Trade-off-Analyse (Abbildung \ref{tab:tradeoff_Antriebsart}) ist dass der Hinterantrieb mit einem dritten frei beweglichen Vorderrad, mit 104 Punkten (7 Punkte Abstand zum nächsten), für die Umsetzung in diesem Projekt am geeignetsten erscheint. 
+Ergebnis der Trade-off-Analyse (siehe Abbildung \ref{tab:tradeoff_Antriebsart}) ist dass der Hinterantrieb mit einem dritten frei beweglichen Vorderrad, mit 104 Punkten (7 Punkte Abstand zum nächsten), für die Umsetzung in diesem Projekt am geeignetsten erscheint. 
 
 \section{Steuerungskonzept\textcolor{brown}{FAIK}}%Faik
 \label{cha:Steuerungskonzept}
@@ -485,44 +492,9 @@ Für die Benutzerinteraktion ist ein HDMI-Touchdisplay vorgesehen, das eine dire
 In diesem Abschnitt wird die Auswahl der zentralen Hardwarekomponenten begründet. Die Entscheidung für spezifische Bauteile basierte auf einer Abwägung zwischen technischer Leistungsfähigkeit, Verfügbarkeit und den spezifischen Anforderungen der Teilbereiche Antrieb, Interaktion und Energieversorgung.
 
 \subsubsection{Motoren Antrieb}
-Für die Fortbewegung unseres Roboters setzen wir zwei Gleichstrommotoren aus handelsüblichen Kinderfahrzeugen ein. Diese Wahl passt sehr gut zu unserem Konzept: Wir betreiben den Antrieb mit einem LiPo-Akku und steuern die Motoren über eine H-Brücke direkt vom Microcontroller aus. Damit bleibt die Elektronik bewusst schlank und robust, ohne komplexe Regelalgorithmen oder teure Spezialtreiber. Kinderauto-Motoren sind kostengünstig, weit verbreitet und bieten ein für unser Einsatzszenario vorteilhaftes Drehmoment, insbesondere wenn es darum geht, ein höheres Gesamtgewicht sicher und kontrolliert zu bewegen. Im Vergleich zu Servoantrieben oder Brushless-Systemen akzeptieren wir dafür bewusst einfachere Regelgüte, geringere Effizienz und eine etwas höhere Geräuschkulisse. Letzteres ist im vorgesehenen Einsatz allerdings unkritisch: Der Roboter soll auf Messen nur langsam und mit geringer Leistungsanforderung fahren, wodurch die wahrgenommene Geräuschentwicklung in der Messeumgebung wenig ins Gewicht fällt. 
-
-Um die Leistungsabgabe sanft zu gestalten, planen wir in der Software einen Exponentialfilter für die Steuerung. Dieser Filter sorgt dafür, dass die Motoren nicht abrupt auf hohe Drehzahlen beschleunigen, sondern die Sollwerte geglättet und mit einer exponentiellen Annäherung umgesetzt werden. Dadurch werden mechanische Belastungsspitzen reduziert, die Fahrbewegung wirkt harmonischer und die Steuerung bleibt einfach umsetzbar, ohne komplexe Regelkreise zu implementieren.
-
-Durch die oben genannten Vorteile konnten im Design einfache wege und Lösungen gefunden werden: Die Ansteuerung ist rein drehzahl- bzw. spannungsbasiert und damit nicht positionsgenau, für präzise Manöver wären zusätzliche Sensoren sinnvoll, die wir jedoch für den geplanten Einsatzzweck nicht benötigen. Auch der Wirkungsgrad einfacher DC-Getriebemotoren liegt typischerweise unter dem von Brushless-Antrieben, was sich in höherem Energieverbrauch bemerkbar macht; in unserem kurzzeitigen, langsamen Messebetrieb ist dieser Effekt jedoch gut beherrschbar. Insgesamt ergibt sich eine robuste, kosteneffiziente und integrationsfreundliche Lösung, die unsere Anforderungen an einfache Steuerung, Verfügbarkeit und ausreichendes Drehmoment erfüllt, ohne den Entwicklungs- und Budgetrahmen zu sprengen.
-
-\subsection*{Vergleich der Antriebsoptionen}
-
-\begin{table}[h!]
-	\centering
-	\renewcommand{\arraystretch}{1.2}
-	\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
-		\hline
-		\textbf{Kriterium} & \textbf{Kinderauto-DC} & \textbf{Servomotor} & \textbf{Brushless-DC} \\
-		\hline
-		Kosten & Sehr günstig & Hochpreisig & Mittel bis hoch \\
-		\hline
-		Ansteuerung & Einfach (H-Brücke) & Komplex & Mittel (ESC nötig) \\
-		\hline
-		Drehmoment & Gut & Sehr gut & Sehr gut \\
-		\hline
-		Präzision & Niedrig & Sehr hoch & Hoch möglich \\
-		\hline
-		Effizienz/Geräusch & Weniger effizient, lauter & Gut & Sehr gut, leise \\
-		\hline
-		Integrationsaufwand & Gering & Hoch & Mittel \\
-		\hline
-		Eignung Messebetrieb & Sehr gut & zu teuer & zu komplexe Steuerung \\
-		\hline
-	\end{tabular}
-	\caption{Vergleich der Antriebsoptionen für den Roboter}
-\end{table}
+Es werden Motoren für die Fortbewegung des Roboters benötig \textcolor{red}{SIMON}
 \subsubsection{Weitere Motoren}
-Für die Bewegung des Kopfes sowie der beiden Arme werden Servomotoren eingesetzt. Die Anforderungen an diese Achsen unterscheiden sich grundlegend von denen des Fahrantriebs: Es wird keine hohe Drehzahl benötigt, sondern eine präzise und reproduzierbare Positionierung innerhalb eines begrenzten Winkelbereichs. Servomotoren sind hierfür besonders geeignet, da sie ein integriertes System aus Motor, Getriebe, Positionssensor und Regelungselektronik darstellen. Die Ansteuerung erfolgt über ein PWM-Signal, das direkt die Zielposition vorgibt, wodurch eine einfache und zuverlässige Implementierung möglich ist.
-
-Ein weiterer Vorteil liegt in der mechanischen Auslegung: Für die Kopfbewegung wurde ein Servomotor mit einer Traglast von bis zu 25\,kg gewählt, um das Gewicht des Kopfes sicher zu tragen und eine stabile Halteposition zu gewährleisten. Da keine vollständigen Umdrehungen über 360° erforderlich sind, sondern lediglich definierte Winkelstellungen, ist die Beschränkung des Stellbereichs bei Servomotoren kein Nachteil. Die integrierte Positionsregelung ermöglicht sanfte Bewegungen und eine hohe Wiederholgenauigkeit, was für die geplanten Präsentationsbewegungen auf einer Messe entscheidend ist.
-
-Zusammenfassend bieten Servomotoren eine kompakte, kosteneffiziente und präzise Lösung für die Kopf- und Armkinematik. Sie erfüllen die Anforderungen an Positionsgenauigkeit und Haltemoment, ohne komplexe externe Regelungen oder zusätzliche Sensorik zu erfordern.  
+Neben den Motoren für den Antrieb werden auch welche für die Bewegung des Kopfes als auch der beiden Arme benötigt. Bei diesen Motoren handelt es sich um Servo Motoren, da bei der Beweglichkeit des Kopfs und den Armen keine hohe Geschwindigkeit benötigt wird. Hingegen wird aber eine genaue Ansteuerung mit genauen Positionen erforderlich. Zusätzlich eignen sich Servomotoren für diese beweglichen Teile gut, da keine vollständigen Umdrehungen, also Umdrehungen mit Winkel über 360° benötigt wird.  
 \textcolor{red}{SIMON}
 
 
