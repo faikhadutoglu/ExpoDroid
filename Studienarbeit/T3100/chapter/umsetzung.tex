@@ -59,7 +59,7 @@ Mit Rädern und Kopfelement erreicht der Roboter nach aktueller Auslegung eine G
 %\subsection{Sicherheitsschaltungen}
 %
 
-\section{Motorsteuerung und Bewegungsalgorithmen\textcolor{brown}{FAIK}}
+\section{Motorsteuerung und Bewegungsalgorithmen}
 \label{cha:Motorsteuerung und Bewegungsalgorithmen}
 
 Nachdem in der Konzeptionsphase (siehe Kapitel \ref{sec:Steuerungskonzept}) das Prinzip des Differentialantriebs festgelegt wurde, beschreibt dieser Abschnitt die konkrete softwareseitige Umsetzung auf dem Mikrocontroller. Ziel der Implementierung war es, die Steuersignale einer Standard-Modellbaufernsteuerung so zu verarbeiten, dass damit leistungsstarke Gleichstrommotoren über BTS7960-H-Brücken präzise geregelt werden können.
@@ -82,7 +82,7 @@ Das Steuerungsschema wurde intuitiv ausgelegt\footnote{Zusätzlich existiert ein
 \end{itemize}
 
 
-\subsection{Programmablauf und Architektur\textcolor{brown}{FAIK}}
+\subsection{Programmablauf und Architektur}
 \label{cha:Programmablauf und Architektur}
 
 Die Steuerung basiert auf einem zyklischen Algorithmus, der kontinuierlich die Eingabesignale überwacht und in Motorbewegungen umsetzt. Dieser Prozess ist in Abbildung \ref{fig:flowchart_motor} als Programmablaufplan (englisch: Flowchart) dargestellt. Er verdeutlicht den Weg vom rohen Sensorsignal bis zur physikalischen Ansteuerung der Motortreiber.
@@ -106,10 +106,10 @@ Der implementierte Algorithmus lässt sich in vier logische Hauptphasen untertei
 	\item \textbf{Ausgabe und Sicherheit:} Begrenzung der Werte und Ansteuerung der Hardware-Treiber.
 \end{enumerate}
 
-\subsection{Detaillierte Implementierung\textcolor{brown}{FAIK}}
+\subsection{Detaillierte Implementierung}
 \label{cha:Detaillierte Implementierung}
 
-\subsubsection{Signalerfassung und Kanalzuordnung\textcolor{brown}{FAIK}}
+\subsubsection{Signalerfassung und Kanalzuordnung}
 Die Fernsteuerung übermittelt Steuerbefehle als Pulsweiten-modulierte Signale (englisch: Pulse Width Modulation (PWM)), wobei die Information in der Länge des Pulses codiert ist. Das empfangene Signal variiert typischerweise zwischen \SI{1100}{\micro\second} und \SI{1900}{\micro\second}, wobei \SI{1500}{\micro\second} der Neutralstellung (Joystick mittig) entspricht (siehe Abbildung \ref{fig:joystick_pwm}).
 
 \begin{figure}[h!]
@@ -137,7 +137,7 @@ Im ersten Schritt liest der Mikrocontroller diese Pulslängen mithilfe der Funkt
 Damit werden die eingelesenen Rohdaten der entsprechenden Empfängerkanäle direkt den internen Variablen für die Lenkung (\texttt{lastSteeringPulse}) und die Geschwindigkeit (\texttt{lastSpeedPulse}) zugewiesen.
 
 
-\subsubsection{Transformation der Signale (Mapping)\textcolor{brown}{FAIK}}
+\subsubsection{Transformation der Signale (Mapping)}
 Ein entscheidender Schritt in der Software ist die Umrechnung der eingelesenen Zeitwerte in Werte, die die Motortreiber verarbeiten können. Die H-Brücken werden mit einem 8-Bit-PWM-Signal angesteuert (Wertebereich $0$ bis $255$), während die Fernbedienung Zeitwerte um $1500$ liefert.
 
 Um dies zu lösen, wird die \texttt{map()}-Funktion eingesetzt, welche den Wertebereich der Eingabe linear auf den Zielbereich skaliert. Zusätzlich wurde eine sogenannte \textbf{Deadzone} (Totzone) zwischen \SI{1450}{\micro\second} und \SI{1550}{\micro\second} implementiert.
@@ -160,7 +160,7 @@ Um dies zu lösen, wird die \texttt{map()}-Funktion eingesetzt, welche den Werte
 
 Es gibt einen Grund, warum die Deadzone notwendig ist. Mechanische Joysticks kehren oft nicht mikrometergenau in die absolute Mitte zurück, und auch das Funksignal kann leicht schwanken (Jitter). Ohne diese implementierte Totzone würde der Roboter im Stillstand \glqq zittern\grqq ~oder langsam wegrollen. Die Deadzone garantiert, dass der Roboter sicher stehen bleibt, solange der Nutzer den Joystick nicht bewusst bewegt.
 
-\subsubsection{Der Differential-Mixing-Algorithmus\textcolor{brown}{FAIK}}
+\subsubsection{Der Differential-Mixing-Algorithmus}
 Da der Roboter über keine mechanische Lenkung wie ein Auto verfügt, muss eine Richtungsänderung durch unterschiedliche Drehzahlen der beiden Antriebsräder erzeugt werden. Diesen Vorgang nennt man \textit{Differential Steering}.
 
 Der implementierte Algorithmus nimmt die Basisgeschwindigkeit (\texttt{baseSpeed}) und modifiziert diese für das linke und rechte Rad basierend auf dem Lenkeinschlag (\texttt{steering}).
@@ -185,7 +185,7 @@ Zum Beispiel: Bei vollem Lenkeinschlag (\texttt{steering = 100}\footnote{nach Ma
 
 \textbf{Abweichung von der Planung:} In der ursprünglichen Planung war eine additive Geschwindigkeitsreduktion vorgesehen (siehe Abbildung \ref{fig:flowchart_steuerung}). Diese wurde jedoch nach ersten Tests verworfen, da sie bei niedriger Geschwindigkeit zu übermäßiger Bremsung führte, während bei hoher Geschwindigkeit die Lenkwirkung unzureichend war. Die maßgebliche Implementierung nutzt daher eine multiplikative Methode (\texttt{baseSpeed * (100 - steering) / 100}), welche die Reduktion proportional zur aktuellen Fahrgeschwindigkeit durchführt und somit ein konsistentes Lenkverhalten über alle Geschwindigkeitsbereiche gewährleistet.
 
-\subsubsection{Sicherheitsbegrenzung und Hardware-Ansteuerung\textcolor{brown}{FAIK}}
+\subsubsection{Sicherheitsbegrenzung und Hardware-Ansteuerung}
 Bevor die berechneten Werte an die Hardware gesendet werden, durchlaufen sie eine Sicherheitsstufe. Hierbei wird die \texttt{constrain()}-Funktion genutzt, um sicherzustellen, dass keine Werte außerhalb des zulässigen Bereichs liegen. Zusätzlich wurde ein \texttt{batterie\_factor} von $0.91$ eingeführt.
 
 \begin{lstlisting}[style=motorStyle, caption={Begrenzung der Ausgangsspannung}]
@@ -229,14 +229,6 @@ Abschließend steuert die Logik die H-Brücken an. Da Gleichstrommotoren für di
 		analogWrite(PIN_BTS1_LPWM, 0);
 	}
 \end{lstlisting}
-
-
-
-
-
-
-
-
 
 \clearpage
 
@@ -455,7 +447,7 @@ Die Benutzerschnittstelle des Roboters ist ein zentraler Bestandteil für die In
 \end{figure}
 \newpage
 
-\section{Systemintegration und Test \textcolor{blue}{Angus}}
+\section{Systemintegration und Test}
 \label{cha:Systemintegration und Test}
 
 \subsection{Integrationsstrategie}
@@ -473,7 +465,7 @@ Nach erfolgreichem Abschluss der Einzeltests wurden die getesteten Module schrit
 
 Dieses strukturierte Vorgehen aus modularer Entwicklung, modulbezogenen Tests und schrittweiser Integration trägt wesentlich zur Qualitätssicherung des Systems bei und entspricht dem grundlegenden Prinzip des V-Modells, bei dem jeder Entwicklungsstufe eine geeignete Verifikations- und Testaktivität zugeordnet ist.
 
-\subsection{Subsystemtests des Fahr- und Antriebssystems  \textcolor{blue}{Angus}}
+\subsection{Subsystemtests des Fahr- und Antriebssystems}
 \label{cha:Subsystemtests des Fahr- und Antriebssystems}
 
 Auch wenn einzelne Module und Subsysteme für sich genommen die vorgesehenen Funktionen erfüllen, können im integrierten Betrieb weiterhin Fehler oder unerwartete Abweichungen auftreten. Diese entstehen häufig durch Integrationsprobleme, fehlerhaftes Verhalten an den Schnittstellen zwischen einzelnen Komponenten oder durch unzutreffende Annahmen über das Zusammenspiel der Teilsysteme. Zudem können logische Inkonsistenzen oder nicht berücksichtigte Randbedingungen erst im integrierten Betrieb sichtbar werden.
@@ -708,13 +700,13 @@ Die Fehleranalyse basiert auf den Beobachtungen während der Integration und den
 %----------------------------------------------------------------------------------------------------
 
 
-\chapter{Ergebnisse und Diskussion\textcolor{brown}{FAIK}}
+\chapter{Ergebnisse und Diskussion}
 \label{cha:Ergebnisse und Diskussion}
 
 In diesem Kapitel werden die realisierten Ergebnisse der Studienarbeit vorgestellt
 und kritisch bewertet. Dabei liegt der Fokus auf dem Vergleich zwischen den definierten Anforderungen und dem tatsächlich umgesetzten Funktionsstand des Roboters.
 
-\section{Funktionsnachweis und Leistungsbewertung\textcolor{brown}{FAIK}}
+\section{Funktionsnachweis und Leistungsbewertung}
 \label{cha:Funktionsnachweis und Leistungsbewertung}
 
 Zum Abschluss der Entwicklungsphase wurde der Roboter einer Reihe von Funktionstests unterzogen, um die Leistungsfähigkeit der Teilsysteme sowie des Gesamtsystems zu validieren.
@@ -749,10 +741,10 @@ Die "`Persönlichkeit"' des Roboters wird erfolgreich durch die implementierten 
 
 Der Körper des Roboters (\textit{Body}) wurde vollständig aufgebaut und beherbergt die gesamte Antriebstechnik sowie die Energieversorgung. Die mechanische und elektrische Integration der Kopf-Einheit auf den Körper steht als finaler Arbeitsschritt noch aus. Die notwendigen Schnittstellen sind jedoch bereits definiert und vorbereitet.
 
-\section{Anforderungsabgleich\textcolor{brown}{FAIK}}
+\section{Anforderungsabgleich}
 \label{cha:Anforderungsabgleich}
 
-Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) definierten Anforderungen wurden erfolgreich umgesetzt, mit Ausnahme der folgenden Punkte:
+Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requirements}) definierten Anforderungen wurden erfolgreich umgesetzt, mit Ausnahme der folgenden Punkte:
 
 \textbf{Fehlende Kopf-Integration (REQ-004, REQ-019, REQ-022, REQ-032, REQ-033):} Ein Großteil der noch offenen Anforderungen resultiert daraus, dass die finale Integration der Kopf-Einheit auf den Roboterkörper noch nicht vollzogen wurde. Da das Display für Statusanzeigen (REQ-004) im Kopf verbaut ist, besteht aktuell keine physische Datenverbindung zum Akku im Rumpf. Ebenso sind alle Anforderungen, die eine Drehung des Kopfes beinhalten, technisch vorbereitet, konnten aber mangels Montage noch nicht im Gesamtsystem demonstriert werden.
 
@@ -760,7 +752,7 @@ Alle in der Anforderungsliste (siehe Kapitel~\ref{sec:Projekt Requierments}) def
 
 \textbf{Erweiterte Funktionen (REQ-030, REQ-034):} Die Implementierung von KI-Funktionen (REQ-034) und die Anpassung an das spezifische DHBW-Design (REQ-030) wurden zugunsten einer stabilen Basisfunktionalität (Fahren und Steuern) zurückgestellt. Der aktuelle Holz-Prototyp dient als funktionaler Träger ("`Mule"'), dessen Design in späteren Schritten verfeinert wird.
 
-\section{Lessons Learned\textcolor{brown}{FAIK}}
+\section{Lessons Learned}
 \label{cha:Lessons Learned}
 
 \begin{itemize}
@@ -784,7 +776,7 @@ Auch unsere Arbeitsweise liefert wichtige Erkenntnisse. Wir haben uns für eine 
 
 Beim Zeitmanagement war vor allem die Materialbeschaffung ein Engpass. Da wichtige Bauteile wie Motortreiber und Akkus verspätet geliefert wurden, blieb uns am Ende viel weniger Zeit zum Testen als geplant. Das bestätigt, wie wichtig es ist, kritische Komponenten sofort zu Projektbeginn zu bestellen und zu prüfen. Zusammenfassend lässt sich sagen: Der Roboter ist eine solide Plattform und der „Proof of Concept“ ist geglückt. Damit er jedoch wirklich auf einer Messe eingesetzt werden kann, ist eine zweite Entwicklungsrunde nötig, um die Sicherheitslücken zu schließen und das Design fertigzustellen.
 
-\section{Mögliche Erweiterungen\textcolor{brown}{FAIK}}
+\section{Mögliche Erweiterungen}
 \label{cha:Mögliche Erweiterungen}
 
 Die modulare Architektur der Motorsteuerung erlaubt prinzipiell eine nahezu unbegrenzte Erweiterung des Funktionsumfangs. Im Hinblick auf die technische Realisierbarkeit in der nahen Zukunft stehen jedoch folgende Optionen im Fokus, um den Einsatzbereich des Roboters sinnvoll zu vergrößern:

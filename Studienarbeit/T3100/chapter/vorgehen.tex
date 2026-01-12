@@ -1,7 +1,7 @@
 \chapter{Vorgehensweise und Konzeption}
 \label{cha:Vorgehensweise und Konzeption}
 
-\section{Projektorganisation \textcolor{blue}{Angus}}
+\section{Projektorganisation}
 \label{cha:Projektorganisation}
 
 In der praktischen Projektdurchführung wurde kein strikt sequenzieller Ansatz umgesetzt. Stattdessen erfolgte die Arbeit in iterativen Zyklen mit regelmäßigen Abstimmungsmeetings, in denen der aktuelle Projektstand bewertet und die nächsten Arbeitsschritte geplant wurden. Die Anforderungen an das System wurden dabei im Verlauf des Projekts weiterentwickelt und verfeinert.
@@ -31,7 +31,7 @@ Die beschriebenen Hauptanforderungen bilden die Grundlage für die anschließend
  
 Die Requirements-Liste lässt sich im Kaptitel~\ref{sec:Projekt Requirements} betrachten.
 
-\section{Designkonzept[\textcolor{blue}{Angus}]}
+\section{Designkonzept}
 \label{cha:Designkonzept}
 
 Bei der Entwicklung eines Roboters für den Einsatz auf Messen spielt das äußere Design sowie das visuelle Erscheinungsbild eine zentrale Rolle, insbesondere wenn es darum geht, Aufmerksamkeit zu erzeugen und Interesse zu wecken. Da eine der Hauptaufgaben des Roboters darin besteht, potenzielle neue Studierende für die DHBW im technischen Bereich zu begeistern, wird der Ästhetik des Systems ein besonderes Augenmerk gewidmet.
@@ -45,7 +45,7 @@ Für die Entwicklung eines geeigneten Designkonzepts bietet es sich an, bestehen
 Eine der grundlegendsten Entscheidungen im Designprozess betrifft die Art der Fortbewegung. Diese hat direkten Einfluss auf die geometrische Gestaltung, die Abmessungen sowie auf die Auswahl und Anordnung der verwendbaren Bauteile und Komponenten. Darüber hinaus wirkt sich die Fortbewegungsart maßgeblich auf den technischen und finanziellen Ressourcenbedarf sowie auf die Robustheit und Fehlertoleranz des Systems aus.
 
 \paragraph{Humanoider Roboter} 
-Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt werden, vermitteln zwar ein hohes Maß an Vertrautheit und Wiedererkennungswert. Als humanoid werden dabei Robotersysteme bezeichnet, deren Aufbau und Bewegungsform in wesentlichen Aspekten an den menschlichen Körper angelehnt sind, insbesondere durch einen aufrechten, zweibeinigen Gang sowie anthropomorphe Strukturen wie Arme und Oberkörper. Aus technischer Sicht sind solche Systeme jedoch äußerst komplex. Die mechanische Umsetzung, Regelung und Stabilisierung humanoider Fortbewegung stellt hohe Anforderungen an Konstruktion, Sensorik und Software. Dies zeigt sich auch an den langjährigen Entwicklungsarbeiten großer Forschungs- und Industrieprojekte im Bereich humanoider Robotik (Bsp. \emph{Tesla}\reg{} oder \emph{Boston Dynamics}\reg{} \textcolor{red}{WIP Dazugehörende Quelle einfügen}).
+Humanoid laufende Roboter, wie sie häufig in der Populärkultur dargestellt werden, vermitteln zwar ein hohes Maß an Vertrautheit und Wiedererkennungswert. Als humanoid werden dabei Robotersysteme bezeichnet, deren Aufbau und Bewegungsform in wesentlichen Aspekten an den menschlichen Körper angelehnt sind, insbesondere durch einen aufrechten, zweibeinigen Gang sowie anthropomorphe Strukturen wie Arme und Oberkörper. Aus technischer Sicht sind solche Systeme jedoch äußerst komplex. Die mechanische Umsetzung, Regelung und Stabilisierung humanoider Fortbewegung stellt hohe Anforderungen an Konstruktion, Sensorik und Software. Dies zeigt sich auch an den langjährigen Entwicklungsarbeiten großer Forschungs- und Industrieprojekte im Bereich humanoider Robotik (Bsp. \emph{Tesla}\reg{} oder \emph{Boston Dynamics}\reg{} \autocite{Singh.2025} \autocite{Boston.2026}).
 
 \begin{figure}[htb]
 	\centering
@@ -215,13 +215,13 @@ Die Bewertung der einzelnen Antriebskonzepte erfolgt durch das Projektteam nach 
 
 Ergebnis der Trade-off-Analyse (siehe Abbildung \ref{tab:tradeoff_Antriebsart}) ist dass der Hinterantrieb mit einem dritten frei beweglichen Vorderrad, mit 104 Punkten (7 Punkte Abstand zum nächsten), für die Umsetzung in diesem Projekt am geeignetsten erscheint. 
 
-\section{Steuerungskonzept\textcolor{brown}{FAIK}}%Faik
+\section{Steuerungskonzept}%Faik
 \label{cha:Steuerungskonzept}
 
 \label{sec:Steuerungskonzept}
 Die Steuerungsalgorithmen des mechatronischen Roboters sollen auf einem differentialgetriebenen Antriebskonzept basieren (siehe Abbildung \ref{fig:Antribskonzepte_Ketten_Räder} VI), bei dem zwei unabhängige Gleichstrommotoren für Vortrieb und Lenkung verantwortlich sind. Das zu entwickelnde Steuerungskonzept soll konventionelle Fernsteuerungssignale (englisch: Remote Control (RC)) in differenzierte Motoransteuerungen transformieren und damit eine intuitive und präzise Fahrzeugsteuerung ermöglichen.
 
-\subsection{Grundlegende Signalverarbeitung\textcolor{brown}{FAIK}}%Faik
+\subsection{Grundlegende Signalverarbeitung}%Faik
 \label{cha:Grundlegende Signalverarbeitung}
 
 Das Steuerungssystem soll kontinuierlich externe Eingabesignale verarbeiten, welche die gewünschte Fahrbewegung des Roboters beschreiben. Diese Signale sollen Informationen über:
@@ -233,7 +233,7 @@ enthalten.
 
 Vor der Weiterverarbeitung sollen die Eingangsdaten erfasst, geprüft und hinsichtlich Neutralstellung und Plausibilität bewertet werden, um unbeabsichtigte Bewegungen oder Störungen zu vermeiden.
 
-\subsection{Differenzielle Bewegungssteuerung\textcolor{brown}{FAIK}}%Faik
+\subsection{Differenzielle Bewegungssteuerung}%Faik
 \label{cha:Differenzielle Bewegungssteuerung}
 
 Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsumsetzung über eine differenzielle Ansteuerung der beiden Antriebseinheiten (\textit{Differential Drive}). Das mathematische Grundprinzip basiert darauf, dass die zuvor ermittelte Basisgeschwindigkeit für jede Seite individuell angepasst wird:
@@ -246,7 +246,7 @@ Da der Roboter über keine mechanische Lenkung verfügt, erfolgt die Bewegungsum
 
 Dieses Mischverfahren (englisch: \textit{Mixing}) ermöglicht eine intuitive Steuerung, bei der Lenk- und Gasbefehle nahtlos in Raddrehzahlen übersetzt werden. Der wesentliche Vorteil liegt darin, dass keine mechanischen Lenkkomponenten benötigt werden und die Lenkung rein elektronisch realisiert wird.
 
-\subsection{Begrenzung und Schutzmechanismen\textcolor{brown}{FAIK}}%Faik
+\subsection{Begrenzung und Schutzmechanismen}%Faik
 \label{cha:Begrenzung und Schutzmechanismen}
 
 Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden zu vermeiden, sieht das Konzept mehrstufige Schutzmechanismen in der Signalverarbeitung vor:
@@ -261,7 +261,7 @@ Um einen sicheren Betrieb des Roboters zu gewährleisten und Hardware-Schäden z
 
 Zusätzlich ist die Software-Architektur so ausgelegt, dass spätere Erweiterungen, wie beispielsweise eine aktive Notbremsung durch Sensorik, modular integriert werden können.
 
-\subsection{Ablaufbasierte Steuerungslogik\textcolor{brown}{FAIK}}
+\subsection{Ablaufbasierte Steuerungslogik}
 \label{cha:Ablaufbasierte Steuerungslogik}
 
 Die beschriebene Vorgehensweise soll in einem zyklischen Ablauf organisiert werden, wie im Flussdiagramm in Abbildung~\ref{fig:flowchart_steuerung} \footnote{Das Diagramm veranschaulicht die wesentlichen Verarbeitungsschritte, ohne dabei alle funktionalen Details vollständig abzubilden. } dargestellt. Der Steuerungsprozess soll dabei folgende Schritte umfassen:
@@ -428,7 +428,7 @@ Auf dem Display soll eine Augenanimation sowie eine Sprachanimation erscheinen. 
 	\label{fig:display_interaktion}
 \end{figure}
 
-\subsection{Augen-Animation und Emotionsdarstellung \textcolor{blue}{Angus}}
+\subsection{Augen-Animation und Emotionsdarstellung}
 \label{cha:Augen-Animation und Emotionsdarstellung}
 
 Ein zentrales Ziel des Roboters ist es, auf Messebesucher freundlich, zugänglich und sympathisch zu wirken. Um diese Wirkung gezielt zu unterstützen, soll der Roboter über eine visuelle Darstellung von Augen verfügen. Augen stellen ein starkes Gestaltungselement dar, da sie beim Menschen unmittelbar Aufmerksamkeit erzeugen und häufig als Träger von Emotionen wahrgenommen werden. Wie bereits im vorherigen Abschnitt beschrieben, orientiert sich das Designkonzept dabei lose an bekannten Roboterfiguren mit klar ausgeprägten Augen (Bsp: Wall-E\reg), ohne diese direkt zu kopieren.
@@ -580,12 +580,12 @@ Das Diagramm macht deutlich, dass das Projekt in mehrere Phasen gegliedert ist. 
 
 Die Monatsübersicht und die Kalenderwochen am oberen Rand erleichtern die zeitliche Orientierung. Durch die farbliche Kodierung, also grün für Arbeitspakete, schwarz für Gruppierungen und rot für Meilensteine, wird die Struktur des Projekts intuitiv erkennbar. Das Gantt-Diagramm dient als zentrales Werkzeug zur Visualisierung des Projektablaufs, unterstützt die Koordination von Aufgaben und zeigt Abhängigkeiten sowie kritische Zeitpunkte. Es ist ein wichtiges Kommunikationsinstrument für das Team und trägt zur Einhaltung des Zeitplans bei.
 
-\subsection{Aufteilung der Arbeitspakete \textcolor{brown}{FAIK}}
+\subsection{Aufteilung der Arbeitspakete}
 \label{cha:Aufteilung der Arbeitspakete}
 
 Zu Beginn des Projekts wurden die notwendigen Arbeitsschritte identifiziert und in logische Arbeitspakete unterteilt. Die Aufgaben wurden anschließend auf zwei Teams aufgeteilt, um eine effiziente und parallele Bearbeitung zu ermöglichen. Ein Team übernahm die Motorsteuerung mit dem ESP32, das andere Team war für die Displayimplementierung mit dem Raspberry Pi verantwortlich. Dabei wurden die individuellen Stärken und Interessen der Mitglieder berücksichtigt, sodass beispielsweise Konstruktion und Programmierung zeitgleich vorangetrieben werden konnten. Dies gewährleistete, dass keine Engpässe entstanden und die Ressourcen des Teams optimal genutzt wurden.
 
-\subsection{Definition von Meilensteinen\textcolor{brown}{FAIK}}
+\subsection{Definition von Meilensteinen}
 \label{cha:Definition von Meilensteinen}
 
 Um den Fortschritt des Projekts messbar zu machen und Verzögerungen frühzeitig zu erkennen, wurden im Projektplan kritische Meilensteine festgelegt. Diese dienten als Kontrollpunkte für den Abschluss wichtiger Phasen. Zu den definierten Zielen gehörten:
@@ -602,7 +602,7 @@ Die regelmäßige Überprüfung dieser Meilensteine anhand des Excel-Plans stell
 \section{Kostenanalyse}
 \label{cha:Kostenanalyse}
 
-\subsection{Budgetplanung \textcolor{blue}{Angus}}
+\subsection{Budgetplanung}
 \label{cha:Budgetplanung}
 
 Für die Entwicklung und Umsetzung des Projekts stellt die DHBW ein Budget von bis zu \num{500}\,\euro\;zur Verfügung. Dieses Budget definiert den finanziellen Rahmen, innerhalb dessen der Zukauf von benötigten Komponenten und Materialien erfolgen muss.

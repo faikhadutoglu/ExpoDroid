@@ -150,7 +150,7 @@ Ein typischer 6,5-Zoll BLDC-Hub-Motor weist folgende Kennwerte auf\autocite{Para
 \subsubsection*{Regelung und Steuerung}
 Die Steuerung erfolgt meist über eine feldorientierte Regelung (FOC) mit Mikrocontrollern wie STM32 oder ESP32. Hall-Sensoren liefern die Rotorposition, wodurch präzise Drehmomentregelung und sanftes Beschleunigen möglich sind\autocite{Jaulin2025}.
 
-\subsection{Motortreiber und PWM-Steuerung \textcolor{blue}{[Angus]}}
+\subsection{Motortreiber und PWM-Steuerung}
 \label{cha:Motortreiber und PWM-Steuerung}
 
 Ein Motortreiber bildet die elektrische und funktionale Schnittstelle zwischen einem Mikrocontroller und einem Elektromotor. Da Mikrocontroller in der Regel nur geringe Ströme im Milliamperebereich bereitstellen können, jedoch je nach Motor mehrere Hundert Milliampere bis hin zu mehreren Ampere benötigt werden, übernimmt der Motortreiber die Aufgabe der Leistungsverstärkung. Er sorgt dafür, dass die vom Steuergerät erzeugten Steuersignale so verstärkt werden, dass sie den Motor sicher und zuverlässig antreiben können, ohne die Steuerelektronik zu überlasten. 
@@ -171,12 +171,12 @@ Dabei dürfen die beiden Schalterpaare einer Halbbrücke (z. B. S1 und S2) niema
 $V_{\mathrm{CC}}$ und Masse führen würde. Dies kann aufgrund des hohen Kurzschlussstroms zur Zerstörung der Treiberstufe oder anderer elektronischer Komponenten führen.
 In Motortreibern werden die Schalter einer H-Brücke üblicherweise mittels MOSFETs realisiert, da diese eine verlustarme, schnelle und mikrocontrollergesteuerte Ansteuerung ermöglichen. \cite{hughes2019electricmotors}\cite{schröder2018leistungselektronik}
 
-\section{Mikrocontroller und Steuerungseinheiten\textcolor{brown}{FAIK}} %Faik
+\section{Mikrocontroller und Steuerungseinheiten} %Faik
 \label{cha:Mikrocontroller und Steuerungseinheiten}
 
 Mikrocontroller sind Halbleiterchips, die einen Prozessor und zusätzliche Funktionen integriert enthalten. Sie entstanden Mitte der 1970er-Jahre aus den Mikroprozessoren\autocite{Brandes.2024}. Mikrocontroller können daher als kleine Computer auf einem Chip verstanden werden, die ohne komplexes Betriebssystem spezielle Aufgaben in eingebetteten Systemen übernehmen. Ein Mikrocontroller enthält neben einen Prozessor, Arbeitsspeicher (RAM) und einen Speicher (EEPROM) - in dem die Programme gespeichert werden, auch wenn das Gerät keinen Strom hat. Im Gegensatz zu Mikroprozessoren vereint der Mikrocontroller die Verarbeitung, den Speicher und verschiedene Ein- und Ausgabefunktionen wie Timer und Analog-Digital-Wandler in einer einzigen, kostengünstigen Einheit. Mikrocontroller sind für Steuerungsanwendungen geeignet, wie die Motor- und Sensorsteuerung oder die Kommunikation mit anderen Geräten \autocite{IBM_Microcontroller}.
 
-\subsection{ESP32\textcolor{brown}{FAIK}}%Faik
+\subsection{ESP32}%Faik
 \label{cha:ESP32}
 
 Der ESP32 ist ein moderner Mikrocontroller, der sich insbesondere durch seine integrierten Funktechnologien wie Wireless Local Area Network (WLAN) und Bluetooth auszeichnet \autocite{Cameron2023}. Diese Kombination macht ihn zu einer vielseitigen Plattform für Projekte, bei denen sowohl lokale Steuerungsaufgaben als auch drahtlose Kommunikation erforderlich sind. Der ESP32 besitzt zwei 240-MHz-Kerne und neben WLAN auch klassisches Bluetooth sowie Bluetooth Low Energy (BLE) unterstützt \autocite{Cameron2023}.
@@ -230,12 +230,12 @@ Die Anwendungen des Raspberry Pi sind vielfältig. In der Lehre wird er für Inf
 
 Zu den Vorteilen des Raspberry Pi zählen die große Community und Open-Source-Software, seine hohe Konnektivität (GPIO, WLAN, Bluetooth) sowie seine Kostengünstigkeit und Energieeffizienz \autocite{Alvarez2022}. Trotz dieser Vorteile bestehen auch Einschränkungen: Die begrenzte Rechenleistung macht ihn für komplexe Simulationen oder KI-Anwendungen nur eingeschränkt geeignet \autocite{Matthews2018}. Speicherlimitierungen von maximal 8 GB RAM erschweren große Datenverarbeitungen. Zudem fehlt ihm die industrielle Robustheit, wodurch er nicht für extreme Umgebungen oder sicherheitskritische Systeme ausgelegt ist \autocite{Alvarez2022}. Schließlich kann die Leistungsaufnahme bei Volllast eine zusätzliche Kühlung erfordern.
 
-\section{Energieversorgung\textcolor{brown}{FAIK}}%Faik
+\section{Energieversorgung}%Faik
 \label{cha:Energieversorgung}
 	
 Die Energieversorgung bildet eine zentrale Grundlage für jedes eingebettete System, da sie maßgeblich bestimmt, wie zuverlässig, effizient und sicher elektronische Komponenten wie Mikrocontroller, Sensoren und Aktoren betrieben werden können.
 
-\subsection{Batterie\textcolor{brown}{FAIK}}%Faik
+\subsection{Batterie}%Faik
 \label{cha:Batterie}
 
 Batterien stellen eine mobile und unabhängige Energiequelle dar und ermöglichen den zuverlässigen Betrieb elektronischer Systeme auch ohne feste Stromversorgung, weshalb sie insbesondere in mobilen oder autonomen Anwendungen eine zentrale Rolle einnehmen.
@@ -256,7 +256,7 @@ Das Funktionsprinzip elektrochemischer Speicher wie Batterien beruht auf paralle
 \newpage
 Zu den gebräuchlichen Batterietypen zählen unter anderem Blei-, Nickel-, Natrium- und Lithium-basierte Systeme, die jeweils spezifische Eigenschaften aufweisen. Lithium-Ionen-Batterien gelten als moderne Hochenergie-Akkumulatoren, deren Energiespeicherung durch reversible Interkalations- und Redoxprozesse bestimmt wird \autocite{Kurzweil2015}. Blei-Säure-Batterien beruhen dagegen auf der Reaktion von Blei und Bleidioxid in schwefelsaurer Lösung \autocite{Kurzweil2015}. Durch die Vielfalt elektrochemischer Systeme lassen sich Batterien in zahlreichen Anwendungen einsetzen, darunter stationäre Speichersysteme, Mobilitätslösungen und kleine Geräte.
 
-\subsection{Spannungswandler und Stromverteilung \textcolor{blue}{[Angus]}}
+\subsection{Spannungswandler und Stromverteilung}
 \label{cha:Spannungswandler und Stromverteilung}
 	
 In mechatronischen Systemen wie mobilen Robotern werden unterschiedliche elektrische Verbraucher mit voneinander abweichenden Spannungs- und Stromanforderungen eingesetzt. Während Antriebsmotoren häufig mit höheren Spannungen und Strömen betrieben werden, benötigen Mikrocontroller, Sensoren und Kommunikationsmodule in der Regel stabile Niederspannungen. Zur Versorgung dieser Komponenten kommen Spannungswandler zum Einsatz, die die vorhandene Versorgungsspannung auf das jeweils benötigte Niveau anpassen. \cite{erickson2001fundamentals}
@@ -268,7 +268,7 @@ Eine sorgfältige Auslegung der Spannungswandler und der Stromverteilung ist dah
 %\subsection{Sicherheitskonzepte (Sicherungen, Battery Management) \textcolor{red}{[Hai Nam]}}
 %\textcolor{red}{Hai Nam}
 
-\section{Additive Fertigungsverfahren (3D-Druck)\textcolor{blue}{Angus}}
+\section{Additive Fertigungsverfahren (3D-Druck)}
 \label{cha:Additive Fertigungsverfahren (3D-Druck)}
 
 Additive Fertigungsverfahren, häufig als 3D-Druck bezeichnet, ermöglichen die schichtweise Herstellung von Bauteilen auf Basis digitaler Konstruktionsdaten. Im Gegensatz zu klassischen subtraktiven Fertigungsverfahren wird Material gezielt nur dort aufgebaut, wo es für die gewünschte Geometrie benötigt wird. Dadurch eignen sich additive Verfahren besonders für die schnelle Umsetzung von Prototypen und Einzelstücken. \cite{gebhardt2016additive}
