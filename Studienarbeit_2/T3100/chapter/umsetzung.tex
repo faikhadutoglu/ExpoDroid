@@ -8,3 +8,62 @@
 %Beschreibung der Umsetzung des zuvor gewählten Vorgehens (theoretische Untersuchung, Erhebungen, Durchführung von Experimenten, Prototypenaufbau, Implementierung eines Prozesses, etc.).
 %
 %Verifikation anhand der zuvor erarbeiteten Anforderungen und Validierung in Bezug auf das zuvor gestellte Ziel. Diskussion der Ergebnisse. Spätestens hier auch auf die Zuverlässigkeit der gewonnenen Erkenntnisse eingehen (z.~B. anhand der Genauigkeit von Messergebnissen).
+
+
+\textit{In diesem Kapitel werden die konkrete Realisierung und die anschließende Validierung der jeweiligen Arbeitspakete zusammenhängend dargestellt.}
+
+% --- ANGUS ---
+\section{Mechanische Realisierung und Validierung (Angus)}
+\subsection{Umsetzung: Fertigung und Montage}
+\subsubsection{Chassis-Modifikationen (Akku, Stützrad, Sensoren)}
+Hier wird beschrieben, wie das Akkusystem und die Radposition umgebaut wurden.
+\subsubsection{Aufbau der Manipulatoren und des Kopfes}
+Details zur Fertigung der Arme, Schultern und des Kopfes sowie Lackierung.
+
+\subsection{Ergebnisse: Mechanische Tests}
+\subsubsection{Stabilitäts- und Belastungsprüfung}
+Wie stabil steht der Roboter jetzt? Hält der Akku-Mechanismus?
+\subsubsection{Optische und haptische Abnahme}
+Bewertung der Lackierung und der Bewegungsfreiheit der Arme.
+
+% --- SIMON ---
+\section{KI-Systeme: Implementierung und Performance (Simon)}
+\subsection{Umsetzung: Software und Infrastruktur}
+\subsubsection{Einrichtung der KI-Umgebung (Gemma 3, TTS/STT)}
+Details zur Installation und Konfiguration auf dem Pi.
+\subsubsection{Display, WLAN und VNC-Integration}
+Programmierung der Animationen und Netzwerkeinrichtung.
+
+\subsection{Ergebnisse: Systemleistung}
+\subsubsection{Latenzmessung und Benchmarks}
+Wie schnell antwortet die KI? Wie flüssig laufen die Animationen?
+\subsubsection{Stabilitätstests}
+Verbindungstests (VNC) und Laufzeit mit Powerbank.
+
+% --- HAI NAM ---
+\section{Elektronik und Design: Integration und Tests (Hai Nam)}
+\subsection{Umsetzung: Verdrahtung und Peripherie}
+\subsubsection{Installation Screw Terminal und Kabelmanagement}
+Beschreibung der sauberen Verkabelung.
+\subsubsection{Funktionserweiterungen (Klaue, Speak-Through, Paintbrush)}
+Einbau der Klaue und Programmierung der Zusatzfunktionen.
+
+\subsection{Ergebnisse: Funktionsprüfung}
+\subsubsection{Test der Aktorik und Animationen}
+Greifkrafttests und Ablauf der Winkanimation.
+\subsubsection{Usability-Check}
+Audioqualität der Durchsagefunktion und Bewertung des Clean-Designs.
+
+% --- FAIK ---
+\section{Antriebsregelung: Programmierung und Fahranalyse (Faik)}
+\subsection{Umsetzung: Motorsteuerung und Sicherheit}
+\subsubsection{Implementierung der Sensorfusion und Notstopp-Logik}
+Coding der 3-Zonen-Logik.
+\subsubsection{Antriebssteuerung (Exponentialfilter, Limits)}
+Code-Implementierung der Rampen und Geschwindigkeitsbegrenzungen.
+
+\subsection{Ergebnisse: Fahrverhalten und Regelgüte}
+\subsubsection{Sicherheitsanalyse (Bremswege)}
+Messung: Wie schnell stoppt der Roboter bei Hindernissen? Anforderungen checken!
+\subsubsection{Analyse der Fahrdynamik: Geschwindigkeitsbegrenzung Exponentialfilter}
+Vergleich des Anfahrverhaltens mit und ohne Filter. Anforderungen checken!
