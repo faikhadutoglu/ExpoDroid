@@ -27,6 +27,13 @@
 
 #define FLAP_NEUTRAL_POSITION_PULSE_LENGTH_US 1091
 
+// Failsafe-Parameter
+#define SIGNAL_TIMEOUT_MS 200  // Maximale Zeit ohne gültiges Signal
+#define NEUTRAL_PULSE_LENGTH 1500  // Neutralposition für Failsafe
+
+// Exponentialfilter-Parameter
+#define ACCELERATION_FILTER_ALPHA 0.15  // Filterkoeffizient für sanftes Beschleunigen (kleinerer Wert = sanfter)
+
 /******************************************************************************
  * Private Variables
  ******************************************************************************/
@@ -35,6 +42,14 @@ static bool moduleIsInitialised = false;
 static Servo servo[NUMBER_OF_SERVOS];
 static uint8_t servoSignalPinsESP[NUMBER_OF_SERVOS] = {PIN_ELEVATOR_RECEIVED_ESP, PIN_AILERON_RECEIVED_ESP, PIN_RUDDER_RECEIVED_ESP, PIN_SPEED_RECEIVED_ESP, PIN_FLAP_RECEIVED_ESP};
 static uint8_t servoSignalPinsRC[NUMBER_OF_SERVOS] = {PIN_ELEVATOR_RECEIVED_RC, PIN_AILERON_RECEIVED_RC, PIN_RUDDER_RECEIVED_RC, PIN_SPEED_RECEIVED_RC, PIN_FLAP_RECEIVED_RC};
+
+// Failsafe-Variablen
+static uint32_t lastValidSignalTime_ms = 0;
+static bool signalValid = false;
+
+// Exponentialfilter-Variablen
+static float filteredLeftMotorSpeed = 0.0;
+static float filteredRightMotorSpeed = 0.0;
 
 /******************************************************************************
  * Public Functions
@@ -77,6 +92,10 @@ void actuatorControllerInit(){
 
     pinMode(PIN_AUTOPILOT_LED, OUTPUT);
 
+    // Failsafe initialisieren
+    lastValidSignalTime_ms = millis();
+    signalValid = false;
+
     moduleIsInitialised = true;
 }
 
@@ -88,8 +107,14 @@ void actuatorControllerForwardSignals(){
     uint8_t autopilotState = flightguidanceCommunicatorGetAutopilotState();
 
     // EXPODROID: Variablen für Motor-Steuerung
-    static int lastSteeringPulse = 1500;
-    static int lastSpeedPulse = 1500;
+    static int currentSteeringPulse = NEUTRAL_PULSE_LENGTH;
+    static int currentSpeedPulse = NEUTRAL_PULSE_LENGTH;
+    
+    // Temporäre Variablen für neue Signale
+    int newSteeringPulse = 0;
+    int newSpeedPulse = 0;
+    bool receivedSteeringSignal = false;
+    bool receivedSpeedSignal = false;
 
     autopilotLEDCounter++;
 
@@ -108,7 +133,9 @@ void actuatorControllerForwardSignals(){
     for(int i = 0; i < NUMBER_OF_SERVOS-1; i++){ //Flap must be handled separately, because flight guidance does not send flap servo signals to flight control
         if(autopilotState == AUTOPILOT_COMMUNICATOR_AUTOPILOT_AVAILABLE_AND_ACTIVATED) pulseLength_us = pulseIn(servoSignalPinsESP[i], HIGH, TIMEOUT_SERVO_SIGNAL_HIGH_US ); // if Timeout is exceeded, 0 gets returned -> 0 is NOT the correct pulse Length
         else pulseLength_us = pulseIn(servoSignalPinsRC[i], HIGH, TIMEOUT_SERVO_SIGNAL_HIGH_US );
-        if(pulseLength_us != 0){ 
+        
+        // Signalvalidierung: Prüfe ob Signal im gültigen Bereich liegt
+        if(pulseLength_us >= MINIMUM_VALID_PULSE_LENGTH_SERVO && pulseLength_us <= MAXIMUM_VALID_PULSE_LENGTH_SERVO){ 
             #ifdef DEBUG_CURRENT_SERVO_ANGLES
                 #define PRINT_COUNTS 10
                 if(cnt>PRINT_COUNTS){
@@ -129,31 +156,52 @@ void actuatorControllerForwardSignals(){
                 }
             #endif
 
-            // EXPODROID: Werte für Motor-Steuerung speichern (wir wollen dc Motoren ansteuern und keine Servos deswegen die Anpassung)
+            // EXPODROID: Werte für Motor-Steuerung temporär speichern
             if(i == ENGINE){
-                lastSteeringPulse = pulseLength_us;
+                newSteeringPulse = pulseLength_us;
+                receivedSteeringSignal = true;
             }
             else if(i == AILERON){
-                lastSpeedPulse = pulseLength_us;
+                newSpeedPulse = pulseLength_us;
+                receivedSpeedSignal = true;
             }
             
-            // Normale Servos (ELEVATOR, RUDDER) direkt ansteuern signal was vom Sender kommt ohne änderung für Servos
-            // ENGINE und AILERON werden später für Motoren verwendet
+            // Normale Servos (ELEVATOR, RUDDER) direkt ansteuern
             if(i != ENGINE && i != AILERON){
                 servo[i].writeMicroseconds(pulseLength_us);
             }
         }
     }
 
-    // EXPODROID: Motor-Steuerung mit den gesammelten Werten
+    // Failsafe-Mechanismus: Prüfe ob gültige Signale empfangen wurden
+    if(receivedSteeringSignal && receivedSpeedSignal){
+        // Gültige Signale empfangen - aktualisiere Werte und Timestamp
+        currentSteeringPulse = newSteeringPulse;
+        currentSpeedPulse = newSpeedPulse;
+        lastValidSignalTime_ms = millis();
+        signalValid = true;
+    }
+    else{
+        // Prüfe Timeout
+        if((millis() - lastValidSignalTime_ms) > SIGNAL_TIMEOUT_MS){
+            // Timeout überschritten - Failsafe aktivieren
+            currentSteeringPulse = NEUTRAL_PULSE_LENGTH;
+            currentSpeedPulse = NEUTRAL_PULSE_LENGTH;
+            signalValid = false;
+            
+            Serial.println("FAILSAFE ACTIVATED - Signal lost!");
+        }
+    }
+
+    // EXPODROID: Motor-Steuerung mit Failsafe-gesicherten Werten
     // Berechne Basis-Geschwindigkeit (-255 bis +255)
     int baseSpeed = 0;
-    if(lastSpeedPulse < 1450) {
+    if(currentSpeedPulse < 1450) {
         // Rückwärts: 1100-1450 -> -255 bis 0
-        baseSpeed = map(lastSpeedPulse, 1100, 1450, -255, 0); //mappen bedeutet wert von einem bereich in einen anderen zu übertragen damit er von Motortreiber verstanden wird
-    } else if(lastSpeedPulse > 1550) {
+        baseSpeed = map(currentSpeedPulse, 1100, 1450, -255, 0);
+    } else if(currentSpeedPulse > 1550) {
         // Vorwärts: 1550-1900 -> 0 bis 255
-        baseSpeed = map(lastSpeedPulse, 1550, 1900, 0, 255);
+        baseSpeed = map(currentSpeedPulse, 1550, 1900, 0, 255);
     } else {
         // Deadzone: 1450-1550 = Stop
         baseSpeed = 0;
@@ -161,12 +209,12 @@ void actuatorControllerForwardSignals(){
     
     // Berechne Lenkung (-100 bis +100)
     int steering = 0;
-    if(lastSteeringPulse < 1450) {
+    if(currentSteeringPulse < 1450) {
         // Links: 1000-1450 -> -100 bis 0
-        steering = map(lastSteeringPulse, 1000, 1450, -100, 0);
-    } else if(lastSteeringPulse > 1550) {
+        steering = map(currentSteeringPulse, 1000, 1450, -100, 0);
+    } else if(currentSteeringPulse > 1550) {
         // Rechts: 1550-2000 -> 0 bis +100
-        steering = map(lastSteeringPulse, 1550, 2000, 0, 100);
+        steering = map(currentSteeringPulse, 1550, 2000, 0, 100);
     }
     
     // Differential Berechnung
@@ -174,7 +222,7 @@ void actuatorControllerForwardSignals(){
     int rightMotorSpeed = baseSpeed;
     
     if(steering > 0) {
-        // Rechts drehen: rechter Motor langsamer  //bissle: in der Praxis testen ob die Rädergeschwindigkeitsunterschied zu viel wird!!
+        // Rechts drehen: rechter Motor langsamer
         rightMotorSpeed = baseSpeed * (100 - steering) / 100;
     } else if(steering < 0) {
         // Links drehen: linker Motor langsamer
@@ -182,41 +230,68 @@ void actuatorControllerForwardSignals(){
     }
     
     // Begrenzung auf -255 bis +255  
-    const float batterie_factor = 0.91; //Begrenzung der Spannung // Spitzenspannung kann trzdem mehr als 12V sein??
+    const float batterie_factor = 0.91;
     leftMotorSpeed = constrain(leftMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
     rightMotorSpeed = constrain(rightMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
     
+    // Exponentialfilter anwenden
+    // Bei Beschleunigung: sanfter Filter
+    // Bei Bremsen (Geschwindigkeit wird kleiner): direkter Durchgriff
+    
+    // Linker Motor
+    if(abs(leftMotorSpeed) > abs(filteredLeftMotorSpeed)){
+        // Beschleunigen - Filter anwenden
+        filteredLeftMotorSpeed = filteredLeftMotorSpeed + ACCELERATION_FILTER_ALPHA * (leftMotorSpeed - filteredLeftMotorSpeed);
+    } else {
+        // Bremsen - direkter Durchgriff
+        filteredLeftMotorSpeed = leftMotorSpeed;
+    }
+    
+    // Rechter Motor
+    if(abs(rightMotorSpeed) > abs(filteredRightMotorSpeed)){
+        // Beschleunigen - Filter anwenden
+        filteredRightMotorSpeed = filteredRightMotorSpeed + ACCELERATION_FILTER_ALPHA * (rightMotorSpeed - filteredRightMotorSpeed);
+    } else {
+        // Bremsen - direkter Durchgriff
+        filteredRightMotorSpeed = rightMotorSpeed;
+    }
+    
+    // Gefilterte Werte auf Integer runden
+    int finalLeftMotorSpeed = (int)filteredLeftMotorSpeed;
+    int finalRightMotorSpeed = (int)filteredRightMotorSpeed;
+    
     // Motor 1 (Links) ansteuern
-    if(leftMotorSpeed > 0) {
-        analogWrite(PIN_BTS1_RPWM, abs(leftMotorSpeed));
+    if(finalLeftMotorSpeed > 0) {
+        analogWrite(PIN_BTS1_RPWM, abs(finalLeftMotorSpeed));
         analogWrite(PIN_BTS1_LPWM, 0);
-    } else if(leftMotorSpeed < 0) {
+    } else if(finalLeftMotorSpeed < 0) {
         analogWrite(PIN_BTS1_RPWM, 0);
-        analogWrite(PIN_BTS1_LPWM, abs(leftMotorSpeed));
+        analogWrite(PIN_BTS1_LPWM, abs(finalLeftMotorSpeed));
     } else {
         analogWrite(PIN_BTS1_RPWM, 0);
         analogWrite(PIN_BTS1_LPWM, 0);
     }
     
     // Motor 2 (Rechts) ansteuern
-    if(rightMotorSpeed > 0) {
-        analogWrite(PIN_BTS2_RPWM, abs(rightMotorSpeed));
+    if(finalRightMotorSpeed > 0) {
+        analogWrite(PIN_BTS2_RPWM, abs(finalRightMotorSpeed));
         analogWrite(PIN_BTS2_LPWM, 0);
-    } else if(rightMotorSpeed < 0) {
+    } else if(finalRightMotorSpeed < 0) {
         analogWrite(PIN_BTS2_RPWM, 0);
-        analogWrite(PIN_BTS2_LPWM, abs(rightMotorSpeed));
+        analogWrite(PIN_BTS2_LPWM, abs(finalRightMotorSpeed));
     } else {
         analogWrite(PIN_BTS2_RPWM, 0);
         analogWrite(PIN_BTS2_LPWM, 0);
     }
     
-    // Debug-Ausgabe für Motor-Steuerung (immer aktiv für Testen)
-    Serial.print("AIL:"); Serial.print(lastSpeedPulse);
-    Serial.print(" ENG:"); Serial.print(lastSteeringPulse);
+    // Debug-Ausgabe für Motor-Steuerung
+    Serial.print("AIL:"); Serial.print(currentSpeedPulse);
+    Serial.print(" ENG:"); Serial.print(currentSteeringPulse);
     Serial.print(" Base:"); Serial.print(baseSpeed);
     Serial.print(" Steer:"); Serial.print(steering);
-    Serial.print(" L:"); Serial.print(leftMotorSpeed);
-    Serial.print(" R:"); Serial.println(rightMotorSpeed);
+    Serial.print(" L:"); Serial.print(finalLeftMotorSpeed);
+    Serial.print(" R:"); Serial.print(finalRightMotorSpeed);
+    Serial.print(" Valid:"); Serial.println(signalValid ? "YES" : "NO");
 
     #ifdef DEBUG_CURRENT_SERVO_ANGLES
     if(cnt++>PRINT_COUNTS){
@@ -233,7 +308,6 @@ void actuatorControllerForwardSignals(){
         servo[FLAP].writeMicroseconds(pulseLength_us);
     }
 }
-
 
 
 #ifdef DEBUG_PRINT_RECEIVED_ANGLES
