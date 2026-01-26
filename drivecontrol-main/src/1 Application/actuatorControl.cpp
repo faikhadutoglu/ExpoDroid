@@ -197,11 +197,11 @@ void actuatorControllerForwardSignals(){
     // Berechne Basis-Geschwindigkeit (-255 bis +255)
     int baseSpeed = 0;
     if(currentSpeedPulse < 1450) {
-        // Rückwärts: 1100-1450 -> -255 bis 0
-        baseSpeed = map(currentSpeedPulse, 1100, 1450, -255, 0);
+        // Rückwärts: 1100-1450 -> -255 bis 0 
+        baseSpeed = map(currentSpeedPulse, 1100, 1450, -70, 0); //-255-> -70 wurde geändert um die Geschwindigkeit rückwärts zu reduzieren 
     } else if(currentSpeedPulse > 1550) {
         // Vorwärts: 1550-1900 -> 0 bis 255
-        baseSpeed = map(currentSpeedPulse, 1550, 1900, 0, 255);
+        baseSpeed = map(currentSpeedPulse, 1550, 1900, 0, 150);//255 ->150 wurde geändert um die Geschwindigkeit vorwärts zu reduzieren
     } else {
         // Deadzone: 1450-1550 = Stop
         baseSpeed = 0;
@@ -229,8 +229,10 @@ void actuatorControllerForwardSignals(){
         leftMotorSpeed = baseSpeed * (100 + steering) / 100;
     }
     
-    // Begrenzung auf -255 bis +255  
-    const float batterie_factor = 0.91;
+
+    //Diese Abschnitt braucht man eig nicht meht weil die Begrenzung schon in der Map Funktion gemacht wurde
+    // Begrenzung auf -255 bis +255   
+    const float batterie_factor = 0.99;
     leftMotorSpeed = constrain(leftMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
     rightMotorSpeed = constrain(rightMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
     
