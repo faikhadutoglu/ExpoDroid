@@ -31,6 +31,18 @@
 // Exponentialfilter-Parameter
 #define ACCELERATION_FILTER_ALPHA 0.15
 
+
+
+
+
+
+// Ultraschall-Parameter
+#define ULTRASONIC_TIMEOUT_US 30000  // 30ms für max. 5m Reichweite
+#define DISTANCE_STOP_CM 10          // Unter 10cm: Stopp
+#define DISTANCE_SLOW_1_CM 25        // Unter 25cm: Faktor 0.2
+#define DISTANCE_SLOW_2_CM 50        // Unter 50cm: Faktor 0.4
+#define DISTANCE_SLOW_3_CM 100       // Unter 100cm: Faktor 0.7
+
 /******************************************************************************
  * Private Variables
  ******************************************************************************/
@@ -49,6 +61,65 @@ static bool signalValid = false;
 static float filteredLeftMotorSpeed = 0.0;
 static float filteredRightMotorSpeed = 0.0;
 
+
+// Ultraschall-Variablen
+static float currentSpeedLimitFactor = 1.0;
+static uint32_t lastUltrasonicMeasurement_ms = 0;
+#define ULTRASONIC_MEASUREMENT_INTERVAL_MS 50  // Alle 50ms messen
+
+
+
+
+/******************************************************************************
+ * Private Helper Functions
+ ******************************************************************************/
+static float measureDistanceAndGetSpeedFactor(){
+    // Nur alle 50ms neue Messung
+    if((millis() - lastUltrasonicMeasurement_ms) < ULTRASONIC_MEASUREMENT_INTERVAL_MS){
+        return currentSpeedLimitFactor;
+    }
+    lastUltrasonicMeasurement_ms = millis();
+    
+    // Funktion zum Messen eines Sensors
+    auto measureDistance = [](uint8_t trigPin, uint8_t echoPin) -> float {
+        digitalWrite(trigPin, LOW);
+        delayMicroseconds(2);
+        digitalWrite(trigPin, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigPin, LOW);
+        
+        long duration = pulseIn(echoPin, HIGH, ULTRASONIC_TIMEOUT_US);
+        if(duration == 0) return 999.0;  // Kein Echo = weit weg
+        return duration * 0.034 / 2.0;   // cm
+    };
+    
+    // Alle 3 Sensoren messen
+    float frontDist = measureDistance(PIN_ULTRASONIC_FRONT_TRIG, PIN_ULTRASONIC_FRONT_ECHO);
+    float leftDist = measureDistance(PIN_ULTRASONIC_LEFT_TRIG, PIN_ULTRASONIC_LEFT_ECHO);
+    float rightDist = measureDistance(PIN_ULTRASONIC_RIGHT_TRIG, PIN_ULTRASONIC_RIGHT_ECHO);
+    
+    // Minimum-Distanz finden (kritischster Sensor)
+    float minDistance = min(frontDist, min(leftDist, rightDist));
+    
+    // Debug-Ausgabe
+    Serial.print(" US-F:"); Serial.print(frontDist);
+    Serial.print(" L:"); Serial.print(leftDist);
+    Serial.print(" R:"); Serial.print(rightDist);
+    
+    // Faktor bestimmen
+    float factor = 1.0;
+    if(minDistance <= DISTANCE_STOP_CM){
+        factor = 0.0;  // STOPP!
+    } else if(minDistance <= DISTANCE_SLOW_1_CM){
+        factor = 0.2;
+    } else if(minDistance <= DISTANCE_SLOW_2_CM){
+        factor = 0.4;
+    } else if(minDistance <= DISTANCE_SLOW_3_CM){
+        factor = 0.7;
+    }
+    
+    return factor;
+}
 /******************************************************************************
  * Public Functions
  ******************************************************************************/
@@ -69,6 +140,16 @@ void actuatorControllerInit(){
     lastValidSignalTime_ms = millis();
     signalValid = false;
 
+
+
+     // Ultraschall-Pins konfigurieren
+    pinMode(PIN_ULTRASONIC_FRONT_TRIG, OUTPUT);
+    pinMode(PIN_ULTRASONIC_FRONT_ECHO, INPUT);
+    pinMode(PIN_ULTRASONIC_LEFT_TRIG, OUTPUT);
+    pinMode(PIN_ULTRASONIC_LEFT_ECHO, INPUT);
+    pinMode(PIN_ULTRASONIC_RIGHT_TRIG, OUTPUT);
+    pinMode(PIN_ULTRASONIC_RIGHT_ECHO, INPUT);
+    
     moduleIsInitialised = true;
 }
 
@@ -160,11 +241,30 @@ void actuatorControllerForwardSignals(){
         leftMotorSpeed = baseSpeed * (100 + steering) / 100;
     }
     
-    // Begrenzung
-    const float batterie_factor = 0.99;
-    leftMotorSpeed = constrain(leftMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
-    rightMotorSpeed = constrain(rightMotorSpeed, -255 * batterie_factor, 255 * batterie_factor);
-    
+
+//Ultraschall Werte auslesen
+currentSpeedLimitFactor = measureDistanceAndGetSpeedFactor();
+
+// Begrenzung: Nur bei Vorwärtsfahrt (positive Geschwindigkeit)
+if(leftMotorSpeed > 0){
+    leftMotorSpeed = constrain(leftMotorSpeed, 0, 150 * currentSpeedLimitFactor);
+} else {
+    leftMotorSpeed = constrain(leftMotorSpeed, -70, 0);  // Rückwärts wie gemappt
+}
+
+if(rightMotorSpeed > 0){
+    rightMotorSpeed = constrain(rightMotorSpeed, 0, 150 * currentSpeedLimitFactor);
+} else {
+    rightMotorSpeed = constrain(rightMotorSpeed, -70, 0);  // Rückwärts wie gemappt
+}
+
+Serial.print(" Factor:"); Serial.print(currentSpeedLimitFactor);
+
+
+
+
+
+
     // Exponentialfilter
     if(abs(leftMotorSpeed) > abs(filteredLeftMotorSpeed)){
         filteredLeftMotorSpeed = filteredLeftMotorSpeed + ACCELERATION_FILTER_ALPHA * (leftMotorSpeed - filteredLeftMotorSpeed);

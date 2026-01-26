@@ -59,3 +59,10 @@
 #define PIN_BTS2_RPWM  1     // Forward PWM (TX0)
 #define PIN_BTS2_LPWM  3     // Reverse PWM (RX0)
 
+// Ultraschall-Sensoren (SEN-US01)
+#define PIN_ULTRASONIC_FRONT_TRIG   23    // Vorne Mitte
+#define PIN_ULTRASONIC_FRONT_ECHO   19
+#define PIN_ULTRASONIC_LEFT_TRIG    21    // Links vorne
+#define PIN_ULTRASONIC_LEFT_ECHO    22
+#define PIN_ULTRASONIC_RIGHT_TRIG   2     // Rechts vorne
+#define PIN_ULTRASONIC_RIGHT_ECHO   25
