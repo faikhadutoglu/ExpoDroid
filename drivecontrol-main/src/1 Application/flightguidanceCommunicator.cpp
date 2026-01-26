@@ -4,11 +4,12 @@
  * "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."  ~ Martin Fowler, 2008
  *
  */
+
 #include "flightguidanceCommunicator.h"
 /******************************************************************************
  * Defines
  ******************************************************************************/
-#define MINIMUM_HIGH_PULSE_LENGTH_FOR_AUTOPILOT_ACTIVATED 1100
+/** #define MINIMUM_HIGH_PULSE_LENGTH_FOR_AUTOPILOT_ACTIVATED 1100
 #define MAXIMUM_SEMAPHORE_BLOCKED_COUNTS_BEFORE_RETURNING_CONTROL_TO_PILOT 10
 #define WAIT_FOR_SEMAPHORE_MS 4 //It is waited WAIT_FOR_SEMAPHORE_MS for a semaphore if it is blocked 
 
@@ -18,7 +19,7 @@
 /******************************************************************************
  * Private Variables
  ******************************************************************************/
-static bool moduleIsInitialised = false;
+/**static bool moduleIsInitialised = false;
 static bool autopilotResponds = false; 
 static bool autopilotActivated = false;
 static bool autopilotCrashed = false;
@@ -30,6 +31,7 @@ static SemaphoreHandle_t pulseDurationSemaphore;
  * Private Functions
  ******************************************************************************/
 // clears RX Buffer(.flush() only clears TX Buffer)
+/**
 void serialFlush(){
     uint32_t counter = 0;
     while(Serial1.available() > 0) {
@@ -57,10 +59,12 @@ void handlePulse() {
         }
     }
 }
+
+*/
 /******************************************************************************
  * Public Functions
  ******************************************************************************/
-
+/**
 void flightguidanceCommunicatorInit(){
     pinMode(PIN_AUTOPILOT_ENABLE, INPUT);
     attachInterrupt(digitalPinToInterrupt(PIN_AUTOPILOT_ENABLE), handlePulse, CHANGE); // Attach interrupt to handle pulse changes
@@ -167,5 +171,43 @@ void flightguidanceCommunicatorCheckAutopilotEnable(void *parameter){
             #endif
 
         #endif
+    }
+}
+
+*/
+
+//Hier einf vereinfacht von chatgpt ohne fehler sichere Autopilot-Kommunikation für EXPODROID
+
+/******************************************************************************
+ * Private Variables
+ ******************************************************************************/
+static bool moduleIsInitialised = false;
+
+/******************************************************************************
+ * Public Functions
+ ******************************************************************************/
+
+void flightguidanceCommunicatorInit(){
+    // Minimale Initialisierung - keine Autopilot-Hardware
+    moduleIsInitialised = true;
+}
+
+uint8_t flightguidanceCommunicatorGetAutopilotState(){
+    // Autopilot ist immer deaktiviert für EXPODROID
+    return AUTOPILOT_COMMUNICATOR_AUTOPILOT_NOT_AVAILABLE;
+}
+
+// Dummy-Funktionen falls sie irgendwo aufgerufen werden
+void flightguidanceCommunicatorCheckAutopilotResponse(void *parameter){
+    // Leere Task - macht nichts
+    for(;;){
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
+
+void flightguidanceCommunicatorCheckAutopilotEnable(void *parameter){
+    // Leere Task - macht nichts
+    for(;;){
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
