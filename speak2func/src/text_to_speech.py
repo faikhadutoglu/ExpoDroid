@@ -1,41 +1,62 @@
 """
-Simple text-to-speech output.
-Speaks recognized text in real-time.
+Simple text-to-speech output using Windows PowerShell Speak-String.
+Falls back to pyttsx3 on non-Windows systems.
 """
 
-import pyttsx3
+import os
+import sys
+import platform
 import threading
+import queue
 
 
 class TextToSpeech:
-    """Text-to-speech engine."""
+    """Text-to-speech engine using PowerShell on Windows, pyttsx3 on others."""
     
     def __init__(self, rate: int = 150, volume: float = 1.0):
         """Initialize TTS."""
-        self.engine = pyttsx3.init()
-        self.engine.setProperty('rate', rate)
-        self.engine.setProperty('volume', volume)
-        self.speak_lock = threading.Lock()
+        self.rate = rate
+        self.volume = volume
+        self.is_windows = platform.system() == "Windows"
+        
+        if not self.is_windows:
+            import pyttsx3
+            self.engine = pyttsx3.init()
+            self.engine.setProperty('rate', rate)
+            self.engine.setProperty('volume', volume)
+        
+        self.speak_queue = queue.Queue()
+        self.worker_thread = threading.Thread(target=self._worker, daemon=True)
+        self.worker_thread.start()
     
     def speak(self, text: str) -> None:
-        """Speak text (non-blocking with thread lock)."""
+        """Queue text to be spoken."""
         if not text or not text.strip():
             return
-        
-        # Speak in a thread to not block listening
-        thread = threading.Thread(
-            target=self._speak_safe,
-            args=(text,),
-            daemon=True
-        )
-        thread.start()
+        self.speak_queue.put(text)
+    
+    def _worker(self) -> None:
+        """Worker thread that processes speech queue."""
+        while True:
+            try:
+                text = self.speak_queue.get(timeout=1)
+                self._speak_safe(text)
+            except queue.Empty:
+                continue
+            except Exception as e:
+                print(f"[TTS ERROR] {e}", file=sys.stderr)
     
     def _speak_safe(self, text: str) -> None:
-        """Speak with thread safety."""
-        with self.speak_lock:
+        """Speak text safely."""
+        if self.is_windows:
+            # Use PowerShell Speak-String on Windows
+            escaped_text = text.replace('"', '\\"')
+            cmd = f'powershell -Command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak(\'{escaped_text}\')"'
+            os.system(cmd)
+        else:
+            # Use pyttsx3 on other platforms
             try:
                 self.engine.say(text)
                 self.engine.runAndWait()
-            except:
-                import traceback
-                print(f"[TTS ERROR] {traceback.format_exc()}")
+            except Exception as e:
+                print(f"[TTS ERROR] {e}", file=sys.stderr)
