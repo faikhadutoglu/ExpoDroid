@@ -1,0 +1,27 @@
+%Matlab online->Live editor->einfpgen->run :)
+% Parameter für SEN-US01 (in Metern)
+R_max = 4.5;          % Reichweite 2-450 cm [cite: 9, 451]
+half_angle = 15;      % Halber Öffnungswinkel (30 Grad gesamt)
+sensor_y = [0, 0.225, 0.45]; % Positionen: 0cm, 22.5cm, 45cm
+% Tilts: Links +7 Grad, Mitte 0, Rechts -7 Grad
+tilts = [8, 0, -8]; 
+farben = {'r', 'g', 'b'};
+
+figure(1); clf; hold on;
+for i = 1:3
+    % Berechne die Strahlen mit Rotation
+    theta = linspace(-half_angle, half_angle, 50) + tilts(i);
+    x = [0, R_max * cosd(theta), 0];
+    y = [sensor_y(i), sensor_y(i) + R_max * sind(theta), sensor_y(i)];
+    
+    % Zeichnen
+    fill(x, y, farben{i}, 'FaceAlpha', 0.15, 'EdgeColor', farben{i});
+    plot(0, sensor_y(i), 'ko', 'MarkerFaceColor', farben{i}, 'MarkerSize', 8);
+end
+
+% Layout
+grid on; axis equal;
+xlabel('Entfernung (Meter)'); ylabel('Breite (Meter)');
+title('Simulation: 3 Sensoren mit 8° Neigung (Links/Rechts)');
+%legend('Sensor 1 (Links +7°)', '', 'Sensor 2 (Mitte 0°)', '', 'Sensor 3 (Rechts -7°)');
+xlim([-0.2, 5]); ylim([-1.5, 2]);
