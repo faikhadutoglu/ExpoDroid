@@ -44,7 +44,49 @@ a
 
 Die Regelungstechnik beschäftigt sich mit der gezielten Beeinflussung dynamischer Systeme, um gewünschte Sollwerte zu erreichen und unerwünschte Systemzustände zu vermeiden\cite{Loose.2022}. In sicherheitskritischen Anwendungen wie autonomen Fahrzeugen spielen Sicherheitssysteme eine zentrale Rolle, da sie durch geeignete Filterung und Begrenzung von Steuersignalen die Stabilität und Betriebssicherheit gewährleisten.
 
-%\subsection{Signalverarbeitung und Filterung}
+\subsection{Signalverarbeitung und Filterung}
+Bei der Verarbeitung von Sensorsignalen oder Steuerbefehlen in interaktiven Systemen treten häufig Störungen auf. Um diese unerwünschten hochfrequenten Anteile zu dämpfen und das gewünschte Signal passieren zu lassen, wird meistens ein Tiefpassfilter erster Ordnung eingesetzt \cite{Casiez.2012}. Dieses Verfahren ist in der Signalverarbeitung weit verbreitet und entspricht mathematisch der einfachen exponentiellen Glättung (Exponential Smoothing) \cite{Casiez.2012}. Diese Funktion kann daher auch für die Regelung der Geschwindigkeit verwendet werden, um eine sanftere Beschleunigung zu erzielen.
+
+\subsubsection*{Mathematische Beschreibung}
+Die diskrete Realisierung eines Tiefpassfilters erster Ordnung wird durch folgende Gleichung beschrieben\cite{Casiez.2012}:
+\begin{equation}
+	\hat{X}_{i} = \alpha \cdot X_{i} + (1 - \alpha) \cdot \hat{X}_{i-1}
+	\label{eq:lowpass_standard}
+\end{equation}
+\noindent Hierbei stehen:
+\begin{itemize}
+	\item $X_{i}$ für den aktuellen rohen Eingabewert (in der Implementierung das aktuelle Signal),
+	\item $\hat{X}_{i}$ für den gefilterten Wert zum aktuellen Zeitschritt $i$,
+	\item $\hat{X}_{i-1}$ für den gefilterten Wert des vorherigen Zeitschritts $i-1$,
+	\item $\alpha$ für den Glättungsfaktor im Bereich $\alpha \in [0, 1]$.
+\end{itemize}
+
+Um diese Formel verständlicher zu machen, kann sie wie folgt umgeformt werden:
+\begin{align}
+	\hat{X}_{i} &= \alpha X_{i} + (1 - \alpha)\hat{X}_{i-1} \nonumber \\
+	\hat{X}_{i} &= \alpha X_{i} + \hat{X}_{i-1} - \alpha \hat{X}_{i-1} \nonumber \\
+	\hat{X}_{i} &= \hat{X}_{i-1} + \alpha (X_{i} - \hat{X}_{i-1})
+	\label{eq:lowpass_code}
+\end{align}
+
+Aus dieser Darstellung wird ersichtlich, dass der alte Wert $\hat{X}_{i-1}$ mit der um den Faktor $\alpha$ skalierten Differenz zwischen Zielwert $X_{i}$ und Altwert $\hat{X}_{i-1}$ addiert wird. Dies ermöglicht eine sanfte Annäherung an sprunghafte Änderungen des Eingangssignals.
+
+Abbildung \ref{fig:filter_comparison} zeigt den Unterschied zwischen einem ungefilterten Signal mit direktem Sprung und einem gefilterten Signal mit sanfter Annäherung.
+
+\begin{figure}[htbp]
+	\centering
+	\input{tikz/filter_diagram_content.tex}
+	\caption{Vergleich zwischen ungefiltertem und gefiltertem Signal. Das ungefilterte Signal (blau) springt `sofort` auf den Zielwert, während das gefilterte Signal (grün) sich exponentiell und somit sanfter annähert.}
+	\label{fig:filter_comparison}
+\end{figure}
+
+\subsubsection*{Einfluss des Parameters Alpha}
+Der Parameter $\alpha$ bestimmt die Dynamik der Beschleunigung und damit das Verhalten des Filters maßgeblich:
+\begin{itemize}
+	\item Ein \textbf{kleines $\alpha$} ($\alpha \to 0$) bewirkt eine sehr sanfte, langsame Annäherung an den Zielwert. Dies führt zu einer weichen, gleichmäßigen Beschleunigung, jedoch mit erhöhter Reaktionszeit (Lag), da der Zielwert nur verzögert erreicht wird.
+	\item Ein \textbf{großes $\alpha$} ($\alpha \to 1$) ermöglicht eine schnelle Annäherung an den Zielwert mit kurzer Reaktionszeit, jedoch auf Kosten der Sanftheit -- die Beschleunigung erfolgt abrupter.
+\end{itemize}
+Die Wahl von $\alpha$ stellt somit immer einen Kompromiss zwischen Sanftheit der Bewegung und Reaktionsgeschwindigkeit dar.
 \subsection{Mathematische Grundlagen des Exponentialfilters}
 
 %\subsubsection{Rauschunterdrückung bei Sensorsignalen}
