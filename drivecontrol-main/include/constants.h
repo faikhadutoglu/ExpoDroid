@@ -1,17 +1,16 @@
 /**
- * constants.h 
- * @author Maximilian Wendt    
- * 
- * "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."  ~ Martin Fowler, 2008
- * 
- */
+* constants.h
+* @author Maximilian Wendt
+*
+* "Any fool can write code that a computer can understand. Good programmers write code that humans can understand." ~ Martin Fowler, 2008
+*
+*/
 #pragma once
 /******************************************************************************
 * Table of used pins
 ******************************************************************************/
-// Actuators 
+// Actuators
 //OLD PINS
-
 //Signals from pilot
 //#define PIN_SPEED_RECEIVED_ESP 23
 //#define PIN_ELEVATOR_RECEIVED_ESP 19
@@ -20,11 +19,11 @@
 //#define PIN_FLAP_RECEIVED_ESP 2
 
 //Signals from remote control
-#define PIN_SPEED_RECEIVED_RC 32            // Für die Geschwindigkeitsregelung
-//#define PIN_ELEVATOR_RECEIVED_RC 35 
-#define PIN_AILERON_RECEIVED_RC 34          //Für Lenkung
+#define PIN_SPEED_RECEIVED_RC 32 // Für die Geschwindigkeitsregelung
+//#define PIN_ELEVATOR_RECEIVED_RC 35
+#define PIN_AILERON_RECEIVED_RC 34 //Für Lenkung
 //#define PIN_RUDDER_RECEIVED_RC 36
-#define PIN_FLAP_RECEIVED_RC 39
+#define PIN_FLAP_RECEIVED_RC 39 // Für Winkfunktion
 
 //Signals to motor controllers
 //#define PIN_SPEED_CONTROLLER 25
@@ -46,23 +45,26 @@
 //#define PIN_JTAG_TMS 14
 //#define PIN_JTAG_TDO 15
 
-
-
-
-//EXPODROID PINSS
-// BTS7960 Module 1 
-#define PIN_BTS1_RPWM  33    // Forward PWM
-#define PIN_BTS1_LPWM  0     // Reverse PWM
+//EXPODROID PINS
+// BTS7960 Module 1
+#define PIN_BTS1_RPWM 33 // Forward PWM
+#define PIN_BTS1_LPWM 0 // Reverse PWM
 // R_EN und L_EN fest auf 5V
 
-// BTS7960 Module 2 
-#define PIN_BTS2_RPWM  1     // Forward PWM (TX0)
-#define PIN_BTS2_LPWM  3     // Reverse PWM (RX0)
+// BTS7960 Module 2
+#define PIN_BTS2_RPWM 1 // Forward PWM (TX0)
+#define PIN_BTS2_LPWM 3 // Reverse PWM (RX0)
 
 // Ultraschall-Sensoren (SEN-US01)
-#define PIN_ULTRASONIC_FRONT_TRIG   23    // Vorne Mitte
-#define PIN_ULTRASONIC_FRONT_ECHO   19
-#define PIN_ULTRASONIC_LEFT_TRIG    21    // Links vorne
-#define PIN_ULTRASONIC_LEFT_ECHO    22
-#define PIN_ULTRASONIC_RIGHT_TRIG   2     // Rechts vorne
-#define PIN_ULTRASONIC_RIGHT_ECHO   25
+#define PIN_ULTRASONIC_FRONT_TRIG 23 // Vorne Mitte
+#define PIN_ULTRASONIC_FRONT_ECHO 19
+#define PIN_ULTRASONIC_LEFT_TRIG 21 // Links vorne
+#define PIN_ULTRASONIC_LEFT_ECHO 22
+#define PIN_ULTRASONIC_RIGHT_TRIG 2 // Rechts vorne
+#define PIN_ULTRASONIC_RIGHT_ECHO 25
+
+// Servo-Pins für Winkfunktion
+#define PIN_SHOULDER_SERVO_RIGHT 18 // Rechte Schulter (Arm)
+#define PIN_SHOULDER_SERVO_LEFT 17 // Linke Schulter (Arm)
+#define PIN_WRIST_SERVO_RIGHT 16 // Rechtes Handgelenk (Finger)
+#define PIN_WRIST_SERVO_LEFT 4 // Linkes Handgelenk (Finger)
