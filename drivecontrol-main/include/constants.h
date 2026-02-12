@@ -20,10 +20,10 @@
 
 //Signals from remote control
 #define PIN_SPEED_RECEIVED_RC 32 // Für die Geschwindigkeitsregelung
-//#define PIN_ELEVATOR_RECEIVED_RC 35
+//#define PIN_ELEVATOR_RECEIVED_RC 
 #define PIN_AILERON_RECEIVED_RC 34 //Für Lenkung
 //#define PIN_RUDDER_RECEIVED_RC 36
-#define PIN_FLAP_RECEIVED_RC 39 // Für Winkfunktion
+#define PIN_FLAP_RECEIVED_RC 35 // Für Winkfunktion
 
 //Signals to motor controllers
 //#define PIN_SPEED_CONTROLLER 25
@@ -60,7 +60,7 @@
 #define PIN_ULTRASONIC_FRONT_ECHO 19
 #define PIN_ULTRASONIC_LEFT_TRIG 21 // Links vorne
 #define PIN_ULTRASONIC_LEFT_ECHO 22
-#define PIN_ULTRASONIC_RIGHT_TRIG 2 // Rechts vorne
+#define PIN_ULTRASONIC_RIGHT_TRIG 15 // Rechts vorne
 #define PIN_ULTRASONIC_RIGHT_ECHO 25
 
 // Servo-Pins für Winkfunktion

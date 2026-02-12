@@ -44,7 +44,7 @@
 #define WAVE_FINGER_OPEN_ANGLE     90  // Finger offen
 #define WAVE_FINGER_CLOSED_ANGLE   30  // Finger geschlossen
 #define WAVE_ARM_SPEED             2   // Langsame Armbewegung (Grad pro Zyklus)
-#define WAVE_FINGER_SPEED          30  // Schnelle Fingerbewegung (Grad pro Zyklus)
+#define WAVE_FINGER_SPEED          10  // Schnelle Fingerbewegung (Grad pro Zyklus)
 #define WAVE_FINGER_CLICK_DELAY_MS 150 // Pause zwischen Klicks
 
 // RC-Schwellen für Winkkanal (Pulsbreiten)
