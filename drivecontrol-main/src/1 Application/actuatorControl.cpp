@@ -43,7 +43,7 @@
 #define WAVE_ARM_DOWN_ANGLE        20  // Arm unten
 #define WAVE_FINGER_OPEN_ANGLE     90  // Finger offen
 #define WAVE_FINGER_CLOSED_ANGLE   30  // Finger geschlossen
-#define WAVE_ARM_SPEED             2   // Langsame Armbewegung (Grad pro Zyklus)
+#define WAVE_ARM_SPEED             1   // Langsame Armbewegung (Grad pro Zyklus) mit 1 müsste hochheben ca .4 sekunden dauern bei bedarf ändern!
 #define WAVE_FINGER_SPEED          10  // Schnelle Fingerbewegung (Grad pro Zyklus)
 #define WAVE_FINGER_CLICK_DELAY_MS 150 // Pause zwischen Klicks
 
@@ -363,14 +363,14 @@ void actuatorControllerForwardSignals(){
   }
 
   // --- Winkbefehle aus RC-Wert ableiten ---
-  // Rechte Hand winkt, wenn Kanal ~100 (hoher Puls)
+  // Rechte Hand winkt, wenn Kanal ~1800 (hoher Puls)
   if(currentWavePulse >= WAVE_PULSE_RIGHT_MIN &&
      waveStateRight == WAVE_IDLE && waveStateLeft == WAVE_IDLE){
     waveStateRight = WAVE_ARM_RAISING;
     Serial.println("Wave: RIGHT hand");
   }
 
-  // Beide Hände winken, wenn Kanal ~-100 (niedriger Puls)
+  // Beide Hände winken, wenn Kanal ~-1200 (niedriger Puls)
   if(currentWavePulse <= WAVE_PULSE_LEFT_MAX &&
      waveStateRight == WAVE_IDLE && waveStateLeft == WAVE_IDLE){
     waveStateRight = WAVE_ARM_RAISING;
