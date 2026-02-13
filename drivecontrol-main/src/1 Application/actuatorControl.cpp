@@ -481,15 +481,21 @@ void actuatorControllerForwardSignals(){
     analogWrite(PIN_BTS2_LPWM, 0);
   }
 
-  // Debug-Ausgabe
-  Serial.print(" AIL:");  Serial.print(currentSpeedPulse);
-  Serial.print(" ENG:");  Serial.print(currentSteeringPulse);
-  Serial.print(" WAVE_P:"); Serial.print(currentWavePulse);
-  Serial.print(" Base:"); Serial.print(baseSpeed);
-  Serial.print(" Steer:"); Serial.print(steering);
-  Serial.print(" L:");    Serial.print(finalLeftMotorSpeed);
-  Serial.print(" R:");    Serial.print(finalRightMotorSpeed);
-  Serial.print(" Valid:");Serial.println(signalValid ? "YES" : "NO");
+  // Debug-Ausgabe 
+  // Serial.print(" AIL:");  Serial.print(currentSpeedPulse);
+  // Serial.print(" ENG:");  Serial.print(currentSteeringPulse);
+  // Serial.print(" WAVE_P:"); Serial.print(currentWavePulse);
+  // Serial.print(" Base:"); Serial.print(baseSpeed);
+  // Serial.print(" Steer:"); Serial.print(steering);
+  // Serial.print(" L:");    Serial.print(finalLeftMotorSpeed);
+  // Serial.print(" R:");    Serial.print(finalRightMotorSpeed);
+  // Serial.print(" Valid:");Serial.println(signalValid ? "YES" : "NO");
+  
+  // DEBUGGING: ARM_SIGNAL_RAW und ob gültiges Signal empfangen wurde
+  Serial.print("ARM_SIGNAL_RAW: ");
+  Serial.print(currentWavePulse);
+  Serial.print(" | Received: ");
+  Serial.println(receivedWave ? "Ja" : "Nöö");
 }
 
 #ifdef DEBUG_PRINT_RECEIVED_ANGLES
