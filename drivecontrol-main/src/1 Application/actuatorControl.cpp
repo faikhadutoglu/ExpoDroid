@@ -43,8 +43,8 @@
 #define WAVE_ARM_DOWN_ANGLE        20  // Arm unten
 #define WAVE_FINGER_OPEN_ANGLE     90  // Finger offen
 #define WAVE_FINGER_CLOSED_ANGLE   30  // Finger geschlossen
-#define WAVE_ARM_SPEED             1   // Langsame Armbewegung (Grad pro Zyklus) mit 1 müsste hochheben ca .4 sekunden dauern bei bedarf ändern!
-#define WAVE_FINGER_SPEED          10  // Schnelle Fingerbewegung (Grad pro Zyklus)
+#define WAVE_ARM_SPEED             5   // Langsame Armbewegung (Grad pro Zyklus) mit 5 müsste hochheben ca .4 sekunden dauern bei bedarf ändern!
+#define WAVE_FINGER_SPEED          20  // Schnelle Fingerbewegung (Grad pro Zyklus)
 #define WAVE_FINGER_CLICK_DELAY_MS 150 // Pause zwischen Klicks
 
 // RC-Schwellen für Winkkanal (Pulsbreiten)
