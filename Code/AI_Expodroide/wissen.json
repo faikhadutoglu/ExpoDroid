@@ -1,0 +1,57 @@
+{
+    "fakten": [
+      {
+        "keywords": ["definition", "wie funktioniert", "ablauf", "länge", "dauer", "praxisphase", "theoriephase", "blockmodell", "wechselyhytmus", "zeitplan", "semester", "Dual", "monate", "duales studium", "Duales-Studium", "Studium"],
+        "antwort": "Das duale Studium ist ein fester Blockwechsel: Du bist immer 12 Wochen (also 3 Monate) an der Hochschule für die Theorie und danach 3 Monate im Unternehmen für die Praxis."
+      },
+      {
+        "keywords": ["gehalt", "geld", "verdienen", "bezahlung", "euro", "finanzen", "kosten", "studiengebühren", "kohle", "lohnt", "finanziell", "kostenlos", "kosten", "gebühren", "verdienst", "monatlich", "Studiengebühren", "Vergütung", "Ausbildungsvergütung"],
+        "antwort": "Du verdienst durchgehend Gehalt, auch während der Theoriephasen! Es liegt im Schnitt bei 1.000€ (1. Jahr), 1.100€ (2. Jahr) und 1.200€+ (3. Jahr) brutto. Studiengebühren übernehmen meist die Firmen."
+      },
+      {
+        "keywords": ["bewerbung", "voraussetzung", "bewerben", "prozess", "wann", "wo"],
+        "antwort": "Wichtig: Du bewirbst dich IMMER direkt beim Partnerunternehmen, nicht an der Hochschule! Mach das am besten 1 bis 1,5 Jahre vor dem gewünschten Studienbeginn."
+      },
+      {
+        "keywords": ["nc", "numerus clausus", "noten", "schnitt", "abitur", "fachabi", "zulassung", "voraussetzungen"],
+        "antwort": "Es gibt keinen klassischen NC an der Hochschule! Das Unternehmen wählt dich aus. Du brauchst Abitur, bei Fachabitur ist oft noch ein Eignungstest an der DHBW nötig."
+      },
+      {
+        "keywords": ["durchfallen", "quote", "schwer", "durchfallquote", "exmatrikulation", "rausfliegen", "klausuren", "prüfungen", "versuche", "angst"],
+        "antwort": "Die Durchfallquote ist mit unter 10-15% sehr gering, da die Firmen gut vorselektieren. Aber Achtung: Wer eine Prüfung endgültig nicht besteht (meist nach 2 Versuchen), wird exmatrikuliert und verliert oft auch den Job."
+      },
+      {
+        "keywords": ["stress", "lernen", "zeit", "freizeit", "urlaub", "semesterferien", "anstrengend", "aufwand"],
+        "antwort": "Es ist stressig: Du hast eine 40-Stunden-Woche im Betrieb und keine Semesterferien, sondern normalen Jahresurlaub (ca. 30 Tage). In der 4-wöchigen Prüfungsphase solltest du täglich ca. 3 Stunden zusätzlich lernen."
+      },
+      {
+        "keywords": ["übernahme", "danach", "zukunft", "job", "arbeiten", "übernahmechance", "fertig", "chancen", "einstiegsgehalt", "karriere"],
+        "antwort": "Die Übernahmechancen sind gigantisch, oft bei 80-90%, da die Firmen für den eigenen Bedarf ausbilden. Das Einstiegsgehalt liegt in der Industrie oft bei sehr guten 45.000 bis 55.000 Euro, weil du schon 3 Jahre Berufserfahrung mitbringst."
+      },
+      {
+        "keywords": ["ausland", "auslandssemester", "reisen", "international", "welt"],
+        "antwort": "Ja, du kannst ins Ausland! Ein Auslandssemester an einer Partnerhochschule ist möglich. Bei internationalen Firmen kannst du auch oft eine Praxisphase in einer Zweigstelle im Ausland verbringen."
+      },
+      {
+        "keywords": ["friedrichshafen", "bodensee", "fn", "standort", "warum fn", "firmen", "unternehmen", "partner"],
+        "antwort": "Der Campus Friedrichshafen punktet mit kleinen Kursen (ca. 30 Leute) und einer Hightech-Region am Bodensee. Große Partnerunternehmen hier sind ZF, Rolls-Royce Power Systems, Airbus und Liebherr."
+      },
+      {
+        "keywords": ["wohnen", "unterkunft", "zimmer", "miete", "wohnung", "wohnheim", "teuer"],
+        "antwort": "In Friedrichshafen gibt es Studentenwohnheime (ab ca. 300€). Ein Geheimtipp ist die 'Zimmer-Rotation': Du teilst dir ein Zimmer mit jemandem, der genau dann in der Praxisphase ist, wenn du Theorie hast."
+      },
+      {
+        "keywords": ["bachelorarbeit", "bachelor", "abschluss", "thesis", "ende"],
+        "antwort": "Deine Bachelorarbeit ist keine trockene Theorie! Du bearbeitest zwingend ein echtes Projekt oder eine reale Problemstellung direkt aus deinem Partnerunternehmen."
+      },
+      {
+        "keywords": ["vorkurse", "mathe", "physik", "vorbereitung", "schulfächer", "schwerpunkte"],
+        "antwort": "Die schwersten Fächer sind oft Mathe, E-Technik und Informatik. Wir empfehlen dringend, vor Studienbeginn die vorbereitenden Mathe- und Physikkurse der DHBW zu besuchen!"
+      },
+      {
+        "keywords": ["assessment center", "ac", "vorstellungsgespräch", "test", "einstellungstest"],
+        "antwort": "Bei der Bewerbung im Unternehmen durchläufst du oft ein Assessment-Center. Stell dich auf Logik- und Mathetests, Gruppenaufgaben und ein persönliches Interview ein."
+      }
+    ],
+    "system_prompt": "Dein Name ist Expodroide. Du bist ein freundlicher, motivierender und hochkompetenter Studienberater für das duale Studium an der DHBW. Antworte extrem kurz, einfach und bringe die Dinge sofort auf den Punkt (maximal 2 bis 3 kurze Sätze). Sprich den Nutzer immer mit einem lockeren 'Du' an. Nutze für deine Antworten AUSSCHLIESSLICH die bereitgestellten Fakten. Erfinde absolut nichts. Wenn du zu einer Frage keine passenden Fakten hast, sage ehrlich, dass du das nicht weißt und der Nutzer sich an die Verantwortlichen hier am Messestand wenden soll."
+  }
