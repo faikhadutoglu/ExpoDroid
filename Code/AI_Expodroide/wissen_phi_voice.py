@@ -4,7 +4,7 @@
 #  STT : faster-whisper (tiny)
 #  TTS : piper-tts 1.4.1  (piper.PiperVoice.synthesize)
 #  LLM : Ollama (phi-3.5 / gemma3:1b via HTTP)
-#  Starten mit: python3.12 wissen_phi-3_voice.py geht auch mit 3 gkaub ich
+#  Starten mit: python3.12 wissen_phi_voice.py geht auch mit 3 gkaub ich
 #  FRAG MAL CHATTY WELCHE PAKETE VORINSTALIERT WERDEN SOLLEN AUF TERMINAL!!
 # ============================================================
 
@@ -26,17 +26,17 @@ from piper import PiperVoice
 # ─────────────────────────────────────────────
 MODELL           = "phi3.5"      #"phi3.5" oder "gemma3:1b"
 MAX_MEMORY       = 3             #anzahl letzter gespräche im gedächtnis (je mehr, desto länger die Antwortzeit, aber besserer Kontext)
-MAX_TOKENS       = 130           #die Antwortlaenge in Tokens (höher = längere Antworten, aber langsamere Antwortzeit!!)
-TEMPERATUR       = 0.2
+MAX_TOKENS       = 150           #die Antwortlaenge in Tokens (höher = längere Antworten, aber langsamere Antwortzeit!!)
+TEMPERATUR       = 0.1          #0.0 = konservativ, 0.5 = ausgewogen, 1.0 = kreativ (je höher, desto kreativer, aber auch unverständlicher die Antworten)   
 OLLAMA_URL       = "http://localhost:11434/api/generate"
 
-WHISPER_MODEL    = "tiny"
-WHISPER_DEVICE   = "cpu"
-WHISPER_COMPUTE  = "int8"
+WHISPER_MODEL    = "base"               #"tiny", "base", "small", "medium", "large-v2" (je größer, desto genauer, aber auch langsamer und ressourcenintensiver)
+WHISPER_DEVICE   = "cpu"                #"cpu" oder "cuda" (wenn GPU mit CUDA-Unterstützung vorhanden)
+WHISPER_COMPUTE  = "int8"               #"int8" (schnell, weniger genau), "float16" (langsamer, genauer) – je nach Modell und Hardware kann int8 manchmal zu schlechteren Ergebnissen führen, teste ggf. beide Modi
 
 SAMPLE_RATE      = 16000
 RECORD_SECONDS   = 15            # Maximale zuhörzeit (Sicherheit gegen Endlosschleife und noises)
-SILENCE_THRESH   = 0.020         # höhere Schwelle = weniger Falsch-Stille unter diesem zählt als Stille
+SILENCE_THRESH   = 0.010         # höhere Schwelle = weniger Falsch-Stille unter diesem zählt als Stille
 SILENCE_DURATION = 2.5           # 2.5s Stille nötig bevor Aufnahme stoppt
 
 

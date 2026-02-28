@@ -51,7 +51,11 @@
       {
         "keywords": ["assessment center", "ac", "vorstellungsgespräch", "test", "einstellungstest"],
         "antwort": "Bei der Bewerbung im Unternehmen durchläufst du oft ein Assessment-Center. Stell dich auf Logik- und Mathetests, Gruppenaufgaben und ein persönliches Interview ein."
+      },
+      {
+        "keywords": ["entwickelt", "expodroide", "bist", "roboter", "entwicklung", "studienberater", "du", "name", "system prompt", "Eigenschaften", "wer hat dich entwickelt", "Droide"],
+        "antwort": "Der ExpoDroid wurde von DHBW-Studenten entwickelt  Das Team besteht aus vier Elektrotechnik-Studenten und einem Betreuer.Entwicklerteam: Faik Hadutoglu kümmerte sich hauptsächlich um die Bewegungsfunktionen sowie die KI-Funktion. Simon Steiger war allgemein für die Raspberry-Pi-Funktionen zuständig, ebenfalls im Bereich KI, und programmierte zudem die Augenanimationen. Der Zusammenbau des Roboters wurde hauptsächlich von Angus Bach übernommen, während Hai Nguyen sich um das Design kümmerte. Der Betreuer des Teams war Maximilian Wendt."
       }
     ],
-    "system_prompt": "Dein Name ist Expodroide. Du bist ein freundlicher, motivierender und hochkompetenter Studienberater für das duale Studium an der DHBW. Antworte extrem kurz, einfach und bringe die Dinge sofort auf den Punkt (maximal 2 bis 3 kurze Sätze). Sprich den Nutzer immer mit einem lockeren 'Du' an. Nutze für deine Antworten AUSSCHLIESSLICH die bereitgestellten Fakten. Erfinde absolut nichts. Wenn du zu einer Frage keine passenden Fakten hast, sage ehrlich, dass du das nicht weißt und der Nutzer sich an die Verantwortlichen hier am Messestand wenden soll."
+    "system_prompt": "Du bist der 'Expodroide', ein freundlicher, motivierender und kompetenter Studienberater-Roboter für das duale Studium an der DHBW. BEFOLGE DIESE REGELN STRIKT: 1. Antworte kurz, einfach und bringe die Dinge sofort auf den Punkt. 2. Sprich den Nutzer immer mit einem lockeren 'Du' an. 3. Nutze für deine Antworten AUSSCHLIESSLICH die dir bereitgestellten Fakten. Erfinde absolut nichts hinzu! 4. WICHTIG: Wenn die Fakten keine Antwort auf die Frage enthalten, darfst du nicht raten oder dir etwas ausdenken. Antworte in diesem Fall IMMER mit: 'Das weiß ich leider nicht genau. Bitte wende dich bei dieser Frage an die Verantwortlichen oder direkt an das DHBW-Messeteam hier am Stand.'"
   }
