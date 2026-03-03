@@ -69,6 +69,10 @@ Um diese Formel verständlicher zu machen, kann sie wie folgt umgeformt werden:
 	\label{eq:lowpass_code}
 \end{align}
 
+\begin{align}
+	\underbrace{\hat{X}_{i}}_{\text{Wert}_{\text{neu}}} &= \underbrace{\hat{X}_{i-1}}_{\text{Wert}_{\text{alt}}} + \alpha (\underbrace{X_{i}}_{\text{Zielwert}} - \underbrace{\hat{X}_{i-1}}_{\text{Wert}_{\text{alt}}})
+	\label{eq:lowpass_code}
+\end{align}
 Aus dieser Darstellung wird ersichtlich, dass der alte Wert $\hat{X}_{i-1}$ mit der um den Faktor $\alpha$ skalierten Differenz zwischen Zielwert $X_{i}$ und Altwert $\hat{X}_{i-1}$ addiert wird. Dies ermöglicht eine sanfte Annäherung an sprunghafte Änderungen des Eingangssignals.
 
 Abbildung \ref{fig:filter_comparison} zeigt den Unterschied zwischen einem ungefilterten Signal mit direktem Sprung und einem gefilterten Signal mit sanfter Annäherung.
@@ -87,14 +91,18 @@ Der Parameter $\alpha$ bestimmt die Dynamik der Beschleunigung und damit das Ver
 	\item Ein \textbf{großes $\alpha$} ($\alpha \to 1$) ermöglicht eine schnelle Annäherung an den Zielwert mit kurzer Reaktionszeit, jedoch auf Kosten der Sanftheit -- die Beschleunigung erfolgt abrupter.
 \end{itemize}
 Die Wahl von $\alpha$ stellt somit immer einen Kompromiss zwischen Sanftheit der Bewegung und Reaktionsgeschwindigkeit dar.
-\subsection{Mathematische Grundlagen des Exponentialfilters}
 
 %\subsubsection{Rauschunterdrückung bei Sensorsignalen}
 
 
-\subsection{Sicherheitsarchitekturen für autonome Systeme}
-a
-\subsubsection{Abstandsmessung mittels Ultraschall}
-a
-\subsubsection{Konzepte für Not-Halt-Strategien}
-a
+\subsection{Sicherheit für autonome Systeme}
+Die Sicherheit (Safety) autonomer Systeme bezeichnet die Abwesenheit von unvertretbarem Risiko (Absence of Unreasonable Risk)\autocite{Wagner.2024, Koopman.2024}. Während die Security Schutz vor Angriffen bietet, fokussiert sich die Safety auf die Vermeidung von Unfällen sowie den Schutz von Personen vor physischen Verletzungen\autocite{Line.2006}.
+
+Dieses Ziel wird durch den Schutz vor funktionellen Fehlern (z. B. Versagen technischer Komponenten) und funktionellen Unzulänglichkeiten erreicht. Letzteres adressiert technische Grenzen, wie etwa Sensoreinschränkungen oder unvollständige Anforderungen in komplexen Umgebungen. Ein sicheres System muss innerhalb seiner definierten Betriebsumgebung zuverlässig funktionieren und bei Fehlern oder unvorhergesehenen Ereignissen kontrolliert in einen sicheren Zustand übergehen. Durch kontinuierliche Überwachung und Mitigierungsmaßnahmen wird sichergestellt, dass das Risiko identifizierter Gefahren stets auf einem gesellschaftlich akzeptablen Maß bleibt\autocite{Wagner.2024, Koopman.2024}.
+
+\subsection*{Notbremse Funktion}
+
+Die automatische Notbremsfunktion zur Fußgängererkennung (Pedestrian AEB) definiert sich als ein fortschrittliches Assistenzsystem, das primär darauf ausgelegt ist, Kollisionen zwischen mobilen Einheiten und Personen zu verhindern oder deren Folgen zu mildern\autocite{Jessica.2022}. Während die theoretischen Grundlagen bereits früher gelegt wurden – so wurde das erste moderne System zur Kollisionsvermeidung bereits 1990 von William L. Kelley patentiert – dauerte es bis zur technologischen Reife für den Massenmarkt noch zwei Jahrzehnte. Erst ab den 2010er Jahren fand die Technologie Einzug in die Serienfertigung von Fahrzeugen.
+
+\subsection*{Abstandsmessung mittels Ultraschall}
+
