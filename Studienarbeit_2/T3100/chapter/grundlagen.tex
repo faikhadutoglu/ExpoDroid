@@ -102,7 +102,43 @@ Dieses Ziel wird durch den Schutz vor funktionellen Fehlern (z. B. Versagen tech
 
 \subsection*{Notbremse Funktion}
 
-Die automatische Notbremsfunktion zur Fußgängererkennung (Pedestrian AEB) definiert sich als ein fortschrittliches Assistenzsystem, das primär darauf ausgelegt ist, Kollisionen zwischen mobilen Einheiten und Personen zu verhindern oder deren Folgen zu mildern\autocite{Jessica.2022}. Während die theoretischen Grundlagen bereits früher gelegt wurden – so wurde das erste moderne System zur Kollisionsvermeidung bereits 1990 von William L. Kelley patentiert – dauerte es bis zur technologischen Reife für den Massenmarkt noch zwei Jahrzehnte. Erst ab den 2010er Jahren fand die Technologie Einzug in die Serienfertigung von Fahrzeugen.
+Die automatische Notbremsfunktion zur Fußgängererkennung (Pedestrian AEB) definiert sich als ein fortschrittliches Assistenzsystem, das primär darauf ausgelegt ist, Kollisionen zwischen mobilen Einheiten und Personen zu verhindern oder deren Folgen zu mildern\autocite{Jessica.2022}. Während die theoretischen Grundlagen bereits früher gelegt wurden – so wurde das erste moderne System zur Kollisionsvermeidung bereits 1990 von William L. Kelley patentiert\autocite{Kelley.1990}. Mittlerweile hat die Technologie Einzug in die breite Serienfertigung moderner Fahrzeuge gefunden.
 
-\subsection*{Abstandsmessung mittels Ultraschall}
+Die Notwendigkeit einer automatischen Notbremsung lässt sich mit grundlegenden kinematischen Gesetzen erklären. Der physikalisch benötigte Anhalteweg setzt sich aus dem Reaktionsweg (während der Verarbeitungszeit des Systems) und dem eigentlichen Bremsweg zusammen:
 
+\begin{align}
+	\underbrace{s_{\text{stop}}}_{\text{Gesamter Anhalteweg}} &= \underbrace{v \cdot t_{R}}_{\text{Reaktionsweg}} + \underbrace{\frac{v^2}{2a}}_{\text{Reiner Bremsweg}}
+	\label{eq:anhalteweg}
+\end{align}
+
+Dabei ist $v$ die aktuelle Fahrzeuggeschwindigkeit, $t_{R}$ die Systemreaktionszeit und $a$ die maximal mögliche Bremsverzögerung\autocite{bosch.2024}. Ein Eingriff des Notbremsassistenten wird zwingend erforderlich, wenn der von den Sensoren gemessene Abstand zum Hindernis kleiner wird als dieser berechnete Anhalteweg. In diesem Fall ist die aktuelle Geschwindigkeit zu hoch, um ohne Eingriff noch rechtzeitig zum Stehen zu kommen:
+
+\begin{align}
+	\underbrace{d}_{\text{Gemessener Abstand}} &< s_{\text{stop} } 
+\end{align}
+
+Sobald diese mathematische Bedingung erfüllt ist, löst das System autonom die Notbremsung aus, um eine drohende Kollision zu verhindern.
+
+\subsection*{Ultraschallbasierte Notbremsfunktion}
+Je nach Fahrgeschwindigkeit kommen für die Notbremsfunktion unterschiedliche Sensortypen zum Einsatz. In modernen Fahrzeugen werden heutzutage am häufigsten Radar- und Kamerasysteme verwendet\autocite{MathWorks.2026}. Für Anwendungen mit geringen Geschwindigkeiten und zur Erfassung sich langsam bewegender Objekte eignen sich jedoch auch Ultraschallsensoren hervorragend, um unvorhergesehene Kollisionen zu vermeiden.
+
+
+Ultraschallsensoren funktionieren grundsätzlich so, dass sie Ultraschallwellen aussenden und anschließend messen, wie lange es dauert, bis das Echo von einem Objekt zurückkommt. Auf diese Weise kann ein Abstand bestimmt werden. Da das Signal den Weg zum Objekt und wieder zurück zum Sensor zurücklegt, entspricht die gemessene Zeit der doppelten Strecke. Der Abstand lässt sich daher mit folgender Beziehung berechnen\autocite{Qiu.2022,Schreiter.2019}:
+
+\[
+s = \frac{c \cdot t}{2}
+\]
+
+Dabei ist \(s\) der Abstand, \(c\) die Schallgeschwindigkeit und \(t\) die gemessene Laufzeit des Signals\autocite{Qiu.2022}.
+
+Für solche Abstandsmessungen wird häufig das Ultraschallmodul HC-SR04 verwendet. Es besitzt bereits eine integrierte Auswerteelektronik, wodurch die Signalverarbeitung deutlich vereinfacht wird. Das Modul wird über einen Trigger-Anschluss von einem Mikrocontroller gestartet. Sobald dort ein Signal anliegt, sendet das HC-SR04 automatisch acht Ultraschallimpulse mit einer Frequenz von \(40\,\text{kHz}\) aus (siehe Abb. \ref{fig:ultraschall_ablauf}). Diese Frequenz liegt außerhalb des für Menschen hörbaren Bereichs. Anschließend prüft das Modul, ob ein Echo zurückkommt. Wird ein Echo erkannt, erzeugt das Modul am Echo-Anschluss ein Signal, dessen zeitliche Länge genau der Laufzeit des Schallimpulses entspricht\autocite{Schreiter.2019}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/ultraschal.png}
+	\caption{Zeitlicher Ablauf eines Ultraschallsensors}{Ein Triggerimpuls startet die Messung, woraufhin der Sensor 8 Ultraschallzyklen 
+		bei $40\,\text{kHz}$ aussendet. Die Dauer des High-Pegels am Ausgang entspricht 
+		der rohen Hin- und Rücklaufzeit; der Abstand ergibt sich erst durch 
+		$s = \frac{c \cdot t}{2}$.\autocite{Zhao.2021}}
+	\label{fig:ultraschall_ablauf}
+\end{figure}
