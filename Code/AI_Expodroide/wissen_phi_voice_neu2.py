@@ -564,7 +564,7 @@ if __name__ == "__main__":
     verlauf = deque(maxlen=MAX_MEMORY)
 
     print("\n🤖 Expodroide bereit! Sprich mit mir (oder tippe 'ende').")
-    speak("Hallo! Ich bin der Expodroide. Wie kann ich dir helfen?")
+    speak("Hallo! Ich bin der DUAL-E. Wie kann ich dir helfen?")
 
     while True:
         try:
