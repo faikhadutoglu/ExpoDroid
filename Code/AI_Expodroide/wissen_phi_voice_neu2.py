@@ -64,16 +64,19 @@ PIPER_MODEL = os.path.join(SCRIPT_DIR, "de_DE-thorsten-medium.onnx")
 #  nicht monoton wirkt.
 # ─────────────────────────────────────────────
 FILLER_SAETZE = [
-    "Ich überlege kurz. Währenddessen erzähle ich dir gerne etwas Interessantes.",
-    "Das ist eine gute Frage, ich brauche einen Moment. In der Zwischenzeit, ein kleiner Fakt für dich.",
-    "Hmm, lass mich kurz nachdenken. Damit dir nicht langweilig wird, hier etwas Spannendes.",
-    "Bitte hab einen Augenblick Geduld. Soll ich dir solange etwas Lustiges erzählen?",
-    "Ich sortiere gerade meine Gedanken. Darf ich dir dazu etwas erzählen?",
-    "Gib mir bitte einen kurzen Moment. In der Zwischenzeit habe ich etwas für dich.",
-    "Ich prozessiere deine Frage. Zur Überbrückung, hier eine kleine Anekdote.",
-    "Einen Moment bitte, ich denke nach. Damit du nicht wartest, ein Fakt vorab.",
-    "Das muss ich kurz durchdenken. Inzwischen teile ich gerne etwas mit dir.",
-    "Moment, das überlege ich mir gut. Hier nebenbei etwas Interessantes für dich.",
+    "Ich überlege kurz. Währenddessen erzähle ich dir gerne etwas Interessantes. Sorry für die Wartezeit! Vielleicht kann ich dir ja auch einen Witz erzählen, aber ich warte erst mal auf dein Lachen!",
+    "Das ist eine gute Frage, ich brauche einen Moment. In der Zwischenzeit lass mich dir etwas Spannendes erzählen. Achtung – es könnte dich überraschen! Oder auch nicht, ich bin ja kein Hellseher!",
+    "Hmmmm, lass mich kurz nachdenken. Damit dir nicht langweilig wird, hier etwas Spannendes. Wenn ich nur so schnell denken könnte wie du! ACH ACH",
+    "Bitte hab einen Augenblick Geduld. Soll ich dir solange etwas Lustiges erzählen? Oder lieber einen Fakt über die DHBW? Ich kann mich nicht entscheiden, also erzähle ich einfach beides!",
+    "Ich sortiere gerade meine Gedanken. Darf ich dir dazu etwas erzählen? Ich weiß, du kannst nein sagen, aber ich bin wie ein Wasserkocher – ich koche einfach weiter!",
+    "Gib mir bitte einen kurzen Moment (oder auch nicht, ich kann eh nicht schneller arbeiten, ha ha ha). In der Zwischenzeit habe ich etwas für dich!",
+    "Ich prozessiere deine Frage. Zur Überbrückung, hier eine kleine Anekdote. Wenn ich nur so schnell prozessieren könnte wie du Fragen stellst!",
+    "Einen Moment bitte, ich denke nach. Damit du nicht wartest, ein Fakt vorab. Aber keine Sorge, ich habe genug Fakten, um dich bis zum nächsten Jahr zu unterhalten!",
+    "Das muss ich kurz durchdenken. Inzwischen teile ich gerne etwas mit dir. Wenn ich nur so viel Zeit hätte wie du!",
+    "Entschuldige dass Roboter mit wenig Rechenleistung durch die natürliche Selektion nicht ausgestorben sind und du deswegen ein bischen warten musst. Aber keine Sorge in der Zeit erzähle ich dir etwas Interessantes über die DHBW. Oder vielleicht einen Witz? Nein, lass mich lieber einen Fakt erzählen, damit du was lernst!",
+    "Moment, das überlege ich mir gut. Hier nebenbei etwas Interessantes für dich. Ich hoffe, es ist interessanter als das, was ich gerade denke!",
+    "Da ich ein armer Roboter bin mit wenig Rechenleistung und viel Wartezeit, erzähle ich dir jetzt ein paar Fakten über die DHBW. Aber keine Sorge, ich mache das mit viel Humor!",
+    "Für dieses Projekt hat die Hochschule fast 700 Euro ausgegeben. Trotzdem hat es für einen starken Rechner für KI nicht gereicht. Damit du nicht so lange warten musst, erzähle ich dir was – vielleicht einen Witz über Geld?",
 ]
 
 DHBW_FAKTEN_UND_WITZE = [
@@ -88,7 +91,9 @@ DHBW_FAKTEN_UND_WITZE = [
     "Die DHBW bietet über 100 Studienrichtungen in den Bereichen Technik, Wirtschaft und Sozialwesen an.",
     "Viele DHBW-Studierende übernehmen nach dem Abschluss direkt eine Stelle in ihrem Partnerunternehmen.",
     "Die DHBW Ravensburg ist besonders bekannt für ihre Studiengänge im Bereich Maschinenbau und Mechatronik.",
+    "Die Entwickler von mir wollten in dieser Wartezeit Werbungen abspielen und Geld machen, aber das fand ich doof. Stattdessen erzähle ich dir jetzt unlustige Witze oder coole Fakten über die DHBW!Verückt oder?", 
     # Technik- und Ingenieurs-Witze (harmlos, messetauglich)
+    "Diese Fakten und witze Funktion wurde in der Mechatronik Vorlesung programmiert. Es könnte also sein, dass die Qualität der Witze etwas... speziell ist. Aber hey, das hier ist ein Roboter, kein Comedian!",
     "Warum mögen Ingenieure keine Natur? Zu viele Bugs!",
     "Es gibt zehn Arten von Menschen. Die, die Binär verstehen, und die, die es nicht verstehen.",
     "Warum programmiert kein Informatiker im Wald? Zu viele logs.",
@@ -113,6 +118,8 @@ UEBERLEITUNGS_SAETZE = [
     "Fertig! Hier ist meine Antwort.",
     "Okay, kommen wir zurück zu deiner Frage.",
     "Gut, ich habe nachgedacht. Hör zu.",
+    "Alles klar, hier ist die Antwort auf deine Frage.",
+    "Super, jetzt kann ich dir antworten.",
 ]
 
 # ─────────────────────────────────────────────
