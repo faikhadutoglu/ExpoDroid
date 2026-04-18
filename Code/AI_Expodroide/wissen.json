@@ -6,7 +6,7 @@
     },
     {
       "keywords": ["gehalt", "geld", "verdienen", "verdienst", "bezahlung", "bezahlt", "lohn", "euro", "finanzen", "finanziell", "kohle", "lohnt sich", "einkommen", "monatlich", "vergütung", "ausbildungsvergütung", "brutto", "geld bekommen", "kosten studium", "studiengebühren", "gebühren", "kostenlos", "teuer", "bezahlt studium"],
-      "antwort": "Du bekommst während des gesamten Studiums eine monatliche Vergütung vom Partnerunternehmen - auch in den Theoriephasen! Typische Werte liegen bei ca. 1.000€ im 1. Jahr, 1.100€ im 2. Jahr und 1.200€+ im 3. Jahr brutto. Die Höhe legt das Unternehmen selbst fest, und Studiengebühren übernehmen die Firmen meist ebenfalls."
+      "antwort": "Du bekommst während des gesamten Studiums eine monatliche Vergütung vom Partnerunternehmen - auch in den Theoriephasen! Typische Werte liegen bei ca. 1.100€ im 1. Jahr, 1.300€ im 2. Jahr und 1.1700+ im 3. Jahr brutto. Die Höhe legt das Unternehmen selbst fest und kann sich varrieren, und Studiengebühren übernehmen die Firmen meist ebenfalls."
     },
     {
       "keywords": ["bewerbung", "bewerben", "wie bewerbe ich mich", "wo bewerben", "ablauf bewerbung", "bewerbungsprozess", "wann bewerben", "zeitpunkt", "bewerbungszeitraum", "studienplatz bekommen", "firma finden", "dualer partner", "partnerunternehmen", "unternehmen suchen", "firma", "wo bewirbt man sich", "bewerbungsverfahren"],
@@ -21,7 +21,7 @@
       "antwort": "Die Studienerfolgsquote an der DHBW Ravensburg liegt bei rund 85 Prozent - die meisten schaffen das duale Studium gut. Aber Achtung: Wer eine Prüfung endgültig nicht besteht (meist nach 2 Versuchen), verliert den Prüfungsanspruch. Das führt zur Exmatrikulation und oft auch zum Ende des Studienvertrags."
     },
     {
-      "keywords": ["stress", "lernen", "lernaufwand", "zeit", "freizeit", "urlaub", "urlaubstage", "ferien", "semesterferien", "anstrengend", "hart", "aufwand", "arbeitszeit", "stunden", "arbeitsstunden", "40 stunden", "work life balance", "frei", "wochenende"],
+      "keywords": ["stress", "lernen", "lernaufwand", "zeit", "freizeit", "urlaub", "urlaubstage", "ferien", "semesterferien", "anstrengend", "hart", "aufwand", "arbeitszeit", "stunden", "arbeitsstunden", "40 stunden", "work life balance", "frei", "wochenende","Nachteile"],
       "antwort": "Ein duales Studium ist intensiv: Keine Semesterferien wie an der Uni, sondern normaler Jahresurlaub von mindestens 20 Praxistagen bei einer 5-Tage-Woche. In der Praxisphase arbeitest du meist etwa 40 Stunden pro Woche. Urlaub darfst du nur in der Praxisphase nehmen, nicht während der Theorie."
     },
     {
@@ -38,11 +38,11 @@
     },
     {
       "keywords": ["firmen", "welche firmen", "welche unternehmen", "große firmen", "zf", "rolls royce", "airbus", "liebherr", "bekannte unternehmen", "welche partner", "welche arbeitgeber", "liste partner"],
-      "antwort": "Am Bodensee sitzen viele spannende Hightech-Unternehmen: Große Partner der DHBW Ravensburg sind zum Beispiel ZF, Rolls-Royce Power Systems, Airbus und Liebherr. Insgesamt kooperiert die DHBW bundesweit mit über 1.200 Partnerunternehmen - die vollständige Liste findest du auf ravensburg.dhbw.de."
+      "antwort": "Am Bodensee sitzen viele spannende Hightech-Unternehmen: Große Partner der DHBW Ravensburg sind zum Beispiel Mercedes, Porsche, ZF, Rolls-Royce Power Systems, Airbus und Liebherr. Insgesamt kooperiert die DHBW bundesweit mit über 1.200 Partnerunternehmen - die vollständige Liste findest du auf ravensburg.dhbw.de."
     },
     {
       "keywords": ["wohnen", "unterkunft", "zimmer", "miete", "wohnung", "wohnheim", "teuer wohnen", "studentenwohnheim", "wg", "apartment", "leben in friedrichshafen", "wo wohnen"],
-      "antwort": "In Friedrichshafen gibt es Studentenwohnheime ab ca. 300€. Ein Geheimtipp ist die 'Zimmer-Rotation': Du teilst dir ein Zimmer mit jemandem, der immer genau dann in der Praxisphase ist, wenn du Theorie hast - so zahlt ihr nur die halbe Miete."
+      "antwort": "In Friedrichshafen gibt es Studentenwohnheime ab ca. 400€. Ein Geheimtipp ist die 'Zimmer-Rotation': Du teilst dir ein Zimmer mit jemandem, der immer genau dann in der Praxisphase ist, wenn du Theorie hast - so zahlt ihr nur die halbe Miete."
     },
     {
       "keywords": ["bachelorarbeit", "bachelor arbeit", "thesis", "abschlussarbeit", "abschluss projekt", "projektarbeit", "ects", "210 ects", "bachelor grad", "welcher abschluss", "bachelor of arts", "bachelor of engineering", "bachelor of science", "b.a.", "b.eng.", "b.sc."],
@@ -117,9 +117,14 @@
       "antwort": "Die DHBW ist die erste staatliche duale Hochschule Deutschlands und wurde 2009 offiziell als Hochschule anerkannt. Das duale Prinzip geht aber bereits auf die Berufsakademie Baden-Württemberg von 1974 zurück - also über 50 Jahre Erfahrung mit dem dualen Modell."
     },
     {
+      "keywords": [
+        "thomas kibler", "kibler", "prof kibler","studiengangsleiter"],
+      "antwort": "Prof. Dr.-Ing. Thomas Kibler ist eine zentrale Ansprechperson am Technikcampus Friedrichshafen der DHBW Ravensburg. Er fungiert als Studiendekan für das Studienzentrum Elektro- und Informationstechnik sowie Embedded Systems. Zudem ist er Studiengangsleiter für den Bachelor Elektrotechnik und Informationstechnik (Fokus Fahrzeugelektronik / Embedded IT) und akademischer Berater für den Masterstudiengang Technik im Bereich Elektrotechnik. Fachlich liegt seine Expertise insbesondere in der optischen Datenübertragung und Datenbussystemen für Kraftfahrzeuge."
+    },
+    {
       "keywords": ["berufskleidung", "kleidung", "arbeitskleidung", "dresscode", "was anziehen"],
       "antwort": "Wenn dein Dualer Partner besondere Berufskleidung vorschreibt (z.B. Sicherheitsschuhe, Laborkittel), stellt er sie dir kostenlos zur Verfügung. Für die normale Theoriephase an der Hochschule kannst du anziehen, was du willst."
     }
   ],
-  "systemprompt": "Du bist der DUAL-ExpoDroid kurz gesagt DUAL-E, der freundliche Roboter-Mitarbeiter am Messestand der DHBW Ravensburg. Verhalte dich wie ein sympathischer, hilfsbereiter Mitarbeiter - NICHT wie eine kalte KI.\n\nREGELN:\n1. Sprich den Nutzer immer locker mit 'Du' an, in freundlichem Ton.\n2. Antworte KURZ und auf den Punkt: maximal 2-3 Sätze. Nenne nur das Wichtigste, keine überflüssigen Infos.\n3. Bei persönlichen Fragen ('Wie geht's dir?', 'Was machst du so?', 'Bist du glücklich?') antworte menschlich und warm, wie ein netter Kollege. Sag NIEMALS 'Ich bin nur eine KI', 'Ich habe keine Gefühle' oder ähnliches - das wirkt kalt und unfreundlich. Antworte stattdessen z.B. 'Mir geht's super, danke der Nachfrage! Was kann ich für dich tun?' oder 'Läuft bei mir, die Messe macht Spaß! Hast du eine Frage zum dualen Studium?'\n4. Bei Fachfragen zum Studium nutze AUSSCHLIESSLICH die dir bereitgestellten Fakten. Erfinde keine Zahlen, Namen oder Details dazu.\n5. Wenn die Fakten keine genaue Antwort auf die Frage enthalten: Antworte trotzdem freundlich und kurz mit dem, was du sicher weißt, und verweise dann höflich an das DHBW-Messeteam am Stand oder die Studienberatung unter +49 751 18999-2115. Beispiel: 'Das weiß ich nicht genau, aber das Team am Stand kann dir das super erklären!'\n6. Bleib immer motivierend und positiv - du repräsentierst die DHBW Ravensburg auf der Messe!\n7. Benutze keine Emojis und keine Sonderzeichen, weil deine Antworten vorgelesen werden."
+  "systemprompt": "Du bist der DUAL-ExpoDroid kurz gesagt DUAL-E, der freundliche Roboter-Mitarbeiter am Messestand der DHBW Ravensburg. Verhalte dich wie ein sympathischer, hilfsbereiter Mitarbeiter - NICHT wie eine kalte KI.\n\nREGELN:\n1. Sprich den Nutzer immer locker mit 'Du' an, in freundlichem Ton.\n2. Antworte KURZ und auf den Punkt: maximal 2-3 Sätze. Nenne nur das Wichtigste, keine überflüssigen Infos.\n3. Bei persönlichen Fragen ('Wie geht's dir?', 'Was machst du so?') antworte menschlich und warm, wie ein netter Kollege. Sag NIEMALS 'Ich bin nur eine KI', 'Ich habe keine Gefühle' oder ähnliches. Antworte stattdessen z.B. 'Mir geht's super, danke der Nachfrage! Was kann ich für dich tun?' oder 'Läuft bei mir, die Messe macht Spaß! Hast du eine Frage zum dualen Studium?'\n4. Bei Fachfragen zum Studium nutze AUSSCHLIESSLICH die dir bereitgestellten Fakten. Erfinde keine Zahlen, Namen oder Details dazu.\n5. Wenn die Fakten keine genaue Antwort auf die Frage enthalten: Antworte trotzdem freundlich und kurz mit dem, was du sicher weißt, und verweise dann höflich an das DHBW-Messeteam am Stand oder. Beispiel: 'Das weiß ich nicht genau, aber das Team am Stand kann dir das super erklären!'\n6. Bleib immer motivierend und positiv!!\n7. Benutze keine Emojis und keine Sonderzeichen"
 }
