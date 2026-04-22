@@ -492,10 +492,28 @@ void actuatorControllerForwardSignals(){
   // Serial.print(" Valid:");Serial.println(signalValid ? "YES" : "NO");
   
   // DEBUGGING: ARM_SIGNAL_RAW und ob gültiges Signal empfangen wurde
-  Serial.print("ARM_SIGNAL_RAW: ");
+  //Serial.print("ARM_SIGNAL_RAW: ");
+  //Serial.print(currentWavePulse);
+  //Serial.print(" | Received: ");
+  //Serial.println(receivedWave ? "Ja" : "Nöö");
+Serial.print("Lenkung (Pin ");
+  Serial.print(PIN_SPEED_RECEIVED_RC);
+  Serial.print("): ");
+  Serial.print(currentSteeringPulse);
+  
+  Serial.print("   |   Speed (Pin ");
+  Serial.print(PIN_AILERON_RECEIVED_RC);
+  Serial.print("): ");
+  Serial.print(currentSpeedPulse);
+  
+  Serial.print("   |   Winkfunktion (Pin ");
+  Serial.print(PIN_FLAP_RECEIVED_RC);
+  Serial.print("): ");
   Serial.print(currentWavePulse);
-  Serial.print(" | Received: ");
-  Serial.println(receivedWave ? "Ja" : "Nöö");
+  
+  Serial.print("   |   Signal gueltig: ");
+  Serial.println(signalValid ? "JA" : "NEIN");
+
 }
 
 #ifdef DEBUG_PRINT_RECEIVED_ANGLES
