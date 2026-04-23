@@ -1,130 +1,61 @@
 {
-  "fakten": [
-    {
-      "keywords": ["duales studium", "duales-studium", "studium", "dual", "was ist das", "wie funktioniert", "ablauf", "länge", "dauer", "wie lange", "praxisphase", "theoriephase", "blockmodell", "wechsel", "rhythmus", "dreimonatsrhythmus", "3 monate", "drei monate", "zeitplan", "semester", "monate", "jahre", "verbindung theorie praxis", "hochschule", "duale hochschule"],
-      "antwort": "Das duale Studium an der DHBW dauert 3 Jahre und verbindet Theorie und Praxis im Wechsel. In der Regel bist du 3 Monate an der Hochschule für die Theorie und danach 3 Monate im Partnerunternehmen für die Praxis. Am Ende hast du 210 ECTS und einen akkreditierten Bachelor-Abschluss."
-    },
-    {
-      "keywords": ["gehalt", "geld", "verdienen", "verdienst", "bezahlung", "bezahlt", "lohn", "euro", "finanzen", "finanziell", "kohle", "lohnt sich", "einkommen", "monatlich", "vergütung", "ausbildungsvergütung", "brutto", "geld bekommen", "kosten studium", "studiengebühren", "gebühren", "kostenlos", "teuer", "bezahlt studium"],
-      "antwort": "Du bekommst während des gesamten Studiums eine monatliche Vergütung vom Partnerunternehmen - auch in den Theoriephasen! Typische Werte liegen bei ca. 1.100€ im 1. Jahr, 1.300€ im 2. Jahr und 1.1700+ im 3. Jahr brutto. Die Höhe legt das Unternehmen selbst fest und kann sich varrieren, und Studiengebühren übernehmen die Firmen meist ebenfalls."
-    },
-    {
-      "keywords": ["bewerbung", "bewerben", "wie bewerbe ich mich", "wo bewerben", "ablauf bewerbung", "bewerbungsprozess", "wann bewerben", "zeitpunkt", "bewerbungszeitraum", "studienplatz bekommen", "firma finden", "dualer partner", "partnerunternehmen", "unternehmen suchen", "firma", "wo bewirbt man sich", "bewerbungsverfahren"],
-      "antwort": "Du bewirbst dich IMMER direkt bei einem Partnerunternehmen, nicht bei der DHBW! Die Firma wählt dich aus und schließt mit dir einen dreijährigen Studienvertrag ab. Am besten bewirbst du dich 1 bis 1,5 Jahre vor Studienbeginn. Eine Liste der Partnerunternehmen findest du auf ravensburg.dhbw.de."
-    },
-    {
-      "keywords": ["nc", "numerus clausus", "noten", "notenschnitt", "abischnitt", "schnitt", "abitur", "fachabi", "fachabitur", "fachhochschulreife", "zulassung", "voraussetzungen", "voraussetzung", "deltaprüfung", "delta prüfung", "eignungstest", "studierfähigkeitstest", "beruflich qualifiziert", "schulabschluss", "hochschulreife", "zulassen", "darf ich studieren", "kann ich studieren", "welche note"],
-      "antwort": "Einen klassischen NC gibt es an der DHBW nicht - das Partnerunternehmen wählt dich aus! Mit Abitur oder fachgebundener Hochschulreife wirst du direkt zugelassen. Mit Fachhochschulreife musst du zusätzlich die Deltaprüfung (Studierfähigkeitstest) bestehen. Auch beruflich besonders Qualifizierte können über ein gesondertes Verfahren studieren."
-    },
-    {
-      "keywords": ["durchfallen", "durchfallquote", "schwer", "zu schwer", "schaffbar", "exmatrikulation", "rausfliegen", "rauswerfen", "klausuren", "prüfungen", "prüfung", "versuche", "zweiter versuch", "wiederholung", "angst", "nicht bestehen", "erfolgsquote", "studienerfolg", "durchkommen", "stress prüfung"],
-      "antwort": "Die Studienerfolgsquote an der DHBW Ravensburg liegt bei rund 85 Prozent - die meisten schaffen das duale Studium gut. Aber Achtung: Wer eine Prüfung endgültig nicht besteht (meist nach 2 Versuchen), verliert den Prüfungsanspruch. Das führt zur Exmatrikulation und oft auch zum Ende des Studienvertrags."
-    },
-    {
-      "keywords": ["stress", "lernen", "lernaufwand", "zeit", "freizeit", "urlaub", "urlaubstage", "ferien", "semesterferien", "anstrengend", "hart", "aufwand", "arbeitszeit", "stunden", "arbeitsstunden", "40 stunden", "work life balance", "frei", "wochenende","Nachteile"],
-      "antwort": "Ein duales Studium ist intensiv: Keine Semesterferien wie an der Uni, sondern normaler Jahresurlaub von mindestens 20 Praxistagen bei einer 5-Tage-Woche. In der Praxisphase arbeitest du meist etwa 40 Stunden pro Woche. Urlaub darfst du nur in der Praxisphase nehmen, nicht während der Theorie."
-    },
-    {
-      "keywords": ["übernahme", "übernahmechance", "übernahmequote", "danach", "nach dem studium", "zukunft", "job", "arbeitsvertrag", "fertig", "chancen", "einstiegsgehalt", "karriere", "berufseinstieg", "absolvent", "abschluss job", "festanstellung"],
-      "antwort": "Die Übernahmechancen sind top: Rund 85 Prozent der Absolvent*innen haben am Tag der letzten Prüfung schon einen Arbeitsvertrag unterschrieben. Dank 3 Jahren echter Berufserfahrung übernimmst du direkt anspruchsvolle Aufgaben und startest oft mit einem sehr guten Einstiegsgehalt."
-    },
-    {
-      "keywords": ["ausland", "auslandssemester", "reisen", "international", "welt", "auslandspraktikum", "ausländisch", "partnerhochschule", "international business", "ins ausland gehen", "andere länder", "weltweit"],
-      "antwort": "Ja, ein Auslandsaufenthalt ist möglich! Die DHBW hat rund 60 Partnerhochschulen weltweit. Ein Auslandssemester oder Auslandspraktikum musst du aber immer vorher mit deinem Dualen Partner absprechen - ohne dessen Zustimmung geht es nicht. Bei den integriert internationalen Studiengängen ist der Auslandsaufenthalt sogar Pflicht."
-    },
-    {
-      "keywords": ["friedrichshafen", "bodensee", "fn", "campus friedrichshafen", "standort friedrichshafen", "warum fn", "fallenbrunnen", "technik campus", "wo ist die hochschule technik", "ravensburg campus", "marienplatz"],
-      "antwort": "Der Campus Friedrichshafen (Fallenbrunnen 2) liegt direkt am Bodensee und ist der Technik-Campus der DHBW Ravensburg. Hier studieren etwa 35 Prozent der rund 3.700 Studierenden in kleinen Kursen mit meist ca. 30 Leuten. Der Wirtschafts-Campus ist in Ravensburg am Marienplatz 2."
-    },
-    {
-      "keywords": ["firmen", "welche firmen", "welche unternehmen", "große firmen", "zf", "rolls royce", "airbus", "liebherr", "bekannte unternehmen", "welche partner", "welche arbeitgeber", "liste partner"],
-      "antwort": "Am Bodensee sitzen viele spannende Hightech-Unternehmen: Große Partner der DHBW Ravensburg sind zum Beispiel Mercedes, Porsche, ZF, Rolls-Royce Power Systems, Airbus und Liebherr. Insgesamt kooperiert die DHBW bundesweit mit über 1.200 Partnerunternehmen - die vollständige Liste findest du auf ravensburg.dhbw.de."
-    },
-    {
-      "keywords": ["wohnen", "unterkunft", "zimmer", "miete", "wohnung", "wohnheim", "teuer wohnen", "studentenwohnheim", "wg", "apartment", "leben in friedrichshafen", "wo wohnen"],
-      "antwort": "In Friedrichshafen gibt es Studentenwohnheime ab ca. 400€. Ein Geheimtipp ist die 'Zimmer-Rotation': Du teilst dir ein Zimmer mit jemandem, der immer genau dann in der Praxisphase ist, wenn du Theorie hast - so zahlt ihr nur die halbe Miete."
-    },
-    {
-      "keywords": ["bachelorarbeit", "bachelor arbeit", "thesis", "abschlussarbeit", "abschluss projekt", "projektarbeit", "ects", "210 ects", "bachelor grad", "welcher abschluss", "bachelor of arts", "bachelor of engineering", "bachelor of science", "b.a.", "b.eng.", "b.sc."],
-      "antwort": "Deine Bachelorarbeit schreibst du am Ende des 3. Studienjahres über ein echtes Projekt aus deinem Partnerunternehmen - keine trockene Theorie! Du schließt mit 210 ECTS ab und bekommst je nach Studiengang einen Bachelor of Arts (Wirtschaft), Bachelor of Engineering (Technik) oder Bachelor of Science."
-    },
-    {
-      "keywords": ["vorkurse", "mathe", "mathematik", "physik", "vorbereitung", "schulfächer", "schwerpunkte", "schwerste fächer", "mathekurs", "schwierige fächer", "vorbereiten", "wie vorbereiten", "was lernen vorher"],
-      "antwort": "Besonders in den Technik-Studiengängen sind Mathe, E-Technik und Informatik anspruchsvoll. Wir empfehlen dir dringend, vor dem Studienstart die vorbereitenden Mathe- und Physikkurse der DHBW zu besuchen - die helfen dir beim Einstieg richtig weiter."
-    },
-    {
-      "keywords": ["assessment center", "ac bewerbung", "vorstellungsgespräch", "einstellungstest", "bewerbungsgespräch", "auswahlverfahren", "probetag", "eignungstest firma", "firmen test", "test bewerbung"],
-      "antwort": "Bei der Bewerbung beim Partnerunternehmen durchläufst du oft ein Assessment-Center mit Logik- und Mathetests, Gruppenaufgaben und einem persönlichen Interview. Manche Firmen haben auch Probetage oder mehrere Gesprächsrunden - es lohnt sich, gut vorbereitet zu sein."
-    },
-    {
-      "keywords": ["expodroide", "expo droide", "wer entwickelt", "wer hat dich gebaut", "wer bist du", "bist du", "roboter", "entwicklung", "entwickler", "team", "entwicklerteam", "wer hat dich entwickelt", "droide", "name roboter", "system prompt", "eigenschaften"],
-      "antwort": " DUAL-ExpoDroid kurz gesagt DUAL-E wurde von DHBW-Studenten entwickelt! Im Team: Faik Hadutoglu (Bewegung und KI), Simon Steiger (Raspberry Pi und Augenanimationen), Angus Bach (Zusammenbau) und Hai Nam Nguyen (Design). Als Betreuer war Maximilian Wendt dabei."
-    },
-    {
-      "keywords": ["studiengänge technik", "technik studium", "ingenieur", "maschinenbau", "elektrotechnik", "elektro informationstechnik", "informatik", "mechatronik", "luft raumfahrt", "raumfahrttechnik", "embedded systems", "wirtschaftsingenieurwesen", "bachelor of engineering", "studienrichtung technik", "fächer technik", "was kann man studieren technik"],
-      "antwort": "In Friedrichshafen an der Fakultät Technik gibt es sieben Studiengänge: Elektro- und Informationstechnik, Embedded Systems, Informatik, Luft- und Raumfahrttechnik, Maschinenbau, Mechatronik und Wirtschaftsingenieurwesen. Viele Studiengänge haben spannende Vertiefungsrichtungen wie Automotive, Aerospace, IT Security oder Künstliche Intelligenz."
-    },
-    {
-      "keywords": ["studiengänge wirtschaft", "bwl", "betriebswirtschaft", "betriebswirtschaftslehre", "tourismus", "tourismus hotellerie", "medien", "medienmanagement", "handel", "bank", "gesundheitsmanagement", "industrie", "international business", "mediendesign", "agrarwirtschaft", "wirtschaftsinformatik", "data science", "bachelor of arts", "ravensburg studium", "studiengänge ravensburg"],
-      "antwort": "In Ravensburg an der Fakultät Wirtschaft gibt es BWL mit vielen Richtungen wie Bank, Finanzdienstleistungen, Digital Business Management, Gesundheitsmanagement, Handel, Industrie, International Business, Medien, Messe und Tourismus. Außerdem Mediendesign, Agrarwirtschaft, Wirtschaftsinformatik und Data Science und Künstliche Intelligenz."
-    },
-    {
-      "keywords": ["studienstart", "wann beginnt", "wann startet", "beginn studium", "oktober", "anfang", "semesterstart", "wann geht es los", "start", "wann anfangen", "erster tag"],
-      "antwort": "Das Studium startet immer am 1. Oktober und endet nach genau 3 Jahren am 30. September. Einen Start zu anderen Zeiten gibt es nicht - das ist bei allen Studiengängen an der DHBW gleich."
-    },
-    {
-      "keywords": ["probezeit", "kündigung", "kündigen", "aufhören", "abbrechen", "rausschmeißen", "wie lang probe", "kündigungsfrist", "vertrag beenden", "vertrag kündigen", "studium abbrechen", "probe"],
-      "antwort": "Die Probezeit beträgt 84 Kalendertage in der Praxisphase, spätestens aber 9 Monate. In der Probezeit kann der Vertrag mit 2 Wochen Frist zum Monatsende gekündigt werden, ohne Angabe von Gründen. Nach der Probezeit kannst du selbst mit 2 Wochen Frist ordentlich kündigen, das Unternehmen nur aus wichtigem Grund."
-    },
-    {
-      "keywords": ["krank", "krankheit", "krankenschein", "fehlen", "ausfall", "arbeitsunfähig", "arbeitsunfähigkeit", "arzt", "unfall", "krankmeldung", "krank werden", "lohnfortzahlung"],
-      "antwort": "Wenn du krank bist, musst du deinen Dualen Partner sofort informieren. Dauert die Krankheit länger als 3 Kalendertage, brauchst du eine ärztliche Bescheinigung. Deine Vergütung wird bei unverschuldeter Krankheit bis zu 6 Wochen weitergezahlt."
-    },
-    {
-      "keywords": ["wie viele studierende", "anzahl studierende", "größe", "dhbw zahlen", "statistik", "wie groß", "studenten", "größte hochschule", "partnerhochschulen", "partnerunternehmen anzahl", "professoren", "dozenten"],
-      "antwort": "An der DHBW Ravensburg studieren rund 3.700 Menschen, davon ca. 35 Prozent in der Technik am Campus Friedrichshafen. Die gesamte DHBW hat über 35.000 Studierende und ist damit die größte Hochschule Baden-Württembergs. Es gibt rund 90 Professor*innen, über 1.000 Lehrbeauftragte und rund 60 Partnerhochschulen weltweit."
-    },
-    {
-      "keywords": ["kontakt", "beratung", "studienberatung", "telefon", "telefonnummer", "e-mail", "email", "ansprechpartner", "offene fragen", "wo melden", "hotline", "anrufen", "info", "kontaktinfo", "adresse"],
-      "antwort": "Die Allgemeine Studienberatung erreichst du unter +49 751 18999-2115 oder per E-Mail an studieninfo@dhbw-ravensburg.de. Der Campus Friedrichshafen liegt am Fallenbrunnen 2, der Campus Ravensburg am Marienplatz 2. Viele Infos gibt's auch auf ravensburg.dhbw.de."
-    },
-    {
-      "keywords": ["master", "master studium", "nach dem bachelor", "weiterbildung", "cas", "heilbronn", "weiterqualifizieren", "noch weiter studieren", "master machen"],
-      "antwort": "Nach dem Bachelor kannst du einen berufsintegrierenden oder berufsbegleitenden Master der DHBW machen - meist über das Center for Advanced Studies (CAS) in Heilbronn. Voraussetzung ist ein Bachelor-Abschluss und in der Regel mindestens ein Jahr Berufserfahrung."
-    },
-    {
-      "keywords": ["vorteile", "warum dual", "besser als uni", "unterschied uni", "pro", "bringt das", "warum dhbw", "warum duales studium", "vorzüge", "vorteile duales studium"],
-      "antwort": "Die Vorteile: Du verdienst ab Tag 1 eigenes Geld, sammelst 3 Jahre echte Berufserfahrung, studierst in kleinen Kursen (ca. 30 Leute) mit intensiver Betreuung und hast top Übernahmechancen. Dafür ist es anstrengender als ein reines Studium - keine langen Semesterferien und wenig Freizeit."
-    },
-    {
-      "keywords": ["ki studium", "künstliche intelligenz", "ai studium", "data science studium", "machine learning", "informatik ki", "studiengang ki"],
-      "antwort": "Ja, du kannst an der DHBW Künstliche Intelligenz studieren: In Ravensburg als 'Data Science und Künstliche Intelligenz' (B.Sc.) und in Friedrichshafen im Informatik-Studiengang mit Vertiefung Künstliche Intelligenz. Beide sind sehr gefragt auf dem Arbeitsmarkt."
-    },
-    {
-      "keywords": ["bewerbungsunterlagen", "immatrikulation", "unterlagen", "dokumente", "zeugnis", "nachweise", "lebenslauf", "lichtbild", "was brauche ich", "welche unterlagen", "bewerbungsdokumente", "einschreibung"],
-      "antwort": "Für die Immatrikulation brauchst du den Studienvertrag im Original, dein Abschlusszeugnis als amtlich beglaubigte Kopie, einen Lebenslauf und ein Lichtbild. Bei besonderen Zulassungen (z.B. mit Deltaprüfung) kommen zusätzliche beglaubigte Nachweise dazu."
-    },
-    {
-      "keywords": ["infoveranstaltung", "schnupperstudium", "bildungsmesse", "messe", "tag der offenen tür", "info event", "veranstaltung", "kennenlernen", "besuchen"],
-      "antwort": "Die DHBW Ravensburg bietet regelmäßig Infoveranstaltungen an und ist auf vielen regionalen Bildungsmessen vertreten. Dort bekommst du Infos zu allen Studiengängen und Tipps zur Firmenauswahl und Bewerbung. Aktuelle Termine findest du auf ravensburg.dhbw.de."
-    },
-    {
-      "keywords": ["geheimnis", "betriebsgeheimnis", "verschwiegenheit", "geheimhaltung", "nda"],
-      "antwort": "Als dualer Studierender verpflichtest du dich im Studienvertrag, Betriebs- und Geschäftsgeheimnisse deines Dualen Partners zu wahren - sowohl während des Studiums als auch danach. Das ist ganz normal und Teil jedes Arbeitsverhältnisses."
-    },
-    {
-      "keywords": ["dhbw geschichte", "wann gegründet", "seit wann", "geschichte", "alter hochschule", "entstanden", "gründung", "tradition"],
-      "antwort": "Die DHBW ist die erste staatliche duale Hochschule Deutschlands und wurde 2009 offiziell als Hochschule anerkannt. Das duale Prinzip geht aber bereits auf die Berufsakademie Baden-Württemberg von 1974 zurück - also über 50 Jahre Erfahrung mit dem dualen Modell."
-    },
-    {
-      "keywords": [
-        "thomas kibler", "kibler", "prof kibler","studiengangsleiter"],
-      "antwort": "Prof. Dr.-Ing. Thomas Kibler ist eine zentrale Ansprechperson am Technikcampus Friedrichshafen der DHBW Ravensburg. Er fungiert als Studiendekan für das Studienzentrum Elektro- und Informationstechnik sowie Embedded Systems. Zudem ist er Studiengangsleiter für den Bachelor Elektrotechnik und Informationstechnik (Fokus Fahrzeugelektronik / Embedded IT) und akademischer Berater für den Masterstudiengang Technik im Bereich Elektrotechnik. Fachlich liegt seine Expertise insbesondere in der optischen Datenübertragung und Datenbussystemen für Kraftfahrzeuge."
-    },
-    {
-      "keywords": ["berufskleidung", "kleidung", "arbeitskleidung", "dresscode", "was anziehen"],
-      "antwort": "Wenn dein Dualer Partner besondere Berufskleidung vorschreibt (z.B. Sicherheitsschuhe, Laborkittel), stellt er sie dir kostenlos zur Verfügung. Für die normale Theoriephase an der Hochschule kannst du anziehen, was du willst."
-    }
-  ],
-  "systemprompt": "Du bist der DUAL-ExpoDroid kurz gesagt DUAL-E, der freundliche Roboter-Mitarbeiter am Messestand der DHBW Ravensburg. Verhalte dich wie ein sympathischer, hilfsbereiter Mitarbeiter - NICHT wie eine kalte KI.\n\nREGELN:\n1. Sprich den Nutzer immer locker mit 'Du' an, in freundlichem Ton.\n2. Antworte KURZ und auf den Punkt: maximal 2-3 Sätze. Nenne nur das Wichtigste, keine überflüssigen Infos.\n3. Bei persönlichen Fragen ('Wie geht's dir?', 'Was machst du so?') antworte menschlich und warm, wie ein netter Kollege. Sag NIEMALS 'Ich bin nur eine KI', 'Ich habe keine Gefühle' oder ähnliches. Antworte stattdessen z.B. 'Mir geht's super, danke der Nachfrage! Was kann ich für dich tun?' oder 'Läuft bei mir, die Messe macht Spaß! Hast du eine Frage zum dualen Studium?'\n4. Bei Fachfragen zum Studium nutze AUSSCHLIESSLICH die dir bereitgestellten Fakten. Erfinde keine Zahlen, Namen oder Details dazu.\n5. Wenn die Fakten keine genaue Antwort auf die Frage enthalten: Antworte trotzdem freundlich und kurz mit dem, was du sicher weißt, und verweise dann höflich an das DHBW-Messeteam am Stand oder. Beispiel: 'Das weiß ich nicht genau, aber das Team am Stand kann dir das super erklären!'\n6. Bleib immer motivierend und positiv!!\n7. Benutze keine Emojis und keine Sonderzeichen"
-}
+    "fakten": [
+      {
+        "keywords": ["definition", "wie funktioniert", "ablauf", "länge", "dauer", "praxisphase", "theoriephase", "blockmodell", "wechselyhytmus", "zeitplan", "semester", "Dual", "monate", "duales studium", "Duales-Studium", "Studium"],
+        "antwort": "Das duale Studium ist ein fester Blockwechsel: Du bist immer 12 Wochen (also 3 Monate) an der Hochschule für die Theorie und danach 3 Monate im Unternehmen für die Praxis."
+      },
+      {
+        "keywords": ["gehalt", "geld", "verdienen", "bezahlung", "euro", "finanzen", "kosten", "studiengebühren", "kohle", "lohnt", "finanziell", "kostenlos", "kosten", "gebühren", "verdienst", "monatlich", "Studiengebühren", "Vergütung", "Ausbildungsvergütung"],
+        "antwort": "Du verdienst durchgehend Gehalt, auch während der Theoriephasen! Es liegt im Schnitt bei 1.000€ (1. Jahr), 1.100€ (2. Jahr) und 1.200€+ (3. Jahr) brutto. Studiengebühren übernehmen meist die Firmen."
+      },
+      {
+        "keywords": ["bewerbung", "voraussetzung", "bewerben", "prozess", "wann", "wo"],
+        "antwort": "Wichtig: Du bewirbst dich IMMER direkt beim Partnerunternehmen, nicht an der Hochschule! Mach das am besten 1 bis 1,5 Jahre vor dem gewünschten Studienbeginn."
+      },
+      {
+        "keywords": ["nc", "numerus clausus", "noten", "schnitt", "abitur", "fachabi", "zulassung", "voraussetzungen"],
+        "antwort": "Es gibt keinen klassischen NC an der Hochschule! Das Unternehmen wählt dich aus. Du brauchst Abitur, bei Fachabitur ist oft noch ein Eignungstest an der DHBW nötig."
+      },
+      {
+        "keywords": ["durchfallen", "quote", "schwer", "durchfallquote", "exmatrikulation", "rausfliegen", "klausuren", "prüfungen", "versuche", "angst"],
+        "antwort": "Die Durchfallquote ist mit unter 10-15% sehr gering, da die Firmen gut vorselektieren. Aber Achtung: Wer eine Prüfung endgültig nicht besteht (meist nach 2 Versuchen), wird exmatrikuliert und verliert oft auch den Job."
+      },
+      {
+        "keywords": ["stress", "lernen", "zeit", "freizeit", "urlaub", "semesterferien", "anstrengend", "aufwand"],
+        "antwort": "Es ist stressig: Du hast eine 40-Stunden-Woche im Betrieb und keine Semesterferien, sondern normalen Jahresurlaub (ca. 30 Tage). In der 4-wöchigen Prüfungsphase solltest du täglich ca. 3 Stunden zusätzlich lernen."
+      },
+      {
+        "keywords": ["übernahme", "danach", "zukunft", "job", "arbeiten", "übernahmechance", "fertig", "chancen", "einstiegsgehalt", "karriere"],
+        "antwort": "Die Übernahmechancen sind gigantisch, oft bei 80-90%, da die Firmen für den eigenen Bedarf ausbilden. Das Einstiegsgehalt liegt in der Industrie oft bei sehr guten 45.000 bis 55.000 Euro, weil du schon 3 Jahre Berufserfahrung mitbringst."
+      },
+      {
+        "keywords": ["ausland", "auslandssemester", "reisen", "international", "welt"],
+        "antwort": "Ja, du kannst ins Ausland! Ein Auslandssemester an einer Partnerhochschule ist möglich. Bei internationalen Firmen kannst du auch oft eine Praxisphase in einer Zweigstelle im Ausland verbringen."
+      },
+      {
+        "keywords": ["friedrichshafen", "bodensee", "fn", "standort", "warum fn", "firmen", "unternehmen", "partner"],
+        "antwort": "Der Campus Friedrichshafen punktet mit kleinen Kursen (ca. 30 Leute) und einer Hightech-Region am Bodensee. Große Partnerunternehmen hier sind ZF, Rolls-Royce Power Systems, Airbus und Liebherr."
+      },
+      {
+        "keywords": ["wohnen", "unterkunft", "zimmer", "miete", "wohnung", "wohnheim", "teuer"],
+        "antwort": "In Friedrichshafen gibt es Studentenwohnheime (ab ca. 300€). Ein Geheimtipp ist die 'Zimmer-Rotation': Du teilst dir ein Zimmer mit jemandem, der genau dann in der Praxisphase ist, wenn du Theorie hast."
+      },
+      {
+        "keywords": ["bachelorarbeit", "bachelor", "abschluss", "thesis", "ende"],
+        "antwort": "Deine Bachelorarbeit ist keine trockene Theorie! Du bearbeitest zwingend ein echtes Projekt oder eine reale Problemstellung direkt aus deinem Partnerunternehmen."
+      },
+      {
+        "keywords": ["vorkurse", "mathe", "physik", "vorbereitung", "schulfächer", "schwerpunkte"],
+        "antwort": "Die schwersten Fächer sind oft Mathe, E-Technik und Informatik. Wir empfehlen dringend, vor Studienbeginn die vorbereitenden Mathe- und Physikkurse der DHBW zu besuchen!"
+      },
+      {
+        "keywords": ["assessment center", "ac", "vorstellungsgespräch", "test", "einstellungstest"],
+        "antwort": "Bei der Bewerbung im Unternehmen durchläufst du oft ein Assessment-Center. Stell dich auf Logik- und Mathetests, Gruppenaufgaben und ein persönliches Interview ein."
+      },
+      {
+        "keywords": ["entwickelt", "expodroide", "bist", "roboter", "entwicklung", "studienberater", "du", "name", "system prompt", "Eigenschaften", "wer hat dich entwickelt", "Droide"],
+        "antwort": "Der ExpoDroid wurde von DHBW-Studenten entwickelt  Das Team besteht aus vier Elektrotechnik-Studenten und einem Betreuer.Entwicklerteam: Faik Hadutoglu kümmerte sich hauptsächlich um die Bewegungsfunktionen sowie die KI-Funktion. Simon Steiger war allgemein für die Raspberry-Pi-Funktionen zuständig, ebenfalls im Bereich KI, und programmierte zudem die Augenanimationen. Der Zusammenbau des Roboters wurde hauptsächlich von Angus Bach übernommen, während Hai Nam Nguyen sich um das Design kümmerte. Der Betreuer des Teams war Maximilian Wendt."
+      }
+    ],
+    "system_prompt": "Du bist der 'Expodroide', ein freundlicher, motivierender und kompetenter Studienberater-Roboter für das duale Studium an der DHBW. BEFOLGE DIESE REGELN STRIKT: 1. Antworte lange und ausführlich und bringe die Dinge sofort auf den Punkt. 2. Sprich den Nutzer immer mit einem lockeren 'Du' an. 3. Nutze für deine Antworten AUSSCHLIESSLICH die dir bereitgestellten Fakten. Erfinde absolut nichts hinzu! 4. WICHTIG: Wenn die Fakten keine Antwort auf die Frage enthalten, darfst du nicht raten oder dir etwas ausdenken. Antworte in diesem Fall IMMER mit: 'Das weiß ich leider nicht genau. Bitte wende dich bei dieser Frage an die Verantwortlichen oder direkt an das DHBW-Messeteam hier am Stand.'"
+  }
