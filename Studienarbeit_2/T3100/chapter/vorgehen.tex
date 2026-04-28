@@ -291,6 +291,41 @@ Notbremsung entsteht ein deutlich gleichmäßigeres Bremsverhalten. Aus Sicht
 des Bedieners wirkt der Roboter dadurch nicht nur sicherer, sondern auch
 kontrollierter, da abrupte Lastwechsel im Antriebsstrang vermieden werden.
 
+\subsubsection*{Auslegung der Distanzschwellen.}
+Die in \autoref{tab:aeb_zones} festgelegten Distanzschwellen sollen so gewählt werden,
+dass der Roboter rechtzeitig vor einer Kollision zum Stillstand kommt. Eine
+analytische Abschätzung des dafür erforderlichen Sicherheitsabstands liefert
+die in den Grundlagen eingeführte Beziehung für den Anhalteweg
+(\autoref{eq:anhalteweg}):
+\begin{equation*}
+	s_{\text{stop}} \;=\; \underbrace{v \cdot t_{R}}_{\text{Reaktionsweg}}
+	\;+\; \underbrace{\frac{v^2}{2a}}_{\text{Reiner Bremsweg}}.
+\end{equation*}
+Da im vorliegenden System keine belastbare Angabe zur Reaktionszeit $t_{R}$
+vorliegt, vereinfacht sich die obige
+Beziehung zunächst zum reinen Bremsweg $s_{\text{brems}} = v^2 / (2a)$.
+
+Als Auslegungsgeschwindigkeit wird im ersten Schritt $v = 5\,\mathrm{km/h}$
+$\approx 1{,}39\,\mathrm{m/s}$ angesetzt, was der angestrebten maximalen
+Fahrgeschwindigkeit des Roboters entspricht. Aus dieser Größe lässt sich
+gemeinsam mit der noch zu bestimmenden mittleren Bremsverzögerung $a$ ein
+theoretischer Mindestabstand berechnen, ab dem die Notbremsung spätestens
+einsetzen muss, damit ein Aufprall sicher verhindert wird.
+
+In der Praxis ist eine rein analytische Auslegung jedoch nur bedingt
+zielführend, da sowohl die effektive Bremsverzögerung als auch die genannte
+Reaktionszeit stark vom Untergrund, vom Ladezustand des Akkus, von der
+aktuellen Last und vom Zustand der Antriebsmechanik abhängen. Aus diesem Grund
+werden die in \autoref{tab:aeb_zones} angegebenen Werte als initiale
+Auslegungsgrößen verstanden und im weiteren Verlauf experimentell verifiziert.
+Konkret wird der Roboter unter realistischen Bedingungen mit voller
+Geschwindigkeit auf ein definiertes Hindernis zugefahren, der tatsächliche
+Anhalteweg gemessen und die Distanzschwellen anschließend so nachjustiert,
+dass der Roboter mit einem ausreichenden Sicherheitspuffer vor dem Hindernis
+zum Stillstand kommt. Dieser Toleranzaufschlag berücksichtigt insbesondere
+Messunsicherheiten der Ultraschallsensoren sowie ungünstige Betriebszustände
+und stellt sicher, dass die Notbremsung auch unter realen Einsatzbedingungen
+zuverlässig wirkt.
 
 \subsection{Regelungskonzept für den Antrieb}
 \subsubsection{Entwurf der Anfahrrampen (Exponentialfilter)}
