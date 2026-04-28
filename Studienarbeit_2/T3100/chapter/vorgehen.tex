@@ -34,11 +34,263 @@
 \subsubsection{Logik-Entwurf der ``Speak-Through''-Funktion}
 
 % --- FAIK ---
-\section{Entwurf der Steuerungsalgorithmen (Faik)}
-\subsection{Sicherheitslogik und Hinderniserkennung}
-\subsubsection{Konzept der 3-Zonen-Ultraschallüberwachung}
-\subsubsection{Definition der Fahr- und Bremsmodi}
-\subsubsection{Anforderungsanalyse: Sicherheitslogik und Hinderniserkennung}
+%\section{Entwurf der Steuerungsalgorithmen und Sicherheitslogik (Faik)}
+%Nach der Bewertung des aktuellen Stands des Roboters durch Tests und mithilfe der vorherigen Anforderungsanalyse wurde festgestellt dass der Roboter sich unkontroliert bewegt wenn der roboter kein kontakt meht zu Kontroller oder zu Empfänger hat um diese Sicherheitslücken zu decken wurden konzepte etwickelt.
+%\subsubsection*{Anforderungsanalyse: Sicherheitslogik}
+%
+%%hier als Tabelle schrieben
+%Sicherheitsanforderungen (Safety)
+%REQ-201 Fail-Safe Wird kein Fahrsignal erkannt, muss der Roboter
+%selbstständig anhalten.
+%Priorität: High
+%REQ-203 Hinderniserkennung Der Roboter soll bei Hindernissen automatisch anhalten
+%Low
+%
+%Außer diesen 2 Anforderungen die shcon in der ersten entewicklungsphase entwickelt wurden, wurde noch eine Schwäche festgestllt für den fall dass nicht wenn der empfänger kein signal sendet sondern wenn der kontroller ausgeht in dem Fall sendet der EMpfänger niedrigsten Signall 1100\footnote{Debugging Ergebnisse} was die höchste geschwindigkeit rückwerts bedeutet deswegen sollte ein neue Anforderung formuliert werden wie 
+%
+%%hier als Tabelle schrieben
+%REQ-206 Fail-Safe  2 Wird der Signal vom Kontroller abbricht (Empfänger aktiv) soll der roboter fehlerhafte signale vom emfänger ignorieren und still stehen
+%Priorität: High
+%\subsection{Sicherheitslogik}
+%es müssen 2 Sicherheitsfunktionen entewickelt werden erst für die kontaktabbruch vom empfänger und eins vom Kontroller. dies Könnte mit eine bestätigung gemacht werden dass wenn signale empfangen werden man immer mit true false bestätigt und wenn der signal für einen definierten zeitraum nicht kommt überchriebt man die geschwindigkeitspins 0 und for die kontaktabbruch vom kontroller kann man am ende if else schleife benutzen wenn man 1100 hat als speedsignal was der Fall ist wenn kontroller aus ist und empänger trzdem signale sendert.
+%\subsection{Konzept der 3-Zonen-Ultraschallüberwachung}
+%Trotz kontrolierbare Funktionen können unvorhersehbare Fälle auftreten (zb kind läuft vor dem roboter oder man sieht etwas nicht was vor dem roboter ist deswegen könnte man AEB (autoomatic emertgency break)funktion integrieren. dafür werden 3 Ultraschallsensoren benutzt die die vorderen Bereich des Roboters decken. Für die beste platzierug wurden die modelle auf matlab visuell simuliert(\footnote{Für Produktspezifikationen siehe: \url{} https://joy-it.net/de/products/SEN-US01
+%	Simulationscode unter: \url{} https://github.com/faikhadutoglu/ExpoDroid/blob/main/Documentation/Ultraschall 
+%	}) wie man auf dem bild erkennen kann (siehe Bild )hat linke platzeirunbg vorteil: Einfaches Design nachteil: -Bis zu 50 cm große Blindfläche dierekt an den ecken des Körpers vom roboter . 2. Konzept hat die Vorteile: +Einfaches Design 
+%+ kleine Blindfläche währen die nachtiele : -Störsignale für Notbremse ab ca. 30 cm von objekten die nicht auf der route vom roboter liegen aber noch in dem winkel und reichweie von äußeren sensoren.  und für letztes konzept auf der rechten seite sindf vorteile : + kleine Blindfläche
+%+weniger Störsignale
+%+wichtige Bereiche werden von 3 Sensoren gleichzeitig gedeckt
+%wärend nachteile .... sind
+%-etwa komplexer design (->3D Gehäuse)
+%und je anch zeit ressourcen sollte man am besten 2. oder 3. Konzept wählen 
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.3\linewidth]{images/ultraschallplatzierung.png}
+%	\caption{}{}
+%	\label{fig:ultraschallplatzierung}
+%\end{figure}
+%
+%Außerdem kann man die AEB funktion smoother machen indem man 3-4 unterschiedliche disnatzbereiche  vordefiniert und man die geschwindigkeit je nach bereich veerringert
+%
+%% Als Tabelle überischtlich
+% zb Beriech Name - Entfernung - Faktor (der mit Geschwindigkeit multimpliziert wird)
+% 1. beriech 0-10 cm 0 (Notbremse)
+% 2. Bereich 10-25 0.2 (stark verlangsamt)
+% 3. Bereich 25-50 0.4 
+% 4. Bereich 50-100 0.7(leicht verlangsamt)
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=0.3\linewidth]{images/notbremse1.png}
+% 	\caption{}{}
+% 	\label{fig:notbremse1}
+% \end{figure}
+% 
+% 
+% 
+% so erreicht man ein smoother AEB 
+%
+
+
+
+LEER
+
+
+
+% --- FAIK ---
+\section{Entwurf der Steuerungsalgorithmen und Sicherheitslogik (Faik)}
+
+Bei der Bewertung des aktuellen Entwicklungsstands hat sich in praktischen
+Tests gezeigt, dass sich der Roboter unter bestimmten Bedingungen unkontrolliert
+bewegt. Insbesondere dann, wenn die Verbindung zwischen Controller und
+Empfänger oder zwischen Empfänger und Mikrocontroller abreißt, kann es zu
+ungewollten Fahrbewegungen kommen. Diese Beobachtung deckt eine
+sicherheitskritische Lücke auf, die durch die bisher formulierten Anforderungen
+nicht vollständig abgedeckt wird. Im Rahmen der vorliegenden
+Sicherheitsbetrachtung werden daher gezielte Konzepte entwickelt, um den
+Roboter in solchen Ausnahmesituationen zuverlässig in einen sicheren Zustand
+zu überführen.
+
+\subsubsection*{Anforderungsanalyse: Sicherheitslogik}
+
+Bereits in der ersten Entwicklungsphase wurden zwei grundlegende
+Sicherheitsanforderungen formuliert (siehe \autoref{tab:safety_req_initial}).
+REQ-201 verlangt, dass der Roboter selbstständig anhält, sobald kein gültiges
+Fahrsignal mehr empfangen wird, während REQ-203 eine automatische Bremsung
+beim Erkennen von Hindernissen vorsieht.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|p{6.5cm}|c|}
+		\hline
+		\textbf{ID} & \textbf{Name} & \textbf{Beschreibung} & \textbf{Priorität} \\
+		\hline
+		REQ-201 & Fail-Safe & Wird kein Fahrsignal erkannt, muss der Roboter
+		selbstständig anhalten. & High \\
+		\hline
+		REQ-203 & Hinderniserkennung & Der Roboter soll bei Hindernissen automatisch
+		anhalten. & Low \\
+		\hline
+	\end{tabular}
+	\caption{Bestehende Sicherheitsanforderungen aus der ersten Entwicklungsphase.}
+	\label{tab:safety_req_initial}
+\end{table}
+
+Im Verlauf der Tests wurde ein zusätzliches Fehlerszenario identifiziert, das
+durch die bisherigen Anforderungen nicht erfasst wird. Während REQ-201 den
+Fall behandelt, dass der Empfänger überhaupt kein Signal mehr an den
+Mikrocontroller weitergibt, blieb der Fall eines ausgeschalteten Controllers bei
+weiterhin aktivem Empfänger bislang unberücksichtigt. In diesem Zustand sendet
+der Empfänger -- entgegen der intuitiven Erwartung -- nicht etwa kein Signal,
+sondern dauerhaft einen Pulswert von etwa $1100\,\mu\mathrm{s}$\footnote{Ergebnis
+	eigener Debugging-Messungen am seriellen Monitor.}, was im Geschwindigkeitskanal
+der maximalen Rückwärtsgeschwindigkeit entspricht. Ohne zusätzliche Absicherung
+würde der Roboter in diesem Fall mit voller Geschwindigkeit rückwärts
+beschleunigen, sobald der Bediener den Controller ausschaltet. Aus dieser
+Beobachtung leitet sich eine ergänzende Sicherheitsanforderung ab
+(\autoref{tab:safety_req_new}).
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|p{9cm}|c|}
+		\hline
+		\textbf{ID} & \textbf{Name} & \textbf{Beschreibung} & \textbf{Priorität} \\
+		\hline
+		REQ-206 & Fail-Safe~2 & Bei einem Signalabbruch des Controllers (Empfänger
+		weiterhin aktiv) sollen fehlerhafte Signale des Empfängers ignoriert und der
+		Roboter im Stillstand gehalten werden. & High \\
+		\hline
+	\end{tabular}
+	\caption{Ergänzende Sicherheitsanforderung zur Absicherung des
+		Controller-Ausfalls.}
+	\label{tab:safety_req_new}
+\end{table}
+
+\subsection{Sicherheitslogik}
+
+Aus den oben formulierten Anforderungen ergeben sich zwei voneinander
+unabhängige Sicherheitsfunktionen, die parallel implementiert werden müssen.
+Die erste Funktion adressiert den Verbindungsabbruch zwischen Empfänger und
+Mikrocontroller, die zweite den Ausfall des Controllers bei aktivem Empfänger.
+
+Für die Erkennung eines Empfängerausfalls wird in jedem Verarbeitungszyklus
+geprüft, ob ein gültiges Pulssignal innerhalb des erwarteten Wertebereichs
+eingelesen werden konnte. Das Ergebnis dieser Prüfung wird in einem booleschen
+Statusflag festgehalten und zusätzlich der Zeitpunkt der letzten erfolgreichen
+Messung zwischengespeichert. Sobald über einen definierten Zeitraum kein
+gültiges Signal mehr eintrifft, werden die Geschwindigkeitsausgänge
+softwareseitig auf einen neutralen Wert überschrieben, sodass der Roboter
+zwangsweise zum Stillstand kommt.
+
+Die Absicherung gegen einen Controllerausfall erfolgt im Anschluss an die
+reguläre Auswertung der Geschwindigkeitssignale. Hierfür wird der charakteristische
+Fehlerwert von etwa $1100\,\mu\mathrm{s}$ am Ende der Verarbeitungskette
+explizit abgefragt. Liegt der eingelesene Pulswert innerhalb eines schmalen
+Toleranzbandes um diesen Wert, werden die berechneten Motorsignale verworfen
+und durch Nullwerte ersetzt. Auf diese Weise lässt sich der typische
+"`Vollgas-rückwärts"'-Effekt eines abgeschalteten Controllers zuverlässig
+unterdrücken.
+
+\subsection{Konzept der 3-Zonen-Ultraschallüberwachung}
+
+Auch bei einwandfrei funktionierender Steuerung lassen sich nicht alle
+Gefahrensituationen allein durch das Reaktionsvermögen des Bedieners
+beherrschen. Insbesondere unvorhersehbare Ereignisse, etwa ein plötzlich vor den
+Roboter laufendes Kind oder ein vom Bediener nicht einsehbares Hindernis,
+erfordern eine automatische Absicherung. Aus diesem Grund wird der Roboter um
+eine Notbremsfunktion (Automatic Emergency Braking, AEB) erweitert, die den
+vorderen Bewegungsbereich kontinuierlich überwacht.
+
+Die Überwachung erfolgt durch drei Ultraschallsensoren, deren Erfassungskegel
+den vorderen Bereich des Roboters möglichst lückenlos abdecken sollen. Um eine
+geeignete Sensoranordnung zu finden, wurden mehrere Varianten vorab in MATLAB
+visuell simuliert und hinsichtlich Abdeckung, verbleibender Blindflächen und
+potenzieller Störsignale miteinander verglichen\footnote{Produktspezifikationen
+	des verwendeten Sensors: \url{https://joy-it.net/de/products/SEN-US01}. Der
+	zugehörige Simulationscode ist im Repository hinterlegt:
+	\url{https://github.com/faikhadutoglu/ExpoDroid/blob/main/Documentation/Ultraschall}.}.
+Eine Übersicht der drei untersuchten Konzepte zeigt
+\autoref{fig:ultraschallplatzierung}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{images/ultraschallplatzierung.png}
+	\caption{Vergleich der drei untersuchten Sensoranordnungen in der
+		MATLAB-Simulation. Links und Mitte: parallele Ausrichtung der drei Sensoren
+		mit unterschiedlichem seitlichen Abstand. Rechts: zusätzliche Neigung der
+		äußeren Sensoren um $7^\circ$ nach innen.}
+	\label{fig:ultraschallplatzierung}
+\end{figure}
+
+Das erste Konzept (links) zeichnet sich durch einen besonders einfachen
+mechanischen Aufbau aus, weist jedoch direkt an den vorderen Ecken des
+Roboterkörpers eine Blindfläche von bis zu $50\,\mathrm{cm}$ auf. Genau in
+diesem Bereich könnten niedrige Hindernisse oder Personen unbemerkt bleiben,
+weshalb dieses Konzept aus sicherheitstechnischer Sicht nur eingeschränkt
+empfehlenswert ist. Das zweite Konzept (Mitte) behält den einfachen Aufbau
+bei, reduziert die Blindfläche jedoch deutlich, indem die äußeren Sensoren
+weiter nach außen versetzt werden. Als Nachteil sind hier vermehrt Störsignale
+ab etwa $30\,\mathrm{cm}$ zu erwarten, da die äußeren Sensoren auch Objekte
+erfassen, die seitlich neben der eigentlichen Fahrtrichtung liegen und für die
+Notbremsung eigentlich nicht relevant wären. Das dritte Konzept (rechts)
+kombiniert die Vorteile der beiden vorherigen Varianten: Die Blindfläche wird
+nochmals verkleinert, gleichzeitig sinkt die Rate an Störsignalen, und
+besonders kritische Bereiche unmittelbar vor dem Roboter werden von allen drei
+Sensoren gleichzeitig erfasst. Diese Redundanz erhöht die Zuverlässigkeit der
+Hinderniserkennung spürbar. Erkauft wird dieser Gewinn allerdings durch einen
+höheren mechanischen Aufwand, da die Sensoren in einem speziell konstruierten,
+3D-gedruckten Gehäuse angeordnet werden müssen.
+
+In Abwägung dieser Vor- und Nachteile bietet sich abhängig vom verbleibenden
+Zeit- und Fertigungsbudget entweder das zweite oder das dritte Konzept als
+bevorzugte Lösung an. Während das zweite Konzept einen pragmatischen
+Kompromiss darstellt, liefert das dritte Konzept das beste sicherheitstechnische
+Ergebnis.
+
+Über die reine Notbremsung hinaus lässt sich das Fahrverhalten deutlich
+harmonischer gestalten, wenn die Reaktion des Roboters nicht binär (Fahrt oder
+Vollbremsung), sondern in mehreren Abstufungen erfolgt. Dazu werden vier
+vordefinierte Distanzbereiche eingeführt, denen jeweils ein Skalierungsfaktor
+für die Geschwindigkeit zugeordnet ist (\autoref{tab:aeb_zones}). In jedem
+Verarbeitungszyklus wird die aktuell gemessene Distanz dem entsprechenden
+Bereich zugeordnet und die Sollgeschwindigkeit mit dem zugehörigen Faktor
+multipliziert. Auf diese Weise verlangsamt sich der Roboter beim Annähern an
+ein Hindernis allmählich und kommt erst im unmittelbaren Nahbereich vollständig
+zum Stillstand.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|l|c|l|}
+		\hline
+		\textbf{Bereich} & \textbf{Entfernung} & \textbf{Faktor} & \textbf{Verhalten} \\
+		\hline
+		1 & $0$--$10\,\mathrm{cm}$  & $0{,}0$ & Notbremse / Stillstand \\
+		\hline
+		2 & $10$--$25\,\mathrm{cm}$ & $0{,}2$ & stark verlangsamt \\
+		\hline
+		3 & $25$--$50\,\mathrm{cm}$ & $0{,}4$ & verlangsamt \\
+		\hline
+		4 & $50$--$100\,\mathrm{cm}$ & $0{,}7$ & leicht verlangsamt \\
+		\hline
+	\end{tabular}
+	\caption{Distanzabhängige Geschwindigkeitsfaktoren der AEB-Funktion.}
+	\label{tab:aeb_zones}
+\end{table}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/notbremse1.png}
+	\caption{Visualisierung der distanzabhängigen Geschwindigkeitsanpassung. Der
+		Ultraschallsensor erfasst Hindernisse vor dem Roboter und reduziert die
+		Geschwindigkeit zonenweise, bis im Nahbereich automatisch eine Vollbremsung
+		ausgelöst wird.}
+	\label{fig:notbremse1}
+\end{figure}
+
+Durch die Kombination aus mehrstufiger Geschwindigkeitsanpassung und finaler
+Notbremsung entsteht ein deutlich gleichmäßigeres Bremsverhalten. Aus Sicht
+des Bedieners wirkt der Roboter dadurch nicht nur sicherer, sondern auch
+kontrollierter, da abrupte Lastwechsel im Antriebsstrang vermieden werden.
+
 
 \subsection{Regelungskonzept für den Antrieb}
 \subsubsection{Entwurf der Anfahrrampen (Exponentialfilter)}
