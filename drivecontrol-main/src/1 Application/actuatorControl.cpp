@@ -33,10 +33,10 @@
 
 // Ultraschall-Parameter
 #define ULTRASONIC_TIMEOUT_US 30000 // 30ms für max. 5m Reichweite
-#define DISTANCE_STOP_CM   10       // Unter 10cm: Stopp
-#define DISTANCE_SLOW_1_CM 25       // Unter 25cm: Faktor 0.2
-#define DISTANCE_SLOW_2_CM 50       // Unter 50cm: Faktor 0.4
-#define DISTANCE_SLOW_3_CM 100      // Unter 100cm: Faktor 0.7
+#define DISTANCE_STOP_CM   40       // Unter 10cm: Stopp
+#define DISTANCE_SLOW_1_CM 41       // Unter 25cm: Faktor 0.2
+#define DISTANCE_SLOW_2_CM 43       // Unter 50cm: Faktor 0.4
+#define DISTANCE_SLOW_3_CM 45      // Unter 100cm: Faktor 0.7
 
 // Winkfunktion-Parameter
 #define WAVE_ARM_UP_ANGLE          120 // Arm hochgehoben
@@ -115,6 +115,7 @@ static float measureDistanceAndGetSpeedFactor(){
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
 
+
     long duration = pulseIn(echoPin, HIGH, ULTRASONIC_TIMEOUT_US);
     if(duration == 0) return 999.0; // Kein Echo = weit weg
     return duration * 0.034f / 2.0f; // cm
@@ -122,16 +123,21 @@ static float measureDistanceAndGetSpeedFactor(){
 
   // Alle 3 Sensoren messen
   float frontDist = measureDistance(PIN_ULTRASONIC_FRONT_TRIG, PIN_ULTRASONIC_FRONT_ECHO);
+  delay(10); // Kurze Pause zwischen den Messungen.
   float leftDist  = measureDistance(PIN_ULTRASONIC_LEFT_TRIG,  PIN_ULTRASONIC_LEFT_ECHO);
+  delay(10);
   float rightDist = measureDistance(PIN_ULTRASONIC_RIGHT_TRIG, PIN_ULTRASONIC_RIGHT_ECHO);
+  delay(10);
 
   // Minimum-Distanz finden (kritischster Sensor)
   float minDistance = min(frontDist, min(leftDist, rightDist));
 
   // Debug-Ausgabe
-  Serial.print(" US-F:"); Serial.print(frontDist);
-  Serial.print(" L:");     Serial.print(leftDist);
-  Serial.print(" R:");     Serial.print(rightDist);
+  Serial.print(" frontDist:"); Serial.print(frontDist);
+  Serial.print(" leftDist:");     Serial.print(leftDist);
+  Serial.print(" rightDist:");     Serial.print(rightDist);
+  Serial.println("\n"); //um auf die nächste Zeile zu gehen Serial.println(); und 
+
 
   // Faktor bestimmen
   float factor = 1.0f;
@@ -144,6 +150,8 @@ static float measureDistanceAndGetSpeedFactor(){
   } else if(minDistance <= DISTANCE_SLOW_3_CM){
     factor = 0.7f;
   }
+
+Serial.print("factor: "); Serial.print(factor);   
 
   return factor;
 }
@@ -362,6 +370,7 @@ void actuatorControllerForwardSignals(){
     }
   }
 
+
   // --- Winkbefehle aus RC-Wert ableiten ---
   // Rechte Hand winkt, wenn Kanal ~1800 (hoher Puls)
   if(currentWavePulse >= WAVE_PULSE_RIGHT_MIN &&
@@ -399,7 +408,7 @@ void actuatorControllerForwardSignals(){
   // --- Fahrlogik wie im Original ---
   int baseSpeed = 0;
   if(currentSpeedPulse < 1450) {
-    baseSpeed = map(currentSpeedPulse, 1100, 1450, -70, 0);
+    baseSpeed = map(currentSpeedPulse, 1100, 1450, -50, 0);
   } else if(currentSpeedPulse > 1550) {
     baseSpeed = map(currentSpeedPulse, 1550, 1900, 0, 150);
   } else {
@@ -408,9 +417,9 @@ void actuatorControllerForwardSignals(){
 
   int steering = 0;
   if(currentSteeringPulse < 1450) {
-    steering = map(currentSteeringPulse, 1000, 1450, -100, 0);
+    steering = map(currentSteeringPulse, 1100, 1450, -100, 0);
   } else if(currentSteeringPulse > 1550) {
-    steering = map(currentSteeringPulse, 1550, 2000, 0, 100);
+    steering = map(currentSteeringPulse, 1550, 1900, 0, 100);
   }
 
   int leftMotorSpeed  = baseSpeed;
@@ -454,8 +463,24 @@ void actuatorControllerForwardSignals(){
     filteredRightMotorSpeed = rightMotorSpeed;
   }
 
-  int finalLeftMotorSpeed  = (int)filteredLeftMotorSpeed;
-  int finalRightMotorSpeed = (int)filteredRightMotorSpeed;
+      int finalLeftMotorSpeed; 
+      int finalRightMotorSpeed;
+
+
+
+  // Failsafe: Empfänger sendet ~1100 µs, wenn Controller aus ist.
+  // Toleranz, da Empfänger selten exakt 1100 sendet (eher 1095–1105).
+    if(!signalValid || currentSpeedPulse <= 1110) {
+        finalLeftMotorSpeed  = 0;
+        finalRightMotorSpeed = 0;
+    }
+    else {
+        finalLeftMotorSpeed  = (int)filteredLeftMotorSpeed;
+        finalRightMotorSpeed = (int)filteredRightMotorSpeed;
+    }
+
+        //int finalLeftMotorSpeed  = (int)filteredLeftMotorSpeed;
+        //int finalRightMotorSpeed = (int)filteredRightMotorSpeed;
 
   // Motor 1 (Links)
   if(finalLeftMotorSpeed > 0) {
@@ -496,23 +521,24 @@ void actuatorControllerForwardSignals(){
   //Serial.print(currentWavePulse);
   //Serial.print(" | Received: ");
   //Serial.println(receivedWave ? "Ja" : "Nöö");
-Serial.print("Lenkung (Pin ");
-  Serial.print(PIN_SPEED_RECEIVED_RC);
-  Serial.print("): ");
-  Serial.print(currentSteeringPulse);
+  //Neue debuggungsausgabe für alle Kanäle
+  //Serial.print("Lenkung (Pin ");
+  //Serial.print(PIN_SPEED_RECEIVED_RC);
+  //Serial.print("): ");
+  //Serial.print(currentSteeringPulse);
   
-  Serial.print("   |   Speed (Pin ");
-  Serial.print(PIN_AILERON_RECEIVED_RC);
-  Serial.print("): ");
-  Serial.print(currentSpeedPulse);
+  //Serial.print("   |   Speed (Pin ");
+  //Serial.print(PIN_AILERON_RECEIVED_RC);
+  //Serial.print("): ");
+  //Serial.print(currentSpeedPulse);
   
-  Serial.print("   |   Winkfunktion (Pin ");
-  Serial.print(PIN_FLAP_RECEIVED_RC);
-  Serial.print("): ");
-  Serial.print(currentWavePulse);
+  //Serial.print("   |   Winkfunktion (Pin ");
+  //Serial.print(PIN_FLAP_RECEIVED_RC);
+  //Serial.print("): ");
+  //Serial.print(currentWavePulse);
   
-  Serial.print("   |   Signal gueltig: ");
-  Serial.println(signalValid ? "JA" : "NEIN");
+  //Serial.print("   |   Signal gueltig: ");
+  //Serial.println(signalValid ? "JA" : "NEIN");
 
 }
 
