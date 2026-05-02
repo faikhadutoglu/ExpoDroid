@@ -45,6 +45,7 @@ a
 Die Regelungstechnik beschäftigt sich mit der gezielten Beeinflussung dynamischer Systeme, um gewünschte Sollwerte zu erreichen und unerwünschte Systemzustände zu vermeiden\cite{Loose.2022}. In sicherheitskritischen Anwendungen wie autonomen Fahrzeugen spielen Sicherheitssysteme eine zentrale Rolle, da sie durch geeignete Filterung und Begrenzung von Steuersignalen die Stabilität und Betriebssicherheit gewährleisten.
 
 \subsection{Signalverarbeitung und Filterung}
+\label{cha:Signalverarbeitung}
 Bei der Verarbeitung von Sensorsignalen oder Steuerbefehlen in interaktiven Systemen treten häufig Störungen auf. Um diese unerwünschten hochfrequenten Anteile zu dämpfen und das gewünschte Signal passieren zu lassen, wird meistens ein Tiefpassfilter erster Ordnung eingesetzt \cite{Casiez.2012}. Dieses Verfahren ist in der Signalverarbeitung weit verbreitet und entspricht mathematisch der einfachen exponentiellen Glättung (Exponential Smoothing) \cite{Casiez.2012}. Diese Funktion kann daher auch für die Regelung der Geschwindigkeit verwendet werden, um eine sanftere Beschleunigung zu erzielen.
 
 \subsubsection*{Mathematische Beschreibung}

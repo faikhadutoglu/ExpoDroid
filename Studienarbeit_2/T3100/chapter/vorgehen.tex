@@ -97,7 +97,7 @@ LEER
 
 
 % --- FAIK ---
-\section{Entwurf der Steuerungsalgorithmen und Sicherheitslogik (Faik)}
+\section{Entwurf der Sicherheitslogik und Signalverarbeitung(Faik)}
 
 Bei der Bewertung des aktuellen Entwicklungsstands hat sich in praktischen
 Tests gezeigt, dass sich der Roboter unter bestimmten Bedingungen unkontrolliert
@@ -110,7 +110,7 @@ Sicherheitsbetrachtung werden daher gezielte Konzepte entwickelt, um den
 Roboter in solchen Ausnahmesituationen zuverlässig in einen sicheren Zustand
 zu überführen.
 
-\subsubsection*{Anforderungsanalyse: Sicherheitslogik}
+\subsection{Anforderungsanalyse: Sicherheitslogik}
 
 Bereits in der ersten Entwicklungsphase wurden zwei grundlegende
 Sicherheitsanforderungen formuliert (siehe \autoref{tab:safety_req_initial}).
@@ -204,8 +204,7 @@ Die Überwachung erfolgt durch drei Ultraschallsensoren, deren Erfassungskegel
 den vorderen Bereich des Roboters möglichst lückenlos abdecken sollen. Um eine
 geeignete Sensoranordnung zu finden, wurden mehrere Varianten vorab in MATLAB
 visuell simuliert und hinsichtlich Abdeckung, verbleibender Blindflächen und
-potenzieller Störsignale miteinander verglichen\footnote{Produktspezifikationen
-	des verwendeten Sensors: \url{https://joy-it.net/de/products/SEN-US01}. Der
+potenzieller Störsignale miteinander verglichen\footnote{Der
 	zugehörige Simulationscode ist im Repository hinterlegt:
 	\url{https://github.com/faikhadutoglu/ExpoDroid/blob/main/Documentation/Ultraschall}.}.
 Eine Übersicht der drei untersuchten Konzepte zeigt
@@ -279,7 +278,7 @@ zum Stillstand.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/notbremse1.png}
-	\caption{Visualisierung der distanzabhängigen Geschwindigkeitsanpassung. Der
+	\caption{KI Visualisierung der distanzabhängigen Geschwindigkeitsanpassung. Der
 		Ultraschallsensor erfasst Hindernisse vor dem Roboter und reduziert die
 		Geschwindigkeit zonenweise, bis im Nahbereich automatisch eine Vollbremsung
 		ausgelöst wird.}
@@ -308,7 +307,7 @@ Beziehung zunächst zum reinen Bremsweg $s_{\text{brems}} = v^2 / (2a)$.
 Als Auslegungsgeschwindigkeit wird im ersten Schritt $v = 5\,\mathrm{km/h}$
 $\approx 1{,}39\,\mathrm{m/s}$ angesetzt, was der angestrebten maximalen
 Fahrgeschwindigkeit des Roboters entspricht. Aus dieser Größe lässt sich
-gemeinsam mit der noch zu bestimmenden mittleren Bremsverzögerung $a$ ein
+gemeinsam mit der noch zu bestimmenden mittleren Bremsverzögerung\footnote{$a \;=\; \frac{v^2}{2 \cdot s_{\text{Bremsweg\_gemessen}}}$} $a$ ein
 theoretischer Mindestabstand berechnen, ab dem die Notbremsung spätestens
 einsetzen muss, damit ein Aufprall sicher verhindert wird.
 
@@ -327,7 +326,48 @@ Messunsicherheiten der Ultraschallsensoren sowie ungünstige Betriebszustände
 und stellt sicher, dass die Notbremsung auch unter realen Einsatzbedingungen
 zuverlässig wirkt.
 
-\subsection{Regelungskonzept für den Antrieb}
-\subsubsection{Entwurf der Anfahrrampen (Exponentialfilter)}
-\subsubsection{Geschwindigkeitsbegrenzung (Vorwärts vs. Rückwärts)}
-\subsubsection{Anforderungsanalyse: Regelungstechnik für den Antrieb}
+\subsection{Not-Aus-Schalter als mechanische Sicherheit}
+
+Trotz der beschriebenen softwareseitigen Sicherheitsfunktionen wurde ergänzend
+geplant, einen mechanischen Not-Aus-Schalter auf der Oberfläche des Roboters
+zu integrieren. Ein solcher Schalter ist ein rastender Drucktaster, der im
+unbetätigten Zustand den Stromkreis geschlossen hält. Wird er gedrückt, öffnen
+die internen Kontakte mechanisch und unterbrechen damit den Stromfluss unmittelbar \autocite{Buerklin.2026} (siehe Abb. \ref{fig:notschalter} ) - unabhängig vom Systemzustand der Software. Beim Roboter ist
+er so in den Schaltkreis eingebunden, dass er gezielt die Versorgungsleitungen
+zwischen den H-Brücken und den Antriebsmotoren trennt. Auf diese Weise ergänzt
+der Schalter die softwarebasierten Fail-Safe-Mechanismen um eine von der
+Steuerungselektronik vollständig unabhängige Sicherungsebene, die auch bei
+einem Totalversagen der Firmware oder der Stromversorgung des Mikrocontrollers
+zuverlässig wirkt. 
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/notschalter.png}
+	\caption{Funktionsprinzip eines rastenden Not-Aus-Drucktasters.\autocite{Dadi.2025}}
+	\label{fig:notschalter}
+\end{figure}
+
+Der Not-Aus-Taster soll am besten hinten rechts auf der Gehäuseoberseite positioniert werden, da sich direkt darunter die Batteriebox befindet. Diese räumliche Nähe verkürzt die Kabelwege zur Stromversorgung erheblich. Dadurch wird der Verkabelungsaufwand minimiert, interner Bauraum gespart und das Risiko von Leitungsfehlern gesenkt, was die Zuverlässigkeit und Sicherheit des Systems insgesamt erhöht.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/Taste12.jpeg}
+	\caption{KI Visualisierung von der geplanten Platzierung des Not-Aus-Tasters hinten rechts.}
+	\label{fig:notschalterposition}
+\end{figure}
+
+\subsection{Exponentialfilter zur Beschleunigungsglättung}
+
+Wie in den Grundlagen erläutert (siehe \ref{cha:Signalverarbeitung}), ermöglicht der
+Exponentialfilter eine sanfte, schrittweise Annäherung an einen Zielwert,
+anstatt diesen sprunghaft zu erreichen. Dieses Verfahren soll auf die
+Geschwindigkeitssignale beider Antriebsmotoren angewendet werden, um abrupte
+Beschleunigungssprünge zu vermeiden und ein gleichmäßigeres Fahrverhalten zu
+erzielen. Dabei wird der Filter ausschließlich bei zunehmender Geschwindigkeit
+aktiv geschaltet -- beim Bremsen hingegen wird der Zielwert direkt übernommen,
+damit Sicherheitsfunktionen wie die AEB-Notbremsung ohne Verzögerung wirken
+können. Der Glättungsfaktor $\alpha$ lässt sich nicht analytisch herleiten, da
+er maßgeblich vom subjektiv wahrnehmbaren Fahrverhalten abhängt. Er wird daher
+experimentell bestimmt, indem verschiedene Werte im realen Fahrbetrieb
+erprobt und hinsichtlich Sanftheit und Reaktionszeit bewertet werden.
