@@ -19,9 +19,9 @@
 //#define PIN_FLAP_RECEIVED_ESP 2
 
 //Signals from remote control
-#define PIN_SPEED_RECEIVED_RC 32 // Für die Geschwindigkeitsregelung (NEIN LENKUNG!) schaltplan nicht angepasst
+#define PIN_SPEED_RECEIVED_RC 32 // ( LENKUNG!) schaltplan angepasst
 //#define PIN_ELEVATOR_RECEIVED_RC 
-#define PIN_AILERON_RECEIVED_RC 34 //Für die Lenkungsregelung (Nein FÜR SPEED!!) schaltplan nicht angepasst
+#define PIN_AILERON_RECEIVED_RC 34 //(FÜR SPEED!!) schaltplan angepasst
 //#define PIN_RUDDER_RECEIVED_RC 36
 #define PIN_FLAP_RECEIVED_RC 35 // Für Winkfunktion
 
@@ -48,19 +48,19 @@
 //EXPODROID PINS
 // BTS7960 Module 1 LINKS
 #define PIN_BTS1_RPWM 33 // Forward PWM (bleibt gleich, ist sicher) schaltplan nicht angepasst
-#define PIN_BTS1_LPWM 26 // NEU (ersetzt Pin 0) chaltplan nicht angepasst
+#define PIN_BTS1_LPWM 26 //  (ersetzt Pin 0) Schaltplan angepasst!
 
 // BTS7960 Module 2 RECHTS
-#define PIN_BTS2_RPWM 13 // NEU (ersetzt Pin 1) chaltplan nicht angepasst
-#define PIN_BTS2_LPWM 14 // NEU (ersetzt Pin 3) chaltplan nicht angepasst
+#define PIN_BTS2_RPWM 13 //  (ersetzt Pin 1) Schaltplan angepasst
+#define PIN_BTS2_LPWM 14 //  (ersetzt Pin 3) Schaltplan angepasst
 
 // Ultraschall-Sensoren (SEN-US01)
 #define PIN_ULTRASONIC_FRONT_TRIG 23 // Vorne Mitte
 #define PIN_ULTRASONIC_FRONT_ECHO 19
 #define PIN_ULTRASONIC_LEFT_TRIG 21 // Links vorne
 #define PIN_ULTRASONIC_LEFT_ECHO 22
-#define PIN_ULTRASONIC_RIGHT_TRIG 25 // Rechts vorne (ALT: war Pin 15) schaltplan nicht angepasst
-#define PIN_ULTRASONIC_RIGHT_ECHO 36 // Rechts vorne (ALT: war Pin 25) schaltplan nicht angepasst
+#define PIN_ULTRASONIC_RIGHT_TRIG 25 // Rechts vorne (ALT: war Pin 15) schaltplan angepasst
+#define PIN_ULTRASONIC_RIGHT_ECHO 36 // Rechts vorne (ALT: war Pin 25) schaltplan angepasst
 
 // Servo-Pins für Winkfunktion
 #define PIN_SHOULDER_SERVO_RIGHT 18 // Rechte Schulter (Arm)
