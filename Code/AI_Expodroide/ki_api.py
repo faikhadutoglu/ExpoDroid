@@ -90,7 +90,7 @@ GEMINI_MODEL = "gemini-3-flash-preview" #für 5 euro kann man damit ca 2k anfrag
 MODELL          = "gemma3:1b"   # Ollama-Fallback-Modell
 MAX_MEMORY      = 3
 MAX_TOKENS      = 150
-GEMINI_MAX_TOKENS = 800 
+GEMINI_MAX_TOKENS = 300 
 TEMPERATUR      = 0.1
 OLLAMA_URL      = "http://localhost:11434/api/generate"
 OLLAMA_TIMEOUT  = 120
@@ -118,36 +118,28 @@ PIPER_MODEL = os.path.join(SCRIPT_DIR, "de_DE-thorsten-medium.onnx")
 #  KURZE FILLER + FAKTEN
 # ─────────────────────────────────────────────────────────────────────────────
 FILLER_SAETZE = [
-    "Moment, ich denke kurz nach. In der Zwischenzeit erzaehl ich dir was.",
-    "Gute Frage! Lass mich einen Augenblick ueberlegen. Apropos:",
-    "Hmm, das sortiere ich gerade. Wusstest du folgendes?",
-    "Einen Augenblick bitte. Das erinnert mich an einen interessanten Fakt.",
-    "Entschuldige dass Roboter mit wenig Rechenleistung nicht ausgestorben sind. In der Zwischenzeit: Wusstest du folgendes?",
-    "Kurz nachdenken bitte. Hast du folgendes schon gewusst?",
-    "Moment, ich schau mal in meinen Speicher.",
+    "Moment, ich denke kurz nach. Okayy, los geht's!",
+    "Gute Frage! Lass mich einen Augenblick ueberlegen. Alles klar",
+    "Hmm, das sortiere ich gerade. die Antwort kommt gleich.",
+    "Einen Augenblick bitte. ich durchsuche gerade meine Daten.",
+    "Entschuldige dass Roboter mit wenig Rechenleistung nicht ausgestorben sind. ",
+    "Moment,Kurz nachdenken bitte. Okay die Antwort ist gleich da.",
+    "Moment, ich schau mal in meinen Speicher. Okay, hier ist die Antwort.",
 ]
 
 DHBW_FAKTEN_UND_WITZE = [
-    "Die DHBW ist die erste duale Hochschule Deutschlands und wurde 2009 offiziell als Hochschule anerkannt.",
-    "Die DHBW hat neun Standorte in Baden-Wuerttemberg, darunter Ravensburg, Stuttgart und Mannheim.",
-    "An der DHBW studieren ueber 34.000 Studierende gleichzeitig in Theorie- und Praxisphasen.",
-    "Der Campus Friedrichshafen gehoert zur DHBW Ravensburg und liegt direkt am Bodensee.",
-    "Die DHBW kooperiert mit ueber 9000 Partnerunternehmen in ganz Deutschland.",
-    "Das duale Prinzip der DHBW geht auf die Berufsakademie Baden-Wuerttemberg von 1974 zurueck.",
-    "Ein duales Studium an der DHBW dauert in der Regel drei Jahre und endet mit einem Bachelor.",
-    "Die DHBW bietet ueber 100 Studienrichtungen in den Bereichen Technik, Wirtschaft und Sozialwesen an.",
-    "Viele DHBW-Studierende uebernehmen nach dem Abschluss direkt eine Stelle in ihrem Partnerunternehmen.",
-    "Die DHBW Ravensburg ist besonders bekannt fuer ihre Studiengaenge im Bereich Maschinenbau und Mechatronik.",
-    "Warum moegen Ingenieure keine Natur? Zu viele Bugs!",
+    "Apropo Wustesst du folgendes: Die DHBW ist die erste duale Hochschule Deutschlands und wurde 2009 offiziell als Hochschule anerkannt.",
+    "Apropo Wustesst du folgendes:Die DHBW hat neun Standorte in Baden-Wuerttemberg, darunter Ravensburg, Stuttgart und Mannheim.",
+    "Apropo Wustesst du folgendes:An der DHBW studieren ueber 34.000 Studierende gleichzeitig in Theorie- und Praxisphasen.",
+    "Apropo Wustesst du folgendes:Der Campus Friedrichshafen gehoert zur DHBW Ravensburg und liegt direkt am Bodensee.",
+    "Apropo Wustesst du folgendes:Die DHBW kooperiert mit ueber 9000 Partnerunternehmen in ganz Deutschland.",
+    "Apropo Wustesst du folgendes:Viele DHBW-Studierende uebernehmen nach dem Abschluss direkt eine Stelle in ihrem Partnerunternehmen.",
+    "In der zwischen Zeit erzähl ich dir ein Witz: Warum moegen Ingenieure keine Natur? Zu viele Bags!",
     "Es gibt zehn Arten von Menschen. Die, die Binaer verstehen, und die, die es nicht verstehen.",
-    "Warum programmiert kein Informatiker im Wald? Zu viele Logs.",
     "Diese Fakten und Witze Funktion wurde in der Mechatronik Vorlesung programmiert.",
     "Wie viele Ingenieure braucht man, um eine Gluehbirne zu wechseln? Keinen, das ist ein Hardware-Problem.",
-    "Warum war der Computer kalt? Er hatte sein Windows offen gelassen.",
-    "Was sagt ein Regler zum anderen? Bleib stabil, mein Freund.",
-    "Warum lieben Mechatroniker den Regen? Endlich Feedback von oben.",
     "Die Entwickler wollten hier Werbung schalten, aber das fand ich doof. Stattdessen gibt es Witze!",
-    "Warum hat der Roboter den Job bekommen? Er hatte die besten Referenzen, alle im ROM gespeichert.",
+    
 ]
 
 
@@ -865,8 +857,8 @@ def _speak_answer_progressively(stream_state: StreamState, t_start: float) -> st
         else:
             time.sleep(0.15)
 
-        if (time.time() - t_start) > OLLAMA_TIMEOUT + 30:
-            print("[Timeout] Streaming dauerte zu lange, breche Ausgabe ab.")
+        if not stream_state.is_done and (time.time() - t_start) > OLLAMA_TIMEOUT + 30:
+            print("[Timeout] LLM antwortet nicht, breche ab.")
             rest = stream_state.text[spoken_upto:].strip()
             if rest:
                 speak(rest)
