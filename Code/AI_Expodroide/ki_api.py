@@ -695,7 +695,14 @@ def frage_phi_streaming(benutzer_eingabe, fakten_liste, system_instructions,
 # ─────────────────────────────────────────────────────────────────────────────
 #  SATZ-EXTRAKTION FUER PROGRESSIVE TTS
 # ─────────────────────────────────────────────────────────────────────────────
-_SENTENCE_END = re.compile(r'[.!?]\s+')
+_ABBREVIATIONS = {
+    'z', 'd', 'u', 's', 'b', 'h', 'a', 'i', 'o',
+    'dr', 'prof', 'hr', 'fr', 'nr', 'st',
+    'bzw', 'usw', 'etc', 'ggf', 'evtl', 'inkl', 'zzgl',
+    'ca', 'vgl', 'sog', 'max', 'min', 'kap', 'jhd',
+}
+
+_PERIOD_SPACE = re.compile(r'[.!?]+\s+')
 
 
 def extract_complete_sentences(text: str, already_upto: int):
@@ -703,18 +710,34 @@ def extract_complete_sentences(text: str, already_upto: int):
     if not remaining.strip():
         return [], already_upto
 
-    matches = list(_SENTENCE_END.finditer(remaining))
-    if not matches:
+    real_ends = []
+    for m in _PERIOD_SPACE.finditer(remaining):
+        end_pos = m.end()
+
+        word_match = re.search(r'(\w+)$', remaining[:m.start()])
+        if word_match and word_match.group(1).lower() in _ABBREVIATIONS:
+            continue
+
+        if end_pos < len(remaining):
+            nxt = remaining[end_pos]
+            if not (nxt.isupper() or nxt.isdigit()):
+                continue
+
+        real_ends.append(end_pos)
+
+    if not real_ends:
         return [], already_upto
 
-    last_end = matches[-1].end()
-    complete_part = remaining[:last_end]
-
-    sentences = re.split(r'(?<=[.!?])\s+', complete_part)
-    sentences = [s.strip() for s in sentences if s.strip()]
+    last_end = real_ends[-1]
+    sentences = []
+    prev = 0
+    for pos in real_ends:
+        s = remaining[prev:pos].strip()
+        if s:
+            sentences.append(s)
+        prev = pos
 
     return sentences, already_upto + last_end
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 #  DIALOG-TURN
