@@ -6,9 +6,46 @@
 
 % --- ANGUS ---
 \section{Mechanische Konstruktionsprinzipien (Angus)}
+
+\subsection{Additive Fertigung mittels 3D-Druck}
+
+Die additive Fertigung, umgangssprachlich als 3D-Druck bezeichnet, ist ein Fertigungsverfahren, bei dem Bauteile schichtweise aus einem digitalen 3D-Modell aufgebaut werden. Im Gegensatz zu konventionellen subtraktiven Fertigungsverfahren, bei denen Material beispielsweise durch Fräsen oder Drehen entfernt wird, entsteht das Bauteil ausschließlich durch das gezielte Auftragen von Material. Aufgrund der hohen Gestaltungsfreiheit und der vergleichsweise geringen Herstellungskosten wird die additive Fertigung insbesondere im Prototypenbau, der Produktentwicklung sowie bei Kleinserien eingesetzt.
+
+
+
+Im Rahmen dieser Arbeit kommt das Fused Deposition Modeling (FDM)-Verfahren zum Einsatz. Dabei wird ein thermoplastischer Kunststoff in Form eines Filaments einer beheizten Düse zugeführt und aufgeschmolzen. Das geschmolzene Material wird entlang der zuvor berechneten Druckbahnen auf einer Bauplattform abgelegt und erstarrt nach dem Austritt aus der Düse. Nachdem eine Schicht fertiggestellt wurde, bewegt sich die Bauplattform oder der Druckkopf um die eingestellte Schichthöhe, sodass die nächste Materialschicht aufgetragen werden kann. Dieser Vorgang wird solange wiederholt, bis das Bauteil vollständig aufgebaut ist.
+
+Das Ausgangsmaterial liegt je nach Druckverfahren in unterschiedlichen Formen vor. Beim im Rahmen dieser Arbeit verwendeten FDM-Verfahren wird das Material als Filament auf Spulen bereitgestellt und dem Drucker kontinuierlich zugeführt. Je nach Anwendungsfall stehen zahlreiche Werkstoffe mit unterschiedlichen Eigenschaften zur Verfügung. Zu den am häufigsten verwendeten Materialien zählen thermoplastische Kunststoffe wie PLA oder PETG. Darüber hinaus existieren Filamente mit Kohle- oder Glasfaserverstärkung, die eine höhere Steifigkeit und Festigkeit ermöglichen. Neben Kunststoffen können durch andere additive Fertigungsverfahren auch Metalle, Keramiken oder Beton verarbeitet werden, wodurch sich das Einsatzspektrum von der Prototypenfertigung bis hin zur Luft- und Raumfahrt sowie zum Bauwesen erstreckt.
+
+Ein wesentlicher Vorteil der additiven Fertigung liegt in ihrer hohen konstruktiven Freiheit. Selbst komplexe Geometrien, innenliegende Strukturen oder funktionsintegrierte Bauteile können ohne zusätzlichen Fertigungsaufwand hergestellt werden. Darüber hinaus sind keine speziellen Werkzeuge oder Formen erforderlich, sodass Änderungen am CAD-Modell schnell umgesetzt und neue Bauteile innerhalb kurzer Zeit gefertigt werden können. Dies ist insbesondere während der Entwicklung von Prototypen von großem Vorteil. Gleichzeitig entsteht im Vergleich zu subtraktiven Fertigungsverfahren deutlich weniger Materialabfall, da ausschließlich das tatsächlich benötigte Material verarbeitet wird. Die Möglichkeiten des 3D-Drucks werden dabei hauptsächlich durch die Eigenschaften des verwendeten Werkstoffs sowie den verfügbaren Bauraum des Druckers begrenzt.
+
+Moderne FDM-Drucker ermöglichen zudem den Mehrmaterial- oder Mehrfarbendruck. Dadurch können unterschiedliche Farben oder Materialien innerhalb eines Bauteils kombiniert werden. Neben optischen Vorteilen können so auch funktionale Eigenschaften, beispielsweise durch den Einsatz flexibler und starrer Materialien in einem Bauteil, realisiert werden.
+
+Neben den Vorteilen weist das Verfahren jedoch auch einige Einschränkungen auf. Die mechanischen Eigenschaften eines FDM-Bauteils sind aufgrund des schichtweisen Aufbaus richtungsabhängig. Insbesondere die Festigkeit senkrecht zur Schichtrichtung fällt häufig geringer aus als innerhalb einer Schicht. Zusätzlich können Maßabweichungen, Oberflächenrauheiten sowie Verzug durch thermische Spannungen auftreten. Je nach Bauteilgeometrie sind außerdem Stützstrukturen erforderlich, die nach dem Druck entfernt werden müssen und den Nachbearbeitungsaufwand erhöhen. Für größere Stückzahlen ist das Verfahren aufgrund der vergleichsweise langen Fertigungszeiten zudem wirtschaftlich weniger geeignet als konventionelle Fertigungsmethoden.
+
+
+
 \subsection{Stabilität bei mobilen Robotern}
 \subsubsection{Einfluss des Schwerpunkts und der Stützradposition}
 \subsubsection{Mechanik von Wechselakkusystemen}
+\subsection{Ultraschallsensoren}
+
+Ultraschallsensoren sind berührungslos arbeitende Sensoren, die zur Abstandsmessung und Objekterkennung eingesetzt werden. Aufgrund ihrer robusten Arbeitsweise und ihrer vergleichsweise geringen Kosten finden sie häufig Anwendung in mobilen Robotersystemen. Im Gegensatz zu optischen Sensoren ist ihre Funktion weitgehend unabhängig von Farbe oder Transparenz eines Objekts, wodurch auch Glas oder dunkle Oberflächen zuverlässig erkannt werden können.
+
+Das Messprinzip basiert auf der Aussendung und dem Empfang von Ultraschallwellen. Hierbei erzeugt ein piezoelektrischer Wandler einen kurzen Schallimpuls im Ultraschallbereich (Frequenzen oberhalb von 20\,kHz), der sich mit der Schallgeschwindigkeit in Luft ausbreitet. Trifft der Schall auf ein Hindernis, wird ein Teil der Schallwellen reflektiert und vom Sensor wieder empfangen. Aus der gemessenen Laufzeit zwischen Senden und Empfangen des Signals kann die Entfernung zum Objekt bestimmt werden.
+
+Die Distanzberechnung erfolgt nach dem Laufzeitverfahren und lässt sich durch folgende Gleichung beschreiben:
+
+\begin{equation}
+	s = \frac{c \cdot t}{2}
+	\label{eq:ultraschall}
+\end{equation}
+
+Dabei bezeichnet $s$ den Abstand zum Objekt, $c$ die Schallgeschwindigkeit in Luft und $t$ die gemessene Laufzeit des Ultraschallsignals. Der Faktor zwei berücksichtigt, dass der Schall sowohl den Hin- als auch den Rückweg zwischen Sensor und Objekt zurücklegt.
+
+Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messung weitgehend unabhängig von den optischen Eigenschaften eines Objekts erfolgt. Dadurch eignen sie sich insbesondere für Anwendungen mit wechselnden Lichtverhältnissen oder unterschiedlich beschaffenen Oberflächen. Gleichzeitig weisen Ultraschallsensoren einige Einschränkungen auf. So hängt die Schallgeschwindigkeit unter anderem von der Umgebungstemperatur ab, wodurch Messabweichungen entstehen können. Zudem können schräg ausgerichtete oder stark schallabsorbierende Oberflächen die Reflexion des Signals verringern und somit die Messgenauigkeit beeinflussen.
+
+%Im Rahmen dieser Arbeit werden Ultraschallsensoren zur Hinderniserkennung und Abstandsmessung des entwickelten Roboters eingesetzt. Die gemessenen Distanzen bilden eine wichtige Grundlage für die Kollisionsvermeidung sowie die Umfelderfassung und tragen somit wesentlich zur sicheren Navigation des Roboters bei.
 
 \subsection{Kinematik von Service-Roboter-Armen}
 \subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
