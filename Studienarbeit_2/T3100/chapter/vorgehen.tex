@@ -5,7 +5,7 @@
 
 % --- ANGUS ---
 \section{Konstruktives Design und Hardware-Layout (Angus)}
-\subsection{Konzept zur Stabilitätserhöhung}
+\subsection{Positionierung der treibenden Räder und des Stützrades}
 
 Wie in Abbildung~\ref{fig:fahrwerk} dargestellt, basiert der Roboter auf einem dreirädrigen Fahrwerk mit Differenzialantrieb. Während der vorherigen Studienarbeit stellte sich im praktischen Betrieb heraus, dass die ursprüngliche Position des einzelnen Vorderrads zu einer unzureichenden Standsicherheit führte. Das Vorderrad befand sich vergleichsweise nahe am Schwerpunkt des Roboters, wodurch das Stützpolygon nur eine geringe Ausdehnung aufwies. Seitliche Kräfte oder Gewichtsverlagerungen führten dazu, dass der Roboter zum Kippen neigte.
 
@@ -22,9 +22,119 @@ Aus diesem Grund wurde das Vorderrad im Rahmen der Weiterentwicklung deutlich we
 
 Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit nicht durchgeführt. Die Bewertung basiert daher auf praktischen Erprobungen während des Entwicklungsprozesses. Dabei zeigte sich, dass im Vergleich zur ursprünglichen Konstruktion deutlich größere Kräfte erforderlich waren, um den Roboter zum Kippen zu bringen. Darüber hinaus wirkte das Fahrverhalten insgesamt ruhiger und sicherer, wodurch sich die Eignung des Roboters für den vorgesehenen Einsatz auf Hochschulmessen verbesserte.
 
-\subsubsection{Positionierung der treibenden Räder und des Stützrades}
 \subsubsection{Entwurf der Notausbremse (Hardwareseitig)}
 
 \subsection{CAD-Entwicklung der Anbauteile}
-\subsubsection{Planung der Roboterarme und Schultergelenke}
+
+
+
+
+%################################
+
+\subsection{Planung der Roboterarme und Schultergelenke}
+
+
+Um dem Roboter ein humanoideres Erscheinungsbild zu verleihen und die Interaktion mit Messebesuchern zu verbessern, wurde die Integration von Armen in das Gesamtkonzept vorgesehen. Neben der rein optischen Funktion sollten die Arme einfache Bewegungen ausführen können, um Besucher beispielsweise durch Winkbewegungen zu begrüßen. Da der Roboter ausschließlich als Demonstrator für Hochschulmessen entwickelt wird, standen keine Manipulations- oder Greifaufgaben im Vordergrund. Ziel war daher eine Lösung, die den technischen Charakter des Roboters unterstreicht und gleichzeitig mit vertretbarem konstruktivem Aufwand umgesetzt werden kann.
+
+Für die Gestaltung der Arme wurden verschiedene Konzepte hinsichtlich Funktionalität, mechanischem Aufwand und ihrer Eignung für das Gesamtsystem betrachtet.
+
+\paragraph{Starre Roboterarme}
+
+Die einfachste Variante besteht aus fest montierten Armen ohne bewegliche Gelenke. Diese Lösung besitzt einen geringen Fertigungs- und Montageaufwand sowie eine hohe Stabilität. Da jedoch keinerlei Interaktion mit Besuchern möglich ist, erfüllt dieses Konzept die Anforderungen nur eingeschränkt.
+
+\paragraph{Einfach bewegliche Arme}
+
+Bei diesem Konzept verfügt jeder Arm über ein einzelnes motorisiertes Schultergelenk. Dadurch können einfache Bewegungen wie das Heben des Arms oder Winkbewegungen realisiert werden. Die Konstruktion erfordert lediglich einen Servomotor pro Arm und lässt sich problemlos in die Karosserie integrieren. Gleichzeitig bleibt der mechanische Aufbau übersichtlich und wartungsarm.
+
+\paragraph{Mehrgelenkige Roboterarme}
+
+Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe sowie das Greifen von Objekten. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter.
+
+Zur Auswahl des geeigneten Konzepts wurde eine vereinfachte Konzeptbewertung durchgeführt.
+
+\begin{table}[H]
+	\centering
+	\caption{Trade-off-Analyse der Armkonzepte}
+	\label{tab:tradeoff_arme}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{lccccc}
+		\toprule
+		\textbf{Kriterium} & \textbf{Gew.} &
+		\textbf{Starre Arme} &
+		\textbf{Schultergelenk} &
+		\textbf{Mehrgelenkig} \\
+		\midrule
+		Optische Wirkung          & 3 & 3 & 5 & 5 \\
+		Interaktionsmöglichkeit   & 5 & 1 & 5 & 5 \\
+		Mechanischer Aufwand      & 4 & 5 & 4 & 1 \\
+		Elektronischer Aufwand    & 3 & 5 & 4 & 1 \\
+		Fertigungsaufwand         & 3 & 5 & 4 & 1 \\
+		Wartungsfreundlichkeit    & 2 & 5 & 4 & 2 \\
+		Eignung für Messebetrieb  & 5 & 3 & 5 & 3 \\
+		\midrule
+		\textbf{Gesamtpunktzahl} &
+		&
+		\textbf{74} &
+		\textbf{97} &
+		\textbf{63} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+Auf Grundlage der Bewertung fiel die Entscheidung auf einen geraden Roboterarm mit einem motorisierten Schultergelenk. Dieses Konzept bietet einen guten Kompromiss zwischen Funktionalität, Fertigungsaufwand und optischer Wirkung. Gleichzeitig ermöglicht es einfache Gesten wie Winkbewegungen, wodurch die Interaktion mit Messebesuchern verbessert wird, ohne den konstruktiven Aufwand unnötig zu erhöhen.
+
+
+%################################
+\subsubsection{Konzept der Handgestaltung}
+
+Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach mittels additiver Fertigung herstellen lässt.
+
+Zur Auswahl des geeigneten Konzepts wurden verschiedene Möglichkeiten hinsichtlich ihres konstruktiven Aufwands, ihrer optischen Wirkung sowie ihrer Vereinbarkeit mit dem Gesamtdesign betrachtet.
+
+\paragraph{Angedeutete Finger}
+
+Die einfachste Variante besteht aus einer stilisierten Hand mit lediglich angedeuteten Fingern. Dieses Konzept ist besonders robust und einfach herzustellen, vermittelt jedoch nur eingeschränkt den Eindruck einer funktionalen Roboterhand.
+
+\paragraph{Humanoide Hand}
+
+Eine menschlich nachempfundene Hand besitzt einzelne Finger und orientiert sich an der Anatomie des Menschen. Diese kann sowohl als starres Bauteil als auch mit beweglichen Fingern ausgeführt werden. Insbesondere bewegliche Finger erfordern jedoch zahlreiche zusätzliche Gelenke, Servomotoren und komplexe Regelalgorithmen. Für den vorgesehenen Einsatzzweck bietet dieses Konzept daher keinen ausreichenden Mehrwert.
+
+\paragraph{Stilisierter Robotergreifer}
+
+Eine weitere Möglichkeit stellt ein stilisierter Robotergreifer dar, wie er häufig in industriellen Robotersystemen eingesetzt wird. Charakteristisch sind zwei oder drei markante Greiffinger mit klaren geometrischen Formen. Obwohl im vorliegenden Projekt keine Greiffunktion vorgesehen ist, vermittelt dieses Konzept den Eindruck einer funktionalen Roboterhand und fügt sich gleichzeitig harmonisch in das moderne Design des Roboters ein. Aufgrund der einfachen Geometrie eignet sich dieses Konzept besonders für die additive Fertigung und weist gleichzeitig eine hohe Stabilität auf.
+
+Zur Entscheidungsfindung wurden die Konzepte gegenübergestellt.
+
+\begin{table}[H]
+	\centering
+	\caption{Trade-off-Analyse der Handkonzepte}
+	\label{tab:tradeoff_hand}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{lccccc}
+		\toprule
+		\textbf{Kriterium} & \textbf{Gew.} &
+		\textbf{Angedeutete Finger} &
+		\textbf{Humanoide Hand} &
+		\textbf{Robotergreifer} \\
+		\midrule
+		Optische Wirkung          & 4 & 3 & 5 & 5 \\
+		Technischer Eindruck      & 4 & 2 & 4 & 5 \\
+		Fertigungsaufwand         & 4 & 5 & 1 & 4 \\
+		Mechanischer Aufwand      & 3 & 5 & 1 & 5 \\
+		Stabilität                & 4 & 5 & 3 & 5 \\
+		Integration ins Design    & 5 & 3 & 4 & 5 \\
+		Gewicht                   & 2 & 5 & 3 & 5 \\
+		\midrule
+		\textbf{Gesamtpunktzahl} &
+		&
+		\textbf{87} &
+		\textbf{70} &
+		\textbf{113} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Aufgrund der Gegenüberstellung fiel die Entscheidung auf einen stilisierten dreifingrigen Robotergreifer. Dieses Konzept vereint eine moderne technische Optik mit einer robusten Konstruktion und einem vergleichsweise geringen Fertigungsaufwand. Da keine Greiffunktion vorgesehen ist, konnten die Greifer als starre 3D-gedruckte Bauteile ausgeführt werden. Dadurch bleibt die Konstruktion leicht, stabil und fügt sich gleichzeitig harmonisch in das Gesamtdesign des Roboters ein.
+%################################
 \subsubsection{Design des Roboterkopfes (Kamera- \& Displayaufnahme)}

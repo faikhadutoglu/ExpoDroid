@@ -5,6 +5,32 @@
 \textit{Hier beschreibt jeder die theoretischen Konzepte, die für seine Aufgaben notwendig sind.}
 
 % --- ANGUS ---
+\subsection{Roboterarten}
+
+Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt.
+
+\subsubsection{Industrieroboter}
+
+Industrieroboter werden hauptsächlich in automatisierten Fertigungsprozessen eingesetzt. Typische Aufgaben sind Schweißen, Montieren, Lackieren oder Palettieren. Sie zeichnen sich durch eine hohe Wiederholgenauigkeit, Geschwindigkeit und Tragfähigkeit aus und arbeiten meist innerhalb abgeschirmter Sicherheitsbereiche. Aufgrund der hohen Kräfte und Geschwindigkeiten ist während des Betriebs in der Regel keine direkte Zusammenarbeit mit Menschen vorgesehen.
+
+\subsubsection{Kollaborative Roboter}
+
+Kollaborative Roboter, auch Cobots genannt, sind speziell für die direkte Zusammenarbeit mit Menschen entwickelt worden. Im Gegensatz zu klassischen Industrierobotern verfügen sie über Sicherheitsfunktionen wie Kraft- und Momentenbegrenzungen sowie Sensoren zur Personenerkennung. Dadurch können sie Arbeitsräume mit Menschen teilen und diese bei Montage- oder Handhabungsaufgaben unterstützen.
+
+\subsubsection{Mobile Roboter}
+
+Mobile Roboter besitzen die Fähigkeit, sich selbstständig oder ferngesteuert innerhalb ihrer Umgebung fortzubewegen. Je nach Einsatzgebiet kommen Räder, Ketten oder Laufmechanismen zum Einsatz. Typische Anwendungen finden sich in der Logistik, der Landwirtschaft, der Erkundung oder im Servicebereich. Die Navigation erfolgt häufig mithilfe verschiedener Sensoren wie Kameras, Laserscannern oder Ultraschallsensoren.
+
+\subsubsection{Humanoide Roboter}
+
+Humanoide Roboter orientieren sich hinsichtlich ihres Aufbaus an der menschlichen Anatomie. Sie verfügen häufig über einen Kopf, einen Oberkörper, Arme und Beine und können dadurch menschliche Bewegungen oder Gesten nachahmen. Ziel humanoider Roboter ist eine möglichst intuitive Interaktion mit Menschen. Bekannte Vertreter sind beispielsweise der Tesla Optimus oder der Atlas-Roboter von Boston Dynamics.
+
+\subsubsection{Demonstrations- und Serviceroboter}
+
+Demonstrations- und Serviceroboter dienen der Interaktion mit Menschen und übernehmen Informations-, Präsentations- oder Unterstützungsaufgaben. Im Vordergrund stehen hierbei weniger hohe Traglasten oder Präzision als vielmehr ein ansprechendes Erscheinungsbild, intuitive Bedienbarkeit und eine angenehme Mensch-Roboter-Interaktion. Aufgrund dieser Eigenschaften findet diese Roboterklasse häufig Anwendung auf Messen, in Museen oder im Bildungsbereich.
+
+Der im Rahmen dieser Arbeit entwickelte Roboter lässt sich als mobiler Demonstrationsroboter mit humanoiden Gestaltungselementen einordnen. Obwohl keine komplexen Manipulationsaufgaben vorgesehen sind, orientieren sich das äußere Erscheinungsbild sowie die geplanten Interaktionsmöglichkeiten an humanoiden Robotern. Gleichzeitig dient der Roboter als Demonstrationsplattform für verschiedene mechatronische und informationstechnische Systeme.
+
 \section{Mechanische Konstruktionsprinzipien (Angus)}
 
 \subsection{Additive Fertigung mittels 3D-Druck}
@@ -93,4 +119,14 @@ a
 
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
 
+\subsection{Trade-off-Analyse}
 
+Während der Entwicklung technischer Systeme existieren häufig mehrere mögliche Lösungsansätze, die unterschiedliche Vor- und Nachteile besitzen. Um eine nachvollziehbare und objektive Entscheidung treffen zu können, werden im Systems Engineering häufig sogenannte Trade-off-Analysen eingesetzt. Ziel dieser Methode ist es, verschiedene Konzepte anhand zuvor definierter Bewertungskriterien systematisch miteinander zu vergleichen.
+
+Zunächst werden die relevanten Bewertungskriterien festgelegt. Diese können beispielsweise Kosten, Fertigungsaufwand, Funktionalität, Zuverlässigkeit oder Wartungsfreundlichkeit umfassen. Anschließend erhält jedes Kriterium einen Gewichtungsfaktor, der dessen Bedeutung für das Gesamtsystem beschreibt. Kriterien mit hoher Relevanz werden stärker gewichtet als weniger wichtige Eigenschaften.
+
+Im nächsten Schritt werden die einzelnen Konzepte für jedes Bewertungskriterium auf einer einheitlichen Skala bewertet. Im Rahmen dieser Arbeit erfolgt die Bewertung auf einer Skala von 1 bis 5, wobei 1 die ungünstigste und 5 die günstigste Bewertung darstellt. Die gewichtete Punktzahl eines Kriteriums ergibt sich aus dem Produkt aus Bewertung und Gewichtungsfaktor.
+Die Gesamtpunktzahl eines Konzepts berechnet sich durch die Summe aller gewichteten Einzelbewertungen
+
+
+Durch dieses Verfahren lassen sich unterschiedliche Lösungsansätze transparent miteinander vergleichen. Gleichzeitig wird verhindert, dass Entscheidungen ausschließlich auf subjektiven Einschätzungen beruhen. 
