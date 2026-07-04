@@ -48,7 +48,7 @@ Bei diesem Konzept verfügt jeder Arm über ein einzelnes motorisiertes Schulter
 
 \paragraph{Mehrgelenkige Roboterarme}
 
-Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe sowie das Greifen von Objekten. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter.
+Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter.
 
 Zur Auswahl des geeigneten Konzepts wurde eine vereinfachte Konzeptbewertung durchgeführt.
 
@@ -88,7 +88,7 @@ Auf Grundlage der Bewertung fiel die Entscheidung auf einen geraden Roboterarm m
 %################################
 \subsubsection{Konzept der Handgestaltung}
 
-Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach mittels additiver Fertigung herstellen lässt.
+Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt.
 
 Zur Auswahl des geeigneten Konzepts wurden verschiedene Möglichkeiten hinsichtlich ihres konstruktiven Aufwands, ihrer optischen Wirkung sowie ihrer Vereinbarkeit mit dem Gesamtdesign betrachtet.
 
@@ -135,6 +135,16 @@ Zur Entscheidungsfindung wurden die Konzepte gegenübergestellt.
 	\end{tabular}
 \end{table}
 
-Aufgrund der Gegenüberstellung fiel die Entscheidung auf einen stilisierten dreifingrigen Robotergreifer. Dieses Konzept vereint eine moderne technische Optik mit einer robusten Konstruktion und einem vergleichsweise geringen Fertigungsaufwand. Da keine Greiffunktion vorgesehen ist, konnten die Greifer als starre 3D-gedruckte Bauteile ausgeführt werden. Dadurch bleibt die Konstruktion leicht, stabil und fügt sich gleichzeitig harmonisch in das Gesamtdesign des Roboters ein.
+Aufgrund der Gegenüberstellung fiel die Entscheidung auf einen stilisierten dreifingrigen Robotergreifer. Dieses Konzept vereint eine moderne technische Optik mit einer robusten Konstruktion und einem vergleichsweise geringen Fertigungsaufwand. 
+
+Der verwendete Robotergreifer wurde als handelsübliche Baugruppe inklusive Servomotor beschafft. Zur Integration in den Roboter wurde ein individuelles Adapterelement konstruiert und mittels additiver Fertigung hergestellt. Dieses verbindet den Greifer formschlüssig mit dem 3D-gedruckten Armsegment und gewährleistet eine stabile Befestigung.
 %################################
+
+\paragraph{Servoantrieb des Schultergelenks}
+
+Zur Realisierung der Schulterbewegung wurde ein handelsüblicher Hochleistungs-Servomotor eingesetzt. Dieser besitzt einen Stellbereich von bis zu $270^\circ$, wodurch der Roboterarm in einem ausreichend großen Winkelbereich bewegt werden kann. Für die vorgesehenen Bewegungsabläufe, wie das Anheben des Arms oder das Ausführen von Winkbewegungen, ist dieser Stellbereich vollständig ausreichend.
+
+Der eingesetzte Servomotor verfügt über ein maximales Stellmoment von 25\,kg\,cm. Dieser Wert beschreibt das maximal aufbringbare Drehmoment des Motors und darf nicht mit einer tatsächlichen Traglast verwechselt werden. Das verfügbare Drehmoment nimmt mit zunehmender Länge des Hebelarms entsprechend ab. Da der Roboterarm vollständig aus leichtem, additiv gefertigtem Kunststoff besteht und keine zusätzlichen Lasten bewegen muss, bietet der Servomotor ausreichend Leistungsreserven für einen zuverlässigen Betrieb.
+
+Zur Integration des Servomotors wurde im Schulterbereich eine passgenaue Aufnahme konstruiert und im 3D-Druck gefertigt. Dadurch konnte der Motor formschlüssig in die Armkonstruktion integriert werden und ermöglicht eine stabile Kraftübertragung zwischen Antrieb und Roboterarm.
 \subsubsection{Design des Roboterkopfes (Kamera- \& Displayaufnahme)}
