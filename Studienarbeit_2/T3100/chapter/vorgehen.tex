@@ -7,13 +7,21 @@
 \section{Konstruktives Design und Hardware-Layout (Angus)}
 \subsection{Konzept zur Stabilitätserhöhung}
 
-Wie in Abbildung~\ref{fig:fahrwerk} dargestellt, basiert der Roboter auf einem dreirädrigen Fahrwerk mit Differenzialantrieb. Während der vorherigen Studienarbeit stellte sich im praktischen Betrieb heraus, dass die ursprüngliche Position des einzelnen Vorderrads zu einer unzureichenden Standsicherheit führte. Das Vorderrad befand sich vergleichsweise nahe am Schwerpunkt des Roboters, wodurch das Stützpolygon nur eine geringe Ausdehnung aufwies. Bereits geringe seitliche Kräfte oder Gewichtsverlagerungen führten dazu, dass der Roboter zum Kippen neigte.
+Wie in Abbildung~\ref{fig:fahrwerk} dargestellt, basiert der Roboter auf einem dreirädrigen Fahrwerk mit Differenzialantrieb. Während der vorherigen Studienarbeit stellte sich im praktischen Betrieb heraus, dass die ursprüngliche Position des einzelnen Vorderrads zu einer unzureichenden Standsicherheit führte. Das Vorderrad befand sich vergleichsweise nahe am Schwerpunkt des Roboters, wodurch das Stützpolygon nur eine geringe Ausdehnung aufwies. Seitliche Kräfte oder Gewichtsverlagerungen führten dazu, dass der Roboter zum Kippen neigte.
 
 Grundsätzlich besitzt ein dreirädriges Fahrwerk den Vorteil, dass alle drei Räder jederzeit Bodenkontakt haben und somit keine Verspannungen durch unebene Auflageflächen entstehen. Die tatsächliche Standsicherheit hängt jedoch maßgeblich von der Geometrie des Stützpolygons sowie der Lage des Schwerpunkts ab. Je größer das durch die Radaufstandspunkte gebildete Stützpolygon ist und je zentraler sich der Schwerpunkt innerhalb dieses Bereichs befindet, desto höher ist die Kippsicherheit des Fahrzeugs.
 
 Aus diesem Grund wurde das Vorderrad im Rahmen der Weiterentwicklung deutlich weiter nach vorne verlegt. Dadurch vergrößerte sich der Abstand zwischen Vorder- und Hinterachse, wodurch sich gleichzeitig das Stützpolygon des Roboters vergrößerte. Diese konstruktive Änderung führte zu einer deutlich höheren Stabilität des Gesamtsystems.
 
+\begin{figure}[htbp]
+	\centering
+	\input{images/Räder_Anordnung_Test.tex}
+	\caption{Stützpolygon des ursprünglichen und des überarbeiteten Fahrwerks.}
+	\label{fig:fahrwerk}
+\end{figure}
+
 Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit nicht durchgeführt. Die Bewertung basiert daher auf praktischen Erprobungen während des Entwicklungsprozesses. Dabei zeigte sich, dass im Vergleich zur ursprünglichen Konstruktion deutlich größere Kräfte erforderlich waren, um den Roboter zum Kippen zu bringen. Darüber hinaus wirkte das Fahrverhalten insgesamt ruhiger und sicherer, wodurch sich die Eignung des Roboters für den vorgesehenen Einsatz auf Hochschulmessen verbesserte.
+
 \subsubsection{Positionierung der treibenden Räder und des Stützrades}
 \subsubsection{Entwurf der Notausbremse (Hardwareseitig)}
 
