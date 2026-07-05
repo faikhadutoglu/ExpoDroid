@@ -101,10 +101,59 @@ Im Rahmen dieser Arbeit wurde daher neben der technischen Umsetzung auch auf ein
 
 \subsection{Aktorik und Greifsysteme}
 
-\subsubsection{Funktionsweise und Ansteuerung von Servomotoren}
-a
-\subsubsection{Mechanik von Greifklauen}
-a
+\subsubsection{Funktionsweise und Ansteuerung von Servomotoren [PENDING READ]}
+
+Servomotoren gehören zu den am häufigsten eingesetzten Aktoren in der Robotik und Automatisierungstechnik. Sie ermöglichen eine präzise Positionierung von mechanischen Komponenten und werden insbesondere dann eingesetzt, wenn Winkelstellungen exakt angefahren und gehalten werden müssen. Im Gegensatz zu herkömmlichen Gleichstrommotoren besitzen Servomotoren eine integrierte Regelung, die eine kontinuierliche Überwachung der aktuellen Position ermöglicht. Dadurch eignen sie sich besonders für Anwendungen wie Roboterarme, Greifmechanismen oder automatisierte Fertigungsanlagen. \cite{Kollmorgen.2024}
+
+Ein typischer Modellbauservomotor besteht aus mehreren funktionalen Komponenten. Im Inneren befinden sich ein kleiner Gleichstrommotor, ein mehrstufiges Getriebe, ein Positionssensor sowie eine elektronische Regeleinheit. Der Gleichstrommotor erzeugt die eigentliche Drehbewegung. Da dessen Drehzahl sehr hoch und das abgegebene Drehmoment vergleichsweise gering ist, wird die Bewegung über ein Untersetzungsgetriebe übertragen. Das Getriebe reduziert die Drehzahl erheblich und erhöht gleichzeitig das verfügbare Drehmoment, sodass auch größere Lasten bewegt werden können.
+
+Zur Erfassung der aktuellen Position ist auf der Ausgangswelle ein Potentiometer angebracht. Dieses verändert seinen elektrischen Widerstand abhängig vom Drehwinkel der Welle. Die Elektronik im Servomotor vergleicht kontinuierlich den gemessenen Istwert mit dem von außen vorgegebenen Sollwert. Weicht die aktuelle Position vom Sollwert ab, wird der Motor entsprechend angesteuert, bis beide Werte übereinstimmen. Dieser geschlossene Regelkreis ermöglicht eine hohe Positioniergenauigkeit und sorgt dafür, dass die eingestellte Position auch unter Last gehalten wird.
+
+Die Ansteuerung eines Servomotors erfolgt üblicherweise über ein Pulsweitenmodulationssignal (PWM PENDING BEGRIFF). Dabei wird in regelmäßigen Zeitabständen ein Rechtecksignal übertragen, dessen Pulsbreite die gewünschte Winkelposition definiert. Im Modellbaubereich beträgt die Wiederholfrequenz typischerweise etwa 50 Hertz, wodurch alle 20 Millisekunden ein neuer Steuerimpuls gesendet wird. Eine Pulsbreite von ungefähr einer Millisekunde entspricht dabei meist der minimalen Endstellung des Servomotors. Eine Pulsbreite von etwa 1,5 Millisekunden positioniert die Ausgangswelle in der Mittelstellung, während zwei Millisekunden die maximale Endstellung anfahren. Je nach Hersteller können diese Werte geringfügig variieren. (PENDING QUELLE)
+
+Die Elektronik des Servomotors misst kontinuierlich die Dauer des eingehenden Steuerimpulses und berechnet daraus den gewünschten Sollwinkel. Anschließend wird der Motor solange betrieben, bis der Positionssensor denselben Winkel zurückmeldet. Wird während des Betriebs eine äußere Kraft auf die Abtriebswelle ausgeübt, erkennt die Regelung die Positionsabweichung und erzeugt automatisch ein Gegenmoment. Dadurch kann der Servomotor seine Position auch unter Belastung weitgehend konstant halten.
+
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/regelungservo.png}
+	\vspace{10pt}
+	\caption{Typisches Regelsystem von einem Servomotor. \cite{OSWOS.2024}}
+	\label{fig:Servo1}
+\end{figure}
+
+Der gezeigte Aufbau in der Abbildung \ref{fig:Servo1} stellt einen kaskadierten Regelkreis eines Servomotors dar, bei dem Position, Drehzahl und Strom in drei Ebenen geregelt werden. Der äußere Positionsregler erzeugt aus der Differenz zwischen Soll- und Ist‑Position einen Geschwindigkeitssollwert. Dieser wird im Geschwindigkeitsregler mit der gemessenen Drehzahl verglichen und in einen Stromsollwert überführt. Der innere Stromregler setzt diesen Sollwert über die Leistungsendstufe in das erforderliche Motordrehmoment um. Durch die Rückführung der jeweiligen Ist‑Größen entsteht ein präzises, dynamisches und robustes Regelungssystem, das die exakte Positionierung und Bewegung des Servomotors sicherstellt.
+
+In Robotersystemen werden Servomotoren häufig eingesetzt, um einzelne Gelenke oder Greifmechanismen zu bewegen. Aufgrund ihrer kompakten Bauweise, der integrierten Regelung und der einfachen elektrischen Ansteuerung eignen sie sich besonders für kleinere Roboterplattformen und Ausbildungsprojekte. Mikrocontroller wie Arduino, STM32 oder ESP32 besitzen spezielle Timerfunktionen, mit denen PWM Signale präzise erzeugt werden können. Dadurch lässt sich die gewünschte Position eines Servomotors mit geringem Programmieraufwand einstellen.
+
+Ein weiterer Vorteil besteht im vergleichsweise geringen Energieverbrauch. Da der Motor nur während einer Positionsänderung größere Leistungen aufnehmen muss, reduziert sich der Strombedarf im stationären Betrieb. Allerdings steigt der Strom deutlich an, wenn hohe Haltekräfte erforderlich sind oder mechanische Blockierungen auftreten. Deshalb muss die Spannungsversorgung ausreichend dimensioniert werden, insbesondere wenn mehrere Servomotoren gleichzeitig betrieben werden.
+
+Für den in dieser Studienarbeit verwendeten Robotergreifer wurde ein Standard Modellbauservomotor eingesetzt. Dieser übernimmt die Öffnungs und Schließbewegung der Greifklaue. Über das PWM Signal wird der gewünschte Öffnungswinkel vorgegeben. Die interne Regelung sorgt dafür, dass die Greifposition auch während des Haltens eines Objekts möglichst konstant bleibt. Dadurch kann der Greifer verschiedene Gegenstände sicher aufnehmen und wieder ablegen.
+
+Zusammenfassend stellen Servomotoren eine kostengünstige und präzise Lösung zur Positionierung beweglicher Komponenten dar. Durch ihre integrierte Regelung, die einfache Ansteuerung sowie das hohe Drehmoment bei geringer Baugröße sind sie für robotische Greifsysteme besonders geeignet.
+
+\subsubsection{Mechanik von Greifklauen [PENDING READ]}
+
+Greifklauen stellen das Endeffektor System eines Roboters dar und dienen der Aufnahme, dem Transport sowie dem Ablegen von Werkstücken oder anderen Objekten. Sie bilden die mechanische Schnittstelle zwischen dem Robotersystem und seiner Umgebung. Die Konstruktion einer Greifklaue richtet sich nach den Eigenschaften der zu handhabenden Objekte sowie nach den Anforderungen hinsichtlich Tragfähigkeit, Präzision und Beweglichkeit.
+
+Grundsätzlich bestehen Greifklauen aus einem tragenden Grundkörper, einem Antriebssystem sowie zwei oder mehreren Greiffingern. Die Greiffinger sind beweglich gelagert und werden über ein mechanisches Übertragungssystem synchron geöffnet oder geschlossen. Je nach Bauform kommen Zahnräder, Hebelmechanismen, Gestänge oder Gelenkkonstruktionen zum Einsatz. Ziel ist es, die Bewegung des Antriebs möglichst verlustarm auf die Greiffinger zu übertragen.
+
+Bei kleinen Robotergreifern wird häufig ein einzelner Servomotor verwendet. Dessen Drehbewegung wird über Hebel oder Zahnräder in eine gleichmäßige Bewegung beider Greiffinger umgesetzt. Durch diese Konstruktion bewegen sich die Finger spiegelbildlich zueinander, wodurch das zu greifende Objekt möglichst mittig aufgenommen wird. Eine symmetrische Kraftverteilung verbessert die Stabilität des Greifvorgangs und reduziert die Gefahr des Verrutschens.
+
+Die auf das Werkstück wirkende Greifkraft hängt von mehreren Faktoren ab. Entscheidend sind insbesondere das vom Servomotor bereitgestellte Drehmoment, die Übersetzung des Mechanismus sowie die Länge der Greiffinger. Je länger die Finger ausgeführt sind, desto geringer ist die maximal erreichbare Greifkraft an deren Spitze. Gleichzeitig vergrößert sich jedoch der mögliche Öffnungsbereich, wodurch auch größere Objekte aufgenommen werden können. Zwischen Greifkraft und Arbeitsbereich besteht somit ein konstruktiver Zielkonflikt.
+
+Ein weiterer wichtiger Aspekt ist die Reibung zwischen Greiffingern und Werkstück. Glatte Oberflächen führen häufig zu einer geringeren Haftreibung, wodurch höhere Klemmkräfte erforderlich werden. Deshalb werden Greiffinger häufig mit Gummi oder anderen elastischen Materialien beschichtet. Diese erhöhen den Reibungskoeffizienten und ermöglichen ein sicheres Greifen auch bei vergleichsweise kleinen Antriebskräften. Gleichzeitig schützen weiche Kontaktflächen empfindliche Werkstücke vor Beschädigungen.
+
+Neben der Greifkraft spielt die mechanische Stabilität der gesamten Konstruktion eine entscheidende Rolle. Während des Greifvorgangs wirken sowohl Druck als auch Biegekräfte auf die einzelnen Bauteile. Deshalb werden Greifklauen häufig aus Aluminiumlegierungen oder hochfesten Kunststoffen gefertigt. Diese Werkstoffe besitzen ein günstiges Verhältnis zwischen Eigengewicht und Festigkeit. Ein geringes Gewicht reduziert zusätzlich die Belastung der Robotergelenke und verbessert die Dynamik des Gesamtsystems.
+
+Die in dieser Studienarbeit eingesetzte Greifklaue besteht aus mehreren CNC gefertigten Aluminiumbauteilen, die über Schraubverbindungen und Gelenke miteinander verbunden sind. Die Bewegung der Greiffinger erfolgt über einen zentral angeordneten Servomotor. Durch die mechanische Kopplung werden beide Finger synchron bewegt. Diese Konstruktion ermöglicht einen gleichmäßigen Kraftaufbau sowie eine zuverlässige Zentrierung des aufgenommenen Objekts.
+
+Die maximale Greifkraft wird nicht ausschließlich durch den Servomotor bestimmt, sondern ebenfalls durch die mechanische Übersetzung des Greifmechanismus. Eine größere Untersetzung erhöht die übertragbare Kraft, reduziert jedoch gleichzeitig die Geschwindigkeit der Greifbewegung. Die Auslegung des Mechanismus stellt daher einen Kompromiss zwischen Dynamik und Belastbarkeit dar.
+
+Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steuerbarkeit. Da beide Greiffinger synchron bewegt werden, genügt häufig ein einziger Aktor zur vollständigen Betätigung des Greifers. Dies reduziert sowohl die Anzahl der benötigten Antriebskomponenten als auch den Steuerungsaufwand. Aus diesem Grund werden Parallelgreifer in zahlreichen industriellen Anwendungen sowie in Ausbildungs und Forschungsprojekten eingesetzt.
+
+Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
+
 \subsection{Elektronik-Design und EMV}
 a
 \subsubsection{Kabelmanagement und Signalintegrität}
