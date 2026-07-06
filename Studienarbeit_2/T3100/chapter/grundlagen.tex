@@ -165,8 +165,40 @@ a
 \subsection{TTS} %text to speech
 \subsection{STT}
 
+\subsection{Large Language Models}
+
+Large Language Models (LLMs) sind neuronale Sprachmodelle, die auf sehr großen Textmengen trainiert werden und dadurch in der Lage sind, natürlichsprachliche Eingaben zu verstehen und passende Antworten zu generieren. Im Gegensatz zu klassischen dialogbasierten Systemen, die auf fest definierten Entscheidungsbäumen oder regelbasierten Abläufen basieren, können LLMs flexibel auf unterschiedlich formulierte Fragen reagieren und kontextbezogene Antworten erzeugen. Dadurch ermöglichen sie eine natürliche und intuitive Kommunikation zwischen Mensch und Maschine.
+
+Die Antwortgenerierung erfolgt auf Grundlage statistischer Zusammenhänge, die das Modell während des Trainings erlernt hat. Dabei wird für jedes folgende Wort die wahrscheinlichste Fortsetzung des bisherigen Textes bestimmt. 
+
+\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
+Im Rahmen dieser Arbeit wird ein Large Language Model als Sprachassistenz für den entwickelten Roboter eingesetzt. Besucher können dem Roboter Fragen stellen oder einfache Gespräche führen, wodurch die Interaktion deutlich natürlicher wirkt als bei klassischen Sprachdialogsystemen mit vordefinierten Antwortmöglichkeiten. Das Sprachmodell dient dabei ausschließlich der Kommunikation mit den Besuchern und besitzt keinen direkten Zugriff auf sicherheitskritische Funktionen des Roboters. Aufgaben wie die Ansteuerung der Motoren, die Hinderniserkennung oder weitere Steuerungsfunktionen werden unabhängig vom Sprachmodell durch separate Hard- und Softwarekomponenten realisiert.
+
+\subsection{Halluzinationen von Large Language Models}
+
+Eine bekannte Eigenschaft von Large Language Models (LLMs) sind sogenannte Halluzinationen. Darunter versteht man die Generierung von Antworten, die sprachlich plausibel und überzeugend erscheinen, jedoch sachlich fehlerhaft, unvollständig oder frei erfunden sein können. Das Modell unterscheidet dabei nicht zwischen korrekten und falschen Aussagen, sondern erzeugt die statistisch wahrscheinlichste Wortfolge auf Grundlage der Eingabe und des zuvor erzeugten Kontexts.
+
+Halluzinationen können beispielsweise zur Ausgabe falscher Fakten, fehlerhafter Zusammenhänge oder nicht existierender Quellen führen. Insbesondere bei Fragestellungen außerhalb des Trainingswissens, mehrdeutigen Eingaben oder unzureichendem Kontext steigt die Wahrscheinlichkeit, dass ein Sprachmodell fehlerhafte oder erfundene Informationen generiert.
+
+Da Large Language Models keine Fähigkeit zur Überprüfung der Richtigkeit ihrer Antworten besitzen, stellen Halluzinationen eine der wesentlichen Herausforderungen beim Einsatz dieser Modelle dar. Aus diesem Grund sollten generierte Antworten insbesondere in sicherheitskritischen oder fachlich anspruchsvollen Anwendungsbereichen überprüft oder durch zusätzliche Verfahren abgesichert werden.
+
+\textcolor{blue}{[Simon: muss hier noch speech to text erklährt werden, sprachmodell verllgemeinert?}
+
+\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
+Für den im Rahmen dieser Arbeit entwickelten Demonstrationsroboter stellen Halluzinationen zwar kein direktes Sicherheitsrisiko dar, da das Sprachmodell ausschließlich für die Kommunikation mit Messebesuchern eingesetzt wird. Dennoch können fehlerhafte Antworten zu Missverständnissen oder einer fehlerhaften Informationsvermittlung führen. Um dieses Risiko zu reduzieren, wurde der Einsatzbereich des Sprachmodells bewusst auf allgemeine Gespräche sowie Informationen zum Roboter und zur Hochschule beschränkt. Darüber hinaus wurden entsprechende Systemanweisungen verwendet, um das Antwortverhalten des Sprachmodells gezielt zu steuern.
+
+\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
+Im Rahmen dieser Arbeit dient das Large Language Model ausschließlich zur sprachlichen Interaktion mit den Messebesuchern. Funktionen mit sicherheitskritischer Bedeutung, wie die Bewegungssteuerung oder Hinderniserkennung, werden unabhängig vom Sprachmodell durch separate Hard- und Softwarekomponenten realisiert. Zusätzlich wurde der Gesprächsumfang bewusst auf allgemeine Informationen zur Hochschule sowie zum Roboter begrenzt, wodurch das Risiko von Halluzinationen reduziert werden kann.
 
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
+
+
+
+
+
+
+
+%Methodische Grundlagen
 
 \subsection{Trade-off-Analyse}
 
