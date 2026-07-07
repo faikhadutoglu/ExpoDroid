@@ -81,7 +81,28 @@ Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messun
 
 \subsubsection{Ressourcenmanagement auf Einplatinencomputern}
 
+Einplatinencomputer (Single-Board Computer, SBC) werden aufgrund ihrer kompakten Bauweise, ihres geringen Energieverbrauchs und ihrer niedrigen Kosten häufig in eingebetteten Systemen, Robotikanwendungen und IoT-Geräten eingesetzt. Im Vergleich zu Desktop-Computern oder Servern verfügen sie jedoch über begrenzte Rechen-, Speicher- und Kühlressourcen. Daher spielt ein effizientes Ressourcenmanagement eine zentrale Rolle bei der Entwicklung leistungsfähiger Anwendungen.
+
+Insbesondere moderne Anwendungen aus den Bereichen Robotik, Bildverarbeitung und Künstliche Intelligenz stellen hohe Anforderungen an die verfügbare Hardware. Rechenintensive Prozesse können die CPU und den Arbeitsspeicher stark belasten, wodurch sich Antwortzeiten verlängern oder die Reaktionsfähigkeit des Systems verringert. Darüber hinaus kann eine dauerhaft hohe Prozessorlast zu einer erhöhten Wärmeentwicklung führen, was unter Umständen eine Leistungsdrosselung (Thermal Throttling) nach sich zieht.
+
+Zur effizienten Nutzung der verfügbaren Ressourcen werden verschiedene Optimierungsstrategien eingesetzt. Dazu zählt beispielsweise die Parallelisierung von Prozessen durch Multithreading oder Multiprocessing. Durch die Aufteilung von Aufgaben auf mehrere Ausführungseinheiten können verfügbare Prozessorkerne besser ausgelastet und Wartezeiten reduziert werden.
+
+Ein weiterer Ansatz besteht in der Reduzierung der zu verarbeitenden Datenmengen. Bei Anwendungen der Bildverarbeitung werden hierfür häufig geringere Kamerauflösungen oder reduzierte Verarbeitungsraten verwendet. Dadurch sinkt die benötigte Rechenleistung, ohne die Funktionalität des Systems wesentlich zu beeinträchtigen.
+
+Auch die Auslagerung besonders rechenintensiver Aufgaben stellt eine verbreitete Methode dar. Hierbei werden Berechnungen auf leistungsfähigere externe Systeme oder Cloud-Dienste übertragen, während der Einplatinencomputer lediglich die Kommunikation und Steuerung übernimmt. Dieses hybride Konzept ermöglicht die Realisierung komplexer Anwendungen trotz begrenzter lokaler Hardware-Ressourcen.
+
+Neben der Prozessorleistung ist auch der verfügbare Arbeitsspeicher von Bedeutung. Moderne Softwarearchitekturen setzen daher häufig auf modulare Konzepte, bei denen nur die tatsächlich benötigten Komponenten geladen und ausgeführt werden. Dies reduziert den Speicherverbrauch und erhöht die Stabilität des Gesamtsystems.
+
+Ein effektives Ressourcenmanagement bildet somit die Grundlage für den zuverlässigen Betrieb komplexer Anwendungen auf Einplatinencomputern und ermöglicht den Einsatz dieser Systeme auch in Bereichen wie Robotik, Automatisierung und Künstlicher Intelligenz.
+
 \subsection{Mensch-Maschine-Interaktion (HMI)}
+Hierbei gibt es die Unterscheidung zwischen HMI was für Human Maschine Interaction oder Interface steht und HRI, was spezialisiert für Human Robot Interaction steht. Hierbei geht es dann spezifisch um die Interaktion mit einem Roboter oder auch humanoiden Roboter. 
+
+\cite{" Human-Robot Interaction (HRI) is a field of studydedicated to understanding, designing and evaluating robotic systems for use by or with humans"}
+
+
+
+
 \subsubsection{Technologien der Sprachsynthese und -erkennung}
 \subsubsection{Netzwerkprotokolle zur Fernwartung (VNC)}
 
@@ -161,44 +182,115 @@ a
 \subsubsection{Corporate Design Prinzipien im Roboterbau}
 a
 \section{KI TTS STT}
-\subsection{Fourier-Transformation} 
+
+Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. 
+
+In modernen technischen Anwendungen kommen überwiegend sogenannte schwache KI-Systeme zum Einsatz. Diese sind auf klar definierte Aufgaben spezialisiert und erzielen dort sehr hohe Leistungen. Beispiele hierfür sind Sprachassistenten, Bilderkennungssoftware oder Sprachmodelle. 
+
+\subsection{Fouriertransformation}
+
+Die Fourier-Transformation ist ein mathematisches Verfahren zur Analyse von Signalen. Sie ermöglicht die Umwandlung eines Signals aus dem Zeitbereich in den Frequenzbereich. Dadurch kann bestimmt werden, aus welchen Frequenzanteilen ein Signal zusammengesetzt ist.
+
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/FFT_analyse.png}
+	\vspace{10pt}
+	\caption{Typisches Regelsystem von einem Servomotor. \cite{OSWOS.2024}}
+	\label{fig:Servo1}
+\end{figure}
+
+Bei der Verarbeitung von Sprachsignalen spielt die Fourier-Transformation eine zentrale Rolle. Gesprochene Sprache besteht aus einer Vielzahl von Frequenzen, deren Zusammensetzung wichtige Informationen über Laute, Wörter und Satzstrukturen enthält. Durch die Zerlegung des Sprachsignals in seine Frequenzanteile können charakteristische Merkmale extrahiert werden, die anschließend von Algorithmen des maschinellen Lernens oder neuronalen Netzen verarbeitet werden.
+
+
+In modernen Speech-to-Text-Systemen wird häufig die schnelle Fourier-Transformation (FFT) eingesetzt. Sie ermöglicht eine effiziente Berechnung des Frequenzspektrums eines Audiosignals in Echtzeit. Die so gewonnenen Informationen werden häufig in Form eines Spektrogramms dargestellt und dienen als Eingabe für Sprachmodelle wie Whisper oder andere Deep-Learning-basierte Spracherkennungssysteme.
+
+
+Auch bei Text-to-Speech-Systemen findet die Fourier-Transformation Anwendung. Sie wird genutzt, um akustische Eigenschaften von Sprachsignalen zu analysieren und natürliche Sprachsynthese zu ermöglichen. Damit stellt die Fourier-Transformation eine grundlegende mathematische Methode für die digitale Sprachverarbeitung und somit auch für moderne KI-gestützte Robotersysteme dar.
+
+ 
 \subsection{TTS} %text to speech
+Text-to-Speech (TTS) beschreibt die Umwandlung von Text in künstlich erzeugte Sprache. Moderne Systeme verwenden Deep-Learning-Verfahren, um eine möglichst natürliche Ausgabe zu erzeugen. 
+
+Der Prozess beginnt mit der Analyse des eingegebenen Textes. Anschließend wird eine akustische Repräsentation erzeugt, häufig in Form eines Mel-Spektrogramms. Ein sogenannter Vocoder wandelt diese Zwischenrepräsentation anschließend in ein Audiosignal um. 
+
+Aktuelle TTS-Systeme erreichen eine sehr hohe Sprachqualität und erlauben zusätzlich die Anpassung von Geschwindigkeit, Betonung und Sprachcharakteristik. Dadurch wird eine natürliche Kommunikation zwischen Mensch und Roboter ermöglicht.  
+
 \subsection{STT}
+Speech-to-Text (STT), auch Automatic Speech Recognition (ASR) genannt, beschreibt die automatische Umwandlung gesprochener Sprache in geschriebenen Text. Das Audiosignal wird über ein Mikrofon aufgenommen und zunächst vorverarbeitet. Hierbei werden Störgeräusche reduziert und das Signal normalisiert. 
 
-\subsection{Large Language Models}
+Anschließend erfolgt die Merkmalsextraktion. Dabei werden charakteristische Eigenschaften des Sprachsignals ermittelt. Häufig werden Spektrogramme oder Fourier-Transformationen verwendet, um Frequenzanteile sichtbar zu machen. Diese Informationen dienen als Eingabe für neuronale Netze. 
 
-Large Language Models (LLMs) sind neuronale Sprachmodelle, die auf sehr großen Textmengen trainiert werden und dadurch in der Lage sind, natürlichsprachliche Eingaben zu verstehen und passende Antworten zu generieren. Im Gegensatz zu klassischen dialogbasierten Systemen, die auf fest definierten Entscheidungsbäumen oder regelbasierten Abläufen basieren, können LLMs flexibel auf unterschiedlich formulierte Fragen reagieren und kontextbezogene Antworten erzeugen. Dadurch ermöglichen sie eine natürliche und intuitive Kommunikation zwischen Mensch und Maschine.
+Moderne Spracherkennungssysteme basieren häufig auf Transformer-Architekturen. Diese analysieren zeitliche Zusammenhänge innerhalb der Sprache und ermöglichen eine sehr genaue Erkennung von Wörtern und Satzstrukturen. Durch das Training mit großen Datensätzen können verschiedene Sprecher, Dialekte und Sprachstile erkannt werden. Das Ergebnis der Spracherkennung bildet die Grundlage für die weitere Verarbeitung im Sprachmodell. 
 
-Die Antwortgenerierung erfolgt auf Grundlage statistischer Zusammenhänge, die das Modell während des Trainings erlernt hat. Dabei wird für jedes folgende Wort die wahrscheinlichste Fortsetzung des bisherigen Textes bestimmt. 
+\subsection{Funktionsprinzip eines STT's}
+Grundsätzlich folgen moderne STT-Systeme einem ähnlichen Ablauf. Der korrekte Signalfluss lautet: 
 
-\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
-Im Rahmen dieser Arbeit wird ein Large Language Model als Sprachassistenz für den entwickelten Roboter eingesetzt. Besucher können dem Roboter Fragen stellen oder einfache Gespräche führen, wodurch die Interaktion deutlich natürlicher wirkt als bei klassischen Sprachdialogsystemen mit vordefinierten Antwortmöglichkeiten. Das Sprachmodell dient dabei ausschließlich der Kommunikation mit den Besuchern und besitzt keinen direkten Zugriff auf sicherheitskritische Funktionen des Roboters. Aufgaben wie die Ansteuerung der Motoren, die Hinderniserkennung oder weitere Steuerungsfunktionen werden unabhängig vom Sprachmodell durch separate Hard- und Softwarekomponenten realisiert.
+\begin{figure}[htbp]
+	\centering
+	
+	\begin{tikzpicture}[
+		node distance=1.2cm,
+		block/.style={
+			rectangle,
+			draw,
+			rounded corners,
+			minimum width=4cm,
+			minimum height=1cm,
+			align=center,
+			fill=blue!10
+		},
+		arrow/.style={
+			thick,
+			->,
+			>=Latex
+		}
+		]
+		
+		\node[block] (speech) {Sprache};
+		
+		\node[block, below=of speech] (mic)
+		{Mikrofonaufnahme};
+		
+		\node[block, below=of mic] (analog)
+		{Analoges Signal};
+		
+		\node[block, below=of analog] (adc)
+		{Digitalisierung (ADC)};
+		
+		\node[block, below=of adc] (fft)
+		{FFT-/Spektralanalyse};
+		
+		\node[block, below=of fft] (feature)
+		{Merkmalsextraktion};
+		
+		\node[block, below=of feature] (nn)
+		{Neuronales Netz};
+		
+		\node[block, below=of nn] (text)
+		{Textausgabe};
+		
+		\draw[arrow] (speech) -- (mic);
+		\draw[arrow] (mic) -- (analog);
+		\draw[arrow] (analog) -- (adc);
+		\draw[arrow] (adc) -- (fft);
+		\draw[arrow] (fft) -- (feature);
+		\draw[arrow] (feature) -- (nn);
+		\draw[arrow] (nn) -- (text);
+		
+	\end{tikzpicture}
+	
+	\caption{Ablauf der Spracherkennung}
+	\label{fig:spracherkennung}
+\end{figure} 
 
-\subsection{Halluzinationen von Large Language Models}
+\newpage
+Nach der eigentlichen Transkription können weitere Verfahren des Natural Language Processing angewandt werden. Hierzu zählen die Tokenisierung, das Stemming und die Lemmatisierung. 
 
-Eine bekannte Eigenschaft von Large Language Models (LLMs) sind sogenannte Halluzinationen. Darunter versteht man die Generierung von Antworten, die sprachlich plausibel und überzeugend erscheinen, jedoch sachlich fehlerhaft, unvollständig oder frei erfunden sein können. Das Modell unterscheidet dabei nicht zwischen korrekten und falschen Aussagen, sondern erzeugt die statistisch wahrscheinlichste Wortfolge auf Grundlage der Eingabe und des zuvor erzeugten Kontexts.
+Tokenisierung bezeichnet die Zerlegung eines Textes in einzelne Wörter oder Tokens. Beim Stemming werden Wörter auf ihren Wortstamm reduziert. Die Lemmatisierung geht einen Schritt weiter und bestimmt die grammatikalische Grundform eines Wortes. Diese Verfahren verbessern die Weiterverarbeitung durch Sprachmodelle. 
 
-Halluzinationen können beispielsweise zur Ausgabe falscher Fakten, fehlerhafter Zusammenhänge oder nicht existierender Quellen führen. Insbesondere bei Fragestellungen außerhalb des Trainingswissens, mehrdeutigen Eingaben oder unzureichendem Kontext steigt die Wahrscheinlichkeit, dass ein Sprachmodell fehlerhafte oder erfundene Informationen generiert.
-
-Da Large Language Models keine Fähigkeit zur Überprüfung der Richtigkeit ihrer Antworten besitzen, stellen Halluzinationen eine der wesentlichen Herausforderungen beim Einsatz dieser Modelle dar. Aus diesem Grund sollten generierte Antworten insbesondere in sicherheitskritischen oder fachlich anspruchsvollen Anwendungsbereichen überprüft oder durch zusätzliche Verfahren abgesichert werden.
-
-\textcolor{blue}{[Simon: muss hier noch speech to text erklährt werden, sprachmodell verllgemeinert?}
-
-\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
-Für den im Rahmen dieser Arbeit entwickelten Demonstrationsroboter stellen Halluzinationen zwar kein direktes Sicherheitsrisiko dar, da das Sprachmodell ausschließlich für die Kommunikation mit Messebesuchern eingesetzt wird. Dennoch können fehlerhafte Antworten zu Missverständnissen oder einer fehlerhaften Informationsvermittlung führen. Um dieses Risiko zu reduzieren, wurde der Einsatzbereich des Sprachmodells bewusst auf allgemeine Gespräche sowie Informationen zum Roboter und zur Hochschule beschränkt. Darüber hinaus wurden entsprechende Systemanweisungen verwendet, um das Antwortverhalten des Sprachmodells gezielt zu steuern.
-
-\textcolor{blue}{[Simon: Dieser Teil gerne in den Hauptteil]}
-Im Rahmen dieser Arbeit dient das Large Language Model ausschließlich zur sprachlichen Interaktion mit den Messebesuchern. Funktionen mit sicherheitskritischer Bedeutung, wie die Bewegungssteuerung oder Hinderniserkennung, werden unabhängig vom Sprachmodell durch separate Hard- und Softwarekomponenten realisiert. Zusätzlich wurde der Gesprächsumfang bewusst auf allgemeine Informationen zur Hochschule sowie zum Roboter begrenzt, wodurch das Risiko von Halluzinationen reduziert werden kann.
-
+Ein bekanntes Beispiel für moderne Speech-to-Text-Technologie ist Whisper von OpenAI. Whisper nutzt eine Transformer-Architektur und wurde mit umfangreichen Sprachdaten trainiert. Dadurch können zahlreiche Sprachen und unterschiedliche Sprachstile zuverlässig erkannt werden. 
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
-
-
-
-
-
-
-
-%Methodische Grundlagen
 
 \subsection{Trade-off-Analyse}
 

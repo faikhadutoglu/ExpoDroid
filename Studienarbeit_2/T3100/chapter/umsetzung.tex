@@ -28,11 +28,152 @@ Bewertung der Lackierung und der Bewegungsfreiheit der Arme.
 
 % --- SIMON ---
 \section{KI-Systeme: Implementierung und Performance (Simon)}
+Für den Messebetrieb des Roboters wurde ein KI-gestütztes Sprachassistenzsystem entwickelt. Ziel war die Umsetzung einer natürlichen Mensch-Maschine-Interaktion, sodass Besucher mit dem Roboter über Sprache kommunizieren können. Der Assistent wurde speziell auf den Einsatz an der DHBW Ravensburg zugeschnitten und mit Informationen über die Hochschule, die Studiengänge sowie das duale Studienmodell ausgestattet.
+
+
+Das System sollte deutsche Sprache zuverlässig erkennen und verarbeiten können. Gleichzeitig musste die Antwort nicht nur textuell generiert, sondern auch als natürlich klingende Sprachausgabe wiedergegeben werden. Da der Roboter auf Messen und Informationsveranstaltungen eingesetzt werden soll, wurde besonderer Wert auf eine gute Sprachverständlichkeit, eine angemessene Lautstärke sowie kurze Reaktionszeiten gelegt.
+
+Die gesamte KI-Anwendung wurde auf einem Raspberry Pi implementiert, der als zentrale Recheneinheit des Roboters fungiert. Zusätzlich wurden Anzeigeelemente und Animationen integriert, um die Interaktion für den Nutzer intuitiver und attraktiver zu gestalten. 
 \subsection{Umsetzung: Software und Infrastruktur}
+Das KI-System des Roboters wurde ursprünglich mit dem Sprachmodell Gemma 3 realisiert. Ziel war es, sämtliche Sprachverarbeitung lokal auf dem Raspberry Pi 5 durchzuführen, um unabhängig von einer Internetverbindung arbeiten zu können. Der lokale Betrieb bietet zudem Vorteile hinsichtlich Datenschutz, Ausfallsicherheit und Betriebskosten, da keine externen Cloud-Dienste erforderlich sind.
+
+Im Rahmen der ersten Tests zeigte sich jedoch, dass die begrenzte Rechenleistung des Raspberry Pi 5 für die Echtzeitverarbeitung eines Large Language Models nur eingeschränkt geeignet ist. Insbesondere die Generierung längerer Antworten führte zu deutlich erhöhten Antwortzeiten. Für einen Messebetrieb, bei dem eine möglichst direkte Interaktion zwischen Besucher und Roboter erforderlich ist, waren diese Verzögerungen teilweise zu hoch. Während einfache Anfragen noch innerhalb akzeptabler Zeit beantwortet werden konnten, nahm die Verarbeitungsdauer bei komplexeren Fragen spürbar zu.
+
+Aus diesem Grund wurde das System um eine zweite Betriebsart erweitert. Neben dem lokal ausgeführten Gemma-3-Modell wurde die Cloud-basierte KI Gemini integriert. Befindet sich der Roboter in einem WLAN-Netzwerk mit Internetzugang, werden Anfragen bevorzugt an Gemini übertragen. Die Antwortgenerierung erfolgt dabei auf leistungsstarken Servern und kann deutlich schneller durchgeführt werden als auf dem Raspberry Pi.
+
+Um die Funktionsfähigkeit auch bei fehlender Internetverbindung sicherzustellen, wurde ein automatischer Fallback-Mechanismus implementiert. Erkennt das System keine aktive Netzwerkverbindung oder schlägt die Anfrage an Gemini fehl, wird automatisch auf das lokal installierte Gemma-3-Modell umgeschaltet. Dadurch bleibt der Roboter jederzeit einsatzfähig und kann auch ohne Internetverbindung weiterhin Fragen beantworten.
+Für die Sprachkommunikation wird zunächst die Sprache des Benutzers über ein USB-Mikrofon aufgenommen. Anschließend erfolgt die Umwandlung der Audiodaten in Text durch ein Speech-to-Text-System (STT). Der erzeugte Text wird entweder an Gemini oder an das lokale Gemma-3-Modell weitergeleitet. Nach der Verarbeitung erzeugt die KI eine Antwort, welche über ein Text-to-Speech-System (TTS) in eine Sprachdatei umgewandelt und anschließend über die Lautsprecher ausgegeben wird.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.8cm,
+		every node/.style={font=\small},
+		process/.style={
+			rectangle,
+			draw,
+			rounded corners,
+			minimum width=4cm,
+			minimum height=1cm,
+			align=center
+		},
+		decision/.style={
+			diamond,
+			draw,
+			aspect=2,
+			align=center
+		},
+		line/.style={
+			-{Stealth[length=3mm]},
+			thick
+		}
+		]
+		
+		% Nodes
+		\node (user) [process] {Benutzerfrage};
+		\node (stt) [process, below=of user] {Speech-to-Text\\(STT)};
+		\node (check) [decision, below=of stt, yshift=-0.3cm] {Internet\\verfügbar?};
+		
+		\node (gemini) [process, below left=2cm and 3cm of check]
+		{Gemini\\Cloud-KI};
+		
+		\node (gemma) [process, below right=2cm and 3cm of check]
+		{Gemma 3\\Lokal auf Raspberry Pi};
+		
+		\node (tts) [process, below=4cm of check]
+		{Text-to-Speech\\(TTS)};
+		
+		\node (speaker) [process, below=of tts]
+		{Sprachausgabe};
+		
+		% Arrows
+		\draw [line] (user) -- (stt);
+		\draw [line] (stt) -- (check);
+		
+		\draw [line] (check) -- node[left] {Ja} (gemini);
+		\draw [line] (check) -- node[right] {Nein} (gemma);
+		
+		\draw [line] (gemini) |- (tts);
+		\draw [line] (gemma) |- (tts);
+		
+		\draw [line] (tts) -- (speaker);
+		
+	\end{tikzpicture}
+	\caption{Hybride KI-Architektur des Roboters mit automatischem Wechsel zwischen Gemini und lokalem Gemma-3-Modell.}
+	\label{fig:hybrid_ki}
+\end{figure}
+
+Um den Roboter speziell für den Einsatz bei Veranstaltungen der DHBW Ravensburg anzupassen, wurde ein Systemprompt entwickelt. Dieser enthält Informationen über die Hochschule, das duale Studium, die angebotenen Studiengänge sowie häufig gestellte Fragen von Studieninteressierten. Dadurch kann der Roboter gezielt Auskünfte zum Studium an der DHBW geben und fungiert als interaktiver Informationsassistent.
+Die Softwarearchitektur wurde modular aufgebaut. Dadurch können einzelne Komponenten wie Sprachmodell, Spracherkennung oder Sprachausgabe bei zukünftigen Weiterentwicklungen einfach ausgetauscht oder erweitert werden.
+
+
 \subsubsection{Einrichtung der KI-Umgebung (Gemma 3, TTS/STT)}
-Details zur Installation und Konfiguration auf dem Pi.
+
+Für die Realisierung des Sprachassistenten wurde auf dem Raspberry Pi 5 zunächst eine vollständige KI-Umgebung eingerichtet. Als Betriebssystem kam Raspberry Pi OS zum Einsatz. Vor der Installation der KI-Komponenten wurden sämtliche Systempakete aktualisiert, um eine stabile Softwarebasis zu gewährleisten.
+
+Für die lokale Ausführung des Sprachmodells wurde Ollama installiert. Diese Software ermöglicht das Ausführen verschiedener Large Language Models direkt auf dem Raspberry Pi. Als erstes Sprachmodell wurde Gemma 3 ausgewählt und lokal heruntergeladen. Ziel war es, die Sprachverarbeitung ohne Internetverbindung durchführen zu können und dadurch eine hohe Unabhängigkeit von Cloud-Diensten zu erreichen.
+
+Zur Sprachaufnahme wurde ein USB-Mikrofon an den Raspberry Pi angeschlossen und über die Linux-Audiotreiber eingebunden. Die Identifikation und Konfiguration des Audiogerätes erfolgte mithilfe der ALSA-Werkzeuge. Anschließend wurde ein Speech-to-Text-System (STT) eingerichtet, das die Spracheingaben der Benutzer in Text umwandelt. Nach verschiedenen Tests wurde die Mikrofonempfindlichkeit angepasst, um Umgebungsgeräusche auf Messen möglichst wenig in die Erkennung einzubeziehen.
+
+Für die Sprachausgabe wurde zusätzlich ein Text-to-Speech-System (TTS) integriert. Dabei werden die vom Sprachmodell generierten Antworten in Audiodateien umgewandelt und über die Lautsprecher des Roboters ausgegeben. Um eine möglichst natürliche Kommunikation zu ermöglichen, wurden Parameter wie Sprechgeschwindigkeit und Lautstärke mehrfach angepasst und getestet.
+
+Während der ersten Versuche zeigte sich jedoch, dass die lokale Ausführung von Gemma 3 auf dem Raspberry Pi 5 zu relativ langen Antwortzeiten führte. Besonders bei komplexeren Fragen war die Antwortgenerierung nicht schnell genug, um einen natürlichen Gesprächsfluss aufrechtzuerhalten. Aus diesem Grund wurde zusätzlich die Cloud-KI Gemini integriert.
+
+Das entwickelte System arbeitet als hybrides KI-System. Bei bestehender Internetverbindung werden Benutzeranfragen bevorzugt an Gemini übertragen, wodurch deutlich kürzere Antwortzeiten erreicht werden. Fällt die Internetverbindung aus oder ist kein WLAN verfügbar, erfolgt automatisch eine Umschaltung auf das lokal installierte Gemma-3-Modell. Dadurch bleibt die grundlegende Funktionalität des Roboters auch ohne Netzwerkverbindung erhalten.
+
+Durch diesen Aufbau konnte ein Kompromiss zwischen hoher Antwortgeschwindigkeit und der Ausfallsicherheit eines lokal lauffähigen Systems erreicht werden. Die modulare Softwarearchitektur ermöglicht zudem die zukünftige Integration weiterer Sprachmodelle sowie den Austausch einzelner Komponenten ohne grundlegende Änderungen am Gesamtsystem.
 \subsubsection{Display, WLAN und VNC-Integration}
-Programmierung der Animationen und Netzwerkeinrichtung.
+
+Zur visuellen Interaktion wurde der Roboter mit einem 10,1-Zoll-Display mit einer Auflösung von 1024 × 600 Pixeln ausgestattet. Auf diesem Display werden animierte Augen dargestellt, die dem Roboter ein lebendiges Erscheinungsbild verleihen und die Interaktion mit Besuchern unterstützen.
+
+Im Vergleich zur ersten Studienarbeit wurde das Design der Augen grundlegend überarbeitet. Während in der ursprünglichen Version einfache Darstellungen verwendet wurden, entstand in dieser Projektphase ein neues, moderneres Erscheinungsbild. Die Augen bestehen aus zwei farbigen quadratischen Elementen mit abgerundeten Ecken, deren Pupillen dynamisch bewegt werden. Dabei wurde bewusst ein Design gewählt, das an das DHBW-Farbschema angelehnt ist. Das linke Auge wird in Rot und das rechte Auge in Anthrazit dargestellt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/duale_augen_screenshot.png}
+	\caption{Darstellung der entwickelten Augenanimation. Die beiden farbigen Augen werden auf dem Frontdisplay des Roboters angezeigt. Die Pupillen folgen erkannter Personen mittels kamerabasierter Gesichtserkennung und bewegen sich dadurch dynamisch im Sichtfeld.}
+	\label{fig:augenanimation}
+\end{figure}
+Die Augenanimation wurde in Python unter Verwendung der Bibliothek Pygame umgesetzt. Das Programm erzeugt die vollständige Darstellung in Echtzeit und passt die Position der Pupillen kontinuierlich an erkannte Gesichter an. Hierfür wird eine USB-Kamera verwendet, deren Bilddaten durch die OpenCV-Bibliothek verarbeitet werden. Zur Gesichtserkennung kommt ein Haar-Cascade-Klassifikator zum Einsatz, der Gesichter innerhalb des Kamerabildes lokalisiert. Die ermittelte Gesichtsposition wird anschließend in Augenbewegungen umgerechnet.
+
+Um natürliche Bewegungen zu erhalten, wurde eine Glättung (Smoothing) implementiert. Dadurch folgen die Pupillen dem erkannten Gesicht fließend und vermeiden abrupte Positionswechsel. Wird kein Gesicht erkannt, bewegen sich die Augen langsam wieder in ihre Ausgangsposition zurück. Zusätzlich wurde ein zufälliger Blinzelmechanismus integriert, wodurch die Darstellung lebendiger wirkt. Die Blinzelintervalle werden zufällig gewählt und simulieren menschliches Verhalten.
+
+Da die Gesichtserkennung parallel zu weiteren Prozessen wie Sprachverarbeitung und KI-Ausführung läuft, wurde die Kameraverarbeitung in einen separaten Thread ausgelagert. Dadurch kann die Bilderfassung unabhängig von der grafischen Darstellung erfolgen und die Systemleistung des Raspberry Pi 5 wird effizient genutzt.
+
+Ein weiteres Ziel bestand darin, den Roboter nach dem Einschalten ohne Benutzereingriff betriebsbereit zu machen. Hierzu wurden die benötigten Programme als Systemdienste eingerichtet. Nach dem Start des Raspberry Pi wird automatisch das Betriebssystem geladen, eine WLAN-Verbindung aufgebaut und anschließend sowohl die Augenanimation als auch das KI-System gestartet. Der Roboter befindet sich dadurch wenige Sekunden nach dem Einschalten im betriebsbereiten Zustand.
+
+Für die Softwareentwicklung und Systemwartung wurde zusätzlich ein VNC-Server eingerichtet. Über die WLAN-Verbindung kann so von einem externen Rechner auf die grafische Benutzeroberfläche des Raspberry Pi zugegriffen werden. Dies erleichtert insbesondere die Fehlersuche, das Einspielen von Softwareupdates sowie die Anpassung von Konfigurationen während der Entwicklung. Auch bei Vorführungen und Messen ermöglicht die VNC-Verbindung eine komfortable Überwachung des Systems ohne direkten Zugriff auf den Roboter.
+
+Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberfläche und fernwartbarer Netzwerkinfrastruktur konnte ein benutzerfreundliches und zuverlässig arbeitendes Gesamtsystem realisiert werden.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.8cm,
+		box/.style={
+			draw,
+			rounded corners,
+			minimum width=4cm,
+			minimum height=1cm,
+			align=center
+		},
+		>=stealth
+		]
+		
+		\node[box] (boot) {Raspberry Pi Start};
+		\node[box, below of=boot] (wifi) {WLAN-Verbindung};
+		\node[box, below left=1.5cm and 2cm of wifi] (eyes) {Augenanimation (Python/Pygame)};
+		\node[box, below right=1.5cm and 2cm of wifi] (ki) {KI-System};
+		\node[box, below=3cm of wifi] (ready) {Roboter betriebsbereit};
+		
+		\draw[->] (boot) -- (wifi);
+		\draw[->] (wifi) -- (eyes);
+		\draw[->] (wifi) -- (ki);
+		\draw[->] (eyes) -- (ready);
+		\draw[->] (ki) -- (ready);
+		
+	\end{tikzpicture}
+	\caption{Automatischer Systemstart des Roboters.}
+\end{figure}
 
 \subsection{Ergebnisse: Systemleistung}
 \subsubsection{Latenzmessung und Benchmarks}
