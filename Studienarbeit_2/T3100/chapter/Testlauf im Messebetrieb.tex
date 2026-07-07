@@ -18,7 +18,12 @@ Der Roboter war zu diesem Zeitpunkt noch nicht ganz fertiggestellt. Die Servomot
 Doch zum Ärger des Projektteams lief der erste Messeeinsatz nicht besonders reibungslos ab. Die antriebsmotoren (wie auch immer wir das in der ersten Arbeit genannt haben) liefen nicht flüssig und sorgten für eine ruckelnde und unflüssige fahrweise. Dieses Problem ist vermutlich auf die ungenügende Energieversorgung durch den 5V Anschluss des ESP23 zurückzuführen. Fahren war möglich aber unsauber. Es konnten kaum konstant Strecken im Bereich von \SI{20}{\meter} zurückgelegt werden.
 
 Die sprachausgabe über das LLM hatte eine starke verzögerung in der Antwortengebung. Die Besucher, besonders die Kinder hatten nicht immer die nötige Gedult um lange auf eine Frage zu antworten. Die Antworten waren außerdem unverständlich und zu leise um im Umfeld der Geräuschkolisse einer Messe verstanden zu werden. Im weiteren kam es in einigen Fällen zu halluziniert des LLM, was in fehlerhaften Aussagen resultierte. 
+
 \subsection*{Stärken}
+Das optische design des Roboters scheint besonders bei dem jungen Publikum aufzufallen. Gruppen an Kindern sammelten sich um den Roboter und bestaunten ihn. Dabei versuchten viele mit ihm zu interagieren. Einige Kinder wunken ihm oder begrüßten. Andere streichelten den Roboter. Einige Kinder nahmen auch die Möglichkeit war über die Sprachfunktion mit dem Roboter zu sprechen. An Fakten über die Hochschule waren die Kinder dabei jedoch nicht besonders interessiert. Sie interessierten sich eher für das vere´meindliche Leben des Roboters. Die Frage nach dem Nahmen war jedoch sher beliebt. Jedoch waren die Antworten in der lauten geräuschkulisse zumeist unverständlich. Eine einfache interaktion wie Winken oder eine begrüßungsformel die der Roboter an die Kinder richten könnte wäre bei dieser Zielgruppe sher hilfreich gewesen.
+
+
+Jedoch versagte der Roboter nach einiger Zeit aus nicht ganz geklährten umständen. und ab da bleib er bis auf einige kleine einsätzte auf der Messe eher als Dekoratives Objekt neber dem DHBW stand. Die Anziehungskraft der Kinder ungebrochen, aber ohne seine tatsächliches Potential ausschöpfen zu können. Zudem Sind dunkelgraue verkleidungsplatten unter seinem Kopf aufgrund starker sonneneinstrahlung geschmolzen, grund dafür ist die dunkle farbe und die anfälligkeit des Materials PLA auf hohe temperaturen.
 
 \section{Technikforum}
 
@@ -28,3 +33,58 @@ Im Rahmen des Technikforums wurde der entwickelte Roboter als Demonstrationsobje
 
 Diese Veranstaltung diente somit nicht nur zur Validierung des Roboters unter realen Einsatzbedingungen, sondern gleichzeitig auch zur Präsentation des Projekts,
 Die während der Messeeinsätze gewonnenen Erkenntnisse bildeten eine wichtige Grundlage für die Bewertung des Gesamtsystems sowie für die Identifikation weiterer Verbesserungspotenziale.
+
+Ausßerdem ist der Sender für die Fernbedienung kaput gegangen und daher konnte er ohne steuerung nur als deko dienen. Es gab versuche den ESP nur über WLAN verbindung über das Handy zu steuern über ein improvisiertes Programm, nach kurzen fahrversuchen wurde dieser Versuch jedoch aufgrund von schlechter performance eingestellt.
+
+Optisch fanden die Kinder sogar mehr gefallen an dem Roboter als an den Robotern und Rennwagen Projekte anderer Hochschulen und unternehmen.
+
+\subsection*{Stand zum Messezeitpunkt}
+Die Dunklen platten die zuvor geschmolzen waren wurden durch weiße platten ersetzt, von der weißen farbe sollte mehr Licht und temperatur abstrahlen und somit zu weniger temperaturentwicklung beitragen. 
+Das Ruckeln beim fahren konnte durch ergänzen eines Kondensators behoben werden, beim Anfahren kam es wohl immer wieder zu einbrüchen der Energieversorgung durch die hohe belastung beim anfahren, der Kondensator konnte diese Spiten entlasten und sorgte für eine ruhige und konstante Fahrweise. 
+
+Die arme sollten fertig implementiert werden, aufgrund von extremer Anfrage der Hochschuldrucker Drucker konnte dies erst wärend der Messe nachgerüstet werden. In testläufen Funktionierte das Armheben. Es karm jedoch immerwieder zu scheinbaren Spannungseinbrüchen, daher wurde sich im vorfeld geeinigt nur einen Arm bewegen zu lassen. Durch erneute einbrüche in der Energieversorgung und die verspätete Fertigstellung der 3D-Druck teile für den Arm wurden diese nie ganz implementiert.
+
+Auf der messe funktionierte dann nun der zuvor getestete Fahrmodus nichtmehr, die these ist das eine Motortreiber oder ein andere Komponente kaput gegangen ist.
+
+Der sender für die fernbedienung konnte durch einen neuen ersetzt werden.
+
+Das Publikum auf dem Technikforum unterscheidet sich komplett von dem auf der explore science. Es war wesentlich anspruchsvoller und verzieh die technischen ausfälle weniger. Es war deher deutlich schwerere sich gegen die anderen technischen aussteller und Exponate durchzusetzten.
+
+Von den Studierenden der Hoschschule FN bekam das projekt insgesammt 12 Punkte von aussenstehenden, das stellt damit eine möglichkeit zur bewertung wie gut der eindruck war. Damit ist der Roboter zwar deutlich besser aufgefallen als die meisten der Projekte, konnte das breite Publikum aber letztendlich nicht wirklich von sich überzeugen.
+
+
+\section{Zusammmenfassung der erkennntnisse}
+
+Die ausfälle und weniger robuste funktionsweise auf beiden Messen schadeten dem Konzept und sorten dafür das der roboter kaum bis garnicht einsatzfähig war. Das Optische design kann alle mal überzeugen und stellt wohl die hauptstärke da, besonder die ferfarbig 3D-gedruckten Anbauteile sowie kopf und arme überzeugten deutlich und konnten die aufmerksammkeit auf sich ziehen. Aber mit mangelder funktionsweise, schlecht verständlicher sprachausgabe sind die bisjetztigen einsätze stark verbesserungsnötig. 
+
+
+
+
+
+\section{Explore Science Friedrichshafen}
+
+Explore Science ist eine Veranstaltungsreihe zur Förderung naturwissenschaftlicher und technischer Bildung, die jährlich an verschiedenen Standorten in Deutschland, unter anderem in Mannheim, Bremen, Magdeburg und Friedrichshafen, durchgeführt wird. Ziel der Veranstaltung ist es, insbesondere Kinder und Jugendliche durch interaktive Experimente, Mitmachstationen und Ausstellungen für Naturwissenschaften, Technik und Ingenieurwissenschaften zu begeistern.
+
+Die Explore Science Friedrichshafen 2026 fand vom 07. bis 09. Mai an der Uferpromenade in Friedrichshafen statt. Unter dem Motto \textit{„Erfindungen \& Entdeckungen“} präsentierten zahlreiche Bildungseinrichtungen, Unternehmen und Forschungseinrichtungen ihre Projekte einem breiten Publikum.
+
+Für den im Rahmen dieser Arbeit entwickelten Roboter stellte die Veranstaltung den ersten Praxiseinsatz unter realen Bedingungen dar. Ziel war es, den Roboter als interaktiven Demonstrator am Messestand der DHBW Friedrichshafen einzusetzen und dessen technische Funktionalität außerhalb der Laborumgebung zu validieren. Gleichzeitig sollte der Roboter durch sein Erscheinungsbild und seine Interaktionsmöglichkeiten Besucher auf den Messestand aufmerksam machen, Hemmschwellen für Gespräche mit dem Messepersonal abbauen und insbesondere Kinder für die angebotenen Mitmachaktionen begeistern.
+
+\subsection*{Stand zum Messezeitpunkt}
+
+Zum Zeitpunkt der Messe befand sich der Roboter noch in einer fortgeschrittenen Entwicklungsphase. Die grundlegenden Fahrfunktionen sowie das Sprachdialogsystem waren bereits implementiert und grundsätzlich einsatzbereit. Die geplanten Servomotoren für die Bewegungen der Arme und der Robotergreifer waren jedoch noch nicht integriert, sodass die Arme lediglich statisch am Roboter befestigt waren. Trotz dieses unvollständigen Entwicklungsstands wurde der Roboter als funktionsfähiger Demonstrator auf der Messe präsentiert.
+
+\subsection*{Beobachtungen und Erkenntnisse}
+
+Bereits zu Beginn der Veranstaltung zeigte sich, dass der Roboter eine hohe Aufmerksamkeit auf sich zog. Insbesondere Kinder reagierten sehr positiv auf das moderne Erscheinungsbild und näherten sich dem Roboter neugierig. Häufig bildeten sich kleine Gruppen um den Demonstrator, die versuchten, mit ihm zu interagieren. Viele Kinder winkten dem Roboter zu, begrüßten oder streichelten ihn. Auch die Möglichkeit, Fragen über die Sprachfunktion zu stellen, wurde von zahlreichen Besuchern genutzt. Dabei zeigte sich jedoch, dass sich insbesondere jüngere Besucher weniger für Informationen zur Hochschule interessierten, sondern vielmehr persönliche Fragen an den Roboter richteten. Besonders häufig wurde beispielsweise nach seinem Namen oder seinem vermeintlichen Leben gefragt.
+
+Neben diesen positiven Eindrücken offenbarte der erste Messeeinsatz jedoch auch mehrere technische Schwachstellen. Während des Fahrbetriebs liefen die Antriebsmotoren nicht gleichmäßig, wodurch sich ein deutlich ruckelndes und unruhiges Fahrverhalten ergab. Konstante Fahrstrecken von etwa \SI{20}{\meter} konnten nur selten zuverlässig zurückgelegt werden. Als Ursache wurde eine unzureichende Spannungsversorgung der Motoren vermutet. Vermutlich kam es insbesondere beim Anfahren zu kurzzeitigen Spannungseinbrüchen, wodurch die Motorsteuerung nicht mehr zuverlässig arbeiten konnte.
+
+Auch das Sprachdialogsystem erwies sich unter den Bedingungen einer stark \textcolor{red}{frequentierten} Messe als nur eingeschränkt geeignet. Zwischen der Spracheingabe eines Besuchers und der Antwort des Roboters verging häufig mehrere Sekunden, wodurch insbesondere Kinder schnell das Interesse an der Unterhaltung verloren. Zusätzlich war die Lautstärke der Sprachausgabe für die hohe Umgebungslautstärke der Messe nicht ausreichend, sodass viele Antworten nur schwer oder gar nicht verstanden werden konnten. Darüber hinaus traten vereinzelt Halluzinationen des eingesetzten Large Language Models auf, wodurch in einzelnen Gesprächen fehlerhafte oder unzutreffende Aussagen erzeugt wurden.
+
+Im weiteren Verlauf der Veranstaltung kam es schließlich zu einem Ausfall des Roboters, dessen genaue Ursache während der Messe nicht eindeutig bestimmt werden konnte. Nach diesem Fehler war ein zuverlässiger Betrieb nicht mehr möglich, sodass der Roboter den Großteil der verbleibenden Messezeit lediglich als statisches Ausstellungsobjekt neben dem Messestand präsentiert werden konnte. Trotz des technischen Ausfalls blieb das Interesse der Besucher, insbesondere der Kinder, weiterhin ungebrochen. Viele Besucher betrachteten den Roboter weiterhin aus nächster Nähe oder machten Fotos mit ihm.
+
+Zusätzlich zeigte sich während des Außeneinsatzes eine konstruktive Schwachstelle der Gehäuseverkleidung. Mehrere dunkelgraue Abdeckplatten aus PLA verformten sich durch die intensive Sonneneinstrahlung deutlich. Als Ursache wurde die Kombination aus der dunklen Farbgebung, welche eine hohe Wärmeaufnahme begünstigt, sowie der vergleichsweise geringen Wärmeformbeständigkeit des verwendeten Materials identifiziert. Diese Erkenntnis führte unmittelbar zu konstruktiven Anpassungen für den folgenden Messeeinsatz.
+
+\subsection*{Fazit des Messeeinsatzes}
+
+Der erste Praxiseinsatz stellte eine wertvolle Validierung des Roboters unter realen Einsatzbedingungen dar. Obwohl zahlreiche technische Probleme auftraten und der Roboter zeitweise vollständig ausfiel, konnten wichtige Erkenntnisse für die weitere Entwicklung gewonnen werden. Besonders positiv wurde das äußere Erscheinungsbild bewertet. Der Roboter erfüllte seine Hauptaufgabe, die Aufmerksamkeit der Besucher auf den Messestand zu lenken und insbesondere Kinder für den Stand der DHBW Friedrichshafen zu begeistern. Gleichzeitig wurden Schwachstellen hinsichtlich der Energieversorgung, der Sprachinteraktion sowie der Materialauswahl identifiziert, die im weiteren Projektverlauf gezielt verbessert werden konnten.
