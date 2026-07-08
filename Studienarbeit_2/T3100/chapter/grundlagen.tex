@@ -175,7 +175,7 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-\subsection{Elektronik-Design und EMV}
+\subsection{Elektronik-Design und EMV [PENDING HIER BATTERY TRAY DESIGN??]}
 a
 %\subsubsection{Kabelmanagement und Signalintegrität}
 %a
@@ -220,7 +220,7 @@ Dieses Ziel wurde durch ein unverwechselbares Designkonzept verfolgt, bei dem Fo
 	\label{fig:DEFPV1}
 \end{figure}
 
-Die Abbildung \ref{fig:DEFPV1} zeigt eine technische, futuristisch wirkende Frontplatte, die aus vier quadratischen Bereichen besteht und durch sichtbare Schrauben, klare Linien und geometrische Formen strukturiert ist. Im Zentrum befindet sich ein markantes Symbol, das als visuelle Mitte dient und sofort Aufmerksamkeit erzeugt. Die Gestaltung nutzt kräftige Rot‑, Weiß- und Grautöne, die an das Erscheinungsbild der DHBW (PENDING LABEL SHORTS) erinnern und dem gesamten Panel eine eindeutige institutionelle Zuordnung geben. Rechts oben steht der Name „DUAL-E“, der dem Roboter eine eigene Identität verleiht und gleichzeitig spielerisch wirkt. Die horizontalen Linien im oberen linken Segment erinnern an technische Lüftungsschlitze und verleihen dem Design einen Charakter im Cyberpunk-Stil \cite{Linearity.2022}. Unten sind drei kreisförmige Markierungen platziert, die auf mögliche Positionen von Ultraschallsensoren hindeuten und damit eine funktionale Komponente einbringen. Insgesamt verbindet das Panel ein bewusst spaßiges, markenbezogenes Erscheinungsbild mit klaren technischen Elementen, sodass der Roboter sowohl modern als auch professionell wirkt.
+Die Abbildung \ref{fig:DEFPV1} zeigt eine technische, futuristisch wirkende Frontplatte für die Verkleidung des Roboters. Die Platte besteht aus vier quadratischen Bereichen und ist durch sichtbare Schrauben, klare Linien und geometrische Formen strukturiert. Im Zentrum befindet sich ein markantes Symbol, das als visuelle Mitte dient und sofort Aufmerksamkeit erzeugt. Die Gestaltung nutzt kräftige Rot‑, Weiß- und Grautöne, die an das Erscheinungsbild der DHBW (PENDING LABEL SHORTS) erinnern und dem gesamten Panel eine eindeutige institutionelle Zuordnung geben. Rechts oben steht der Name „DUAL-E“, der dem Roboter eine eigene Identität verleiht und gleichzeitig spielerisch wirkt. Die horizontalen Linien im oberen linken Segment erinnern an technische Lüftungsschlitze und verleihen dem Design einen Charakter im Cyberpunk-Stil \cite{Linearity.2022}. Unten sind drei kreisförmige Markierungen platziert, die auf mögliche Positionen von Ultraschallsensoren hindeuten und damit eine funktionale Komponente einbringen. Insgesamt verbindet das Panel ein bewusst spaßiges, markenbezogenes Erscheinungsbild mit klaren technischen Elementen, sodass der Roboter sowohl modern als auch professionell wirkt.
 \clearpage
 
 \vspace{1cm}
@@ -259,13 +259,75 @@ Für die hintere Platte steht die technische Funktion und Gestaltung im Vordergr
 	\label{fig:DEBPV1}
 \end{figure}
 
-PENDING BESCHREIBUNG
+Die gezeigte Platte in der Abbildung \ref{fig:DEBPV1} setzt genau diesen funktionalen Charakter sichtbar um. Die Platte trägt das Branding der DHBW klar und zentral, wodurch die Rückseite trotz technischer Ausrichtung eine eindeutige institutionelle Identität behält. Aus Gründen der Drucktechnik ist Branding als mehreren Teilen gekennzeichnet und ist somit mehrfarbig, wobei das Branding in gedruckten Form rot sein wird. Die roten Streifen auf der linken Seite dienen als visuelle Akzentführung und unterstützen die Wiedererkennbarkeit des Roboters, während die schwarzen Linien oben rechts an technische Leiterbahnen erinnern und den cyberpunkartigen Stil fortführen. Unten links sind Lüftungsschlitze integriert, die den technischen Charakter der Platte betonen. Rechts unten befindet sich eine kleine Wartungsklappe mit rundem Verschluss und einem Batteriesymbol, das den Zugangspunkt für den Batterieaustausch markiert. Die sichtbaren Schrauben entlang der Kanten verdeutlichen die modulare Bauweise und die robuste Befestigung der Verkleidung. 
 
 Das entwickelte Corporate Design basiert auf der Kombination funktionaler, psychologischer und gestalterischer Anforderungen. Die bewusst begrenzte Anthropomorphisierung vermeidet die negativen Effekte des Uncanny Valley und fördert gleichzeitig eine positive Wahrnehmung des Roboters. Die ausgewogene Verbindung technischer und spielerischer Gestaltungselemente ermöglicht eine zielgruppengerechte Ansprache der Messebesucher. Gleichzeitig sorgt die konsequente Umsetzung des Corporate Designs der Dualen Hochschule Baden Württemberg für eine hohe Wiedererkennbarkeit sowie eine eindeutige Zuordnung des Roboters zur Hochschule. Dadurch übernimmt der Roboter nicht nur technische Aufgaben, sondern fungiert zugleich als repräsentatives Aushängeschild der Hochschule auf öffentlichen Veranstaltungen.
 
-\subsection{Vorgehensweise der Platten-Herstellung bzw. Drucken [PENDING READ \& CORRECTION]. FIND WHERE TO WRITE BATTERY TRAY?}
+\subsection{Konstruktion und Fertigung der Verkleidungsplatten [PENDING READ \& CORRECTION]. FIND WHERE TO WRITE BATTERY TRAY?}
 
-PENDING WRITE HERE ABOUT PLATE CONSTRUCTION
+Für die Herstellung der Verkleidungsplatten wurde ein additiver Fertigungsprozess mittels Fused Deposition Modeling (FDM, PENDING LABEL \& QUELLE) gewählt. Dafür kam ein 3D-Drucker des Typs Bambu Lab H2D zum Einsatz. Dieser verfügt über einen begrenzten Bauraum von 330 × 320 × 325 $mm^3$ (Breite × Tiefe × Höhe), wodurch die maximalen Abmessungen eines einzelnen Druckteils eingeschränkt sind. Da die für den Roboter entwickelten Verkleidungsplatten die verfügbaren Druckabmessungen überschreiten, voraussichtlich +450 × 3 × +450 $mm^3$ (Breite × Tiefe × Höhe), konnten die Bauteile nicht als einzelne Komponenten gefertigt werden. Aus diesem Grund wurde jede Seitenverkleidung bereits während der Konstruktionsphase in mehrere Teilsegmente unterteilt.
+
+Die Analyse der Bauteilabmessungen ergab, dass eine Aufteilung jeder Verkleidungsplatte in vier Einzelteile eine wirtschaftliche und fertigungstechnisch geeignete Lösung darstellt. Durch diese Segmentierung konnten sämtliche Bauteile innerhalb des verfügbaren Bauraums positioniert und ohne zusätzliche Fertigungsschritte gedruckt werden. Die Abmessungen einer Teilplatte beträgt voraussichtlich 250 × 3 × 250 $mm^3$ (Breite × Tiefe × Höhe). Gleichzeitig ermöglicht die Aufteilung eine effizientere Ausnutzung des Druckvolumens sowie eine vereinfachte Nachbearbeitung der einzelnen Komponenten.
+
+Die Zerlegung einer Verkleidungsplatte in mehrere Segmente erfordert jedoch geeignete Maßnahmen zur späteren Montage. Hierfür wurde ein Verbindungskonzept entwickelt, das die einzelnen Teilstücke nach dem Druck präzise zueinander positioniert und dauerhaft miteinander verbindet. Die Verbindungselemente wurden in Form von ineinandergreifenden Geometrien ausgeführt, die einem Puzzle-Prinzip ähneln. Durch diese Gestaltung können die einzelnen Segmente bereits während der Montage eindeutig ausgerichtet werden. Gleichzeitig wird das Risiko von Positionsfehlern reduziert, da die Verbindungselemente eine definierte Lage der Bauteile zueinander vorgeben.
+
+Bei der Auslegung der Verbindungselemente mussten die fertigungstechnischen Eigenschaften des FDM-Druckverfahrens (PENDING LABEL) berücksichtigt werden. Aufgrund von Maßabweichungen, Materialschrumpfung und druckprozessbedingten Toleranzen können Bauteile nach dem Druck geringfügig von ihren theoretischen CAD-Abmessungen abweichen. Um dennoch eine problemlose Montage sicherzustellen, wurde zwischen den ineinandergreifenden Verbindungselementen eine Toleranz von 0,8 mm vorgesehen. Diese Toleranzzone gewährleistet, dass die einzelnen Segmente auch bei geringen Fertigungsabweichungen ohne übermäßigen Kraftaufwand zusammengefügt werden können.
+
+Die Wahl der Toleranz stellt dabei einen Kompromiss zwischen Passgenauigkeit und Montierbarkeit dar. Eine zu geringe Toleranz könnte dazu führen, dass sich die Bauteile aufgrund unvermeidbarer Fertigungsabweichungen nicht vollständig zusammenfügen lassen. Eine zu große Toleranz würde hingegen die Positioniergenauigkeit reduzieren und die Stabilität der Verbindung negativ beeinflussen. Die gewählte Toleranz von 0,8 mm erwies sich als geeigneter Mittelweg zwischen diesen Anforderungen.
+
+Neben der Toleranzgestaltung besitzt die Dimensionierung der Verbindungsflächen einen wesentlichen Einfluss auf die Stabilität der fertigen Verkleidung. Die Übergangsbereiche zwischen den einzelnen Segmenten wurden daher bewusst mit ausreichend großen Überlappungs- beziehungsweise Verbindungsflächen ausgeführt. Dadurch wird die Belastung nicht punktuell auf einzelne Schrauben konzentriert, sondern über größere Bereiche verteilt. Dies reduziert lokale Spannungen innerhalb des Kunststoffbauteils und erhöht die strukturelle Festigkeit der gesamten Konstruktion.
+
+Die eigentliche Befestigung erfolgt über Schraubverbindungen. Nach dem Zusammenfügen der einzelnen Segmente werden diese mithilfe von Schrauben dauerhaft fixiert. Gegenüber einer reinen Klebeverbindung bietet dieses Verfahren mehrere Vorteile. Zum einen entsteht eine lösbare Verbindung, wodurch einzelne Segmente bei Beschädigungen oder konstruktiven Änderungen ausgetauscht werden können. Zum anderen ermöglicht die Schraubverbindung eine höhere mechanische Belastbarkeit und verbessert die Langzeitstabilität der gesamten Verkleidungsplatte.
+
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/TestPlate1.png}
+	\vspace{15pt}
+	\caption{Das CAD-Design der Testplatte für den Testdruck (links: vordere Seite, rechts: hintere Seite).}
+	\label{fig:Testplatte}
+\end{figure}
+
+Die Testplatte, wie in der Abbildung \ref{fig:Testplatte} dargestellt, zeigt eine gestalterisch experimentelle Oberfläche, die speziell dafür ausgelegt ist, verschiedene Aspekte der Konstruktion und Fertigung zu prüfen. Links und rechts von der Testplatte erkennt man die mit bereits erwähnten Toleranz von 0,8 mm Verknüpfungsflächen, über die mehrere dieser Platten miteinander verbunden werden können. Die Schraubenlöcher sind in M3‑Normgröße ausgeführt und dienen in diesem Fall der Überprüfung der Passgenauigkeit im Druck. Die eingravierten Cyberpunk‑Linien besitzen eine leichte Tiefe, um zu testen, ob der Drucker feine Reliefstrukturen sauber reproduzieren kann. Zusätzlich sind mehrere Farbsegmente integriert, die als Drucktest dienen, mit der Vorgabe, dass während des Druckens maximal fünf unterschiedliche Farbabstufungen verwendet werden. Der große Kreis in der Mitte ist als Testaufnahme für Ultraschallsensoren vorgesehen und ermöglicht das Prüfen von Befestigung, Toleranzen und Stabilität. Ein kleines Text‑Label ist ebenfalls integriert, um die Lesbarkeit und Präzision von Schriftzügen im Druckprozess zu evaluieren.
+
+Ebenso wurde die Position der Verbindungsflächen sorgfältig gewählt. Bereiche mit erhöhten mechanischen Belastungen oder möglichen Krafteinleitungen wurden bei der Segmentierung möglichst vermieden. Stattdessen erfolgte die Platzierung der Verbindungsstellen an konstruktiv günstigen Positionen, an denen die Belastungen geringer ausfallen und gleichzeitig ausreichend Bauraum für die Montage der Schraubverbindungen vorhanden ist. Dadurch konnte sowohl die mechanische Stabilität als auch die Wartungsfreundlichkeit verbessert werden.
+
+\vspace{0.6cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/DEFPV1_back.png}
+	\vspace{15pt}
+	\caption{Die Rückseite der Frontplatte „DEFPV1“ in transparenter Darstellung.}
+	\label{fig:DEFPV1_back}
+\end{figure}
+
+Die Abbildung \ref{fig:DEFPV1_back} zeigt, wie die Verknüpfungsflächen in einer echten Verkleidungsplatte positioniert werden, hier exemplarisch auf der Rückseite der Frontplatte „DEFPV1“.  Die orange markierten Bereiche zeigen klar, wo die Verknüpfungsflächen sitzen. Die Flächen liegen breit verteilt über Außen- und Innenbereiche, sodass die Verbindung später sowohl außen als auch innen stabil bleibt. Gleichzeitig sind sie nicht exakt so breit wie die gesamte Teilplatte, damit beim Zusammenfügen mehrerer Module eine kleine Puzzle‑Lücke entsteht, die das Einrasten und Toleranzausgleichen ermöglicht. Die Schraublöcher sind nach M3‑Norm ausgeführt, sodass die Module zuverlässig fixiert werden können. Die kreisförmigen Aussparungen unten links deuten auf die spätere Integration von Ultraschallsensoren hin.
+
+Nach Abschluss der Fertigung wurden die einzelnen Segmente zu vollständigen Verkleidungsplatten montiert und anschließend am Robotersystem befestigt. Durch die Kombination aus additiver Fertigung, segmentierter Bauweise und verschraubten Verbindungselementen entstand eine robuste und gleichzeitig flexibel anpassbare Konstruktion. Die gewählte Vorgehensweise ermöglichte die Herstellung großflächiger Verkleidungselemente trotz der begrenzten Abmessungen des verfügbaren 3D-Druckers.
+
+Zusammenfassend stellte die Aufteilung der Verkleidungsplatten in vier Segmente eine zweckmäßige Lösung zur Umsetzung der großformatigen Bauteile dar. Das entwickelte Verbindungskonzept mit Puzzle-artigen Verbindungsgeometrien, verschraubten Verbindungen und definierten Toleranzbereichen gewährleistet eine präzise Montage sowie eine ausreichende mechanische Stabilität. Gleichzeitig ermöglicht die modulare Bauweise eine einfache Wartung und den Austausch einzelner Komponenten, wodurch die Flexibilität des Gesamtsystems erhöht wird.
+
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/DEHDV1.png}
+	\vspace{15pt}
+	\caption{Das CAD-Design der Verkleidung „DEHDV1“ für dem Roboterkopf.}
+	\label{fig:DEHDV1}
+\end{figure}
+
+Die Verkleidung für dem Roboterkopf, wie in der Abbildung \ref{fig:DEHDV1} dargestellt, wird als ein einziges Bauteil gefertigt, weil ihre Abmessungen problemlos innerhalb der Druckgröße des Bambu Lab H2C liegen. Dadurch entfällt jede Segmentierung, und die gesamte Form kann stabil, sauber und ohne sichtbare Übergänge gedruckt werden. Die M3‑Bohrungen sind direkt integriert, sodass alle späteren Befestigungen normgerecht und ohne Nacharbeit passen. Gestalterisch knüpft die Verkleidung an die übrigen Platten an. Die roten und blauen Akzentflächen sorgen für eine klare Verbindung zum Farbkonzept der anderen Platten und schaffen ein konsistentes Erscheinungsbild über den gesamten Roboter hinweg. Oben sitzen die „Ohren“, die bewusst als spielerisches Element gestaltet sind und dem Kopf eine leichte, freundliche Anmutung geben. Oben befindet sich ebenfalls ein größeres, ergonomisch platziertes Loch für einen Interaktionsknopf. Dieser liegt leicht rechts, weil Nutzer intuitiv häufiger mit der rechten Hand drücken. Das Loch dient also nicht nur der Funktion, sondern folgt bewusst einer ergonomischen Platzierungslogik, damit die Interaktion mit dem Roboter möglichst natürlich wirkt.
+
+\vspace{0.6cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/DEHDV1_haube.png}
+	\vspace{15pt}
+	\caption{Das CAD-Design der Wartungsklappe für dem Roboterkopf, in die Verkleidung integriert.}
+	\label{fig:DEHDV1_haube}
+\end{figure}
+
+Die Wartungsklappe,  wie in der Abbildung \ref{fig:DEHDV1_haube} dargestellt, ist als eigenständiges, funktionales Bauteil gestaltet und erfüllt mehrere technische Aufgaben gleichzeitig. Die Lüftungsschlitze sorgen dafür, dass alle Komponenten im Kopfbereich zuverlässig mit Luft versorgt werden und Wärme entweichen kann. Sie sind so angeordnet, dass der Luftstrom gleichmäßig verteilt wird und keine Hotspots entstehen, was besonders bei kompakten Kopf‑Modulen wichtig ist. Das große X‑Profil auf der Klappe dient als strukturelle Verstärkung. Durch diese Form wird die Fläche steifer und widerstandsfähiger gegen Verwindung. Die Klappe kann dadurch dünner konstruiert werden, ohne an Robustheit zu verlieren. Die untere und obere Schlitze sind außerdem so gestaltet, dass die Wartungsklappe ohne Schrauben oder Klebstoff auf der Verkleidung fixiert werden kann. Die Form greift seitlich und oben leicht genug ein, sodass man die Klappe einfach per Hand einsetzen oder herausnehmen kann. Gleichzeitig verhindern die Schlitze, dass die Klappe sich bei Bewegungen des Roboters seitlich verschiebt oder nach oben herausrutscht. Das ergibt eine werkzeuglose, aber sichere Befestigung, die bei Wartungsvorgängen praktisch ist.
 
 \section{KI TTS STT}
 
