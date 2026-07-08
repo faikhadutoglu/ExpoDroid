@@ -80,7 +80,7 @@ WLAN_CONNECT_TIMEOUT   = 15    # Sekunden fuer nmcli
 # Gemini API-Key - am besten als Umgebungsvariable setzen:
 #   export GEMINI_API_KEY="AIza..."
 # Alternativ direkt hier eintragen (nicht empfohlen fuer geteilten Code):
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyC7kwfXGBRKMznlZuNDOAfGwxWrcYlrqoo")  #hier api key
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")  #hier api key
 GEMINI_MODEL = "gemini-3-flash-preview" #für 5 euro kann man damit ca 2k anfragen stellen, das sollte für die Messe reichen. Sonst auf "gemma3:1b" wechseln (kostenlos, aber langsamer und weniger intelligent).
 
 
