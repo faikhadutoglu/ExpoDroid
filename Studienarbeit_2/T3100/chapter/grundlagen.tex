@@ -259,6 +259,17 @@ Für die hintere Platte steht die technische Funktion und Gestaltung im Vordergr
 
 Die gezeigte Platte in der Abbildung \ref{fig:DEBPV1} setzt genau diesen funktionalen Charakter sichtbar um. Die Platte trägt das Branding der DHBW klar und zentral, wodurch die Rückseite trotz technischer Ausrichtung eine eindeutige institutionelle Identität behält. Aus Gründen der Drucktechnik ist Branding als mehreren Teilen gekennzeichnet und ist somit mehrfarbig, wobei das Branding in gedruckten Form rot sein wird. Die roten Streifen auf der linken Seite dienen als visuelle Akzentführung und unterstützen die Wiedererkennbarkeit des Roboters, während die schwarzen Linien oben rechts an technische Leiterbahnen erinnern und den cyberpunkartigen Stil fortführen. Unten links sind Lüftungsschlitze integriert, die den technischen Charakter der Platte betonen. Rechts unten befindet sich eine kleine Wartungsklappe mit rundem Verschluss und einem Batteriesymbol, das den Zugangspunkt für den Batterieaustausch markiert. Die sichtbaren Schrauben entlang der Kanten verdeutlichen die modulare Bauweise und die robuste Befestigung der Verkleidung. 
 
+\vspace{0.6cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/DEArm1.png}
+	\vspace{15pt}
+	\caption{Das CAD-Design der Armverkleidung für dem Roboter.}
+	\label{fig:DEArm1}
+\end{figure}
+
+Der Arm des Roboters in der Abbildung \ref{fig:DEArm1} besitzt die roten Akzentflächen und setzen somit die visuelle Linie der übrigen Verkleidung fort und sorgen dafür, dass der Arm auch als Teil des Gesamtfarbsystems erkennbar bleibt. Auf der Fläche ist zudem das DHBW Logo eingearbeitet, was dem Bauteil eine eindeutige institutionelle Identität gibt und den Arm optisch mit den anderen Platten verbindet. Auf der linken Seite befindet sich der Bereich, in dem der Servomotor für die Klauen eingesetzt wird. Die Geometrie ist dort bewusst offen und funktional gehalten, damit der Motor sauber montiert werden kann und die Kraftübertragung zu den Klauen zuverlässig funktioniert.
+
 Das entwickelte Corporate Design basiert auf der Kombination funktionaler, psychologischer und gestalterischer Anforderungen. Die bewusst begrenzte Anthropomorphisierung vermeidet die negativen Effekte des Uncanny Valley und fördert gleichzeitig eine positive Wahrnehmung des Roboters. Die ausgewogene Verbindung technischer und spielerischer Gestaltungselemente ermöglicht eine zielgruppengerechte Ansprache der Messebesucher. Gleichzeitig sorgt die konsequente Umsetzung des Corporate Designs der Dualen Hochschule Baden Württemberg für eine hohe Wiedererkennbarkeit sowie eine eindeutige Zuordnung des Roboters zur Hochschule. Dadurch übernimmt der Roboter nicht nur technische Aufgaben, sondern fungiert zugleich als repräsentatives Aushängeschild der Hochschule auf öffentlichen Veranstaltungen.
 
 \subsection{Konstruktion und Fertigung der Verkleidungsplatten [PENDING READ \& CORRECTION]}
@@ -276,6 +287,14 @@ Die Wahl der Toleranz stellt dabei einen Kompromiss zwischen Passgenauigkeit und
 Neben der Toleranzgestaltung besitzt die Dimensionierung der Verbindungsflächen einen wesentlichen Einfluss auf die Stabilität der fertigen Verkleidung. Die Übergangsbereiche zwischen den einzelnen Segmenten wurden daher bewusst mit ausreichend großen Überlappungs- beziehungsweise Verbindungsflächen ausgeführt. Dadurch wird die Belastung nicht punktuell auf einzelne Schrauben konzentriert, sondern über größere Bereiche verteilt. Dies reduziert lokale Spannungen innerhalb des Kunststoffbauteils und erhöht die strukturelle Festigkeit der gesamten Konstruktion.
 
 Die eigentliche Befestigung erfolgt über Schraubverbindungen. Nach dem Zusammenfügen der einzelnen Segmente werden diese mithilfe von Schrauben dauerhaft fixiert. Gegenüber einer reinen Klebeverbindung bietet dieses Verfahren mehrere Vorteile. Zum einen entsteht eine lösbare Verbindung, wodurch einzelne Segmente bei Beschädigungen oder konstruktiven Änderungen ausgetauscht werden können. Zum anderen ermöglicht die Schraubverbindung eine höhere mechanische Belastbarkeit und verbessert die Langzeitstabilität der gesamten Verkleidungsplatte.
+\clearpage
+
+Für die farbliche Gestaltung der Verkleidungsplatten wurden zwei unterschiedliche Fertigungsansätze betrachtet. Die erste Möglichkeit bestand darin, sämtliche Bauteile zunächst einfarbig zu drucken und die gewünschten Farbakzenten anschließend durch Lackieren mit Hilfe der Bedeckung mit Klettband zu realisieren. Die zweite Möglichkeit sah vor, die verschiedenen Farben bereits während des 3D-Druckprozesses durch den Einsatz unterschiedlich farbiger Filamente zu erzeugen.
+
+Das nachträgliche Lackieren beziehungsweise Bekleben bietet den Vorteil, dass sämtliche Bauteile mit einem einzigen Filament gefertigt werden können. Dadurch reduziert sich der Aufwand während des Druckprozesses, da keine Filamentwechsel erforderlich sind und die Druckzeit insgesamt geringer ausfällt. Allerdings hängt die Qualität des Endergebnisses stark von der manuellen Ausführung ab. Insbesondere beim Abkleben und Lackieren können Ungenauigkeiten auftreten, wodurch Farbgrenzen unsauber werden oder die Positionierung einzelner Designelemente von der CAD-Konstruktion abweicht. Demgegenüber ermöglicht der mehrfarbige 3D-Druck eine deutlich höhere Präzision. Die verschiedenen Farben werden direkt während des Fertigungsprozesses an den zuvor definierten Positionen erzeugt, wodurch sich saubere Farbübergänge und eine hohe Wiederholgenauigkeit erzielen lassen. Dies ist insbesondere für die Umsetzung des Corporate Designs von Vorteil, da Logos, Schriftzüge und charakteristische Farbflächen exakt entsprechend der CAD-Konstruktion gefertigt werden können. Nachteile dieses Verfahrens bestehen in einer längeren Druckdauer aufgrund der erforderlichen Filamentwechsel sowie einem erhöhten Materialverbrauch, da bei jedem Farbwechsel Filament ausgespült werden muss.
+
+Nach Abwägung beider Verfahren wurde entschieden, die Farbgestaltung direkt im 3D-Druckprozess umzusetzen. Obwohl dieses Verfahren mit einem höheren Zeit- und Materialaufwand verbunden ist, besitzt die präzise und reproduzierbare Umsetzung des Corporate Designs für den Messeeinsatz eine höhere Priorität. Dadurch kann sichergestellt werden, dass die Verkleidung den gestalterischen Anforderungen entspricht und ein hochwertiges sowie professionelles Erscheinungsbild des Roboters gewährleistet.
+\clearpage
 
 \vspace{1cm}
 \begin{figure}[H]
@@ -316,7 +335,7 @@ Zusammenfassend stellte die Aufteilung der Verkleidungsplatten in vier Segmente 
 
 Die Verkleidung für dem Roboterkopf, wie in der Abbildung \ref{fig:DEHDV1} dargestellt, wird als ein einziges Bauteil gefertigt, weil ihre Abmessungen problemlos innerhalb der Druckgröße des Bambu Lab H2C liegen. Dadurch entfällt jede Segmentierung, und die gesamte Form kann stabil, sauber und ohne sichtbare Übergänge gedruckt werden. Die M3‑Bohrungen sind direkt integriert, sodass alle späteren Befestigungen normgerecht und ohne Nacharbeit passen. Gestalterisch knüpft die Verkleidung an die übrigen Platten an. Die roten und blauen Akzentflächen sorgen für eine klare Verbindung zum Farbkonzept der anderen Platten und schaffen ein konsistentes Erscheinungsbild über den gesamten Roboter hinweg. Oben sitzen die „Ohren“, die bewusst als spielerisches Element gestaltet sind und dem Kopf eine leichte, freundliche Anmutung geben. Oben befindet sich ebenfalls ein größeres, ergonomisch platziertes Loch für einen Interaktionsknopf. Dieser liegt leicht rechts, weil Nutzer intuitiv häufiger mit der rechten Hand drücken. Das Loch dient also nicht nur der Funktion, sondern folgt bewusst einer ergonomischen Platzierungslogik, damit die Interaktion mit dem Roboter möglichst natürlich wirkt.
 
-\vspace{0.6cm}
+\vspace{0.3cm}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/DEHDV1_haube.png}
@@ -327,9 +346,32 @@ Die Verkleidung für dem Roboterkopf, wie in der Abbildung \ref{fig:DEHDV1} darg
 
 Die Wartungsklappe,  wie in der Abbildung \ref{fig:DEHDV1_haube} dargestellt, ist als eigenständiges, funktionales Bauteil gestaltet und erfüllt mehrere technische Aufgaben gleichzeitig. Die Lüftungsschlitze sorgen dafür, dass alle Komponenten im Kopfbereich zuverlässig mit Luft versorgt werden und Wärme entweichen kann. Sie sind so angeordnet, dass der Luftstrom gleichmäßig verteilt wird und keine Hotspots entstehen, was besonders bei kompakten Kopf‑Modulen wichtig ist. Das große X‑Profil auf der Klappe dient als strukturelle Verstärkung. Durch diese Form wird die Fläche steifer und widerstandsfähiger gegen Verwindung. Die Klappe kann dadurch dünner konstruiert werden, ohne an Robustheit zu verlieren. Die untere und obere Schlitze sind außerdem so gestaltet, dass die Wartungsklappe ohne Schrauben oder Klebstoff auf der Verkleidung fixiert werden kann. Die Form greift seitlich und oben leicht genug ein, sodass man die Klappe einfach per Hand einsetzen oder herausnehmen kann. Gleichzeitig verhindern die Schlitze, dass die Klappe sich bei Bewegungen des Roboters seitlich verschiebt oder nach oben herausrutscht. Das ergibt eine werkzeuglose, aber sichere Befestigung, die bei Wartungsvorgängen praktisch ist.
 
-\subsection{Elektronik-Design und EMV [PENDING HIER BATTERY TRAY DESIGN??]}
+\vspace{0.6cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/DEArm2.png}
+	\vspace{15pt}
+	\caption{Die Armverkleidung in zwei Teile unterteilt.}
+	\label{fig:DEArm2}
+\end{figure}
 
-PENDING TEXTE
+Die Armverkleidung von der Abbildung \ref{fig:DEArm1} wird in zwei getrennte Teile unterteilt (siehe Abbildung \ref{fig:DEArm2}), um die gesamte Kabeldurchführung deutlich zu vereinfachen. Statt eine einzige geschlossene Hülle zu haben, die das Verlegen der Leitungen erschwert, erlaubt die Zweiteilung, dass Kabel von Motor, Sensorik oder Elektronik sauber eingeführt, geführt und später gewartet werden können, ohne dass man die komplette Verkleidung demontieren muss.
+
+PENDING SCHARNIERE BESCHREIBUNG
+
+\subsection{Elektronik-Design}
+
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/BatteryTray.png}
+	\vspace{10pt}
+	\caption{Das CAD-Design der Batteriehalterung.}
+	\label{fig:BatteryTray}
+\end{figure}
+
+In der Abbildung \ref{fig:BatteryTray} wird die orangene Halterung für die Powerbanks im Inneren des Roboters dargestellt. Die Halterung sitzt direkt hinter der Wartungsklappe der hinteren Verkleidungsplatte (siehe Abbildung \ref{fig:DEBPV1}), sodass man die Powerbanks schnell erreichen und austauschen kann, ohne weitere Bauteile entfernen zu müssen. Die Befestigung ist bewusst effizient gelöst, in dem die gleichen M3‑Schrauben genutzt werden, die auch die Wartungsklappe und deren Scharniere halten. Dadurch bleibt die Konstruktion leicht, modular und ohne zusätzliche Verbindungspunkte. Die Struktur der Halterung ist mit Lüftungsschlitzen versehen. Diese dienen einerseits der Gewichtsreduktion, andererseits der Wärmeabfuhr, da Powerbanks unter Last spürbar warm werden können. Die Schlitze ermöglichen, dass warme Luft nach oben und hinten entweichen kann, während die Powerbanks sicher in ihrer Position bleiben.
+\clearpage
 
 \section{KI TTS STT}
 
