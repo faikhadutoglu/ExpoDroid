@@ -5,27 +5,27 @@
 \textit{Hier beschreibt jeder die theoretischen Konzepte, die für seine Aufgaben notwendig sind.}
 
 % --- ANGUS ---
-\section{Roboterarten}
+\subsection{Roboterarten}
 
 Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt.
 
-\subsection{Industrieroboter}
+\subsubsection{Industrieroboter}
 
 Industrieroboter werden hauptsächlich in automatisierten Fertigungsprozessen eingesetzt. Typische Aufgaben sind Schweißen, Montieren, Lackieren oder Palettieren. Sie zeichnen sich durch eine hohe Wiederholgenauigkeit, Geschwindigkeit und Tragfähigkeit aus und arbeiten meist innerhalb abgeschirmter Sicherheitsbereiche. Aufgrund der hohen Kräfte und Geschwindigkeiten ist während des Betriebs in der Regel keine direkte Zusammenarbeit mit Menschen vorgesehen.
 
-\subsection{Kollaborative Roboter}
+\subsubsection{Kollaborative Roboter}
 
 Kollaborative Roboter, auch Cobots genannt, sind speziell für die direkte Zusammenarbeit mit Menschen entwickelt worden. Im Gegensatz zu klassischen Industrierobotern verfügen sie über Sicherheitsfunktionen wie Kraft- und Momentenbegrenzungen sowie Sensoren zur Personenerkennung. Dadurch können sie Arbeitsräume mit Menschen teilen und diese bei Montage- oder Handhabungsaufgaben unterstützen.
 
-\subsection{Mobile Roboter}
+\subsubsection{Mobile Roboter}
 
 Mobile Roboter besitzen die Fähigkeit, sich selbstständig oder ferngesteuert innerhalb ihrer Umgebung fortzubewegen. Je nach Einsatzgebiet kommen Räder, Ketten oder Laufmechanismen zum Einsatz. Typische Anwendungen finden sich in der Logistik, der Landwirtschaft, der Erkundung oder im Servicebereich. Die Navigation erfolgt häufig mithilfe verschiedener Sensoren wie Kameras, Laserscannern oder Ultraschallsensoren.
 
-\subsection{Humanoide Roboter}
+\subsubsection{Humanoide Roboter}
 
 Humanoide Roboter orientieren sich hinsichtlich ihres Aufbaus an der menschlichen Anatomie. Sie verfügen häufig über einen Kopf, einen Oberkörper, Arme und Beine und können dadurch menschliche Bewegungen oder Gesten nachahmen. Ziel humanoider Roboter ist eine möglichst intuitive Interaktion mit Menschen. Bekannte Vertreter sind beispielsweise der Tesla Optimus oder der Atlas-Roboter von Boston Dynamics.
 
-\subsection{Demonstrations- und Serviceroboter}
+\subsubsection{Demonstrations- und Serviceroboter}
 
 Demonstrations- und Serviceroboter dienen der Interaktion mit Menschen und übernehmen Informations-, Präsentations- oder Unterstützungsaufgaben. Im Vordergrund stehen hierbei weniger hohe Traglasten oder Präzision als vielmehr ein ansprechendes Erscheinungsbild, intuitive Bedienbarkeit und eine angenehme Mensch-Roboter-Interaktion. Aufgrund dieser Eigenschaften findet diese Roboterklasse häufig Anwendung auf Messen, in Museen oder im Bildungsbereich.
 
@@ -98,13 +98,32 @@ Ein effektives Ressourcenmanagement bildet somit die Grundlage für den zuverlä
 \subsection{Mensch-Maschine-Interaktion (HMI)}
 Hierbei gibt es die Unterscheidung zwischen HMI was für Human Maschine Interaction oder Interface steht und HRI, was spezialisiert für Human Robot Interaction steht. Hierbei geht es dann spezifisch um die Interaktion mit einem Roboter oder auch humanoiden Roboter. 
 
-\cite{" Human-Robot Interaction (HRI) is a field of studydedicated to understanding, designing and evaluating robotic systems for use by or with humans"}
+\cite{" Human-Robot Interaction (HRI) is a field of study dedicated to understanding, designing and evaluating robotic systems for use by or with humans"}
 
 
 
 
 \subsubsection{Technologien der Sprachsynthese und -erkennung}
+\subsubsection{Technologien der Sprachsynthese und -erkennung}
+
+Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{radford2022whisper}
+
+Für die Spracherkennung wurde im Rahmen dieser Arbeit das Open-Source-System Whisper betrachtet. Whisper basiert auf einer Transformer-Architektur und wurde mit rund 680\,000 Stunden mehrsprachiger Sprachdaten trainiert. Das Modell kann Sprache in zahlreichen Sprachen erkennen und besitzt eine hohe Robustheit gegenüber Hintergrundgeräuschen und unterschiedlichen Sprechweisen. \cite{radford2022whisper}
+
+Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Implementierung von Whisper. Diese basiert auf der CTranslate2-Bibliothek und reduziert sowohl den Speicherverbrauch als auch die Rechenzeit während der Inferenz. Dadurch eignet sich Fast-Whisper besonders für Embedded-Systeme wie den Raspberry Pi 5. Trotz dieser Optimierungen stellt die lokale Spracherkennung weiterhin hohe Anforderungen an die verfügbare Rechenleistung. \cite{radford2022whisper}
+
+Im Bereich der Sprachsynthese kommen heute ebenfalls neuronale Netze zum Einsatz. Diese erzeugen aus einem Text zunächst eine akustische Repräsentation, welche anschließend durch einen sogenannten Vocoder in ein Audiosignal umgewandelt wird. Gegenüber älteren Verfahren auf Basis zusammengesetzter Sprachbausteine ermöglichen moderne Systeme eine deutlich natürlichere und flüssigere Sprachwiedergabe. Die Parameter der generierten Sprache können zusätzlich hinsichtlich Geschwindigkeit, Lautstärke und Sprechstil angepasst werden. \cite{shen2018tacotron}
+
+
 \subsubsection{Netzwerkprotokolle zur Fernwartung (VNC)}
+
+Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt.
+
+VNC ist ein plattformübergreifendes Fernwartungsprotokoll, welches nach dem Client-Server-Prinzip arbeitet. Ein VNC-Server läuft auf dem zu steuernden Rechner und überträgt dessen Bildschirminhalt über das Remote-Framebuffer-Protokoll (RFB) an einen VNC-Client. Gleichzeitig werden Maus- und Tastatureingaben des Clients an das entfernte System übertragen. Dadurch kann ein Rechner vollständig aus der Ferne bedient werden. \cite{rfc6143}
+
+Während der Entwicklung erwies sich VNC als geeignetes Werkzeug zur Konfiguration und Wartung des Roboters. Die durchgeführten Tests zeigten jedoch, dass die Qualität der Verbindung stark von der verfügbaren Netzwerkbandbreite abhängt. Insbesondere bei grafischen Anwendungen treten bei langsamen Verbindungen spürbare Verzögerungen auf.
+
+Weiterhin wurde festgestellt, dass die Bereitstellung eines eigenen WLAN-Hotspots durch den Raspberry Pi zu einer erhöhten Systemauslastung führt und die verfügbare Rechenleistung für andere Anwendungen reduziert. Daher wird empfohlen, für den Betrieb eine externe WLAN-Infrastruktur oder einen separaten mobilen Hotspot zu verwenden. Unter diesen Bedingungen konnten eine stabile Verbindung und eine zuverlässige Fernwartung erreicht werden.
 
 % --- HAI NAM ---
 \section{Elektromechanische Integration und Design (Hai Nam)}
@@ -175,11 +194,12 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-%\subsubsection{Kabelmanagement und Signalintegrität}
-%a
-
-
-
+\subsection{Elektronik-Design und EMV}
+a
+\subsubsection{Kabelmanagement und Signalintegrität}
+a
+\subsubsection{Corporate Design Prinzipien im Roboterbau}
+a
 \section{KI TTS STT}
 
 Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. 
@@ -190,14 +210,14 @@ In modernen technischen Anwendungen kommen überwiegend sogenannte schwache KI-S
 
 Die Fourier-Transformation ist ein mathematisches Verfahren zur Analyse von Signalen. Sie ermöglicht die Umwandlung eines Signals aus dem Zeitbereich in den Frequenzbereich. Dadurch kann bestimmt werden, aus welchen Frequenzanteilen ein Signal zusammengesetzt ist.
 
-%\vspace{1cm}
-%\begin{figure}[H]
-%	\centering
-%	%\includegraphics[width=0.6\linewidth]{images/FFT_analyse.png}
-%	\vspace{10pt}
-%	\caption{Typisches Regelsystem von einem Servomotor. \cite{OSWOS.2024}}
-%	\label{fig:Servo1}
-%\end{figure}
+\vspace{1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/FFT_analyse.png}
+	\vspace{10pt}
+	\caption{Klanganalyse mittels Fourieranalyse}
+	\label{fig:FFT}
+\end{figure}
 
 Bei der Verarbeitung von Sprachsignalen spielt die Fourier-Transformation eine zentrale Rolle. Gesprochene Sprache besteht aus einer Vielzahl von Frequenzen, deren Zusammensetzung wichtige Informationen über Laute, Wörter und Satzstrukturen enthält. Durch die Zerlegung des Sprachsignals in seine Frequenzanteile können charakteristische Merkmale extrahiert werden, die anschließend von Algorithmen des maschinellen Lernens oder neuronalen Netzen verarbeitet werden.
 
@@ -292,7 +312,7 @@ Ein bekanntes Beispiel für moderne Speech-to-Text-Technologie ist Whisper von O
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
 
 \subsection{Trade-off-Analyse}
-\textcolor{red}{Sollte sowas wirklich in den Grundlagen stehen? Aufjedenfall methodische Grundlagen zusammen}
+
 Während der Entwicklung technischer Systeme existieren häufig mehrere mögliche Lösungsansätze, die unterschiedliche Vor- und Nachteile besitzen. Um eine nachvollziehbare und objektive Entscheidung treffen zu können, werden im Systems Engineering häufig sogenannte Trade-off-Analysen eingesetzt. Ziel dieser Methode ist es, verschiedene Konzepte anhand zuvor definierter Bewertungskriterien systematisch miteinander zu vergleichen.
 
 Zunächst werden die relevanten Bewertungskriterien festgelegt. Diese können beispielsweise Kosten, Fertigungsaufwand, Funktionalität, Zuverlässigkeit oder Wartungsfreundlichkeit umfassen. Anschließend erhält jedes Kriterium einen Gewichtungsfaktor, der dessen Bedeutung für das Gesamtsystem beschreibt. Kriterien mit hoher Relevanz werden stärker gewichtet als weniger wichtige Eigenschaften.

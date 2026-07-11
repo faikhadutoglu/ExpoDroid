@@ -33,7 +33,45 @@ Für den Messebetrieb des Roboters wurde ein KI-gestütztes Sprachassistenzsyste
 
 Das System sollte deutsche Sprache zuverlässig erkennen und verarbeiten können. Gleichzeitig musste die Antwort nicht nur textuell generiert, sondern auch als natürlich klingende Sprachausgabe wiedergegeben werden. Da der Roboter auf Messen und Informationsveranstaltungen eingesetzt werden soll, wurde besonderer Wert auf eine gute Sprachverständlichkeit, eine angemessene Lautstärke sowie kurze Reaktionszeiten gelegt.
 
-Die gesamte KI-Anwendung wurde auf einem Raspberry Pi implementiert, der als zentrale Recheneinheit des Roboters fungiert. Zusätzlich wurden Anzeigeelemente und Animationen integriert, um die Interaktion für den Nutzer intuitiver und attraktiver zu gestalten. 
+Die gesamte KI-Anwendung wurde auf einem Raspberry Pi implementiert, der als zentrale Recheneinheit des Roboters fungiert. Zusätzlich wurden Anzeigeelemente und Animationen integriert, um die Interaktion für den Nutzer intuitiver und attraktiver zu gestalten.
+
+\subsection*{KI Modellauswahl}
+
+\begin{table}[H]
+	\centering
+	\caption{Trade-off-Analyse der evaluierten Sprachmodelle}
+	\label{tab:llm_vergleich}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|p{5.5cm}|c|c|c|c|}
+		\hline
+		\textbf{Kriterium} &
+		\textbf{Gemma 3:1B} &
+		\textbf{Phi} &
+		\textbf{TinyLlama} &
+		\textbf{Qwen} \\
+		\hline
+		Antwortgeschwindigkeit & 4 & 3 & 5 & 2 \\
+		Vollständigkeit der Antworten & 5 & 3 & 2 & 4 \\
+		Natürliche Sprache & 5 & 4 & 2 & 5 \\
+		Wissensumfang & 3 & 3 & 2 & 4 \\
+		Systemprompt-Treue & 5 & 3 & 2 & 4 \\
+		Deutschsprachige Antworten & 5 & 3 & 2 & 4 \\
+		Lauffähigkeit auf Raspberry Pi 5 & 5 & 4 & 5 & 2 \\
+		\hline
+		\textbf{Gesamtbewertung} & \textbf{4,6} & \textbf{3,3} & \textbf{2,9} & \textbf{3,6} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Die durchgeführten Tests zeigten deutliche Unterschiede zwischen den untersuchten Sprachmodellen. TinyLlama erreichte zwar die höchste Ausführungsgeschwindigkeit, erzeugte jedoch häufig unvollständige oder sehr oberflächliche Antworten. Dadurch war das Modell für den vorgesehenen Einsatz als Informations- und Messeassistent nur eingeschränkt geeignet.
+
+Phi lieferte insgesamt ausgewogene Ergebnisse, zeigte jedoch bei komplexeren Fragestellungen Schwächen hinsichtlich der Konsistenz und der Einhaltung vorgegebener Systemanweisungen. Die Qualität der deutschsprachigen Antworten lag ebenfalls unter dem Niveau von Gemma 3:1B.
+
+Qwen verfügte über einen vergleichsweise großen Wissensumfang und erzeugte natürlich formulierte Antworten. Aufgrund des höheren Ressourcenbedarfs waren die Antwortzeiten auf dem Raspberry Pi 5 jedoch deutlich länger, wodurch die Interaktion mit dem Benutzer teilweise unnatürlich wirkte.
+
+Gemma 3:1B erwies sich als das am besten geeignete Modell für den Einsatz auf dem Raspberry Pi 5. Das Modell erzeugte vollständige und verständliche Antworten, setzte die vorgegebenen Systemprompts zuverlässig um und zeigte die beste Qualität bei deutschsprachigen Ausgaben. Gleichzeitig konnte es noch mit akzeptabler Geschwindigkeit auf der verfügbaren Hardware betrieben werden. Aus diesem Grund wurde Gemma 3:1B als lokales Sprachmodell für die weitere Entwicklung ausgewählt.
+
+ 
 \subsection{Umsetzung: Software und Infrastruktur}
 Das KI-System des Roboters wurde ursprünglich mit dem Sprachmodell Gemma 3 realisiert. Ziel war es, sämtliche Sprachverarbeitung lokal auf dem Raspberry Pi 5 durchzuführen, um unabhängig von einer Internetverbindung arbeiten zu können. Der lokale Betrieb bietet zudem Vorteile hinsichtlich Datenschutz, Ausfallsicherheit und Betriebskosten, da keine externen Cloud-Dienste erforderlich sind.
 
@@ -115,6 +153,50 @@ Für die lokale Ausführung des Sprachmodells wurde Ollama installiert. Diese So
 
 Zur Sprachaufnahme wurde ein USB-Mikrofon an den Raspberry Pi angeschlossen und über die Linux-Audiotreiber eingebunden. Die Identifikation und Konfiguration des Audiogerätes erfolgte mithilfe der ALSA-Werkzeuge. Anschließend wurde ein Speech-to-Text-System (STT) eingerichtet, das die Spracheingaben der Benutzer in Text umwandelt. Nach verschiedenen Tests wurde die Mikrofonempfindlichkeit angepasst, um Umgebungsgeräusche auf Messen möglichst wenig in die Erkennung einzubeziehen.
 
+Da dies aber nicht den gewünschten Erfolg brachte, wurden weitere Lösungen evaluiert. Die erste Variante bestand aus der Nutzung des bereits in der Webcam integrierten Mikrofons. Um Fehlauslösungen durch Umgebungsgeräusche zu vermeiden, wurde zusätzlich ein Aktivierungsknopf vorgesehen, der vor einer Sprachinteraktion betätigt werden muss. Als weitere Alternativen wurden ein Bluetooth-Ansteckmikrofon sowie ein Headset mit Sprechtaste untersucht. Ziel der Untersuchung war es, eine Lösung zu finden, die sowohl eine zuverlässige Sprachaufnahme als auch eine hohe Praxistauglichkeit für den Einsatz auf Messen ermöglicht.
+
+Zur Auswahl des geeigneten Konzepts wurde eine Nutzwertanalyse durchgeführt. Dabei wurden die Kriterien Variabilität, Sprachqualität, Funktionalität, optische Integration, Flexibilität, Messetauglichkeit, Kosten, technische Komplexität sowie die Stabilität der Verbindung bewertet. Die einzelnen Kriterien wurden entsprechend ihrer Bedeutung für den geplanten Einsatz gewichtet. Die Bewertung erfolgte auf einer Skala von 1 (sehr schlecht) bis 5 (sehr gut).
+
+\begin{table}[H]
+	\centering
+	\caption{Nutzwertanalyse der untersuchten Mikrofonkonzepte}
+	\label{tab:mikrofonbewertung}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|p{5.5cm}|c|c|c|}
+		\hline
+		\textbf{Kriterium (Gewichtung)} &
+		\textbf{Webcam + Taster} &
+		\shortstack{\textbf{Bluetooth-}\\\textbf{Mikrofon}} &
+		\shortstack{\textbf{Headset}\\\textbf{+ Taste}} \\
+		\hline
+		Variabilität (10 \%) & 4 & 3 & 2 \\
+		Sprachqualität (15 \%) & 3 & 5 & 5 \\
+		Funktionalität (15 \%) & 5 & 3 & 4 \\
+		Optische Integration (10 \%) & 5 & 2 & 1 \\
+		Flexibilität (10 \%) & 5 & 3 & 2 \\
+		Messetauglichkeit (15 \%) & 5 & 2 & 1 \\
+		Kosten (10 \%) & 5 & 3 & 2 \\
+		Technische Komplexität (10 \%) & 5 & 2 & 3 \\
+		Verbindungsstabilität (5 \%) & 5 & 2 & 3 \\
+		\hline
+		\textbf{Gesamtbewertung} & \textbf{4,55} & \textbf{2,95} & \textbf{2,70} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{flushleft}
+	\small
+	Bewertungsskala: 1 = sehr schlecht, 5 = sehr gut.
+\end{flushleft}
+
+Die Ergebnisse der Nutzwertanalyse zeigen, dass die Kombination aus Webcam-Mikrofon und zusätzlichem Aktivierungsknopf die höchste Gesamtbewertung erzielt. Obwohl die Varianten mit Bluetooth-Ansteckmikrofon und Headset eine bessere Sprachqualität bieten, ergeben sich im praktischen Messebetrieb mehrere Nachteile.
+
+Insbesondere die Bluetooth-Lösung erhöht die technische Komplexität des Systems. Vor jeder Nutzung muss das Mikrofon mit dem System gekoppelt werden. Darüber hinaus besteht die Gefahr von Verbindungsabbrüchen oder Kopplungsproblemen, insbesondere in Messehallen, in denen eine Vielzahl von Bluetooth- und WLAN-Geräten gleichzeitig betrieben wird. Auch die Verwaltung des Mikrofons zwischen verschiedenen Besuchern würde einen zusätzlichen organisatorischen Aufwand verursachen.
+
+Das Headset mit Sprechtaste bietet ebenfalls eine hohe Sprachqualität, schränkt jedoch die spontane Interaktion mit dem Roboter deutlich ein. Besucher müssten das Headset vor der Nutzung aufsetzen oder übergeben bekommen, was sowohl den Bedienkomfort als auch die Akzeptanz reduziert. Zudem wirkt diese Lösung weniger ansprechend und erfordert zusätzliche Hardware.
+
+Die Variante mit dem vorhandenen Webcam-Mikrofon und einem Aktivierungsknopf benötigt dagegen keine zusätzliche Hardware für den Besucher, verursacht die geringsten Kosten und weist die höchste Systemstabilität auf. Durch die Aktivierung der Sprachaufnahme per Knopfdruck können Umgebungsgeräusche weitgehend ausgeblendet und Fehlauslösungen reduziert werden. Daher wurde diese Lösung für die weitere Entwicklung ausgewählt. Im Rahmen einer Designstudie wurde die Positionierung des Tasters auf dem Kopf des Roboters als optimale Lösung hinsichtlich Erreichbarkeit, Sichtbarkeit und Integration in das Gesamtdesign identifiziert.
+
 Für die Sprachausgabe wurde zusätzlich ein Text-to-Speech-System (TTS) integriert. Dabei werden die vom Sprachmodell generierten Antworten in Audiodateien umgewandelt und über die Lautsprecher des Roboters ausgegeben. Um eine möglichst natürliche Kommunikation zu ermöglichen, wurden Parameter wie Sprechgeschwindigkeit und Lautstärke mehrfach angepasst und getestet.
 
 Während der ersten Versuche zeigte sich jedoch, dass die lokale Ausführung von Gemma 3 auf dem Raspberry Pi 5 zu relativ langen Antwortzeiten führte. Besonders bei komplexeren Fragen war die Antwortgenerierung nicht schnell genug, um einen natürlichen Gesprächsfluss aufrechtzuerhalten. Aus diesem Grund wurde zusätzlich die Cloud-KI Gemini integriert.
@@ -127,12 +209,12 @@ Durch diesen Aufbau konnte ein Kompromiss zwischen hoher Antwortgeschwindigkeit 
 Zur visuellen Interaktion wurde der Roboter mit einem 10,1-Zoll-Display mit einer Auflösung von 1024 × 600 Pixeln ausgestattet. Auf diesem Display werden animierte Augen dargestellt, die dem Roboter ein lebendiges Erscheinungsbild verleihen und die Interaktion mit Besuchern unterstützen.
 
 Im Vergleich zur ersten Studienarbeit wurde das Design der Augen grundlegend überarbeitet. Während in der ursprünglichen Version einfache Darstellungen verwendet wurden, entstand in dieser Projektphase ein neues, moderneres Erscheinungsbild. Die Augen bestehen aus zwei farbigen quadratischen Elementen mit abgerundeten Ecken, deren Pupillen dynamisch bewegt werden. Dabei wurde bewusst ein Design gewählt, das an das DHBW-Farbschema angelehnt ist. Das linke Auge wird in Rot und das rechte Auge in Anthrazit dargestellt.
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{images/duale_augen_screenshot.png}
-%	\caption{Darstellung der entwickelten Augenanimation. Die beiden farbigen Augen werden auf dem Frontdisplay des Roboters angezeigt. Die Pupillen folgen erkannter Personen mittels kamerabasierter Gesichtserkennung und bewegen sich dadurch dynamisch im Sichtfeld.}
-%	\label{fig:augenanimation}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/duale_augen_screenshot.png}
+	\caption{Darstellung der entwickelten Augenanimation. Die beiden farbigen Augen werden auf dem Frontdisplay des Roboters angezeigt. Die Pupillen folgen erkannter Personen mittels kamerabasierter Gesichtserkennung und bewegen sich dadurch dynamisch im Sichtfeld.}
+	\label{fig:augenanimation}
+\end{figure}
 Die Augenanimation wurde in Python unter Verwendung der Bibliothek Pygame umgesetzt. Das Programm erzeugt die vollständige Darstellung in Echtzeit und passt die Position der Pupillen kontinuierlich an erkannte Gesichter an. Hierfür wird eine USB-Kamera verwendet, deren Bilddaten durch die OpenCV-Bibliothek verarbeitet werden. Zur Gesichtserkennung kommt ein Haar-Cascade-Klassifikator zum Einsatz, der Gesichter innerhalb des Kamerabildes lokalisiert. Die ermittelte Gesichtsposition wird anschließend in Augenbewegungen umgerechnet.
 
 Um natürliche Bewegungen zu erhalten, wurde eine Glättung (Smoothing) implementiert. Dadurch folgen die Pupillen dem erkannten Gesicht fließend und vermeiden abrupte Positionswechsel. Wird kein Gesicht erkannt, bewegen sich die Augen langsam wieder in ihre Ausgangsposition zurück. Zusätzlich wurde ein zufälliger Blinzelmechanismus integriert, wodurch die Darstellung lebendiger wirkt. Die Blinzelintervalle werden zufällig gewählt und simulieren menschliches Verhalten.
@@ -148,6 +230,7 @@ Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberflä
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[
+		xshift=-10cm,
 		node distance=1.8cm,
 		box/.style={
 			draw,
@@ -161,7 +244,7 @@ Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberflä
 		
 		\node[box] (boot) {Raspberry Pi Start};
 		\node[box, below of=boot] (wifi) {WLAN-Verbindung};
-		\node[box, below left=1.5cm and 2cm of wifi] (eyes) {Augenanimation (Python/Pygame)};
+		\node[box, below left=1.5cm and 1cm of wifi] (eyes) {Augenanimation (Python/Pygame)};
 		\node[box, below right=1.5cm and 2cm of wifi] (ki) {KI-System};
 		\node[box, below=3cm of wifi] (ready) {Roboter betriebsbereit};
 		
@@ -177,9 +260,32 @@ Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberflä
 
 \subsection{Ergebnisse: Systemleistung}
 \subsubsection{Latenzmessung und Benchmarks}
-Wie schnell antwortet die KI? Wie flüssig laufen die Animationen?
+Zur Bewertung der Reaktionsfähigkeit des Systems wurden mehrere Tests mit der lokal auf dem Raspberry Pi 5 ausgeführten KI sowie mit der cloudbasierten Gemini-KI durchgeführt. Dabei wurde die Zeit zwischen dem Abschluss der Spracheingabe und dem Beginn der Sprachausgabe gemessen.
+
+Die Tests zeigten, dass die lokale Ausführung des Gemma-3-Modells auf dem Raspberry Pi grundsätzlich möglich ist, die Antwortzeiten jedoch stark von der Komplexität der Benutzeranfrage abhängen. Einfache Fragen konnten innerhalb von etwa 15 bis 30 Sekunden beantwortet werden. Bei komplexeren Anfragen stieg die Antwortzeit teilweise auf bis zu einer Minute an. Dadurch wurde ein natürlicher Gesprächsfluss erheblich eingeschränkt.
+
+Die Nutzung der cloudbasierten Gemini-KI führte dagegen zu deutlich kürzeren Antwortzeiten. In den durchgeführten Tests lagen diese typischerweise zwischen wenigen Sekunden und maximal etwa zehn Sekunden. Dadurch konnte eine wesentlich flüssigere Interaktion mit dem Benutzer erreicht werden. Aus diesem Grund wurde für den regulären Betrieb die Nutzung von Gemini bei vorhandener Internetverbindung vorgesehen, während das lokale Gemma-3-Modell als Ausweichlösung für Offline-Szenarien dient.
+
+Die Implementierung der Augenanimationen und Gesichtsanzeige verursachte während der Tests keine erkennbaren Leistungseinbußen. Die Animationen wurden kontinuierlich und ohne Abstürze ausgeführt. Somit konnte die grafische Darstellung parallel zur KI-Verarbeitung zuverlässig betrieben werden.
+
+
 \subsubsection{Stabilitätstests}
-Verbindungstests (VNC) und Laufzeit mit Powerbank.
+
+Zur Überprüfung der Zuverlässigkeit des Systems wurden mehrstündige Laufzeittests unter Bedingungen durchgeführt, die dem geplanten Messeeinsatz möglichst nahekommen. Dabei wurden sowohl die Stabilität der Software als auch die Energieversorgung und die Fernwartung betrachtet.
+
+Während der Tests liefen die Augenanimationen und die Gesichtserkennung über mehrere Stunden hinweg ohne Systemabstürze oder Neustarts. Die grafische Darstellung arbeitete stabil und zeigte keine auffälligen Leistungsprobleme. Eine Einschränkung ergab sich jedoch durch die Positionierung der Kamera. Aufgrund der gewählten Montagehöhe liegt der optimale Erfassungsbereich unterhalb der durchschnittlichen Augenhöhe erwachsener Personen. Dadurch werden kleinere Personen und insbesondere Kinder zuverlässiger erkannt als große Erwachsene.
+
+Für Wartungs- und Konfigurationsarbeiten wurde auf dem Raspberry Pi ein VNC-Zugang eingerichtet. Da innerhalb des Roboters weder Maus noch Tastatur verbaut sind, stellt VNC die primäre Möglichkeit zur Fernwartung des Systems dar. Die durchgeführten Tests zeigten, dass die Verbindung bei einer stabilen WLAN- oder Hotspot-Verbindung zuverlässig und mit geringer Verzögerung funktioniert.
+
+Es zeigte sich jedoch ebenfalls, dass die Qualität der VNC-Verbindung stark von der verfügbaren Netzwerkbandbreite abhängt. Wird der notwendige WLAN-Hotspot direkt durch den Raspberry Pi bereitgestellt, führt dies zu einer zusätzlichen Prozessorbelastung und reduziert die verfügbare Rechenleistung für die übrigen Anwendungen. Gleichzeitig verschlechtert sich die Reaktionsgeschwindigkeit der Fernwartung. Aus diesem Grund wird empfohlen, für den Betrieb eine externe WLAN-Infrastruktur oder einen separaten mobilen Hotspot zu verwenden. Unter diesen Bedingungen konnte eine stabile und flüssige Fernwartung gewährleistet werden.
+
+Die Energieversorgung erfolgte über eine Powerbank mit einer Kapazität von 20\,000\,mAh. Unter typischer Messebelastung mit aktivem Display, Kamera, Sprachverarbeitung und Netzwerkanbindung konnte das System über einen Zeitraum von etwa acht Stunden ohne Unterbrechung betrieben werden. Damit entspricht die Betriebsdauer ungefähr einem vollständigen Messetag, ohne dass ein Austausch oder Nachladen der Powerbank erforderlich ist.
+
+Insgesamt zeigten die Stabilitätstests, dass die entwickelte Hardware- und Softwareplattform für den geplanten Messeeinsatz geeignet ist. Die größte Einschränkung stellt weiterhin die vergleichsweise hohe Antwortzeit des lokal ausgeführten Sprachmodells dar. Daher wird die hybride Nutzung von cloudbasierter und lokaler KI als sinnvoller Kompromiss zwischen Reaktionsgeschwindigkeit und Ausfallsicherheit bewertet.
+
+\subsection{Wirtschaftlichkeit online KI}
+
+
 
 % --- HAI NAM ---
 \section{Elektronik und Design: Integration und Tests (Hai Nam)}
