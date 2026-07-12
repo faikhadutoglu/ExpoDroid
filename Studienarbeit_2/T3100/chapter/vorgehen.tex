@@ -1,4 +1,4 @@
-\chapter{Vorgehensweise}
+\chapter{Weiterentwicklung des Konzeptes}
 \label{cha:Vorgehensweise und Konzeption}
 
 \textit{Planung, Auswahl der Komponenten und Designentscheidungen.}
@@ -22,9 +22,6 @@ Aus diesem Grund wurde das Vorderrad im Rahmen der Weiterentwicklung deutlich we
 
 Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit nicht durchgeführt. Die Bewertung basiert daher auf praktischen Erprobungen während des Entwicklungsprozesses. Dabei zeigte sich, dass im Vergleich zur ursprünglichen Konstruktion deutlich größere Kräfte erforderlich waren, um den Roboter zum Kippen zu bringen. Darüber hinaus wirkte das Fahrverhalten insgesamt ruhiger und sicherer, wodurch sich die Eignung des Roboters für den vorgesehenen Einsatz auf Hochschulmessen verbesserte.
 
-\subsubsection{Entwurf der Notausbremse (Hardwareseitig)}
-
-\subsection{CAD-Entwicklung der Anbauteile}
 
 
 
@@ -48,7 +45,7 @@ Bei diesem Konzept verfügt jeder Arm über ein einzelnes motorisiertes Schulter
 
 \paragraph{Mehrgelenkige Roboterarme}
 
-Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter.
+Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen \cite{Siciliano2016} und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter. 
 
 Zur Auswahl des geeigneten Konzepts wurde eine vereinfachte Konzeptbewertung durchgeführt.
 
@@ -88,7 +85,7 @@ Auf Grundlage der Bewertung fiel die Entscheidung auf einen geraden Roboterarm m
 %################################
 \subsubsection{Konzept der Handgestaltung}
 
-Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt.
+Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt. 
 
 Zur Auswahl des geeigneten Konzepts wurden verschiedene Möglichkeiten hinsichtlich ihres konstruktiven Aufwands, ihrer optischen Wirkung sowie ihrer Vereinbarkeit mit dem Gesamtdesign betrachtet.
 
@@ -98,7 +95,7 @@ Die einfachste Variante besteht aus einer stilisierten Hand mit lediglich angede
 
 \paragraph{Humanoide Hand}
 
-Eine menschlich nachempfundene Hand besitzt einzelne Finger und orientiert sich an der Anatomie des Menschen. Diese kann sowohl als starres Bauteil als auch mit beweglichen Fingern ausgeführt werden. Insbesondere bewegliche Finger erfordern jedoch zahlreiche zusätzliche Gelenke, Servomotoren und komplexe Regelalgorithmen. Für den vorgesehenen Einsatzzweck bietet dieses Konzept daher keinen ausreichenden Mehrwert.
+Eine menschlich nachempfundene Hand besitzt einzelne Finger und orientiert sich an der Anatomie des Menschen. Diese kann sowohl als starres Bauteil als auch mit beweglichen Fingern ausgeführt werden. Insbesondere bewegliche Finger erfordern jedoch zahlreiche zusätzliche Gelenke, Servomotoren und komplexe Regelalgorithmen.\cite{Siciliano2016} Für den vorgesehenen Einsatzzweck bietet dieses Konzept daher keinen ausreichenden Mehrwert.
 
 \paragraph{Stilisierter Robotergreifer}
 
@@ -175,19 +172,19 @@ Für die Umsetzung der Hinderniserkennung wurden verschiedene Sensorkonzepte bet
 
 \paragraph{Ultraschallsensoren}
 
-Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit ausgesendeter Schallimpulse. Sie zeichnen sich durch einen einfachen Aufbau, geringe Kosten sowie eine robuste Funktion unabhängig von den Lichtverhältnissen aus. Gleichzeitig besitzen sie eine ausreichende Reichweite für den vorgesehenen Sicherheitsbereich des Roboters. Nachteilig sind die vergleichsweise geringe Winkelauflösung sowie eine begrenzte Messgenauigkeit bei stark geneigten oder schallabsorbierenden Oberflächen.
+Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit ausgesendeter Schallimpulse. Sie zeichnen sich durch einen einfachen Aufbau, geringe Kosten sowie eine robuste Funktion unabhängig von den Lichtverhältnissen aus. Gleichzeitig besitzen sie eine ausreichende Reichweite für den vorgesehenen Sicherheitsbereich des Roboters. Nachteilig sind die vergleichsweise geringe Winkelauflösung sowie eine begrenzte Messgenauigkeit bei stark geneigten oder schallabsorbierenden Oberflächen. \cite{Doessel2016}
 
 \paragraph{Radarsensoren}
 
-Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung.
+Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung. \cite{Patole2017}\cite{Skolnik2008}
 
 \paragraph{LiDAR}
 
-LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich.
+LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich. \cite{Siegwart2011}
 
 \paragraph{Kamerabasierte Objekterkennung}
 
-Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen.
+Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen. Die Entvernung zu den Objekten muss hier anhand von Objekterkennung geschätzt werden, was eine ganeau Abstandserkennung erschwert. \cite{Szeliski2022}
 
 Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgeführt.
 
@@ -262,5 +259,5 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 
 Die Trade-off-Analyse zeigt, dass Ultraschallsensoren für den vorgesehenen Einsatzbereich die geeignetste Lösung darstellen. Obwohl sie hinsichtlich Messgenauigkeit und Winkelauflösung den anderen Sensorkonzepten unterlegen sind, erfüllen sie alle Anforderungen an die Kollisionsvermeidung eines langsam fahrenden Demonstrationsroboters. Gleichzeitig zeichnen sie sich durch geringe Anschaffungskosten, einen niedrigen Integrationsaufwand sowie einen sehr geringen Rechenbedarf aus.
 
-Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
+Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich, besonders bei kurzer entvernung, vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
 
