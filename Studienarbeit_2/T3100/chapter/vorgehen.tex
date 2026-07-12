@@ -1,4 +1,4 @@
-\chapter{Weiterentwicklung des Konzeptes}
+\chapter{Vorgehensweise}
 \label{cha:Vorgehensweise und Konzeption}
 
 \textit{Planung, Auswahl der Komponenten und Designentscheidungen.}
@@ -22,6 +22,9 @@ Aus diesem Grund wurde das Vorderrad im Rahmen der Weiterentwicklung deutlich we
 
 Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit nicht durchgeführt. Die Bewertung basiert daher auf praktischen Erprobungen während des Entwicklungsprozesses. Dabei zeigte sich, dass im Vergleich zur ursprünglichen Konstruktion deutlich größere Kräfte erforderlich waren, um den Roboter zum Kippen zu bringen. Darüber hinaus wirkte das Fahrverhalten insgesamt ruhiger und sicherer, wodurch sich die Eignung des Roboters für den vorgesehenen Einsatz auf Hochschulmessen verbesserte.
 
+\subsubsection{Entwurf der Notausbremse (Hardwareseitig)}
+
+\subsection{CAD-Entwicklung der Anbauteile}
 
 
 
@@ -31,7 +34,7 @@ Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit
 \subsection{Planung der Roboterarme und Schultergelenke}
 
 
-Um dem Roboter ein humanoideres Erscheinungsbild zu verleihen und die Interaktion mit Messebesuchern zu verbessern, wurde die Integration von Armen in das Gesamtkonzept vorgesehen. Neben der rein optischen Funktion sollten die Arme einfache Bewegungen ausführen können, um Besucher beispielsweise durch Winkbewegungen zu begrüßen. Da der Roboter ausschließlich als Demonstrator für Hochschulmessen entwickelt wird, standen keine Manipulations- oder Greifaufgaben im Vordergrund. Ziel war daher eine Lösung, die den technischen Charakter des Roboters unterstreicht und gleichzeitig mit vertretbarem konstruktivem Aufwand umgesetzt werden kann.
+Um dem Roboter ein \textcolor{red}{besseres Wort} humanoideres Erscheinungsbild zu verleihen und die Interaktion mit Messebesuchern zu verbessern, wurde die Integration von Armen in das Gesamtkonzept vorgesehen. Neben der rein optischen Funktion sollten die Arme einfache Bewegungen ausführen können, um Besucher beispielsweise durch Winkbewegungen zu begrüßen. Da der Roboter ausschließlich als Demonstrator für Hochschulmessen entwickelt wird, standen keine Manipulations- oder Greifaufgaben im Vordergrund. Ziel war daher eine Lösung, die den technischen Charakter des Roboters unterstreicht und gleichzeitig mit vertretbarem konstruktivem Aufwand umgesetzt werden kann.
 
 Für die Gestaltung der Arme wurden verschiedene Konzepte hinsichtlich Funktionalität, mechanischem Aufwand und ihrer Eignung für das Gesamtsystem betrachtet.
 
@@ -43,9 +46,9 @@ Die einfachste Variante besteht aus fest montierten Armen ohne bewegliche Gelenk
 
 Bei diesem Konzept verfügt jeder Arm über ein einzelnes motorisiertes Schultergelenk. Dadurch können einfache Bewegungen wie das Heben des Arms oder Winkbewegungen realisiert werden. Die Konstruktion erfordert lediglich einen Servomotor pro Arm und lässt sich problemlos in die Karosserie integrieren. Gleichzeitig bleibt der mechanische Aufbau übersichtlich und wartungsarm.
 
-\paragraph{Mehrgelenkige Roboterarme}
+\paragraph{Mehr gelenkige Roboterarme}
 
-Eine weitere Möglichkeit stellen mehrgelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen \cite{Siciliano2016} und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter. 
+Eine weitere Möglichkeit stellen mehr gelenkige Roboterarme dar, wie sie beispielsweise bei kollaborativen Robotern oder humanoiden Robotern eingesetzt werden. Mehrere Freiheitsgrade ermöglichen komplexe Bewegungsabläufe. Dieses Konzept erfordert jedoch eine deutlich höhere Anzahl an Motoren, Lagern und Regelalgorithmen und überschreitet sowohl den vorgesehenen Entwicklungsaufwand als auch die Anforderungen an den Demonstrationsroboter.
 
 Zur Auswahl des geeigneten Konzepts wurde eine vereinfachte Konzeptbewertung durchgeführt.
 
@@ -85,7 +88,7 @@ Auf Grundlage der Bewertung fiel die Entscheidung auf einen geraden Roboterarm m
 %################################
 \subsubsection{Konzept der Handgestaltung}
 
-Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt. 
+Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt.
 
 Zur Auswahl des geeigneten Konzepts wurden verschiedene Möglichkeiten hinsichtlich ihres konstruktiven Aufwands, ihrer optischen Wirkung sowie ihrer Vereinbarkeit mit dem Gesamtdesign betrachtet.
 
@@ -95,7 +98,7 @@ Die einfachste Variante besteht aus einer stilisierten Hand mit lediglich angede
 
 \paragraph{Humanoide Hand}
 
-Eine menschlich nachempfundene Hand besitzt einzelne Finger und orientiert sich an der Anatomie des Menschen. Diese kann sowohl als starres Bauteil als auch mit beweglichen Fingern ausgeführt werden. Insbesondere bewegliche Finger erfordern jedoch zahlreiche zusätzliche Gelenke, Servomotoren und komplexe Regelalgorithmen.\cite{Siciliano2016} Für den vorgesehenen Einsatzzweck bietet dieses Konzept daher keinen ausreichenden Mehrwert.
+Eine menschlich nachempfundene Hand besitzt einzelne Finger und orientiert sich an der Anatomie des Menschen. Diese kann sowohl als starres Bauteil als auch mit beweglichen Fingern ausgeführt werden. Insbesondere bewegliche Finger erfordern jedoch zahlreiche zusätzliche Gelenke, Servomotoren und komplexe Regelalgorithmen. Für den vorgesehenen Einsatzzweck bietet dieses Konzept daher keinen ausreichenden Mehrwert.
 
 \paragraph{Stilisierter Robotergreifer}
 
@@ -115,17 +118,19 @@ Zur Entscheidungsfindung wurden die Konzepte gegenübergestellt.
 		\textbf{Humanoide Hand} &
 		\textbf{Robotergreifer} \\
 		\midrule
-		Optische Wirkung          & 4 & 1 & 5 & 3 \\
-		Technischer Eindruck      & 2 & 1 & 5 & 4 \\
-		Mechanischer Aufwand      & 3 & 5 & 1 & 4 \\
+		Optische Wirkung          & 4 & 3 & 5 & 5 \\
+		Technischer Eindruck      & 4 & 2 & 4 & 5 \\
+		Fertigungsaufwand         & 4 & 5 & 1 & 4 \\
+		Mechanischer Aufwand      & 3 & 5 & 1 & 5 \\
 		Stabilität                & 4 & 5 & 3 & 5 \\
 		Integration ins Design    & 5 & 3 & 4 & 5 \\
+		Gewicht                   & 2 & 5 & 3 & 5 \\
 		\midrule
 		\textbf{Gesamtpunktzahl} &
 		&
-		\textbf{71} &
-		\textbf{68} &
-		\textbf{82} \\
+		\textbf{87} &
+		\textbf{70} &
+		\textbf{113} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -151,16 +156,16 @@ Kopfbewegung
 \begin{figure}[htbp]
 	\centering
 	\input{images/AufbauRoboterGesicht.tex}
-	\caption{Dastellung des Robotergesichtes}
+	\caption{Darstellung des Robotergesichtes}
 	\label{fig:RoboterGesicht}
 \end{figure}
 
-Das in den Kopf integrierte gesichtsfeld ist in Abbildung \ref{fig:RoboterGesicht} gezeigt. Es zeigt den Aufbau einer 3D-gedruckten Elementes. Das Display ist dort der optische dominierende Part. Dieses soll zur anzeige einer Augenanimation genutzt werden. Das Display ist inten mit einem ebenfalls gedruckten Halterung fixierbar. Damit isitzt es sicher in der Fassung, bei bedarf kann die Halterung herausgezogen werden um das Display auszubauen. Durch die fertigung mittels 3D-Druck konnten die eigen konstruierten Elemente passgenau gefertig werden, was troz verzicht von Schrauben eine rutschfeste verbindung ergibt, sie wurde so abgestimmt, das der Asubau durch aufwenden geziehlter Kraft möglich bleibt.
+Das in den Kopf integrierte Gesichtsfeld ist in Abbildung \ref{fig:RoboterGesicht} gezeigt. Es zeigt den Aufbau einer 3D-gedruckten Elementes. Das Display ist dort der optische dominierende Part. Dieses soll zur anzeige einer Augenanimation genutzt werden. Das Display ist intern mit einem ebenfalls gedruckten Halterung fixierbar. Damit sitzt es sicher in der Fassung, bei bedarf kann die Halterung herausgezogen werden um das Display auszubauen. Durch die Fertigung mittels 3D-Druck konnten die eigen konstruierten Elemente passgenau gefertigt werden, was trotz verzicht von Schrauben eine rutschfeste Verbindung ergibt, sie wurde so abgestimmt, das der Ausbau durch aufwenden gezielter Kraft möglich bleibt.
 
-Die Kamera wird hinter dem Gesichtelement auf einer Schiene eingeschraubt. Durch die Schiene kann sie so montiert werdne, das sie weitgenug herausschaut ohne das Bild durch  die Verkleidung zu verdecken.
-Die Lüftungsschlitze dienen zur belüftung , asl auch als Austrit für die Audioausgabe. 
+Die Kamera wird hinter dem Gesichtselement auf einer Schiene eingeschraubt. Durch die Schiene kann sie so montiert werden, das sie weit genug herausschaut ohne das Bild durch  die Verkleidung zu verdecken.
+Die Lüftungsschlitze dienen zur Belüftung , als auch als Austritt für die Audioausgabe. 
 
- um wärmeaustausch mit der umgebung zu vereinfachen, als auch um die Scahllwellen von den Lautsprechern im Kopf
+ um Wärmeaustausch mit der Umgebung zu vereinfachen, als auch um die Schallwellen von den Lautsprechern im Kopf \textcolor{red}{kein vollständiger Satz}
 
 \subsection{Hinderniserkennung zur Kollisionsvermeidung}
 
@@ -170,19 +175,19 @@ Für die Umsetzung der Hinderniserkennung wurden verschiedene Sensorkonzepte bet
 
 \paragraph{Ultraschallsensoren}
 
-Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit ausgesendeter Schallimpulse. Sie zeichnen sich durch einen einfachen Aufbau, geringe Kosten sowie eine robuste Funktion unabhängig von den Lichtverhältnissen aus. Gleichzeitig besitzen sie eine ausreichende Reichweite für den vorgesehenen Sicherheitsbereich des Roboters. Nachteilig sind die vergleichsweise geringe Winkelauflösung sowie eine begrenzte Messgenauigkeit bei stark geneigten oder schallabsorbierenden Oberflächen. \cite{Doessel2016}
+Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit ausgesendeter Schallimpulse. Sie zeichnen sich durch einen einfachen Aufbau, geringe Kosten sowie eine robuste Funktion unabhängig von den Lichtverhältnissen aus. Gleichzeitig besitzen sie eine ausreichende Reichweite für den vorgesehenen Sicherheitsbereich des Roboters. Nachteilig sind die vergleichsweise geringe Winkelauflösung sowie eine begrenzte Messgenauigkeit bei stark geneigten oder schallabsorbierenden Oberflächen.
 
 \paragraph{Radarsensoren}
 
-Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung. \cite{Patole2017}\cite{Skolnik2008}
+Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung.
 
 \paragraph{LiDAR}
 
-LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich. \cite{Siegwart2011}
+LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich.
 
 \paragraph{Kamerabasierte Objekterkennung}
 
-Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen. Die Entvernung zu den Objekten muss hier anhand von Objekterkennung geschätzt werden, was eine ganeau Abstandserkennung erschwert. \cite{Szeliski2022}
+Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen.
 
 Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgeführt.
 
@@ -228,7 +233,7 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		
 		Anschaffungskosten      &5&5&25&2&10&1&5&4&20\\
 		Integrationsaufwand     &4&5&20&3&12&2&8&2&8\\
-		Messgenauigkeit         &3&3&9&4&12&5&15&3&9\\
+		Messgenauigkeit         &3&3&9&4&12&5&15&5&15\\
 		Reichweite              &2&3&6&5&10&5&10&4&8\\
 		Rechenaufwand           &5&5&25&4&20&3&15&1&5\\
 		Zuverlässigkeit         &5&4&20&5&25&5&25&3&15\\
@@ -247,7 +252,7 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		\textbf{98}
 		&
 		&
-		\textbf{80}
+		\textbf{86}
 		
 		\\
 		
@@ -257,20 +262,5 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 
 Die Trade-off-Analyse zeigt, dass Ultraschallsensoren für den vorgesehenen Einsatzbereich die geeignetste Lösung darstellen. Obwohl sie hinsichtlich Messgenauigkeit und Winkelauflösung den anderen Sensorkonzepten unterlegen sind, erfüllen sie alle Anforderungen an die Kollisionsvermeidung eines langsam fahrenden Demonstrationsroboters. Gleichzeitig zeichnen sie sich durch geringe Anschaffungskosten, einen niedrigen Integrationsaufwand sowie einen sehr geringen Rechenbedarf aus.
 
-Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich, besonders bei kurzer entvernung, vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
-
-
-\subsection{Kopfdrehen}
-Der Kopf soll drehbar sein um eine weitere interaktionsmöglchkeit zu schaffen. Dafür wird ein Servomotor, 25kg 1cmx ... genutzt werden.
-Der servomotor ist zwar in der Lage gewicht von bis zu 25kg rotatorisch zu bewegen, jedoch ist er nicht dafür gemacht dieses Gewicht auf der eigenen Rotorachse zu tragen. Die Folge wäre mehr Verschleiß und Potenzielle Beschädigung über die Nutzungszeit. Für das Roboterkonzept ist eine langlebige Umsetzung erstrebenswert, aus diesem Grund ist für die Bewegung des Kopfes eine Konstruktion nötig, welche die Bewegung durch den Servomotor weitergeben kann und daber die Belastung durch die Gewichtskraft aushalten kann.
-
-\begin{figure}[htbp]
-	\centering
-	\input{images/KopfDrehen.tex}
-	\caption{Funktionaler Audfbau zum drehen des Roboterkopfes in der Seitenansicht}
-	\label{fig:KopfDrehen}
-\end{figure}
-
-Das entwickelte Konzept basiert wie in Abbildung \ref{fig:KopfDrehen} darauf, das die Drehbewegung mittels Zahnräder vom Servomotor (M) an den Hals und damit an den Kopf übertragen wird. Ein Zahnrad ist mit dem Servomotor verbunden (in Abbildung rotes Zahnrad). Das Andere Zahnrad (blaues) ist mit der Halsstange verbunden und liegt auf einem Kugellager auf. Das Kugellager Stützt damit das gesammte Gewicht des Kopfes, damit wird der Servomoter entlastet. Die beiden Zahnräder  haben die selbe Übersetztung, also Bewegen sich Motor und Kopf gleich schnell. Zu beachten ist dass Kopf und  Motor ,durch die Zahnräder, in unterschiedliche Richtungen rotieren.
-In der Mitte der Kugelagerung ist ein Loch, dadurch können Leitungen vom Roboterkörper in den Kopf verlegt werden. 
+Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
 

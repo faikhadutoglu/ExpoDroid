@@ -103,21 +103,21 @@ Hierbei gibt es die Unterscheidung zwischen HMI was für Human Maschine Interact
 
 
 
-\subsubsection{Technologien der Sprachsynthese und -erkennung}
+
 \subsubsection{Technologien der Sprachsynthese und -erkennung}
 
-Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{radford2022whisper}
+Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{hinton2012deep}
 
 Für die Spracherkennung wurde im Rahmen dieser Arbeit das Open-Source-System Whisper betrachtet. Whisper basiert auf einer Transformer-Architektur und wurde mit rund 680\,000 Stunden mehrsprachiger Sprachdaten trainiert. Das Modell kann Sprache in zahlreichen Sprachen erkennen und besitzt eine hohe Robustheit gegenüber Hintergrundgeräuschen und unterschiedlichen Sprechweisen. \cite{radford2022whisper}
 
-Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Implementierung von Whisper. Diese basiert auf der CTranslate2-Bibliothek und reduziert sowohl den Speicherverbrauch als auch die Rechenzeit während der Inferenz. Dadurch eignet sich Fast-Whisper besonders für Embedded-Systeme wie den Raspberry Pi 5. Trotz dieser Optimierungen stellt die lokale Spracherkennung weiterhin hohe Anforderungen an die verfügbare Rechenleistung. \cite{radford2022whisper}
+Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Implementierung von Whisper. Diese basiert auf der CTranslate2-Bibliothek und reduziert sowohl den Speicherverbrauch als auch die Rechenzeit während der Inferenz. Dadurch eignet sich Fast-Whisper besonders für Embedded-Systeme wie den Raspberry Pi 5. Trotz dieser Optimierungen stellt die lokale Spracherkennung weiterhin hohe Anforderungen an die verfügbare Rechenleistung. \cite{systran2024fasterwhisper}
 
 Im Bereich der Sprachsynthese kommen heute ebenfalls neuronale Netze zum Einsatz. Diese erzeugen aus einem Text zunächst eine akustische Repräsentation, welche anschließend durch einen sogenannten Vocoder in ein Audiosignal umgewandelt wird. Gegenüber älteren Verfahren auf Basis zusammengesetzter Sprachbausteine ermöglichen moderne Systeme eine deutlich natürlichere und flüssigere Sprachwiedergabe. Die Parameter der generierten Sprache können zusätzlich hinsichtlich Geschwindigkeit, Lautstärke und Sprechstil angepasst werden. \cite{shen2018tacotron}
 
 
 \subsubsection{Netzwerkprotokolle zur Fernwartung (VNC)}
 
-Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt.
+Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt. \cite{rfc6143}
 
 VNC ist ein plattformübergreifendes Fernwartungsprotokoll, welches nach dem Client-Server-Prinzip arbeitet. Ein VNC-Server läuft auf dem zu steuernden Rechner und überträgt dessen Bildschirminhalt über das Remote-Framebuffer-Protokoll (RFB) an einen VNC-Client. Gleichzeitig werden Maus- und Tastatureingaben des Clients an das entfernte System übertragen. Dadurch kann ein Rechner vollständig aus der Ferne bedient werden. \cite{rfc6143}
 
@@ -202,27 +202,27 @@ a
 a
 \section{KI TTS STT}
 
-Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. 
+Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. \cite{goodfellow2016deep}
 
 In modernen technischen Anwendungen kommen überwiegend sogenannte schwache KI-Systeme zum Einsatz. Diese sind auf klar definierte Aufgaben spezialisiert und erzielen dort sehr hohe Leistungen. Beispiele hierfür sind Sprachassistenten, Bilderkennungssoftware oder Sprachmodelle. 
 
 \subsection{Fouriertransformation}
 
-Die Fourier-Transformation ist ein mathematisches Verfahren zur Analyse von Signalen. Sie ermöglicht die Umwandlung eines Signals aus dem Zeitbereich in den Frequenzbereich. Dadurch kann bestimmt werden, aus welchen Frequenzanteilen ein Signal zusammengesetzt ist.
+Die Fourier-Transformation ist ein mathematisches Verfahren zur Analyse von Signalen. Sie ermöglicht die Umwandlung eines Signals aus dem Zeitbereich in den Frequenzbereich. Dadurch kann bestimmt werden, aus welchen Frequenzanteilen ein Signal zusammengesetzt ist. \cite{shen2018tacotron}
 
 \vspace{1cm}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\linewidth]{images/FFT_analyse.png}
 	\vspace{10pt}
-	\caption{Klanganalyse mittels Fourieranalyse}
+	\caption{Klanganalyse mittels Fourieranalyse \cite{compumess_fft_analysator}}
 	\label{fig:FFT}
 \end{figure}
 
-Bei der Verarbeitung von Sprachsignalen spielt die Fourier-Transformation eine zentrale Rolle. Gesprochene Sprache besteht aus einer Vielzahl von Frequenzen, deren Zusammensetzung wichtige Informationen über Laute, Wörter und Satzstrukturen enthält. Durch die Zerlegung des Sprachsignals in seine Frequenzanteile können charakteristische Merkmale extrahiert werden, die anschließend von Algorithmen des maschinellen Lernens oder neuronalen Netzen verarbeitet werden.
+Bei der Verarbeitung von Sprachsignalen spielt die Fourier-Transformation eine zentrale Rolle. Gesprochene Sprache besteht aus einer Vielzahl von Frequenzen, deren Zusammensetzung wichtige Informationen über Laute, Wörter und Satzstrukturen enthält. Durch die Zerlegung des Sprachsignals in seine Frequenzanteile können charakteristische Merkmale extrahiert werden, die anschließend von Algorithmen des maschinellen Lernens oder neuronalen Netzen verarbeitet werden. 
 
 
-In modernen Speech-to-Text-Systemen wird häufig die schnelle Fourier-Transformation (FFT) eingesetzt. Sie ermöglicht eine effiziente Berechnung des Frequenzspektrums eines Audiosignals in Echtzeit. Die so gewonnenen Informationen werden häufig in Form eines Spektrogramms dargestellt und dienen als Eingabe für Sprachmodelle wie Whisper oder andere Deep-Learning-basierte Spracherkennungssysteme.
+In modernen Speech-to-Text-Systemen wird häufig die schnelle Fourier-Transformation (FFT) eingesetzt. Sie ermöglicht eine effiziente Berechnung des Frequenzspektrums eines Audiosignals in Echtzeit. Die so gewonnenen Informationen werden häufig in Form eines Spektrogramms dargestellt und dienen als Eingabe für Sprachmodelle wie Whisper oder andere Deep-Learning-basierte Spracherkennungssysteme.\cite{radford2022whisper}
 
 
 Auch bei Text-to-Speech-Systemen findet die Fourier-Transformation Anwendung. Sie wird genutzt, um akustische Eigenschaften von Sprachsignalen zu analysieren und natürliche Sprachsynthese zu ermöglichen. Damit stellt die Fourier-Transformation eine grundlegende mathematische Methode für die digitale Sprachverarbeitung und somit auch für moderne KI-gestützte Robotersysteme dar.
@@ -231,16 +231,16 @@ Auch bei Text-to-Speech-Systemen findet die Fourier-Transformation Anwendung. Si
 \subsection{TTS} %text to speech
 Text-to-Speech (TTS) beschreibt die Umwandlung von Text in künstlich erzeugte Sprache. Moderne Systeme verwenden Deep-Learning-Verfahren, um eine möglichst natürliche Ausgabe zu erzeugen. 
 
-Der Prozess beginnt mit der Analyse des eingegebenen Textes. Anschließend wird eine akustische Repräsentation erzeugt, häufig in Form eines Mel-Spektrogramms. Ein sogenannter Vocoder wandelt diese Zwischenrepräsentation anschließend in ein Audiosignal um. 
+Der Prozess beginnt mit der Analyse des eingegebenen Textes. Anschließend wird eine akustische Repräsentation erzeugt, häufig in Form eines Mel-Spektrogramms. Ein sogenannter Vocoder wandelt diese Zwischenrepräsentation anschließend in ein Audiosignal um. \cite{shen2018tacotron}
 
-Aktuelle TTS-Systeme erreichen eine sehr hohe Sprachqualität und erlauben zusätzlich die Anpassung von Geschwindigkeit, Betonung und Sprachcharakteristik. Dadurch wird eine natürliche Kommunikation zwischen Mensch und Roboter ermöglicht.  
+Aktuelle TTS-Systeme erreichen eine sehr hohe Sprachqualität und erlauben zusätzlich die Anpassung von Geschwindigkeit, Betonung und Sprachcharakteristik. Dadurch wird eine natürliche Kommunikation zwischen Mensch und Roboter ermöglicht. \cite{shen2018tacotron} 
 
 \subsection{STT}
-Speech-to-Text (STT), auch Automatic Speech Recognition (ASR) genannt, beschreibt die automatische Umwandlung gesprochener Sprache in geschriebenen Text. Das Audiosignal wird über ein Mikrofon aufgenommen und zunächst vorverarbeitet. Hierbei werden Störgeräusche reduziert und das Signal normalisiert. 
+Speech-to-Text (STT), auch Automatic Speech Recognition (ASR) genannt, beschreibt die automatische Umwandlung gesprochener Sprache in geschriebenen Text. Das Audiosignal wird über ein Mikrofon aufgenommen und zunächst vorverarbeitet. Hierbei werden Störgeräusche reduziert und das Signal normalisiert. \cite{radford2022whisper}
 
-Anschließend erfolgt die Merkmalsextraktion. Dabei werden charakteristische Eigenschaften des Sprachsignals ermittelt. Häufig werden Spektrogramme oder Fourier-Transformationen verwendet, um Frequenzanteile sichtbar zu machen. Diese Informationen dienen als Eingabe für neuronale Netze. 
+Anschließend erfolgt die Merkmalsextraktion. Dabei werden charakteristische Eigenschaften des Sprachsignals ermittelt. Häufig werden Spektrogramme oder Fourier-Transformationen verwendet, um Frequenzanteile sichtbar zu machen. Diese Informationen dienen als Eingabe für neuronale Netze. \cite{shen2018tacotron}
 
-Moderne Spracherkennungssysteme basieren häufig auf Transformer-Architekturen. Diese analysieren zeitliche Zusammenhänge innerhalb der Sprache und ermöglichen eine sehr genaue Erkennung von Wörtern und Satzstrukturen. Durch das Training mit großen Datensätzen können verschiedene Sprecher, Dialekte und Sprachstile erkannt werden. Das Ergebnis der Spracherkennung bildet die Grundlage für die weitere Verarbeitung im Sprachmodell. 
+Moderne Spracherkennungssysteme basieren häufig auf Transformer-Architekturen. Diese analysieren zeitliche Zusammenhänge innerhalb der Sprache und ermöglichen eine sehr genaue Erkennung von Wörtern und Satzstrukturen. Durch das Training mit großen Datensätzen können verschiedene Sprecher, Dialekte und Sprachstile erkannt werden. Das Ergebnis der Spracherkennung bildet die Grundlage für die weitere Verarbeitung im Sprachmodell.\cite{segal2024whisper} 
 
 \subsection{Funktionsprinzip eines STT's}
 Grundsätzlich folgen moderne STT-Systeme einem ähnlichen Ablauf. Der korrekte Signalfluss lautet: 
@@ -304,11 +304,11 @@ Grundsätzlich folgen moderne STT-Systeme einem ähnlichen Ablauf. Der korrekte 
 \end{figure} 
 
 \newpage
-Nach der eigentlichen Transkription können weitere Verfahren des Natural Language Processing angewandt werden. Hierzu zählen die Tokenisierung, das Stemming und die Lemmatisierung. 
+Nach der eigentlichen Transkription können weitere Verfahren des Natural Language Processing angewandt werden. Hierzu zählen die Tokenisierung, das Stemming und die Lemmatisierung. \cite{jurafsky2026speech}
 
 Tokenisierung bezeichnet die Zerlegung eines Textes in einzelne Wörter oder Tokens. Beim Stemming werden Wörter auf ihren Wortstamm reduziert. Die Lemmatisierung geht einen Schritt weiter und bestimmt die grammatikalische Grundform eines Wortes. Diese Verfahren verbessern die Weiterverarbeitung durch Sprachmodelle. 
 
-Ein bekanntes Beispiel für moderne Speech-to-Text-Technologie ist Whisper von OpenAI. Whisper nutzt eine Transformer-Architektur und wurde mit umfangreichen Sprachdaten trainiert. Dadurch können zahlreiche Sprachen und unterschiedliche Sprachstile zuverlässig erkannt werden. 
+Ein bekanntes Beispiel für moderne Speech-to-Text-Technologie ist Whisper von OpenAI. Whisper nutzt eine Transformer-Architektur und wurde mit umfangreichen Sprachdaten trainiert. Dadurch können zahlreiche Sprachen und unterschiedliche Sprachstile zuverlässig erkannt werden. \cite{radford2022whisper}
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
 
 \subsection{Trade-off-Analyse}
