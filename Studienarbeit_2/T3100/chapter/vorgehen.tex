@@ -115,19 +115,17 @@ Zur Entscheidungsfindung wurden die Konzepte gegenübergestellt.
 		\textbf{Humanoide Hand} &
 		\textbf{Robotergreifer} \\
 		\midrule
-		Optische Wirkung          & 4 & 3 & 5 & 5 \\
-		Technischer Eindruck      & 4 & 2 & 4 & 5 \\
-		Fertigungsaufwand         & 4 & 5 & 1 & 4 \\
-		Mechanischer Aufwand      & 3 & 5 & 1 & 5 \\
+		Optische Wirkung          & 4 & 1 & 5 & 3 \\
+		Technischer Eindruck      & 2 & 1 & 5 & 4 \\
+		Mechanischer Aufwand      & 3 & 5 & 1 & 4 \\
 		Stabilität                & 4 & 5 & 3 & 5 \\
 		Integration ins Design    & 5 & 3 & 4 & 5 \\
-		Gewicht                   & 2 & 5 & 3 & 5 \\
 		\midrule
 		\textbf{Gesamtpunktzahl} &
 		&
-		\textbf{87} &
-		\textbf{70} &
-		\textbf{113} \\
+		\textbf{71} &
+		\textbf{68} &
+		\textbf{82} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -230,7 +228,7 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		
 		Anschaffungskosten      &5&5&25&2&10&1&5&4&20\\
 		Integrationsaufwand     &4&5&20&3&12&2&8&2&8\\
-		Messgenauigkeit         &3&3&9&4&12&5&15&5&15\\
+		Messgenauigkeit         &3&3&9&4&12&5&15&3&9\\
 		Reichweite              &2&3&6&5&10&5&10&4&8\\
 		Rechenaufwand           &5&5&25&4&20&3&15&1&5\\
 		Zuverlässigkeit         &5&4&20&5&25&5&25&3&15\\
@@ -249,7 +247,7 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		\textbf{98}
 		&
 		&
-		\textbf{86}
+		\textbf{80}
 		
 		\\
 		
@@ -260,4 +258,19 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 Die Trade-off-Analyse zeigt, dass Ultraschallsensoren für den vorgesehenen Einsatzbereich die geeignetste Lösung darstellen. Obwohl sie hinsichtlich Messgenauigkeit und Winkelauflösung den anderen Sensorkonzepten unterlegen sind, erfüllen sie alle Anforderungen an die Kollisionsvermeidung eines langsam fahrenden Demonstrationsroboters. Gleichzeitig zeichnen sie sich durch geringe Anschaffungskosten, einen niedrigen Integrationsaufwand sowie einen sehr geringen Rechenbedarf aus.
 
 Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich, besonders bei kurzer entvernung, vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
+
+
+\subsection{Kopfdrehen}
+Der Kopf soll drehbar sein um eine weitere interaktionsmöglchkeit zu schaffen. Dafür wird ein Servomotor, 25kg 1cmx ... genutzt werden.
+Der servomotor ist zwar in der Lage gewicht von bis zu 25kg rotatorisch zu bewegen, jedoch ist er nicht dafür gemacht dieses Gewicht auf der eigenen Rotorachse zu tragen. Die Folge wäre mehr Verschleiß und Potenzielle Beschädigung über die Nutzungszeit. Für das Roboterkonzept ist eine langlebige Umsetzung erstrebenswert, aus diesem Grund ist für die Bewegung des Kopfes eine Konstruktion nötig, welche die Bewegung durch den Servomotor weitergeben kann und daber die Belastung durch die Gewichtskraft aushalten kann.
+
+\begin{figure}[htbp]
+	\centering
+	\input{images/KopfDrehen.tex}
+	\caption{Funktionaler Audfbau zum drehen des Roboterkopfes in der Seitenansicht}
+	\label{fig:KopfDrehen}
+\end{figure}
+
+Das entwickelte Konzept basiert wie in Abbildung \ref{fig:KopfDrehen} darauf, das die Drehbewegung mittels Zahnräder vom Servomotor (M) an den Hals und damit an den Kopf übertragen wird. Ein Zahnrad ist mit dem Servomotor verbunden (in Abbildung rotes Zahnrad). Das Andere Zahnrad (blaues) ist mit der Halsstange verbunden und liegt auf einem Kugellager auf. Das Kugellager Stützt damit das gesammte Gewicht des Kopfes, damit wird der Servomoter entlastet. Die beiden Zahnräder  haben die selbe Übersetztung, also Bewegen sich Motor und Kopf gleich schnell. Zu beachten ist dass Kopf und  Motor ,durch die Zahnräder, in unterschiedliche Richtungen rotieren.
+In der Mitte der Kugelagerung ist ein Loch, dadurch können Leitungen vom Roboterkörper in den Kopf verlegt werden. 
 
