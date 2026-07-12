@@ -151,6 +151,116 @@ Zur Integration des Servomotors wurde im Schulterbereich eine passgenaue Aufnahm
 Kopfbewegung
 
 
-\subsubsection{Aufbau des Roboterkopfes (Kamera- \& Displayaufnahme)}
+\subsection{Aufbau des Robotergesichtes}
 
+\begin{figure}[htbp]
+	\centering
+	\input{images/AufbauRoboterGesicht.tex}
+	\caption{Dastellung des Robotergesichtes}
+	\label{fig:RoboterGesicht}
+\end{figure}
+
+Das in den Kopf integrierte gesichtsfeld ist in Abbildung \ref{fig:RoboterGesicht} gezeigt. Es zeigt den Aufbau einer 3D-gedruckten Elementes. Das Display ist dort der optische dominierende Part. Dieses soll zur anzeige einer Augenanimation genutzt werden. Das Display ist inten mit einem ebenfalls gedruckten Halterung fixierbar. Damit isitzt es sicher in der Fassung, bei bedarf kann die Halterung herausgezogen werden um das Display auszubauen. Durch die fertigung mittels 3D-Druck konnten die eigen konstruierten Elemente passgenau gefertig werden, was troz verzicht von Schrauben eine rutschfeste verbindung ergibt, sie wurde so abgestimmt, das der Asubau durch aufwenden geziehlter Kraft möglich bleibt.
+
+Die Kamera wird hinter dem Gesichtelement auf einer Schiene eingeschraubt. Durch die Schiene kann sie so montiert werdne, das sie weitgenug herausschaut ohne das Bild durch  die Verkleidung zu verdecken.
+Die Lüftungsschlitze dienen zur belüftung , asl auch als Austrit für die Audioausgabe. 
+
+ um wärmeaustausch mit der umgebung zu vereinfachen, als auch um die Scahllwellen von den Lautsprechern im Kopf
+
+\subsection{Hinderniserkennung zur Kollisionsvermeidung}
+
+Um einen sicheren Betrieb des Roboters auf Messen zu gewährleisten, muss dieser Hindernisse und insbesondere Personen in seiner unmittelbaren Umgebung zuverlässig erkennen können. Ziel ist es, Kollisionen zu vermeiden, die beispielsweise durch Bedienfehler oder unvorhergesehene Bewegungen von Besuchern entstehen können. Wird ein Hindernis innerhalb eines definierten Sicherheitsbereichs erkannt, soll der Roboter seine Antriebsmotoren unverzüglich stoppen.
+
+Für die Umsetzung der Hinderniserkennung wurden verschiedene Sensorkonzepte betrachtet. In modernen Robotersystemen sowie im Bereich des autonomen Fahrens kommen hierfür hauptsächlich Ultraschallsensoren, Radarsensoren, LiDAR-Systeme sowie kamerabasierte Verfahren zum Einsatz. Die unterschiedlichen Technologien unterscheiden sich hinsichtlich ihrer Messgenauigkeit, ihres Erfassungsbereichs, ihres Integrationsaufwands sowie ihrer Kosten.
+
+\paragraph{Ultraschallsensoren}
+
+Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit ausgesendeter Schallimpulse. Sie zeichnen sich durch einen einfachen Aufbau, geringe Kosten sowie eine robuste Funktion unabhängig von den Lichtverhältnissen aus. Gleichzeitig besitzen sie eine ausreichende Reichweite für den vorgesehenen Sicherheitsbereich des Roboters. Nachteilig sind die vergleichsweise geringe Winkelauflösung sowie eine begrenzte Messgenauigkeit bei stark geneigten oder schallabsorbierenden Oberflächen.
+
+\paragraph{Radarsensoren}
+
+Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung.
+
+\paragraph{LiDAR}
+
+LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich.
+
+\paragraph{Kamerabasierte Objekterkennung}
+
+Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen.
+
+Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgeführt.
+
+\begin{table}[H]
+	\centering
+	\caption{Trade-off-Analyse der Sensorkonzepte zur Hinderniserkennung}
+	\label{tab:tradeoff_sensorik}
+	\renewcommand{\arraystretch}{1.25}
+	\begin{tabular}{lccccccccc}
+		\toprule
+		\textbf{Kriterium} &
+		\textbf{Gew.} &
+		\multicolumn{2}{c}{\textbf{Ultraschall}} &
+		\multicolumn{2}{c}{\textbf{Radar}} &
+		\multicolumn{2}{c}{\textbf{LiDAR}} &
+		\multicolumn{2}{c}{\textbf{Kamera}}\\
+		
+		\cmidrule(lr){3-4}
+		\cmidrule(lr){5-6}
+		\cmidrule(lr){7-8}
+		\cmidrule(lr){9-10}
+		
+		&
+		&
+		Bew.
+		&
+		Pkt.
+		&
+		Bew.
+		&
+		Pkt.
+		&
+		Bew.
+		&
+		Pkt.
+		&
+		Bew.
+		&
+		Pkt.
+		\\
+		
+		\midrule
+		
+		Anschaffungskosten      &5&5&25&2&10&1&5&4&20\\
+		Integrationsaufwand     &4&5&20&3&12&2&8&2&8\\
+		Messgenauigkeit         &3&3&9&4&12&5&15&5&15\\
+		Reichweite              &2&3&6&5&10&5&10&4&8\\
+		Rechenaufwand           &5&5&25&4&20&3&15&1&5\\
+		Zuverlässigkeit         &5&4&20&5&25&5&25&3&15\\
+		Eignung für Messebetrieb&5&5&25&3&15&4&20&3&15\\
+		
+		\midrule
+		
+		\textbf{Gesamt} &&
+		&
+		\textbf{130}
+		&
+		&
+		\textbf{104}
+		&
+		&
+		\textbf{98}
+		&
+		&
+		\textbf{86}
+		
+		\\
+		
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Die Trade-off-Analyse zeigt, dass Ultraschallsensoren für den vorgesehenen Einsatzbereich die geeignetste Lösung darstellen. Obwohl sie hinsichtlich Messgenauigkeit und Winkelauflösung den anderen Sensorkonzepten unterlegen sind, erfüllen sie alle Anforderungen an die Kollisionsvermeidung eines langsam fahrenden Demonstrationsroboters. Gleichzeitig zeichnen sie sich durch geringe Anschaffungskosten, einen niedrigen Integrationsaufwand sowie einen sehr geringen Rechenbedarf aus.
+
+Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
 
