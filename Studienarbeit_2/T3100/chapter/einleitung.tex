@@ -1,21 +1,81 @@
 \chapter{Einleitung}
 \label{cha:Einleitung}
 
-\textit{(Gemeinsames Kapitel: Motivation, Projektziel der Phase 2, Übersicht über das Gesamtsystem ESP32 + Raspi 5 + BTS7960.)}
+%\textit{(Gemeinsames Kapitel: Motivation, Projektziel der Phase 2, Übersicht über das Gesamtsystem ESP32 + Raspi 5 + BTS7960.)}
 
 \section{Motivation und Zielsetzung}
 
+Technische Demonstratoren stellen ein wichtiges Instrument dar, um komplexe Technologien anschaulich zu vermitteln und das Interesse potenzieller Studierender für technische Studiengänge zu wecken. Insbesondere auf Hochschulmessen oder Informationsveranstaltungen bieten interaktive Systeme die Möglichkeit, Besucher bereits aus größerer Entfernung auf einen Messestand aufmerksam zu machen und gleichzeitig einen niedrigschwelligen Einstieg in Gespräche mit Studierenden und Mitarbeitenden zu schaffen.
 
-\section{Systemübersicht und Hardware-Architektur}
-Beschreibung des Differential Drive Roboters...
+Im Rahmen einer vorherigen Studienarbeit wurde hierfür ein erster funktionsfähiger Demonstrator entwickelt. Obwohl die grundlegenden Fahr- und Steuerungsfunktionen erfolgreich umgesetzt werden konnten, bestanden insbesondere hinsichtlich des Designs, der Mensch-Maschine-Interaktion sowie der technischen Zuverlässigkeit noch erhebliche Verbesserungspotenziale.
+
+Ziel dieser Studienarbeit ist daher die konstruktive, funktionale und gestalterische Weiterentwicklung des bestehenden Roboters. Neben der Entwicklung eines modernen Erscheinungsbildes sollen zusätzliche Interaktionsmöglichkeiten geschaffen und die Einsatzfähigkeit des Roboters unter realen Messebedingungen verbessert werden. Die entwickelten Lösungen werden abschließend im Rahmen zweier Messeeinsätze unter realen Einsatzbedingungen validiert.
+
+
+%\section{Systemübersicht und Hardware-Architektur}
+%Beschreibung des Differential Drive Roboters...
+
+
+%
+%\section{Stand zu Projektbeginn}
+%
+%Die vorliegende Studienarbeit baut auf einer zuvor durchgeführten Studienarbeit auf, in der ein erster funktionsfähiger Demonstrationsroboter entwickelt wurde.
+%Im Mittelpunkt dieser ersten Projektphase standen die Entwicklung eines Gesamtkonzepts, die Auswahl geeigneter Hard- und Softwarekomponenten sowie die Validierung grundlegender Funktionen des Roboters. \cite{Hadutoglu2026}
+%
+%Im Rahmen der vorangegangenen Arbeit wurde zunächst eine Anforderungsanalyse durchgeführt, auf deren Grundlage verschiedene Konstruktions- und Antriebskonzepte bewertet wurden. Mithilfe einer Trade-off-Analyse fiel die Entscheidung auf einen dreirädrigen Roboter mit Differenzialantrieb, da dieses Konzept eine hohe Wendigkeit sowie einen vergleichsweise einfachen mechanischen Aufbau bietet. Gleichzeitig wurde eine modulare Systemarchitektur entwickelt, bei der die Bewegungssteuerung und die Benutzerinteraktion auf zwei getrennte Recheneinheiten aufgeteilt wurden. Während ein ESP32 die Motorsteuerung übernimmt, dient ein Raspberry Pi als Plattform für das Display und zukünftige Interaktionsfunktionen.  
+%
+%Neben der elektrischen und softwareseitigen Konzeption wurde bereits ein erster mechanischer Prototyp gefertigt. Dieser bestand überwiegend aus einer Holzkonstruktion und diente der Erprobung des Fahrwerks sowie der Validierung der ausgewählten Komponenten. Darüber hinaus wurde die Motorsteuerung vollständig implementiert, sodass der Roboter über eine Fernsteuerung bewegt werden konnte. Die entwickelte Differenzialsteuerung ermöglichte sowohl Geradeausfahrten als auch Drehungen auf der Stelle. Zusätzlich wurden Sicherheitsmechanismen, wie ein Failsafe bei Verbindungsabbruch, implementiert und erfolgreich getestet.  
+%
+%Ein weiterer Schwerpunkt der vorherigen Studienarbeit lag auf der Entwicklung der Mensch-Maschine-Interaktion. Hierfür wurde ein Display in das System integriert, auf dem animierte Augen sowie Statusinformationen dargestellt werden sollten. Die grundlegende Softwarearchitektur zur Ansteuerung des Displays sowie erste Animationen wurden erfolgreich umgesetzt und in Betrieb genommen. Die Integration weiterer Interaktionsmöglichkeiten sowie die endgültige Gestaltung des Roboters waren jedoch nicht Bestandteil der damaligen Arbeit.  
+%
+%Zum Abschluss der ersten Projektphase lag somit ein funktionsfähiger Demonstrator vor, dessen Fahrwerk, Antriebssystem, Steuerung sowie grundlegende Interaktionsfunktionen erfolgreich validiert werden konnten. Die mechanische Konstruktion entsprach jedoch noch einem funktionalen Holzprototyp und war weder für den dauerhaften Einsatz noch hinsichtlich Design, Gewicht oder Modularität optimiert. Ebenso fehlten die vollständige Integration des Kopfes, ein finales Gehäusedesign sowie weitere Sensorik und autonome Funktionen. Diese offenen Punkte bildeten den Ausgangszustand und zugleich die Grundlage für die im Rahmen dieser Studienarbeit durchgeführte Weiterentwicklung des Roboters.  
+
+
+\subsection{Ziele der Arbeit}
+\textcolor{red}{brauchen wir das wirklich?}
+Ausgehend vom Entwicklungsstand der vorherigen Studienarbeit verfolgt diese Arbeit folgende Ziele:
+
+\begin{itemize}
+	
+	\item Entwicklung eines modernen Gehäusedesigns mit humanoiden Gestaltungselementen,
+	
+	\item Erhöhung der Standfestigkeit des Fahrwerks,
+	
+	\item Entwicklung und Integration beweglicher Roboterarme,
+	
+	\item Integration einer Hinderniserkennung zur Erhöhung der Betriebssicherheit,
+	
+	\item Erweiterung der Mensch-Roboter-Interaktion durch ein sprachbasiertes Dialogsystem,
+	
+	\item Validierung des Gesamtsystems unter realen Einsatzbedingungen auf Hochschulmessen.
+	
+\end{itemize}
 
 \section{Aufbau der Arbeit}
-Kurze Erläuterung der Kapitelstruktur...
+\textcolor{red}{brauchen wir das wirklich?}
+
+Nach der Einleitung werden zunächst die für diese Arbeit relevanten theoretischen Grundlagen erläutert. Anschließend wird der Entwicklungsstand zu Beginn der Studienarbeit beschrieben und daraus die erforderlichen Weiterentwicklungen abgeleitet.
+
+Darauf aufbauend werden die einzelnen Konstruktionsentscheidungen vorgestellt und anhand von Trade-off-Analysen begründet. Anschließend erfolgt die Beschreibung der praktischen Umsetzung sowie der Integration der entwickelten Komponenten in das bestehende Robotersystem.
+
+Im weiteren Verlauf werden die Ergebnisse der Validierung während zweier Messeeinsätze vorgestellt und bewertet. Abschließend werden die wichtigsten Erkenntnisse zusammengefasst sowie ein Ausblick auf mögliche zukünftige Weiterentwicklungen gegeben.
 
 
-Anfangsstand
-\subsection{Projektstruktur}
-Die Organisatorische Struktur entspricht der aus der ersten Studienarbeit. 
+\section{Projektorganisation}
+%Das Projkékt wurde von vier Mitgliedern durchgeführt. Faik Hadutoglu, Simon Steiger, Hai Nam Nguyen und Angus Bach. Dabei übernahm jeder einige Kernaufgaben, dazwischen fand geeinsamme Zusammenarbeit statt. In Tabelle \ref*{tab:RASIC} ist die Rollenverteilung in einem RASIC gezeigt.  Die übergänge wurden in der Umsetztung jedoch nicht besonder
+
+Die Weiterentwicklung des Roboters erfolgte im Rahmen eines vierköpfigen Projektteams. Das Team umfasst: Faik Hadutoglu, Simon Steiger, Hai Nam Nguyen und Angus Bach. Aufgrund der unterschiedlichen Schwerpunkte der Studienarbeit wurden die Aufgaben auf die einzelnen Teammitglieder verteilt. Gleichzeitig erfolgte die Entwicklung zahlreicher Baugruppen in enger Abstimmung, sodass insbesondere bei der Systemintegration eine enge Zusammenarbeit erforderlich war. 
+
+Diese Arbeit Umfasst die Ergebnisse von Hai Nam Nguyen und Angus Bach. Die Ergebnisse von Faik Hadutoglu werden in einer seperaten Studienarbeit behandelt. \textcolor{red}{(Quelle Faiks Arbet)}
+
+Die Rollenverteilung innerhalb des Projekts ist in Tabelle~\ref{tab:RASIC} anhand eines RASIC-Diagramms dargestellt.
+
+\begin{table}[htbp]
+	\centering
+	\input{images/RASIC_Rollen.tex}
+	\caption{RASIC zur Rollenverteilung}
+	\label{tab:RASIC}
+\end{table}
 
 
-
+\textcolor{red}{2 Wochen Sprints. Statusberichte}
