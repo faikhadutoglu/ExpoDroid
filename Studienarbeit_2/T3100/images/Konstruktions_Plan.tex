@@ -45,7 +45,7 @@
 		\draw[<-] (M-treL.east) -- ++ (0.3,0) -- ++ (0,-1);
 		\draw[<-] (M-treR.west) -- ++ (-0.3,0) -- ++ (0,-1);
 		
-		\draw[->] (bat2.west) -- (3.5,3.5) --  (rasbe.south);
+%		\draw[->] (bat2.west) -- (3.5,3.5) --  (rasbe.south);
 		\draw[->] (bat2.west) -- (esp.east);
 		\draw[->] (rasbe.north) -- (2.7,9.1) -- (3.5,9.1) -- (3.5,10) -- (aud.west);
 		\draw[->] (3.5,10) -- (cam.east);
@@ -55,18 +55,33 @@
 		%		\draw[->] (bat1.north) -- ++ (0,2.5) -- (esp.east);
 		\draw[->] (esp.south) -- (M-treL.north);
 		\draw[->] (esp.south) -- ++ (0,-0.3) -- ++ (4,0) -- (M-treR.north);
-		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (-0.5,0);
-		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (4.5,0);
+		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (-1,0) -- ++ (0,-0.5);
+		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (5,0) -- ++ (0,-0.5);
 		\draw[->] (esp.north) -- ++ (0,1.6) -- ++ (1.1,0) -- ++ (0,0.5);
 		
+		\draw[->] (0.5,5.5) -- ++ (-1.3,0) -- ++ (0,-2);
+		\draw[->] (6.5,5.5) -- ++ (1.3,0) -- ++ (0,-2);
 		%Knotenpunkte
 		\draw[fill=black] (3.5,10) circle (0.1); %resp
 		\draw[fill=black] (1.5,5.5) circle (0.1);
 		\draw[fill=black] (1.5,2.8) circle (0.1);
 		\draw[fill=black] (2.6,5.5) circle (0.1);
-%		\draw[fill=black] (3.5,3.5) circle (0.1);
-%		\draw[fill=black] (3.5,8.35) circle (0.1);	
+		\draw[fill=black] (0.5,5.5) circle (0.1);
+		\draw[fill=black] (6.5,5.5) circle (0.1);	
 		
+		\draw[] (7.3,3.5) rectangle (8.3,2.5);
+		\draw[] (7.8,3) circle (0.4) node[align=center] {$M_5$};
+		\draw[] (-0.3,3.5) rectangle (-1.3,2.5);
+		\draw[] (-0.8,3) circle (0.4) node[align=center] {$M_6$};
+		
+		%arm Rechts
+		\draw[]
+		(0,5.8) -- (-0.8-0.3,5.8) -- ++ (0,-2.3) -- ++ (0.6,0) -- ++ (0,1.8) -- ++ (0.5,0);
+		%arm Links
+		\draw[]
+		(7,5.8) -- (7.8+0.3,5.8) -- ++ (0,-2.3) -- ++ (-0.6,0) -- ++ (0,1.8) -- ++ (-0.5,0);
+		
+		\draw[line width=4] (0,0.5) -- ++ (-0.81,0);
 	\end{scope}
 	
 	\begin{scope}[shift={(0,+5)}] 
@@ -80,13 +95,13 @@
 %		\draw[] (8,0) rectangle (9,1);
 %		\draw[] (6.5,0.5) circle (0.4) node[align=center] {$M_4$};
 		
-		\draw[]
-		(-0.8,0.5) rectangle (-0.3,0.6-2);
-		\draw[line width=4] (0,0.5) -- ++ (-0.81,0);
+%		\draw[]
+%		(-0.8,0.5) rectangle (-0.2,0.6-2);
+%		\draw[line width=4] (0,0.5) -- ++ (-0.81,0);
 		%Reifen Rechts
-		\draw[]
-		(7+0.8,0.5) rectangle (7+0.3,0.6-2);
-		\draw[line width=4] (7,0.5) -- ++ (+0.81,0);
+%		\draw[]
+%		(7+0.8,0.5) rectangle (7+0.3,0.6-2);
+%		\draw[line width=4] (7,0.5) -- ++ (+0.81,0);
 	\end{scope}
 	
 	
@@ -95,7 +110,7 @@
 		\draw[] (3.5-0.4,6) -- ++ (0,1.7) -- ++ (-2,0) -- ++ (0,5.3) -- ++ (4+0.8,0) -- ++ (0,-5.3) -- ++ (-2,0)-- (3.5+0.4,6);
 		
 		\draw[] (3.5-1.4,6) rectangle (3.5-1.4+1,7);
-		\draw[] (3.5-1.4+0.5,6.5) circle (0.4) node[align=center] {$M_5$};
+		\draw[] (3.5-1.4+0.5,6.5) circle (0.4) node[align=center] {$M_7$};
 		
 		%Display
 		\draw[line width=6pt]
