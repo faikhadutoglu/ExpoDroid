@@ -260,3 +260,30 @@ Die Trade-off-Analyse zeigt, dass Ultraschallsensoren für den vorgesehenen Eins
 
 Um die Zuverlässigkeit der Hinderniserkennung zusätzlich zu erhöhen, wurden insgesamt drei Ultraschallsensoren eingesetzt. Durch diese redundante Anordnung kann ein größerer Erfassungsbereich vor dem Roboter überwacht werden. Gleichzeitig wird das Risiko reduziert, dass Hindernisse aufgrund des begrenzten Öffnungswinkels einzelner Sensoren nicht erkannt werden.
 
+
+\subsection{Elektronische Architektur}
+\label{cha:Elektronische Architektur}
+
+\vspace{0.5cm}
+\begin{figure}[H]
+	\centering
+	%\fbox{%
+		\input{images/Konstruktions_Plan.tex}
+		%}
+	\vspace{1cm}
+	\caption{Qualitative Darstellung der elektronischen Architektur des Roboters mit allen relevanten Komponenten}		
+	\label{fig:Konstruktions_Plan}
+\end{figure}
+
+%Die elektrische Architektur wurde weiterentwickelt. Der Kopfbereich und der untere Körper sind in der aktuellen Form unabhängig von einander. Der ESP32 steuert die Bewegung der Motoren, er erhält von einem Sensor die befehle der Vernbedienung.
+
+Die Abbildung \ref{fig:Konstruktions_Plan} zeigt den funktionalen Schaltplan der im Rahmen dieser Studienarbeit realisierten elektronischen Systemarchitektur des Messeroboters. Gegenüber der vorherigen Studienarbeit wurde die ursprünglich konzipierte Architektur vollständig umgesetzt und in mehreren Punkten weiterentwickelt. Die wesentlichste Änderung besteht in der konsequenten Trennung der Kopf- und Körperarchitektur. Beide Systeme arbeiten unabhängig voneinander und verfügen jeweils über eine eigene Energieversorgung sowie klar definierte Aufgabenbereiche.
+
+Im Kopf des Roboters befindet sich der Raspberry Pi, welcher sämtliche Funktionen der Mensch-Roboter-Interaktion übernimmt. Hierzu zählen insbesondere die Ausführung des Large Language Models, die Sprachverarbeitung einschließlich Sprachausgabe sowie die Darstellung der Augenanimationen auf dem Display. Zur Personenerkennung ist die Kamera direkt mit dem Raspberry Pi, dazu mehr im Kapitel \ref{cha:Umsetzung und Ergebnisse}. Durch die Integration sämtlicher Interaktionskomponenten im Kopf ergeben sich kurze Leitungswege sowie eine kompakte und modulare Bauweise. Die Energieversorgung des Kopfes erfolgt vollständig über eine separate Powerbank (Akku$_3$), wodurch der Betrieb unabhängig von den Antriebskomponenten gewährleistet wird.
+
+Die Steuerung sämtlicher Bewegungsfunktionen erfolgt weiterhin durch einen ESP32, der im Unterkörper des Roboters untergebracht ist. Dieser verarbeitet die Steuersignale der Fernbedienung und übernimmt die Ansteuerung aller Motor- und Servoantriebe. Die beiden Hauptantriebsmotoren $M_1$ und $M_2$ werden jeweils über einen eigenen Motortreiber angesteuert und ermöglichen den Differenzialantrieb des Roboters. Zusätzlich werden über den ESP32 die Servomotoren der Schultergelenke ($M_3$ und $M_4$), die Servomotoren der Robotergreifer ($M_5$ und $M_6$) sowie der Servomotor zur Drehung des Kopfes ($M_7$) angesteuert. Damit wurde der Funktionsumfang gegenüber dem ursprünglichen Konzept um die beweglichen Arme und Robotergreifer erweitert.
+
+Zur Energieversorgung des Körpers werden zwei voneinander getrennte Spannungsquellen eingesetzt. Der Lithium-Polymer-Akku Akku$_1$ versorgt aufgrund seiner hohen Strombelastbarkeit ausschließlich die beiden Hauptantriebsmotoren über die Motortreiber. Die Versorgung des ESP32 sowie der Servomotoren erfolgt über Akku$_2$, wodurch Spannungseinbrüche infolge hoher Lasten der Fahrmotoren reduziert werden können. Die räumliche und elektrische Trennung der Energieversorgung erhöht die Betriebssicherheit und verbessert die Stabilität des Gesamtsystems.
+
+Durch die vollständige Trennung von Kopf- und Körperarchitektur konnte eine klare funktionale Aufteilung des Systems realisiert werden. Während der Raspberry Pi ausschließlich rechenintensive Aufgaben der Sprach- und Benutzerinteraktion übernimmt, konzentriert sich der ESP32 auf die echtzeitfähige Ansteuerung sämtlicher Antriebe. Diese modulare Architektur vereinfacht sowohl die Entwicklung als auch die Wartung des Roboters und ermöglicht zukünftige Erweiterungen der einzelnen Teilsysteme weitgehend unabhängig voneinander. 
+Es wurde in der Konstruktion allererdings auch die Möglichekit offen gehalten für weiere Arbeiten eine Kommunikationsverbindung zweischen ESP32 und Raspberry Pi zu verlegen. Die Öffnungen dafür sind bereit vorhanden, es müsste in diesem Fall nurnoch eine Verbindung gezogen werden.
