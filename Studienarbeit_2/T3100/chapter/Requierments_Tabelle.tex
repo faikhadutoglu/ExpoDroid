@@ -1,80 +1,80 @@
-\chapter{Projekt Requirements}
-\section{Projekt Requirements}
-\label{sec:Projekt Requirements}
-
-\textcolor{red}{ICH WÜRDE DIE NACH FUNKTIONEN WIE NOTFALLBREMSE DISPLAY KI USW AUFTEILEN SO MACHT MAN AUCH BEI ADAS BEI STELLANTIS Jeder kann die Requirements seiner Aufgabe schireben} 
-
-\begin{longtable}{|p{1.7cm}|p{4.2cm}|p{8.8cm}|p{1.9cm}|}
-
-
-	\caption{Übersicht der Anforderungen für das Projekt}
-	\label{tab:anforderungen_ueberarbeitet} \\
-	\hline
-	\textbf{ID} & \textbf{Unterkategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} \\
-	\hline
-	\endfirsthead
-	
-	\hline
-	\textbf{ID} & \textbf{Unterkategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} \\
-	\hline
-	\endhead
-	
-	\hline
-	\multicolumn{4}{r}{Fortsetzung auf nächster Seite} \\
-	\endfoot
-	
-	\hline
-	\endlastfoot
-	
-	% =========================================================
-	% FUNKTIONALE ANFORDERUNGEN
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Funktionale Anforderungen}} \\
-	\hline
-	REQ-001 & Bewegung & Der Roboter muss vorwärts und rückwärts fahren können. & High \\
-	\hline
-	
-	% =========================================================
-	% NICHT-FUNKTIONALE ANFORDERUNGEN
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Nicht-funktionale Anforderungen (Performance/Technik)}} \\
-	\hline
-	REQ-101 & Reaktionszeit & Die Motorsteuerung muss eine Verzögerung von weniger als 0{,}5\,s zwischen Steuersignal und Reaktion aufweisen. & High \\
-	\hline
-
-	
-	% =========================================================
-	% SAFETY
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Sicherheitsanforderungen (Safety)}} \\
-	\hline
-	REQ-201 & Fail-Safe & Wird kein Fahrsignal erkannt, muss der Roboter selbstständig anhalten. & High \\
-	\hline
-
-	% =========================================================
-	% QUALITÄT
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Qualitätsanforderungen}} \\
-	\hline
-	REQ-301 & Tragstruktur & Die Struktur muss das gesamte Systemgewicht sicher tragen können. & High \\
-	\hline
-
-
-	% =========================================================
-	% WARTBARKEIT
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Wartbarkeit und Betrieb}} \\
-	\hline
-	REQ-401 & Bedienbarkeit & Die Bedienung muss einfach und selbsterklärend sein. & Medium \\
-
-	
-	% =========================================================
-	% DESIGN
-	% =========================================================
-	\multicolumn{4}{|l|}{\textbf{Design und Außenwirkung}} \\
-	\hline
-	REQ-501 & Visuelle Gestaltung & Das Erscheinungsbild soll der DHBW-Designsprache entsprechen. & Low \\
-	\hline
-
-	
-\end{longtable}
+%\chapter{Projekt Requirements}
+%\section{Projekt Requirements}
+%\label{sec:Projekt Requirements}
+%
+%\textcolor{red}{ICH WÜRDE DIE NACH FUNKTIONEN WIE NOTFALLBREMSE DISPLAY KI USW AUFTEILEN SO MACHT MAN AUCH BEI ADAS BEI STELLANTIS Jeder kann die Requirements seiner Aufgabe schireben} 
+%
+%\begin{longtable}{|p{1.7cm}|p{4.2cm}|p{8.8cm}|p{1.9cm}|}
+%
+%
+%	\caption{Übersicht der Anforderungen für das Projekt}
+%	\label{tab:anforderungen_ueberarbeitet} \\
+%	\hline
+%	\textbf{ID} & \textbf{Unterkategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} \\
+%	\hline
+%	\endfirsthead
+%	
+%	\hline
+%	\textbf{ID} & \textbf{Unterkategorie} & \textbf{Anforderungsbeschreibung} & \textbf{Priorität} \\
+%	\hline
+%	\endhead
+%	
+%	\hline
+%	\multicolumn{4}{r}{Fortsetzung auf nächster Seite} \\
+%	\endfoot
+%	
+%	\hline
+%	\endlastfoot
+%	
+%	% =========================================================
+%	% FUNKTIONALE ANFORDERUNGEN
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Funktionale Anforderungen}} \\
+%	\hline
+%	REQ-001 & Bewegung & Der Roboter muss vorwärts und rückwärts fahren können. & High \\
+%	\hline
+%	
+%	% =========================================================
+%	% NICHT-FUNKTIONALE ANFORDERUNGEN
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Nicht-funktionale Anforderungen (Performance/Technik)}} \\
+%	\hline
+%	REQ-101 & Reaktionszeit & Die Motorsteuerung muss eine Verzögerung von weniger als 0{,}5\,s zwischen Steuersignal und Reaktion aufweisen. & High \\
+%	\hline
+%
+%	
+%	% =========================================================
+%	% SAFETY
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Sicherheitsanforderungen (Safety)}} \\
+%	\hline
+%	REQ-201 & Fail-Safe & Wird kein Fahrsignal erkannt, muss der Roboter selbstständig anhalten. & High \\
+%	\hline
+%
+%	% =========================================================
+%	% QUALITÄT
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Qualitätsanforderungen}} \\
+%	\hline
+%	REQ-301 & Tragstruktur & Die Struktur muss das gesamte Systemgewicht sicher tragen können. & High \\
+%	\hline
+%
+%
+%	% =========================================================
+%	% WARTBARKEIT
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Wartbarkeit und Betrieb}} \\
+%	\hline
+%	REQ-401 & Bedienbarkeit & Die Bedienung muss einfach und selbsterklärend sein. & Medium \\
+%
+%	
+%	% =========================================================
+%	% DESIGN
+%	% =========================================================
+%	\multicolumn{4}{|l|}{\textbf{Design und Außenwirkung}} \\
+%	\hline
+%	REQ-501 & Visuelle Gestaltung & Das Erscheinungsbild soll der DHBW-Designsprache entsprechen. & Low \\
+%	\hline
+%
+%	
+%\end{longtable}

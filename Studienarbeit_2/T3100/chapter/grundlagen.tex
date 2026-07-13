@@ -2,24 +2,24 @@
 \label{cha:Grundlagen}
 
 
-\textit{Hier beschreibt jeder die theoretischen Konzepte, die für seine Aufgaben notwendig sind.}
+
 
 % --- ANGUS ---
 \subsection{Roboterarten}
 
-Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt.
+Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. \cite{Siciliano2016} Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt. \cite{Siciliano2016} 
 
 \subsubsection{Industrieroboter}
 
-Industrieroboter werden hauptsächlich in automatisierten Fertigungsprozessen eingesetzt. Typische Aufgaben sind Schweißen, Montieren, Lackieren oder Palettieren. Sie zeichnen sich durch eine hohe Wiederholgenauigkeit, Geschwindigkeit und Tragfähigkeit aus und arbeiten meist innerhalb abgeschirmter Sicherheitsbereiche. Aufgrund der hohen Kräfte und Geschwindigkeiten ist während des Betriebs in der Regel keine direkte Zusammenarbeit mit Menschen vorgesehen.
+Industrieroboter werden hauptsächlich in automatisierten Fertigungsprozessen eingesetzt. Typische Aufgaben sind Schweißen, Montieren, Lackieren oder Palettieren. Sie zeichnen sich durch eine hohe Wiederholgenauigkeit, Geschwindigkeit und Tragfähigkeit aus und arbeiten meist innerhalb abgeschirmter Sicherheitsbereiche. Aufgrund der hohen Kräfte und Geschwindigkeiten ist während des Betriebs in der Regel keine direkte Zusammenarbeit mit Menschen vorgesehen. \cite{iso10218}\cite{Siciliano2016} 
 
 \subsubsection{Kollaborative Roboter}
 
-Kollaborative Roboter, auch Cobots genannt, sind speziell für die direkte Zusammenarbeit mit Menschen entwickelt worden. Im Gegensatz zu klassischen Industrierobotern verfügen sie über Sicherheitsfunktionen wie Kraft- und Momentenbegrenzungen sowie Sensoren zur Personenerkennung. Dadurch können sie Arbeitsräume mit Menschen teilen und diese bei Montage- oder Handhabungsaufgaben unterstützen.
+Kollaborative Roboter, auch Cobots genannt, sind speziell für die direkte Zusammenarbeit mit Menschen entwickelt worden. Im Gegensatz zu klassischen Industrierobotern verfügen sie über Sicherheitsfunktionen wie Kraft- und Momentenbegrenzungen sowie Sensoren zur Personenerkennung. Dadurch können sie Arbeitsräume mit Menschen teilen und diese bei Montage- oder Handhabungsaufgaben unterstützen. \cite{iso15066}\cite{Siciliano2016} 
 
 \subsubsection{Mobile Roboter}
 
-Mobile Roboter besitzen die Fähigkeit, sich selbstständig oder ferngesteuert innerhalb ihrer Umgebung fortzubewegen. Je nach Einsatzgebiet kommen Räder, Ketten oder Laufmechanismen zum Einsatz. Typische Anwendungen finden sich in der Logistik, der Landwirtschaft, der Erkundung oder im Servicebereich. Die Navigation erfolgt häufig mithilfe verschiedener Sensoren wie Kameras, Laserscannern oder Ultraschallsensoren.
+Mobile Roboter besitzen die Fähigkeit, sich selbstständig oder ferngesteuert innerhalb ihrer Umgebung fortzubewegen. Je nach Einsatzgebiet kommen Räder, Ketten oder Laufmechanismen zum Einsatz. Typische Anwendungen finden sich in der Logistik, der Landwirtschaft, der Erkundung oder im Servicebereich. Die Navigation erfolgt häufig mithilfe verschiedener Sensoren wie Kameras, Laserscannern oder Ultraschallsensoren. \cite{siegwart2011mobile}
 
 \subsubsection{Humanoide Roboter}
 
@@ -35,29 +35,24 @@ Der im Rahmen dieser Arbeit entwickelte Roboter lässt sich als mobiler Demonstr
 
 \subsection{Additive Fertigung mittels 3D-Druck}
 
-Die additive Fertigung, umgangssprachlich als 3D-Druck bezeichnet, ist ein Fertigungsverfahren, bei dem Bauteile schichtweise aus einem digitalen 3D-Modell aufgebaut werden. Im Gegensatz zu konventionellen subtraktiven Fertigungsverfahren, bei denen Material beispielsweise durch Fräsen oder Drehen entfernt wird, entsteht das Bauteil ausschließlich durch das gezielte Auftragen von Material. Aufgrund der hohen Gestaltungsfreiheit und der vergleichsweise geringen Herstellungskosten wird die additive Fertigung insbesondere im Prototypenbau, der Produktentwicklung sowie bei Kleinserien eingesetzt.
+Die additive Fertigung, umgangssprachlich als 3D-Druck bezeichnet, ist ein Fertigungsverfahren, bei dem Bauteile schichtweise aus einem digitalen 3D-Modell aufgebaut werden. Im Gegensatz zu konventionellen subtraktiven Fertigungsverfahren, bei denen Material beispielsweise durch Fräsen oder Drehen entfernt wird, entsteht das Bauteil ausschließlich durch das gezielte Auftragen von Material. Aufgrund der hohen Gestaltungsfreiheit und der vergleichsweise geringen Herstellungskosten wird die additive Fertigung insbesondere im Prototypenbau, der Produktentwicklung sowie bei Kleinserien eingesetzt. \cite{gibson2021additive} \cite{iso52900}
 
 
 
-Im Rahmen dieser Arbeit kommt das Fused Deposition Modeling (FDM)-Verfahren zum Einsatz. Dabei wird ein thermoplastischer Kunststoff in Form eines Filaments einer beheizten Düse zugeführt und aufgeschmolzen. Das geschmolzene Material wird entlang der zuvor berechneten Druckbahnen auf einer Bauplattform abgelegt und erstarrt nach dem Austritt aus der Düse. Nachdem eine Schicht fertiggestellt wurde, bewegt sich die Bauplattform oder der Druckkopf um die eingestellte Schichthöhe, sodass die nächste Materialschicht aufgetragen werden kann. Dieser Vorgang wird solange wiederholt, bis das Bauteil vollständig aufgebaut ist.
+Im Rahmen dieser Arbeit kommt das Fused Deposition Modeling (FDM)-Verfahren zum Einsatz. Dabei wird ein thermoplastischer Kunststoff in Form eines Filaments einer beheizten Düse zugeführt und aufgeschmolzen. Das geschmolzene Material wird entlang der zuvor berechneten Druckbahnen auf einer Bauplattform abgelegt und erstarrt nach dem Austritt aus der Düse. Nachdem eine Schicht fertiggestellt wurde, bewegt sich die Bauplattform oder der Druckkopf um die eingestellte Schichthöhe, sodass die nächste Materialschicht aufgetragen werden kann. Dieser Vorgang wird solange wiederholt, bis das Bauteil vollständig aufgebaut ist. \cite{gibson2021additive} 
 
-Das Ausgangsmaterial liegt je nach Druckverfahren in unterschiedlichen Formen vor. Beim im Rahmen dieser Arbeit verwendeten FDM-Verfahren wird das Material als Filament auf Spulen bereitgestellt und dem Drucker kontinuierlich zugeführt. Je nach Anwendungsfall stehen zahlreiche Werkstoffe mit unterschiedlichen Eigenschaften zur Verfügung. Zu den am häufigsten verwendeten Materialien zählen thermoplastische Kunststoffe wie PLA oder PETG. Darüber hinaus existieren Filamente mit Kohle- oder Glasfaserverstärkung, die eine höhere Steifigkeit und Festigkeit ermöglichen. Neben Kunststoffen können durch andere additive Fertigungsverfahren auch Metalle, Keramiken oder Beton verarbeitet werden, wodurch sich das Einsatzspektrum von der Prototypenfertigung bis hin zur Luft- und Raumfahrt sowie zum Bauwesen erstreckt.
+Das Ausgangsmaterial liegt je nach Druckverfahren in unterschiedlichen Formen vor. Beim im Rahmen dieser Arbeit verwendeten FDM-Verfahren wird das Material als Filament auf Spulen bereitgestellt und dem Drucker kontinuierlich zugeführt. Je nach Anwendungsfall stehen zahlreiche Werkstoffe mit unterschiedlichen Eigenschaften zur Verfügung. Zu den am häufigsten verwendeten Materialien zählen thermoplastische Kunststoffe wie PLA oder PETG. Darüber hinaus existieren Filamente mit Kohle- oder Glasfaserverstärkung, die eine höhere Steifigkeit und Festigkeit ermöglichen.\cite{gibson2021additive}  Neben Kunststoffen können durch andere additive Fertigungsverfahren auch Metalle, Keramiken oder Beton verarbeitet werden, wodurch sich das Einsatzspektrum von der Prototypenfertigung bis hin zur Luft- und Raumfahrt sowie zum Bauwesen erstreckt. \cite{ahn2002anisotropic}
 
 Ein wesentlicher Vorteil der additiven Fertigung liegt in ihrer hohen konstruktiven Freiheit. Selbst komplexe Geometrien, innenliegende Strukturen oder funktionsintegrierte Bauteile können ohne zusätzlichen Fertigungsaufwand hergestellt werden. Darüber hinaus sind keine speziellen Werkzeuge oder Formen erforderlich, sodass Änderungen am CAD-Modell schnell umgesetzt und neue Bauteile innerhalb kurzer Zeit gefertigt werden können. Dies ist insbesondere während der Entwicklung von Prototypen von großem Vorteil. Gleichzeitig entsteht im Vergleich zu subtraktiven Fertigungsverfahren deutlich weniger Materialabfall, da ausschließlich das tatsächlich benötigte Material verarbeitet wird. Die Möglichkeiten des 3D-Drucks werden dabei hauptsächlich durch die Eigenschaften des verwendeten Werkstoffs sowie den verfügbaren Bauraum des Druckers begrenzt.
 
-Moderne FDM-Drucker ermöglichen zudem den Mehrmaterial- oder Mehrfarbendruck. Dadurch können unterschiedliche Farben oder Materialien innerhalb eines Bauteils kombiniert werden. Neben optischen Vorteilen können so auch funktionale Eigenschaften, beispielsweise durch den Einsatz flexibler und starrer Materialien in einem Bauteil, realisiert werden.
+Moderne FDM-Drucker ermöglichen zudem den Mehrmaterial- oder Mehrfarbendruck. Dadurch können unterschiedliche Farben oder Materialien innerhalb eines Bauteils kombiniert werden. Neben optischen Vorteilen können so auch funktionale Eigenschaften, beispielsweise durch den Einsatz flexibler und starrer Materialien in einem Bauteil, realisiert werden. \cite{gibson2021additive} 
 
-Neben den Vorteilen weist das Verfahren jedoch auch einige Einschränkungen auf. Die mechanischen Eigenschaften eines FDM-Bauteils sind aufgrund des schichtweisen Aufbaus richtungsabhängig. Insbesondere die Festigkeit senkrecht zur Schichtrichtung fällt häufig geringer aus als innerhalb einer Schicht. Zusätzlich können Maßabweichungen, Oberflächenrauheiten sowie Verzug durch thermische Spannungen auftreten. Je nach Bauteilgeometrie sind außerdem Stützstrukturen erforderlich, die nach dem Druck entfernt werden müssen und den Nachbearbeitungsaufwand erhöhen. Für größere Stückzahlen ist das Verfahren aufgrund der vergleichsweise langen Fertigungszeiten zudem wirtschaftlich weniger geeignet als konventionelle Fertigungsmethoden.
+Neben den Vorteilen weist das Verfahren jedoch auch einige Einschränkungen auf. Die mechanischen Eigenschaften eines FDM-Bauteils sind aufgrund des schichtweisen Aufbaus richtungsabhängig. Insbesondere die Festigkeit senkrecht zur Schichtrichtung fällt häufig geringer aus als innerhalb einer Schicht. Zusätzlich können Maßabweichungen, Oberflächenrauheiten sowie Verzug durch thermische Spannungen auftreten. \cite{gibson2021additive} Je nach Bauteilgeometrie sind außerdem Stützstrukturen erforderlich, die nach dem Druck entfernt werden müssen und den Nachbearbeitungsaufwand erhöhen. Für größere Stückzahlen ist das Verfahren aufgrund der vergleichsweise langen Fertigungszeiten zudem wirtschaftlich weniger geeignet als konventionelle Fertigungsmethoden. \cite{gibson2021additive}
 
-
-
-\subsection{Stabilität bei mobilen Robotern}
-\subsubsection{Einfluss des Schwerpunkts und der Stützradposition}
-\subsubsection{Mechanik von Wechselakkusystemen}
 \subsection{Ultraschallsensoren}
 
-Ultraschallsensoren sind berührungslos arbeitende Sensoren, die zur Abstandsmessung und Objekterkennung eingesetzt werden. Aufgrund ihrer robusten Arbeitsweise und ihrer vergleichsweise geringen Kosten finden sie häufig Anwendung in mobilen Robotersystemen. Im Gegensatz zu optischen Sensoren ist ihre Funktion weitgehend unabhängig von Farbe oder Transparenz eines Objekts, wodurch auch Glas oder dunkle Oberflächen zuverlässig erkannt werden können.
-
+Ultraschallsensoren sind berührungslos arbeitende Sensoren, die zur Abstandsmessung und Objekterkennung eingesetzt werden. Aufgrund ihrer robusten Arbeitsweise und ihrer vergleichsweise geringen Kosten finden sie häufig Anwendung in mobilen Robotersystemen. Im Gegensatz zu optischen Sensoren ist ihre Funktion weitgehend unabhängig von Farbe oder Transparenz eines Objekts, wodurch auch Glas oder dunkle Oberflächen zuverlässig erkannt werden können. \cite{fraden2016sensors}
+\cite{Doessel2016}
 Das Messprinzip basiert auf der Aussendung und dem Empfang von Ultraschallwellen. Hierbei erzeugt ein piezoelektrischer Wandler einen kurzen Schallimpuls im Ultraschallbereich (Frequenzen oberhalb von 20\,kHz), der sich mit der Schallgeschwindigkeit in Luft ausbreitet. Trifft der Schall auf ein Hindernis, wird ein Teil der Schallwellen reflektiert und vom Sensor wieder empfangen. Aus der gemessenen Laufzeit zwischen Senden und Empfangen des Signals kann die Entfernung zum Objekt bestimmt werden.
 
 Die Distanzberechnung erfolgt nach dem Laufzeitverfahren und lässt sich durch folgende Gleichung beschreiben:
@@ -67,15 +62,15 @@ Die Distanzberechnung erfolgt nach dem Laufzeitverfahren und lässt sich durch f
 	\label{eq:ultraschall}
 \end{equation}
 
-Dabei bezeichnet $s$ den Abstand zum Objekt, $c$ die Schallgeschwindigkeit in Luft und $t$ die gemessene Laufzeit des Ultraschallsignals. Der Faktor zwei berücksichtigt, dass der Schall sowohl den Hin- als auch den Rückweg zwischen Sensor und Objekt zurücklegt.
+Dabei bezeichnet $s$ den Abstand zum Objekt, $c$ die Schallgeschwindigkeit in Luft und $t$ die gemessene Laufzeit des Ultraschallsignals. Der Faktor zwei berücksichtigt, dass der Schall sowohl den Hin- als auch den Rückweg zwischen Sensor und Objekt zurücklegt. \cite{Doessel2016}
 
-Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messung weitgehend unabhängig von den optischen Eigenschaften eines Objekts erfolgt. Dadurch eignen sie sich insbesondere für Anwendungen mit wechselnden Lichtverhältnissen oder unterschiedlich beschaffenen Oberflächen. Gleichzeitig weisen Ultraschallsensoren einige Einschränkungen auf. So hängt die Schallgeschwindigkeit unter anderem von der Umgebungstemperatur ab, wodurch Messabweichungen entstehen können. Zudem können schräg ausgerichtete oder stark schallabsorbierende Oberflächen die Reflexion des Signals verringern und somit die Messgenauigkeit beeinflussen.
+Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messung weitgehend unabhängig von den optischen Eigenschaften eines Objekts erfolgt. Dadurch eignen sie sich insbesondere für Anwendungen mit wechselnden Lichtverhältnissen oder unterschiedlich beschaffenen Oberflächen.  \cite{fraden2016sensors} Gleichzeitig weisen Ultraschallsensoren einige Einschränkungen auf. So hängt die Schallgeschwindigkeit unter anderem von der Umgebungstemperatur ab, wodurch Messabweichungen entstehen können. Zudem können schräg ausgerichtete oder stark schallabsorbierende Oberflächen die Reflexion des Signals verringern und somit die Messgenauigkeit beeinflussen.  \cite{fraden2016sensors} \cite{Doessel2016}
 
 %Im Rahmen dieser Arbeit werden Ultraschallsensoren zur Hinderniserkennung und Abstandsmessung des entwickelten Roboters eingesetzt. Die gemessenen Distanzen bilden eine wichtige Grundlage für die Kollisionsvermeidung sowie die Umfelderfassung und tragen somit wesentlich zur sicheren Navigation des Roboters bei.
 
-\subsection{Kinematik von Service-Roboter-Armen}
-\subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
-\subsubsection{Materialkunde für Gehäuse und Kopfmodule}
+%\subsection{Kinematik von Service-Roboter-Armen}
+%\subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
+%\subsubsection{Materialkunde für Gehäuse und Kopfmodule}
 
 % --- SIMON ---
 \section{Softwarelösungen für Roboter}
@@ -202,12 +197,7 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-\subsection{Elektronik-Design und EMV}
-a
-\subsubsection{Kabelmanagement und Signalintegrität}
-a
-\subsubsection{Corporate Design Prinzipien im Roboterbau}
-a
+
 \section{KI TTS STT}
 
 Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. \cite{goodfellow2016deep}

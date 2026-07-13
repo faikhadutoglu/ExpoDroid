@@ -3,13 +3,24 @@
 
 %\textit{(Gemeinsames Kapitel: Motivation, Projektziel der Phase 2, Übersicht über das Gesamtsystem ESP32 + Raspi 5 + BTS7960.)}
 
+%\section{Motivation und Zielsetzung}
+
+%Technische Demonstratoren stellen ein wichtiges Instrument dar, um komplexe Technologien anschaulich zu vermitteln und das Interesse potenzieller Studierender für technische Studiengänge zu wecken. Insbesondere auf Hochschulmessen oder Informationsveranstaltungen bieten interaktive Systeme die Möglichkeit, Besucher bereits aus größerer Entfernung auf einen Messestand aufmerksam zu machen und gleichzeitig einen niedrigschwelligen Einstieg in Gespräche mit Studierenden und Mitarbeitenden zu schaffen.
+%
+%Im Rahmen einer vorherigen Studienarbeit wurde hierfür ein erster funktionsfähiger Demonstrator entwickelt. Obwohl die grundlegenden Fahr- und Steuerungsfunktionen erfolgreich umgesetzt werden konnten, bestanden insbesondere hinsichtlich des Designs, der Mensch-Maschine-Interaktion sowie der technischen Zuverlässigkeit noch erhebliche Verbesserungspotenziale.
+%
+%Ziel dieser Studienarbeit ist daher die konstruktive, funktionale und gestalterische Weiterentwicklung des bestehenden Roboters. Neben der Entwicklung eines modernen Erscheinungsbildes sollen zusätzliche Interaktionsmöglichkeiten geschaffen und die Einsatzfähigkeit des Roboters unter realen Messebedingungen verbessert werden. 
+
+
+
 \section{Motivation und Zielsetzung}
 
 Technische Demonstratoren stellen ein wichtiges Instrument dar, um komplexe Technologien anschaulich zu vermitteln und das Interesse potenzieller Studierender für technische Studiengänge zu wecken. Insbesondere auf Hochschulmessen oder Informationsveranstaltungen bieten interaktive Systeme die Möglichkeit, Besucher bereits aus größerer Entfernung auf einen Messestand aufmerksam zu machen und gleichzeitig einen niedrigschwelligen Einstieg in Gespräche mit Studierenden und Mitarbeitenden zu schaffen.
 
-Im Rahmen einer vorherigen Studienarbeit wurde hierfür ein erster funktionsfähiger Demonstrator entwickelt. Obwohl die grundlegenden Fahr- und Steuerungsfunktionen erfolgreich umgesetzt werden konnten, bestanden insbesondere hinsichtlich des Designs, der Mensch-Maschine-Interaktion sowie der technischen Zuverlässigkeit noch erhebliche Verbesserungspotenziale.
+Im Rahmen einer vorherigen Studienarbeit wurde hierfür ein erster funktionsfähiger Demonstrationsroboter entwickelt. Obwohl die grundlegenden Fahr- und Steuerungsfunktionen erfolgreich umgesetzt werden konnten, bestanden insbesondere hinsichtlich des mechanischen Aufbaus, des äußeren Erscheinungsbildes, der Mensch-Roboter-Interaktion sowie der technischen Zuverlässigkeit noch erhebliche Verbesserungspotenziale.
 
-Ziel dieser Studienarbeit ist daher die konstruktive, funktionale und gestalterische Weiterentwicklung des bestehenden Roboters. Neben der Entwicklung eines modernen Erscheinungsbildes sollen zusätzliche Interaktionsmöglichkeiten geschaffen und die Einsatzfähigkeit des Roboters unter realen Messebedingungen verbessert werden. Die entwickelten Lösungen werden abschließend im Rahmen zweier Messeeinsätze unter realen Einsatzbedingungen validiert.
+Ziel dieser Studienarbeit ist die konstruktive, funktionale und gestalterische Weiterentwicklung des bestehenden Roboters. Hierzu zählen die Entwicklung eines modernen Gehäusedesigns mit humanoiden Gestaltungselementen, die Verbesserung der Standfestigkeit des Fahrwerks sowie die Integration beweglicher Roboterarme und einer Hinderniserkennung zur Erhöhung der Betriebssicherheit. Darüber hinaus soll die Mensch-Roboter-Interaktion durch ein sprachbasiertes Dialogsystem erweitert werden, um eine natürlichere Kommunikation mit den Besuchern zu ermöglichen. 
+Abschließend werden die entwickelten Konzepte und die umgesetzten Erweiterungen im Rahmen zweier Messeeinsätze unter realen Einsatzbedingungen validiert und hinsichtlich ihrer Praxistauglichkeit bewertet.
 
 
 %\section{Systemübersicht und Hardware-Architektur}
@@ -31,25 +42,25 @@ Ziel dieser Studienarbeit ist daher die konstruktive, funktionale und gestalteri
 %Zum Abschluss der ersten Projektphase lag somit ein funktionsfähiger Demonstrator vor, dessen Fahrwerk, Antriebssystem, Steuerung sowie grundlegende Interaktionsfunktionen erfolgreich validiert werden konnten. Die mechanische Konstruktion entsprach jedoch noch einem funktionalen Holzprototyp und war weder für den dauerhaften Einsatz noch hinsichtlich Design, Gewicht oder Modularität optimiert. Ebenso fehlten die vollständige Integration des Kopfes, ein finales Gehäusedesign sowie weitere Sensorik und autonome Funktionen. Diese offenen Punkte bildeten den Ausgangszustand und zugleich die Grundlage für die im Rahmen dieser Studienarbeit durchgeführte Weiterentwicklung des Roboters.  
 
 
-\subsection{Ziele der Arbeit}
-\textcolor{red}{brauchen wir das wirklich?}
-Ausgehend vom Entwicklungsstand der vorherigen Studienarbeit verfolgt diese Arbeit folgende Ziele:
-
-\begin{itemize}
-	
-	\item Entwicklung eines modernen Gehäusedesigns mit humanoiden Gestaltungselementen,
-	
-	\item Erhöhung der Standfestigkeit des Fahrwerks,
-	
-	\item Entwicklung und Integration beweglicher Roboterarme,
-	
-	\item Integration einer Hinderniserkennung zur Erhöhung der Betriebssicherheit,
-	
-	\item Erweiterung der Mensch-Roboter-Interaktion durch ein sprachbasiertes Dialogsystem,
-	
-	\item Validierung des Gesamtsystems unter realen Einsatzbedingungen auf Hochschulmessen.
-	
-\end{itemize}
+%\subsection{Ziele der Arbeit}
+%\textcolor{red}{brauchen wir das wirklich?}
+%Ausgehend vom Entwicklungsstand der vorherigen Studienarbeit verfolgt diese Arbeit folgende Ziele:
+%
+%\begin{itemize}
+%	
+%	\item Entwicklung eines modernen Gehäusedesigns mit humanoiden Gestaltungselementen,
+%	
+%	\item Erhöhung der Standfestigkeit des Fahrwerks,
+%	
+%	\item Entwicklung und Integration beweglicher Roboterarme,
+%	
+%	\item Integration einer Hinderniserkennung zur Erhöhung der Betriebssicherheit,
+%	
+%	\item Erweiterung der Mensch-Roboter-Interaktion durch ein sprachbasiertes Dialogsystem,
+%	
+%	\item Validierung des Gesamtsystems unter realen Einsatzbedingungen auf Hochschulmessen.
+%	
+%\end{itemize}
 
 \section{Aufbau der Arbeit}
 \textcolor{red}{brauchen wir das wirklich?}
