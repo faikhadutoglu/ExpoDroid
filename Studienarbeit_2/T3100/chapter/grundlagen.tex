@@ -203,7 +203,7 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-\section{KI TTS STT}
+\section{KI/ Sprach ein- und Ausgabe}
 \label{sec:KI}
 
 Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. \cite{goodfellow2016deep}
@@ -232,14 +232,14 @@ In modernen Speech-to-Text-Systemen wird häufig die schnelle Fourier-Transforma
 Auch bei Text-to-Speech-Systemen findet die Fourier-Transformation Anwendung. Sie wird genutzt, um akustische Eigenschaften von Sprachsignalen zu analysieren und natürliche Sprachsynthese zu ermöglichen. Damit stellt die Fourier-Transformation eine grundlegende mathematische Methode für die digitale Sprachverarbeitung und somit auch für moderne KI-gestützte Robotersysteme dar.
 
  
-\subsection{TTS} %text to speech
+\subsection{Text to Speech} %text to speech
 Text-to-Speech (TTS) beschreibt die Umwandlung von Text in künstlich erzeugte Sprache. Moderne Systeme verwenden Deep-Learning-Verfahren, um eine möglichst natürliche Ausgabe zu erzeugen. 
 
 Der Prozess beginnt mit der Analyse des eingegebenen Textes. Anschließend wird eine akustische Repräsentation erzeugt, häufig in Form eines Mel-Spektrogramms. Ein sogenannter Vocoder wandelt diese Zwischenrepräsentation anschließend in ein Audiosignal um. \cite{shen2018tacotron}
 
 Aktuelle TTS-Systeme erreichen eine sehr hohe Sprachqualität und erlauben zusätzlich die Anpassung von Geschwindigkeit, Betonung und Sprachcharakteristik. Dadurch wird eine natürliche Kommunikation zwischen Mensch und Roboter ermöglicht. \cite{shen2018tacotron} 
 
-\subsection{STT}
+\subsection{Speech to Text}
 Speech-to-Text (STT), auch Automatic Speech Recognition (ASR) genannt, beschreibt die automatische Umwandlung gesprochener Sprache in geschriebenen Text. Das Audiosignal wird über ein Mikrofon aufgenommen und zunächst vorverarbeitet. Hierbei werden Störgeräusche reduziert und das Signal normalisiert. \cite{radford2022whisper}
 
 Anschließend erfolgt die Merkmalsextraktion. Dabei werden charakteristische Eigenschaften des Sprachsignals ermittelt. Häufig werden Spektrogramme oder Fourier-Transformationen verwendet, um Frequenzanteile sichtbar zu machen. Diese Informationen dienen als Eingabe für neuronale Netze. \cite{shen2018tacotron}
