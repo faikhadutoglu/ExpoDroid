@@ -2,28 +2,30 @@
 \label{cha:Grundlagen}
 
 
+\textit{Hier beschreibt jeder die theoretischen Konzepte, die für seine Aufgaben notwendig sind.}
+
 % --- ANGUS ---
-\section{Roboterarten}
+\subsection{Roboterarten}
 
 Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt.
 
-\subsection{Industrieroboter}
+\subsubsection{Industrieroboter}
 
 Industrieroboter werden hauptsächlich in automatisierten Fertigungsprozessen eingesetzt. Typische Aufgaben sind Schweißen, Montieren, Lackieren oder Palettieren. Sie zeichnen sich durch eine hohe Wiederholgenauigkeit, Geschwindigkeit und Tragfähigkeit aus und arbeiten meist innerhalb abgeschirmter Sicherheitsbereiche. Aufgrund der hohen Kräfte und Geschwindigkeiten ist während des Betriebs in der Regel keine direkte Zusammenarbeit mit Menschen vorgesehen.
 
-\subsection{Kollaborative Roboter}
+\subsubsection{Kollaborative Roboter}
 
 Kollaborative Roboter, auch Cobots genannt, sind speziell für die direkte Zusammenarbeit mit Menschen entwickelt worden. Im Gegensatz zu klassischen Industrierobotern verfügen sie über Sicherheitsfunktionen wie Kraft- und Momentenbegrenzungen sowie Sensoren zur Personenerkennung. Dadurch können sie Arbeitsräume mit Menschen teilen und diese bei Montage- oder Handhabungsaufgaben unterstützen.
 
-\subsection{Mobile Roboter}
+\subsubsection{Mobile Roboter}
 
 Mobile Roboter besitzen die Fähigkeit, sich selbstständig oder ferngesteuert innerhalb ihrer Umgebung fortzubewegen. Je nach Einsatzgebiet kommen Räder, Ketten oder Laufmechanismen zum Einsatz. Typische Anwendungen finden sich in der Logistik, der Landwirtschaft, der Erkundung oder im Servicebereich. Die Navigation erfolgt häufig mithilfe verschiedener Sensoren wie Kameras, Laserscannern oder Ultraschallsensoren.
 
-\subsection{Humanoide Roboter}
+\subsubsection{Humanoide Roboter}
 
 Humanoide Roboter orientieren sich hinsichtlich ihres Aufbaus an der menschlichen Anatomie. Sie verfügen häufig über einen Kopf, einen Oberkörper, Arme und Beine und können dadurch menschliche Bewegungen oder Gesten nachahmen. Ziel humanoider Roboter ist eine möglichst intuitive Interaktion mit Menschen. Bekannte Vertreter sind beispielsweise der Tesla Optimus oder der Atlas-Roboter von Boston Dynamics.
 
-\subsection{Demonstrations- und Serviceroboter}
+\subsubsection{Demonstrations- und Serviceroboter}
 
 Demonstrations- und Serviceroboter dienen der Interaktion mit Menschen und übernehmen Informations-, Präsentations- oder Unterstützungsaufgaben. Im Vordergrund stehen hierbei weniger hohe Traglasten oder Präzision als vielmehr ein ansprechendes Erscheinungsbild, intuitive Bedienbarkeit und eine angenehme Mensch-Roboter-Interaktion. Aufgrund dieser Eigenschaften findet diese Roboterklasse häufig Anwendung auf Messen, in Museen oder im Bildungsbereich.
 
@@ -48,10 +50,10 @@ Moderne FDM-Drucker ermöglichen zudem den Mehrmaterial- oder Mehrfarbendruck. D
 Neben den Vorteilen weist das Verfahren jedoch auch einige Einschränkungen auf. Die mechanischen Eigenschaften eines FDM-Bauteils sind aufgrund des schichtweisen Aufbaus richtungsabhängig. Insbesondere die Festigkeit senkrecht zur Schichtrichtung fällt häufig geringer aus als innerhalb einer Schicht. Zusätzlich können Maßabweichungen, Oberflächenrauheiten sowie Verzug durch thermische Spannungen auftreten. Je nach Bauteilgeometrie sind außerdem Stützstrukturen erforderlich, die nach dem Druck entfernt werden müssen und den Nachbearbeitungsaufwand erhöhen. Für größere Stückzahlen ist das Verfahren aufgrund der vergleichsweise langen Fertigungszeiten zudem wirtschaftlich weniger geeignet als konventionelle Fertigungsmethoden.
 
 
-%
-%\subsection{Stabilität bei mobilen Robotern}
-%\subsubsection{Einfluss des Schwerpunkts und der Stützradposition}
-%\subsubsection{Mechanik von Wechselakkusystemen}
+
+\subsection{Stabilität bei mobilen Robotern}
+\subsubsection{Einfluss des Schwerpunkts und der Stützradposition}
+\subsubsection{Mechanik von Wechselakkusystemen}
 \subsection{Ultraschallsensoren}
 
 Ultraschallsensoren sind berührungslos arbeitende Sensoren, die zur Abstandsmessung und Objekterkennung eingesetzt werden. Aufgrund ihrer robusten Arbeitsweise und ihrer vergleichsweise geringen Kosten finden sie häufig Anwendung in mobilen Robotersystemen. Im Gegensatz zu optischen Sensoren ist ihre Funktion weitgehend unabhängig von Farbe oder Transparenz eines Objekts, wodurch auch Glas oder dunkle Oberflächen zuverlässig erkannt werden können.
@@ -71,19 +73,20 @@ Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messun
 
 %Im Rahmen dieser Arbeit werden Ultraschallsensoren zur Hinderniserkennung und Abstandsmessung des entwickelten Roboters eingesetzt. Die gemessenen Distanzen bilden eine wichtige Grundlage für die Kollisionsvermeidung sowie die Umfelderfassung und tragen somit wesentlich zur sicheren Navigation des Roboters bei.
 
-%\subsection{Kinematik von Service-Roboter-Armen}
-%\subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
-%\subsubsection{Materialkunde für Gehäuse und Kopfmodule}
+\subsection{Kinematik von Service-Roboter-Armen}
+\subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
+\subsubsection{Materialkunde für Gehäuse und Kopfmodule}
 
 % --- SIMON ---
+\section{Softwarelösungen für Roboter}
+Neben der Hardware stellt die Software einen wesentlichen Bestandteil moderner Robotersysteme dar. Aufgrund begrenzter Rechen-, Speicher- und Energieressourcen müssen insbesondere bei mobilen Robotern effiziente Softwarekonzepte eingesetzt werden. Gleichzeitig ist eine geeignete Schnittstelle zur Interaktion zwischen Mensch und Roboter erforderlich. Daher werden im Folgenden Aspekte des Ressourcenmanagements auf Einplatinencomputern sowie Verfahren der Mensch-Roboter-Interaktion und der Fernwartung betrachtet.
+\subsection{Ressourcenmanagement auf Einplatinencomputern}
 
-\section{Ressourcenmanagement auf Einplatinencomputern}
+Einplatinencomputer (Single-Board Computer, SBC) werden aufgrund ihrer kompakten Bauweise, ihres geringen Energieverbrauchs und ihrer niedrigen Kosten häufig in eingebetteten Systemen, Robotikanwendungen und IoT-Geräten eingesetzt. Im Vergleich zu Desktop-Computern oder Servern verfügen sie jedoch über begrenzte Rechen-, Speicher- und Kühlressourcen. Daher spielt ein effizientes Ressourcenmanagement eine zentrale Rolle bei der Entwicklung leistungsfähiger Anwendungen. \cite{peckol2019embedded}
 
-Einplatinencomputer (Single-Board Computer, SBC) werden aufgrund ihrer kompakten Bauweise, ihres geringen Energieverbrauchs und ihrer niedrigen Kosten häufig in eingebetteten Systemen, Robotikanwendungen und IoT-Geräten eingesetzt. Im Vergleich zu Desktop-Computern oder Servern verfügen sie jedoch über begrenzte Rechen-, Speicher- und Kühlressourcen. Daher spielt ein effizientes Ressourcenmanagement eine zentrale Rolle bei der Entwicklung leistungsfähiger Anwendungen.
+Insbesondere moderne Anwendungen aus den Bereichen Robotik, Bildverarbeitung und Künstliche Intelligenz stellen hohe Anforderungen an die verfügbare Hardware. Rechenintensive Prozesse können die CPU und den Arbeitsspeicher stark belasten, wodurch sich Antwortzeiten verlängern oder die Reaktionsfähigkeit des Systems verringert. Darüber hinaus kann eine dauerhaft hohe Prozessorlast zu einer erhöhten Wärmeentwicklung führen, was unter Umständen eine Leistungsdrosselung (Thermal Throttling) nach sich zieht. \cite{eang2024mec}
 
-Insbesondere moderne Anwendungen aus den Bereichen Robotik, Bildverarbeitung und Künstliche Intelligenz stellen hohe Anforderungen an die verfügbare Hardware. Rechenintensive Prozesse können die CPU und den Arbeitsspeicher stark belasten, wodurch sich Antwortzeiten verlängern oder die Reaktionsfähigkeit des Systems verringert. Darüber hinaus kann eine dauerhaft hohe Prozessorlast zu einer erhöhten Wärmeentwicklung führen, was unter Umständen eine Leistungsdrosselung (Thermal Throttling) nach sich zieht.
-
-Zur effizienten Nutzung der verfügbaren Ressourcen werden verschiedene Optimierungsstrategien eingesetzt. Dazu zählt beispielsweise die Parallelisierung von Prozessen durch Multithreading oder Multiprocessing. Durch die Aufteilung von Aufgaben auf mehrere Ausführungseinheiten können verfügbare Prozessorkerne besser ausgelastet und Wartezeiten reduziert werden.
+Zur effizienten Nutzung der verfügbaren Ressourcen werden verschiedene Optimierungsstrategien eingesetzt. Dazu zählt beispielsweise die Parallelisierung von Prozessen durch Multithreading oder Multiprocessing. Durch die Aufteilung von Aufgaben auf mehrere Ausführungseinheiten können verfügbare Prozessorkerne besser ausgelastet und Wartezeiten reduziert werden. \cite{patterson2020computer}
 
 Ein weiterer Ansatz besteht in der Reduzierung der zu verarbeitenden Datenmengen. Bei Anwendungen der Bildverarbeitung werden hierfür häufig geringere Kamerauflösungen oder reduzierte Verarbeitungsraten verwendet. Dadurch sinkt die benötigte Rechenleistung, ohne die Funktionalität des Systems wesentlich zu beeinträchtigen.
 
@@ -94,15 +97,22 @@ Neben der Prozessorleistung ist auch der verfügbare Arbeitsspeicher von Bedeutu
 Ein effektives Ressourcenmanagement bildet somit die Grundlage für den zuverlässigen Betrieb komplexer Anwendungen auf Einplatinencomputern und ermöglicht den Einsatz dieser Systeme auch in Bereichen wie Robotik, Automatisierung und Künstlicher Intelligenz.
 
 \subsection{Mensch-Maschine-Interaktion (HMI)}
-Hierbei gibt es die Unterscheidung zwischen HMI was für Human Maschine Interaction oder Interface steht und HRI, was spezialisiert für Human Robot Interaction steht. Hierbei geht es dann spezifisch um die Interaktion mit einem Roboter oder auch humanoiden Roboter. 
 
-\cite{" Human-Robot Interaction (HRI) is a field of study dedicated to understanding, designing and evaluating robotic systems for use by or with humans"}
+Die Interaktion zwischen Mensch und technischen Systemen ist ein zentrales Forschungsgebiet der Informatik, Automatisierungs- und Robotiktechnik. Dabei wird häufig zwischen Human-Machine Interaction (HMI) und Human-Robot Interaction (HRI) unterschieden. HMI beschreibt allgemein die Kommunikation und Zusammenarbeit zwischen Menschen und technischen Systemen über geeignete Benutzerschnittstellen. Ziel ist es, Maschinen so zu gestalten, dass sie effizient, sicher und intuitiv bedient werden können. Dabei umfasst die HMI sowohl klassische Eingabegeräte wie Tastaturen, Mäuse und Touchscreens als auch moderne Sprach- und Gestensteuerungen. Die Gestaltung solcher Schnittstellen orientiert sich an den Fähigkeiten und Bedürfnissen der Nutzer und folgt dem Prinzip des menschenzentrierten Designs \cite{boy2011handbook}.
+Das Forschungsgebiet der Human-Computer Interaction (HCI), welches eng mit der HMI verwandt ist, beschäftigt sich mit der Gestaltung, Bewertung und Implementierung interaktiver Computersysteme für die menschliche Nutzung. Hierbei stehen insbesondere Benutzerfreundlichkeit, Effizienz, Sicherheit und Nutzerakzeptanz im Vordergrund \cite{card1983psychology,hornbaek2025hci}.
+Im Gegensatz dazu fokussiert sich die Human-Robot Interaction (HRI) auf die Zusammenarbeit zwischen Menschen und Robotern. Goodrich und Schultz definieren HRI als:
+
+„Human-Robot Interaction (HRI) is a field of study dedicated to understanding, designing, and evaluating robotic systems for use by or with humans“ \cite{goodrich2008hri}.
+
+Während bei klassischen HMIs die Maschine meist als passives Werkzeug agiert, besitzen Roboter häufig ein gewisses Maß an Autonomie. Dadurch entstehen zusätzliche Anforderungen an die Kommunikation und Kooperation zwischen Mensch und Roboter. Nutzer müssen beispielsweise den Zustand, die Absichten und die Entscheidungen des Roboters nachvollziehen können, um Vertrauen und Akzeptanz aufzubauen \cite{sheridan2016human,bartneck2020hri}.
+
+Ein wesentliches Merkmal der HRI ist die Möglichkeit der physischen und sozialen Interaktion. Roboter können sich im Raum bewegen, Objekte manipulieren und direkt mit Menschen zusammenarbeiten. Nach Goodrich und Schultz wird zwischen Remote Interaction und Proximate Interaction unterschieden. Bei der Remote Interaction befinden sich Mensch und Roboter räumlich getrennt, wie beispielsweise bei der Teleoperation von Mars-Rovern. Bei der Proximate Interaction arbeiten Mensch und Roboter hingegen am selben Ort zusammen, etwa bei Servicerobotern oder kollaborativen Robotern in der Industrie \cite{goodrich2008hri}.
+
+Mit der zunehmenden Verbreitung von kollaborativen Robotern (Cobots) gewinnt die HRI insbesondere im industriellen Umfeld an Bedeutung. Hierbei stehen Aspekte wie Sicherheit, intuitive Bedienbarkeit, Transparenz der Roboterentscheidungen und ergonomische Zusammenarbeit im Mittelpunkt. Eine erfolgreiche Mensch-Roboter-Kollaboration erfordert daher nicht nur technische Leistungsfähigkeit, sondern auch die Berücksichtigung psychologischer und sozialer Faktoren wie Vertrauen, Akzeptanz und Benutzererfahrung \cite{bartneck2020hri,johnson2024basic}.
 
 
 
-
-
-\subsubsection{Technologien der Sprachsynthese und -erkennung}
+\subsection{Technologien der Sprachsynthese und -erkennung}
 
 Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{hinton2012deep}
 
@@ -113,7 +123,7 @@ Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Impl
 Im Bereich der Sprachsynthese kommen heute ebenfalls neuronale Netze zum Einsatz. Diese erzeugen aus einem Text zunächst eine akustische Repräsentation, welche anschließend durch einen sogenannten Vocoder in ein Audiosignal umgewandelt wird. Gegenüber älteren Verfahren auf Basis zusammengesetzter Sprachbausteine ermöglichen moderne Systeme eine deutlich natürlichere und flüssigere Sprachwiedergabe. Die Parameter der generierten Sprache können zusätzlich hinsichtlich Geschwindigkeit, Lautstärke und Sprechstil angepasst werden. \cite{shen2018tacotron}
 
 
-\subsubsection{Netzwerkprotokolle zur Fernwartung (VNC)}
+\subsection{Netzwerkprotokolle zur Fernwartung (VNC)}
 
 Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt. \cite{rfc6143}
 
@@ -192,12 +202,12 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-%\subsection{Elektronik-Design und EMV}
-%a
-%\subsubsection{Kabelmanagement und Signalintegrität}
-%a
-%\subsubsection{Corporate Design Prinzipien im Roboterbau}
-%a
+\subsection{Elektronik-Design und EMV}
+a
+\subsubsection{Kabelmanagement und Signalintegrität}
+a
+\subsubsection{Corporate Design Prinzipien im Roboterbau}
+a
 \section{KI TTS STT}
 
 Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. \cite{goodfellow2016deep}
