@@ -74,64 +74,6 @@ Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messun
 %\subsubsection{Freiheitsgrade (DOF) und Gelenktypen}
 %\subsubsection{Materialkunde für Gehäuse und Kopfmodule}
 
-% --- SIMON ---
-\section{Softwarelösungen für Roboter}
-\label{sec:Softwarelösungen}
-
-Neben der Hardware stellt die Software einen wesentlichen Bestandteil moderner Robotersysteme dar. Aufgrund begrenzter Rechen-, Speicher- und Energieressourcen müssen insbesondere bei mobilen Robotern effiziente Softwarekonzepte eingesetzt werden. Gleichzeitig ist eine geeignete Schnittstelle zur Interaktion zwischen Mensch und Roboter erforderlich. Daher werden im Folgenden Aspekte des Ressourcenmanagements auf Einplatinencomputern sowie Verfahren der Mensch-Roboter-Interaktion und der Fernwartung betrachtet.
-\subsection{Ressourcenmanagement auf Einplatinencomputern}
-
-Einplatinencomputer (Single-Board Computer, SBC) werden aufgrund ihrer kompakten Bauweise, ihres geringen Energieverbrauchs und ihrer niedrigen Kosten häufig in eingebetteten Systemen, Robotikanwendungen und IoT-Geräten eingesetzt. Im Vergleich zu Desktop-Computern oder Servern verfügen sie jedoch über begrenzte Rechen-, Speicher- und Kühlressourcen. Daher spielt ein effizientes Ressourcenmanagement eine zentrale Rolle bei der Entwicklung leistungsfähiger Anwendungen. \cite{peckol2019embedded}
-
-Insbesondere moderne Anwendungen aus den Bereichen Robotik, Bildverarbeitung und Künstliche Intelligenz stellen hohe Anforderungen an die verfügbare Hardware. Rechenintensive Prozesse können die CPU und den Arbeitsspeicher stark belasten, wodurch sich Antwortzeiten verlängern oder die Reaktionsfähigkeit des Systems verringert. Darüber hinaus kann eine dauerhaft hohe Prozessorlast zu einer erhöhten Wärmeentwicklung führen, was unter Umständen eine Leistungsdrosselung (Thermal Throttling) nach sich zieht. \cite{eang2024mec}
-
-Zur effizienten Nutzung der verfügbaren Ressourcen werden verschiedene Optimierungsstrategien eingesetzt. Dazu zählt beispielsweise die Parallelisierung von Prozessen durch Multithreading oder Multiprocessing. Durch die Aufteilung von Aufgaben auf mehrere Ausführungseinheiten können verfügbare Prozessorkerne besser ausgelastet und Wartezeiten reduziert werden. \cite{patterson2020computer}
-
-Ein weiterer Ansatz besteht in der Reduzierung der zu verarbeitenden Datenmengen. Bei Anwendungen der Bildverarbeitung werden hierfür häufig geringere Kamerauflösungen oder reduzierte Verarbeitungsraten verwendet. Dadurch sinkt die benötigte Rechenleistung, ohne die Funktionalität des Systems wesentlich zu beeinträchtigen.
-
-Auch die Auslagerung besonders rechenintensiver Aufgaben stellt eine verbreitete Methode dar. Hierbei werden Berechnungen auf leistungsfähigere externe Systeme oder Cloud-Dienste übertragen, während der Einplatinencomputer lediglich die Kommunikation und Steuerung übernimmt. Dieses hybride Konzept ermöglicht die Realisierung komplexer Anwendungen trotz begrenzter lokaler Hardware-Ressourcen.
-
-Neben der Prozessorleistung ist auch der verfügbare Arbeitsspeicher von Bedeutung. Moderne Softwarearchitekturen setzen daher häufig auf modulare Konzepte, bei denen nur die tatsächlich benötigten Komponenten geladen und ausgeführt werden. Dies reduziert den Speicherverbrauch und erhöht die Stabilität des Gesamtsystems.
-
-Ein effektives Ressourcenmanagement bildet somit die Grundlage für den zuverlässigen Betrieb komplexer Anwendungen auf Einplatinencomputern und ermöglicht den Einsatz dieser Systeme auch in Bereichen wie Robotik, Automatisierung und Künstlicher Intelligenz.
-
-\subsection{Mensch-Maschine-Interaktion (HMI)}
-
-Die Interaktion zwischen Mensch und technischen Systemen ist ein zentrales Forschungsgebiet der Informatik, Automatisierungs- und Robotiktechnik. Dabei wird häufig zwischen Human-Machine Interaction (HMI) und Human-Robot Interaction (HRI) unterschieden. HMI beschreibt allgemein die Kommunikation und Zusammenarbeit zwischen Menschen und technischen Systemen über geeignete Benutzerschnittstellen. Ziel ist es, Maschinen so zu gestalten, dass sie effizient, sicher und intuitiv bedient werden können. Dabei umfasst die HMI sowohl klassische Eingabegeräte wie Tastaturen, Mäuse und Touchscreens als auch moderne Sprach- und Gestensteuerungen. Die Gestaltung solcher Schnittstellen orientiert sich an den Fähigkeiten und Bedürfnissen der Nutzer und folgt dem Prinzip des menschenzentrierten Designs \cite{boy2011handbook}.
-Das Forschungsgebiet der Human-Computer Interaction (HCI), welches eng mit der HMI verwandt ist, beschäftigt sich mit der Gestaltung, Bewertung und Implementierung interaktiver Computersysteme für die menschliche Nutzung. Hierbei stehen insbesondere Benutzerfreundlichkeit, Effizienz, Sicherheit und Nutzerakzeptanz im Vordergrund \cite{card1983psychology,hornbaek2025hci}.
-Im Gegensatz dazu fokussiert sich die Human-Robot Interaction (HRI) auf die Zusammenarbeit zwischen Menschen und Robotern. Goodrich und Schultz definieren HRI als:
-
-„Human-Robot Interaction (HRI) is a field of study dedicated to understanding, designing, and evaluating robotic systems for use by or with humans“ \cite{goodrich2008hri}.
-
-Während bei klassischen HMIs die Maschine meist als passives Werkzeug agiert, besitzen Roboter häufig ein gewisses Maß an Autonomie. Dadurch entstehen zusätzliche Anforderungen an die Kommunikation und Kooperation zwischen Mensch und Roboter. Nutzer müssen beispielsweise den Zustand, die Absichten und die Entscheidungen des Roboters nachvollziehen können, um Vertrauen und Akzeptanz aufzubauen \cite{sheridan2016human,bartneck2020hri}.
-
-Ein wesentliches Merkmal der HRI ist die Möglichkeit der physischen und sozialen Interaktion. Roboter können sich im Raum bewegen, Objekte manipulieren und direkt mit Menschen zusammenarbeiten. Nach Goodrich und Schultz wird zwischen Remote Interaction und Proximate Interaction unterschieden. Bei der Remote Interaction befinden sich Mensch und Roboter räumlich getrennt, wie beispielsweise bei der Teleoperation von Mars-Rovern. Bei der Proximate Interaction arbeiten Mensch und Roboter hingegen am selben Ort zusammen, etwa bei Servicerobotern oder kollaborativen Robotern in der Industrie \cite{goodrich2008hri}.
-
-Mit der zunehmenden Verbreitung von kollaborativen Robotern (Cobots) gewinnt die HRI insbesondere im industriellen Umfeld an Bedeutung. Hierbei stehen Aspekte wie Sicherheit, intuitive Bedienbarkeit, Transparenz der Roboterentscheidungen und ergonomische Zusammenarbeit im Mittelpunkt. Eine erfolgreiche Mensch-Roboter-Kollaboration erfordert daher nicht nur technische Leistungsfähigkeit, sondern auch die Berücksichtigung psychologischer und sozialer Faktoren wie Vertrauen, Akzeptanz und Benutzererfahrung \cite{bartneck2020hri,johnson2024basic}.
-
-
-
-\subsection{Technologien der Sprachsynthese und -erkennung}
-
-Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{hinton2012deep}
-
-Für die Spracherkennung wurde im Rahmen dieser Arbeit das Open-Source-System Whisper betrachtet. Whisper basiert auf einer Transformer-Architektur und wurde mit rund 680\,000 Stunden mehrsprachiger Sprachdaten trainiert. Das Modell kann Sprache in zahlreichen Sprachen erkennen und besitzt eine hohe Robustheit gegenüber Hintergrundgeräuschen und unterschiedlichen Sprechweisen. \cite{radford2022whisper}
-
-Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Implementierung von Whisper. Diese basiert auf der CTranslate2-Bibliothek und reduziert sowohl den Speicherverbrauch als auch die Rechenzeit während der Inferenz. Dadurch eignet sich Fast-Whisper besonders für Embedded-Systeme wie den Raspberry Pi 5. Trotz dieser Optimierungen stellt die lokale Spracherkennung weiterhin hohe Anforderungen an die verfügbare Rechenleistung. \cite{systran2024fasterwhisper}
-
-Im Bereich der Sprachsynthese kommen heute ebenfalls neuronale Netze zum Einsatz. Diese erzeugen aus einem Text zunächst eine akustische Repräsentation, welche anschließend durch einen sogenannten Vocoder in ein Audiosignal umgewandelt wird. Gegenüber älteren Verfahren auf Basis zusammengesetzter Sprachbausteine ermöglichen moderne Systeme eine deutlich natürlichere und flüssigere Sprachwiedergabe. Die Parameter der generierten Sprache können zusätzlich hinsichtlich Geschwindigkeit, Lautstärke und Sprechstil angepasst werden. \cite{shen2018tacotron}
-
-
-\subsection{Netzwerkprotokolle zur Fernwartung (VNC)}
-
-Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt. \cite{rfc6143}
-
-VNC ist ein plattformübergreifendes Fernwartungsprotokoll, welches nach dem Client-Server-Prinzip arbeitet. Ein VNC-Server läuft auf dem zu steuernden Rechner und überträgt dessen Bildschirminhalt über das Remote-Framebuffer-Protokoll (RFB) an einen VNC-Client. Gleichzeitig werden Maus- und Tastatureingaben des Clients an das entfernte System übertragen. Dadurch kann ein Rechner vollständig aus der Ferne bedient werden. \cite{rfc6143}
-
-Während der Entwicklung erwies sich VNC als geeignetes Werkzeug zur Konfiguration und Wartung des Roboters. Die durchgeführten Tests zeigten jedoch, dass die Qualität der Verbindung stark von der verfügbaren Netzwerkbandbreite abhängt. Insbesondere bei grafischen Anwendungen treten bei langsamen Verbindungen spürbare Verzögerungen auf.
-
-Weiterhin wurde festgestellt, dass die Bereitstellung eines eigenen WLAN-Hotspots durch den Raspberry Pi zu einer erhöhten Systemauslastung führt und die verfügbare Rechenleistung für andere Anwendungen reduziert. Daher wird empfohlen, für den Betrieb eine externe WLAN-Infrastruktur oder einen separaten mobilen Hotspot zu verwenden. Unter diesen Bedingungen konnten eine stabile Verbindung und eine zuverlässige Fernwartung erreicht werden.
-
 % --- HAI NAM ---
 \section{Elektromechanische Integration und Design}
 \label{sec:Elektromechanische}
@@ -202,6 +144,66 @@ Die maximale Greifkraft wird nicht ausschließlich durch den Servomotor bestimmt
 Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steuerbarkeit. Da beide Greiffinger synchron bewegt werden, genügt häufig ein einziger Aktor zur vollständigen Betätigung des Greifers. Dies reduziert sowohl die Anzahl der benötigten Antriebskomponenten als auch den Steuerungsaufwand. Aus diesem Grund werden Parallelgreifer in zahlreichen industriellen Anwendungen sowie in Ausbildungs und Forschungsprojekten eingesetzt.
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
+
+
+% --- SIMON ---
+\section{Softwarelösungen für Roboter}
+\label{sec:Softwarelösungen}
+
+Neben der Hardware stellt die Software einen wesentlichen Bestandteil moderner Robotersysteme dar. Aufgrund begrenzter Rechen-, Speicher- und Energieressourcen müssen insbesondere bei mobilen Robotern effiziente Softwarekonzepte eingesetzt werden. Gleichzeitig ist eine geeignete Schnittstelle zur Interaktion zwischen Mensch und Roboter erforderlich. Daher werden im Folgenden Aspekte des Ressourcenmanagements auf Einplatinencomputern sowie Verfahren der Mensch-Roboter-Interaktion und der Fernwartung betrachtet.
+\subsection{Ressourcenmanagement auf Einplatinencomputern}
+
+Einplatinencomputer (Single-Board Computer, SBC) werden aufgrund ihrer kompakten Bauweise, ihres geringen Energieverbrauchs und ihrer niedrigen Kosten häufig in eingebetteten Systemen, Robotikanwendungen und IoT-Geräten eingesetzt. Im Vergleich zu Desktop-Computern oder Servern verfügen sie jedoch über begrenzte Rechen-, Speicher- und Kühlressourcen. Daher spielt ein effizientes Ressourcenmanagement eine zentrale Rolle bei der Entwicklung leistungsfähiger Anwendungen. \cite{peckol2019embedded}
+
+Insbesondere moderne Anwendungen aus den Bereichen Robotik, Bildverarbeitung und Künstliche Intelligenz stellen hohe Anforderungen an die verfügbare Hardware. Rechenintensive Prozesse können die CPU und den Arbeitsspeicher stark belasten, wodurch sich Antwortzeiten verlängern oder die Reaktionsfähigkeit des Systems verringert. Darüber hinaus kann eine dauerhaft hohe Prozessorlast zu einer erhöhten Wärmeentwicklung führen, was unter Umständen eine Leistungsdrosselung (Thermal Throttling) nach sich zieht. \cite{eang2024mec}
+
+Zur effizienten Nutzung der verfügbaren Ressourcen werden verschiedene Optimierungsstrategien eingesetzt. Dazu zählt beispielsweise die Parallelisierung von Prozessen durch Multithreading oder Multiprocessing. Durch die Aufteilung von Aufgaben auf mehrere Ausführungseinheiten können verfügbare Prozessorkerne besser ausgelastet und Wartezeiten reduziert werden. \cite{patterson2020computer}
+
+Ein weiterer Ansatz besteht in der Reduzierung der zu verarbeitenden Datenmengen. Bei Anwendungen der Bildverarbeitung werden hierfür häufig geringere Kamerauflösungen oder reduzierte Verarbeitungsraten verwendet. Dadurch sinkt die benötigte Rechenleistung, ohne die Funktionalität des Systems wesentlich zu beeinträchtigen.
+
+Auch die Auslagerung besonders rechenintensiver Aufgaben stellt eine verbreitete Methode dar. Hierbei werden Berechnungen auf leistungsfähigere externe Systeme oder Cloud-Dienste übertragen, während der Einplatinencomputer lediglich die Kommunikation und Steuerung übernimmt. Dieses hybride Konzept ermöglicht die Realisierung komplexer Anwendungen trotz begrenzter lokaler Hardware-Ressourcen.
+
+Neben der Prozessorleistung ist auch der verfügbare Arbeitsspeicher von Bedeutung. Moderne Softwarearchitekturen setzen daher häufig auf modulare Konzepte, bei denen nur die tatsächlich benötigten Komponenten geladen und ausgeführt werden. Dies reduziert den Speicherverbrauch und erhöht die Stabilität des Gesamtsystems.
+
+Ein effektives Ressourcenmanagement bildet somit die Grundlage für den zuverlässigen Betrieb komplexer Anwendungen auf Einplatinencomputern und ermöglicht den Einsatz dieser Systeme auch in Bereichen wie Robotik, Automatisierung und Künstlicher Intelligenz.
+
+\subsection{Mensch-Maschine-Interaktion (HMI)}
+
+Die Interaktion zwischen Mensch und technischen Systemen ist ein zentrales Forschungsgebiet der Informatik, Automatisierungs- und Robotiktechnik. Dabei wird häufig zwischen Human-Machine Interaction (HMI) und Human-Robot Interaction (HRI) unterschieden. HMI beschreibt allgemein die Kommunikation und Zusammenarbeit zwischen Menschen und technischen Systemen über geeignete Benutzerschnittstellen. Ziel ist es, Maschinen so zu gestalten, dass sie effizient, sicher und intuitiv bedient werden können. Dabei umfasst die HMI sowohl klassische Eingabegeräte wie Tastaturen, Mäuse und Touchscreens als auch moderne Sprach- und Gestensteuerungen. Die Gestaltung solcher Schnittstellen orientiert sich an den Fähigkeiten und Bedürfnissen der Nutzer und folgt dem Prinzip des menschenzentrierten Designs \cite{boy2011handbook}.
+Das Forschungsgebiet der Human-Computer Interaction (HCI), welches eng mit der HMI verwandt ist, beschäftigt sich mit der Gestaltung, Bewertung und Implementierung interaktiver Computersysteme für die menschliche Nutzung. Hierbei stehen insbesondere Benutzerfreundlichkeit, Effizienz, Sicherheit und Nutzerakzeptanz im Vordergrund \cite{card1983psychology,hornbaek2025hci}.
+Im Gegensatz dazu fokussiert sich die Human-Robot Interaction (HRI) auf die Zusammenarbeit zwischen Menschen und Robotern. Goodrich und Schultz definieren HRI als:
+
+„Human-Robot Interaction (HRI) is a field of study dedicated to understanding, designing, and evaluating robotic systems for use by or with humans.“ \cite{goodrich2008hri}
+
+Während bei klassischen HMIs die Maschine meist als passives Werkzeug agiert, besitzen Roboter häufig ein gewisses Maß an Autonomie. Dadurch entstehen zusätzliche Anforderungen an die Kommunikation und Kooperation zwischen Mensch und Roboter. Nutzer müssen beispielsweise den Zustand, die Absichten und die Entscheidungen des Roboters nachvollziehen können, um Vertrauen und Akzeptanz aufzubauen \cite{sheridan2016human,bartneck2020hri}.
+
+Ein wesentliches Merkmal der HRI ist die Möglichkeit der physischen und sozialen Interaktion. Roboter können sich im Raum bewegen, Objekte manipulieren und direkt mit Menschen zusammenarbeiten. Nach Goodrich und Schultz wird zwischen Remote Interaction und Proximate Interaction unterschieden. Bei der Remote Interaction befinden sich Mensch und Roboter räumlich getrennt, wie beispielsweise bei der Teleoperation von Mars-Rovern. Bei der Proximate Interaction arbeiten Mensch und Roboter hingegen am selben Ort zusammen, etwa bei Servicerobotern oder kollaborativen Robotern in der Industrie \cite{goodrich2008hri}.
+
+Mit der zunehmenden Verbreitung von kollaborativen Robotern (Cobots) gewinnt die HRI insbesondere im industriellen Umfeld an Bedeutung. Hierbei stehen Aspekte wie Sicherheit, intuitive Bedienbarkeit, Transparenz der Roboterentscheidungen und ergonomische Zusammenarbeit im Mittelpunkt. Eine erfolgreiche Mensch-Roboter-Kollaboration erfordert daher nicht nur technische Leistungsfähigkeit, sondern auch die Berücksichtigung psychologischer und sozialer Faktoren wie Vertrauen, Akzeptanz und Benutzererfahrung \cite{bartneck2020hri,johnson2024basic}.
+
+
+
+\subsection{Technologien der Sprachsynthese und -erkennung}
+
+Moderne Systeme zur Sprachsynthese und Spracherkennung basieren überwiegend auf Verfahren des Deep Learning. Dabei werden künstliche neuronale Netze mit großen Mengen von Sprachdaten trainiert, um Zusammenhänge zwischen Audiosignalen und sprachlichen Inhalten selbstständig zu erlernen. Im Vergleich zu klassischen regelbasierten Ansätzen können dadurch deutlich bessere Ergebnisse bei der Erkennung unterschiedlicher Sprecher, Akzente und Umgebungsgeräusche erzielt werden. \cite{hinton2012deep}
+
+Für die Spracherkennung wurde im Rahmen dieser Arbeit das Open-Source-System Whisper betrachtet. Whisper basiert auf einer Transformer-Architektur und wurde mit rund 680\,000 Stunden mehrsprachiger Sprachdaten trainiert. Das Modell kann Sprache in zahlreichen Sprachen erkennen und besitzt eine hohe Robustheit gegenüber Hintergrundgeräuschen und unterschiedlichen Sprechweisen. \cite{radford2022whisper}
+
+Für ressourcenbegrenzte Systeme existiert mit Fast-Whisper eine optimierte Implementierung von Whisper. Diese basiert auf der CTranslate2-Bibliothek und reduziert sowohl den Speicherverbrauch als auch die Rechenzeit während der Inferenz. Dadurch eignet sich Fast-Whisper besonders für Embedded-Systeme wie den Raspberry Pi 5. Trotz dieser Optimierungen stellt die lokale Spracherkennung weiterhin hohe Anforderungen an die verfügbare Rechenleistung. \cite{systran2024fasterwhisper}
+
+Im Bereich der Sprachsynthese kommen heute ebenfalls neuronale Netze zum Einsatz. Diese erzeugen aus einem Text zunächst eine akustische Repräsentation, welche anschließend durch einen sogenannten Vocoder in ein Audiosignal umgewandelt wird. Gegenüber älteren Verfahren auf Basis zusammengesetzter Sprachbausteine ermöglichen moderne Systeme eine deutlich natürlichere und flüssigere Sprachwiedergabe. Die Parameter der generierten Sprache können zusätzlich hinsichtlich Geschwindigkeit, Lautstärke und Sprechstil angepasst werden. \cite{shen2018tacotron}
+
+
+\subsection{Netzwerkprotokolle zur Fernwartung (VNC)}
+
+Da sich innerhalb des Roboters weder eine Tastatur noch eine Maus befinden, muss für Wartungs- und Konfigurationsarbeiten ein Fernzugriff auf den Raspberry Pi ermöglicht werden. Hierfür wurde Virtual Network Computing (VNC) eingesetzt. \cite{rfc6143}
+
+VNC ist ein plattformübergreifendes Fernwartungsprotokoll, welches nach dem Client-Server-Prinzip arbeitet. Ein VNC-Server läuft auf dem zu steuernden Rechner und überträgt dessen Bildschirminhalt über das Remote-Framebuffer-Protokoll (RFB) an einen VNC-Client. Gleichzeitig werden Maus- und Tastatureingaben des Clients an das entfernte System übertragen. Dadurch kann ein Rechner vollständig aus der Ferne bedient werden. \cite{rfc6143}
+
+Während der Entwicklung erwies sich VNC als geeignetes Werkzeug zur Konfiguration und Wartung des Roboters. Die durchgeführten Tests zeigten jedoch, dass die Qualität der Verbindung stark von der verfügbaren Netzwerkbandbreite abhängt. Insbesondere bei grafischen Anwendungen treten bei langsamen Verbindungen spürbare Verzögerungen auf.
+
+Weiterhin wurde festgestellt, dass die Bereitstellung eines eigenen WLAN-Hotspots durch den Raspberry Pi zu einer erhöhten Systemauslastung führt und die verfügbare Rechenleistung für andere Anwendungen reduziert. Daher wird empfohlen, für den Betrieb eine externe WLAN-Infrastruktur oder einen separaten mobilen Hotspot zu verwenden. Unter diesen Bedingungen konnten eine stabile Verbindung und eine zuverlässige Fernwartung erreicht werden.
+
 
 \section{KI/ Sprach ein- und Ausgabe}
 \label{sec:KI}
@@ -315,7 +317,7 @@ Tokenisierung bezeichnet die Zerlegung eines Textes in einzelne Wörter oder Tok
 Ein bekanntes Beispiel für moderne Speech-to-Text-Technologie ist Whisper von OpenAI. Whisper nutzt eine Transformer-Architektur und wurde mit umfangreichen Sprachdaten trainiert. Dadurch können zahlreiche Sprachen und unterschiedliche Sprachstile zuverlässig erkannt werden. \cite{radford2022whisper}
 %was ist das , funktionsprinzip,traingingsmethoden, fähigkeiten von kleinen LLMs 
 
-\subsection{Trade-off-Analyse}
+\section{Trade-off-Analyse}
 
 Während der Entwicklung technischer Systeme existieren häufig mehrere mögliche Lösungsansätze, die unterschiedliche Vor- und Nachteile besitzen. Um eine nachvollziehbare und objektive Entscheidung treffen zu können, werden im Systems Engineering häufig sogenannte Trade-off-Analysen eingesetzt. Ziel dieser Methode ist es, verschiedene Konzepte anhand zuvor definierter Bewertungskriterien systematisch miteinander zu vergleichen.
 
