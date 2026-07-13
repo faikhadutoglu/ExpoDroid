@@ -10,6 +10,7 @@
 %Verifikation anhand der zuvor erarbeiteten Anforderungen und Validierung in Bezug auf das zuvor gestellte Ziel. Diskussion der Ergebnisse. Spätestens hier auch auf die Zuverlässigkeit der gewonnenen Erkenntnisse eingehen (z.~B. anhand der Genauigkeit von Messergebnissen).
 
 
+
 % --- SIMON ---
 \section{KI-Systeme: Implementierung und Performance}
 \label{sec:KI-Systeme}
@@ -131,7 +132,7 @@ Um den Roboter speziell für den Einsatz bei Veranstaltungen der DHBW Ravensburg
 Die Softwarearchitektur wurde modular aufgebaut. Dadurch können einzelne Komponenten wie Sprachmodell, Spracherkennung oder Sprachausgabe bei zukünftigen Weiterentwicklungen einfach ausgetauscht oder erweitert werden.
 
 
-\subsubsection{Einrichtung der KI-Umgebung (Gemma 3, TTS/STT)}
+\subsubsection*{Einrichtung der KI-Umgebung (Gemma 3, TTS/STT)}
 
 Für die Realisierung des Sprachassistenten wurde auf dem Raspberry Pi 5 zunächst eine vollständige KI-Umgebung eingerichtet. Als Betriebssystem kam Raspberry Pi OS zum Einsatz. Vor der Installation der KI-Komponenten wurden sämtliche Systempakete aktualisiert, um eine stabile Softwarebasis zu gewährleisten.
 
@@ -190,7 +191,7 @@ Während der ersten Versuche zeigte sich jedoch, dass die lokale Ausführung von
 Das entwickelte System arbeitet als hybrides KI-System. Bei bestehender Internetverbindung werden Benutzeranfragen bevorzugt an Gemini übertragen, wodurch deutlich kürzere Antwortzeiten erreicht werden. Fällt die Internetverbindung aus oder ist kein WLAN verfügbar, erfolgt automatisch eine Umschaltung auf das lokal installierte Gemma-3-Modell. Dadurch bleibt die grundlegende Funktionalität des Roboters auch ohne Netzwerkverbindung erhalten.
 
 Durch diesen Aufbau konnte ein Kompromiss zwischen hoher Antwortgeschwindigkeit und der Ausfallsicherheit eines lokal lauffähigen Systems erreicht werden. Die modulare Softwarearchitektur ermöglicht zudem die zukünftige Integration weiterer Sprachmodelle sowie den Austausch einzelner Komponenten ohne grundlegende Änderungen am Gesamtsystem.
-\subsubsection{Display, WLAN und VNC-Integration}
+\subsubsection*{Display, WLAN und VNC-Integration}
 
 Zur visuellen Interaktion wurde der Roboter mit einem 10,1-Zoll-Display mit einer Auflösung von 1024 × 600 Pixeln ausgestattet. Auf diesem Display werden animierte Augen dargestellt, die dem Roboter ein lebendiges Erscheinungsbild verleihen und die Interaktion mit Besuchern unterstützen.
 
@@ -250,7 +251,7 @@ Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberflä
 \end{figure}
 
 \subsection{Ergebnisse: Systemleistung}
-\subsubsection{Latenzmessung und Benchmarks}
+\subsubsection*{Latenzmessung und Benchmarks}
 Zur Bewertung der Reaktionsfähigkeit des Systems wurden mehrere Tests mit der lokal auf dem Raspberry Pi 5 ausgeführten KI sowie mit der cloudbasierten Gemini-KI durchgeführt. Dabei wurde die Zeit zwischen dem Abschluss der Spracheingabe und dem Beginn der Sprachausgabe gemessen.
 
 Die Tests zeigten, dass die lokale Ausführung des Gemma-3-Modells auf dem Raspberry Pi grundsätzlich möglich ist, die Antwortzeiten jedoch stark von der Komplexität der Benutzeranfrage abhängen. Einfache Fragen konnten innerhalb von etwa 15 bis 30 Sekunden beantwortet werden. Bei komplexeren Anfragen stieg die Antwortzeit teilweise auf bis zu einer Minute an. Dadurch wurde ein natürlicher Gesprächsfluss erheblich eingeschränkt.
@@ -260,7 +261,7 @@ Die Nutzung der cloudbasierten Gemini-KI führte dagegen zu deutlich kürzeren A
 Die Implementierung der Augenanimationen und Gesichtsanzeige verursachte während der Tests keine erkennbaren Leistungseinbußen. Die Animationen wurden kontinuierlich und ohne Abstürze ausgeführt. Somit konnte die grafische Darstellung parallel zur KI-Verarbeitung zuverlässig betrieben werden.
 
 
-\subsubsection{Stabilitätstests}
+\subsubsection*{Stabilitätstests}
 
 Zur Überprüfung der Zuverlässigkeit des Systems wurden mehrstündige Laufzeittests unter Bedingungen durchgeführt, die dem geplanten Messeeinsatz möglichst nahekommen. Dabei wurden sowohl die Stabilität der Software als auch die Energieversorgung und die Fernwartung betrachtet.
 
@@ -292,7 +293,7 @@ Demgegenüber steht die Abhängigkeit von einer verfügbaren Internetverbindung.
 
 Insgesamt zeigt die Betrachtung der Wirtschaftlichkeit, dass der Einsatz von Gemini Flash für den vorgesehenen Messebetrieb eine technisch und wirtschaftlich sinnvolle Lösung darstellt. Die Kombination aus geringen Betriebskosten, hoher Flexibilität, sehr kurzen Antwortzeiten und einer deutlich verbesserten Benutzererfahrung überwiegt die Nachteile der Netzabhängigkeit. In Verbindung mit dem implementierten Fallback-System ergibt sich somit ein zuverlässiges und gleichzeitig wirtschaftliches Gesamtkonzept für den praktischen Einsatz des Roboters.
 
-\subsubsection{Kostenbetrachtung der Gemini-Integration}
+\subsubsection*{Kostenbetrachtung der Gemini-Integration}
 
 Neben den technischen Vorteilen wurde auch die Wirtschaftlichkeit des Einsatzes von Gemini Flash untersucht. Die Nutzung erfolgt über eine Programmierschnittstelle (API), bei der die Kosten anhand der übertragenen Ein- und Ausgabetokens berechnet werden. Für Gemini 2.5 Flash betragen die Kosten derzeit 0,30 US-Dollar pro einer Million Eingabetokens sowie 2,50 US-Dollar pro einer Million Ausgabetokens.
 
