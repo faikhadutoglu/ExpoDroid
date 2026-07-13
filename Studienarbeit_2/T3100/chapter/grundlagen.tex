@@ -32,7 +32,7 @@ Demonstrations- und Serviceroboter dienen der Interaktion mit Menschen und über
 
 Der im Rahmen dieser Arbeit entwickelte Roboter lässt sich als mobiler Demonstrationsroboter mit humanoiden Gestaltungselementen einordnen. Obwohl keine komplexen Manipulationsaufgaben vorgesehen sind, orientieren sich das äußere Erscheinungsbild sowie die geplanten Interaktionsmöglichkeiten an humanoiden Robotern. Gleichzeitig dient der Roboter als Demonstrationsplattform für verschiedene mechatronische und informationstechnische Systeme.
 
-\section{Mechanische Konstruktionsprinzipien (Angus)}
+\section{Mechanische Konstruktionsprinzipien}
 \label{sec:Konstruktionsprinzipien}
 
 \subsection{Additive Fertigung mittels 3D-Druck}
@@ -133,7 +133,7 @@ Während der Entwicklung erwies sich VNC als geeignetes Werkzeug zur Konfigurati
 Weiterhin wurde festgestellt, dass die Bereitstellung eines eigenen WLAN-Hotspots durch den Raspberry Pi zu einer erhöhten Systemauslastung führt und die verfügbare Rechenleistung für andere Anwendungen reduziert. Daher wird empfohlen, für den Betrieb eine externe WLAN-Infrastruktur oder einen separaten mobilen Hotspot zu verwenden. Unter diesen Bedingungen konnten eine stabile Verbindung und eine zuverlässige Fernwartung erreicht werden.
 
 % --- HAI NAM ---
-\section{Elektromechanische Integration und Design (Hai Nam)}
+\section{Elektromechanische Integration und Design}
 \label{sec:Elektromechanische}
 
 \subsection{Ästhetik und modernes Produktdesign von Robotern}
@@ -158,7 +158,7 @@ Ein typischer Modellbauservomotor besteht aus mehreren funktionalen Komponenten.
 
 Zur Erfassung der aktuellen Position ist auf der Ausgangswelle ein Potentiometer angebracht. Dieses verändert seinen elektrischen Widerstand abhängig vom Drehwinkel der Welle. Die Elektronik im Servomotor vergleicht kontinuierlich den gemessenen Istwert mit dem von außen vorgegebenen Sollwert. Weicht die aktuelle Position vom Sollwert ab, wird der Motor entsprechend angesteuert, bis beide Werte übereinstimmen. Dieser geschlossene Regelkreis ermöglicht eine hohe Positioniergenauigkeit und sorgt dafür, dass die eingestellte Position auch unter Last gehalten wird.
 
-Die Ansteuerung eines Servomotors erfolgt üblicherweise über ein Pulsweitenmodulationssignal (PWM). Dabei wird in regelmäßigen Zeitabständen ein Rechtecksignal übertragen, dessen Pulsbreite die gewünschte Winkelposition definiert. Im Modellbaubereich beträgt die Wiederholfrequenz typischerweise etwa 50 Hertz, wodurch alle 20 Millisekunden ein neuer Steuerimpuls gesendet wird. Eine Pulsbreite von ungefähr einer Millisekunde entspricht dabei meist der minimalen Endstellung des Servomotors. Eine Pulsbreite von etwa 1,5 Millisekunden positioniert die Ausgangswelle in der Mittelstellung, während zwei Millisekunden die maximale Endstellung anfahren. Je nach Hersteller können diese Werte geringfügig variieren. (PENDING QUELLE)
+Die Ansteuerung eines Servomotors erfolgt üblicherweise über ein Pulsweitenmodulationssignal (PWM). Dabei wird in regelmäßigen Zeitabständen ein Rechtecksignal übertragen, dessen Pulsbreite die gewünschte Winkelposition definiert. Im Modellbaubereich beträgt die Wiederholfrequenz typischerweise etwa 50 Hertz, wodurch alle 20 Millisekunden ein neuer Steuerimpuls gesendet wird. Eine Pulsbreite von ungefähr einer Millisekunde entspricht dabei meist der minimalen Endstellung des Servomotors. Eine Pulsbreite von etwa 1,5 Millisekunden positioniert die Ausgangswelle in der Mittelstellung, während zwei Millisekunden die maximale Endstellung anfahren. Je nach Hersteller können diese Werte geringfügig variieren. \cite{SG90.2024}
 
 Die Elektronik des Servomotors misst kontinuierlich die Dauer des eingehenden Steuerimpulses und berechnet daraus den gewünschten Sollwinkel. Anschließend wird der Motor solange betrieben, bis der Positionssensor denselben Winkel zurückmeldet. Wird während des Betriebs eine äußere Kraft auf die Abtriebswelle ausgeübt, erkennt die Regelung die Positionsabweichung und erzeugt automatisch ein Gegenmoment. Dadurch kann der Servomotor seine Position auch unter Belastung weitgehend konstant halten.
 

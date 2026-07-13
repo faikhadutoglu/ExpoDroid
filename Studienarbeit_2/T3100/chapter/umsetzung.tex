@@ -29,7 +29,7 @@ Wie stabil steht der Roboter jetzt? Hält der Akku-Mechanismus?
 Bewertung der Lackierung und der Bewegungsfreiheit der Arme.
 
 % --- SIMON ---
-\section{KI-Systeme: Implementierung und Performance (Simon)}
+\section{KI-Systeme: Implementierung und Performance}
 \label{sec:KI-Systeme}
 
 Für den Messebetrieb des Roboters wurde ein KI-gestütztes Sprachassistenzsystem entwickelt. Ziel war die Umsetzung einer natürlichen Mensch-Maschine-Interaktion, sodass Besucher mit dem Roboter über Sprache kommunizieren können. Der Assistent wurde speziell auf den Einsatz an der DHBW Ravensburg zugeschnitten und mit Informationen über die Hochschule, die Studiengänge sowie das duale Studienmodell ausgestattet.
@@ -213,12 +213,17 @@ Durch diesen Aufbau konnte ein Kompromiss zwischen hoher Antwortgeschwindigkeit 
 Zur visuellen Interaktion wurde der Roboter mit einem 10,1-Zoll-Display mit einer Auflösung von 1024 × 600 Pixeln ausgestattet. Auf diesem Display werden animierte Augen dargestellt, die dem Roboter ein lebendiges Erscheinungsbild verleihen und die Interaktion mit Besuchern unterstützen.
 
 Im Vergleich zur ersten Studienarbeit wurde das Design der Augen grundlegend überarbeitet. Während in der ursprünglichen Version einfache Darstellungen verwendet wurden, entstand in dieser Projektphase ein neues, moderneres Erscheinungsbild. Die Augen bestehen aus zwei farbigen quadratischen Elementen mit abgerundeten Ecken, deren Pupillen dynamisch bewegt werden. Dabei wurde bewusst ein Design gewählt, das an das DHBW-Farbschema angelehnt ist. Das linke Auge wird in Rot und das rechte Auge in Anthrazit dargestellt.
+
+\vspace{0.5cm}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/duale_augen_screenshot.png}
+	\fbox{
+	\includegraphics[width=0.8\textwidth]{images/duale_augen_screenshot.png}}
+	\vspace{15pt}
 	\caption{Darstellung der entwickelten Augenanimation. Die beiden farbigen Augen werden auf dem Frontdisplay des Roboters angezeigt. Die Pupillen folgen erkannter Personen mittels kamerabasierter Gesichtserkennung und bewegen sich dadurch dynamisch im Sichtfeld.}
 	\label{fig:augenanimation}
 \end{figure}
+
 Die Augenanimation wurde in Python unter Verwendung der Bibliothek Pygame umgesetzt. Das Programm erzeugt die vollständige Darstellung in Echtzeit und passt die Position der Pupillen kontinuierlich an erkannte Gesichter an. Hierfür wird eine USB-Kamera verwendet, deren Bilddaten durch die OpenCV-Bibliothek verarbeitet werden. Zur Gesichtserkennung kommt ein Haar-Cascade-Klassifikator zum Einsatz, der Gesichter innerhalb des Kamerabildes lokalisiert. Die ermittelte Gesichtsposition wird anschließend in Augenbewegungen umgerechnet.
 
 Um natürliche Bewegungen zu erhalten, wurde eine Glättung (Smoothing) implementiert. Dadurch folgen die Pupillen dem erkannten Gesicht fließend und vermeiden abrupte Positionswechsel. Wird kein Gesicht erkannt, bewegen sich die Augen langsam wieder in ihre Ausgangsposition zurück. Zusätzlich wurde ein zufälliger Blinzelmechanismus integriert, wodurch die Darstellung lebendiger wirkt. Die Blinzelintervalle werden zufällig gewählt und simulieren menschliches Verhalten.
@@ -335,22 +340,6 @@ Selbst bei einer deutlich höheren Nutzung von beispielsweise 2\,000 Gesprächen
 
 Die Analyse zeigt, dass der Einsatz von Gemini Flash nicht nur technische Vorteile hinsichtlich Antwortqualität und Geschwindigkeit bietet, sondern auch aus wirtschaftlicher Sicht sehr attraktiv ist. Die laufenden Betriebskosten bleiben selbst bei intensiver Nutzung deutlich unter den Kosten, die durch zusätzliche leistungsfähige Hardware für eine lokale KI-Verarbeitung entstehen würden.
 \newpage
-
-
-
-% --- HAI NAM ---
-%\section{Elektronik und Design: Integration und Tests (Hai Nam)}
-%\subsection{Umsetzung: Verdrahtung und Peripherie}
-%\subsubsection{Installation Screw Terminal und Kabelmanagement}
-%Beschreibung der sauberen Verkabelung.
-%\subsubsection{Funktionserweiterungen (Klaue, Speak-Through, Paintbrush)}
-%Einbau der Klaue und Programmierung der Zusatzfunktionen.
-%
-%\subsection{Ergebnisse: Funktionsprüfung}
-%\subsubsection{Test der Aktorik und Animationen}
-%Greifkrafttests und Ablauf der Winkanimation.
-%\subsubsection{Usability-Check}
-%Audioqualität der Durchsagefunktion und Bewertung des Clean-Designs.
 
 \chapter{Bedienungsanleitung}
 \label{cha:Bedienungsanleitung}
