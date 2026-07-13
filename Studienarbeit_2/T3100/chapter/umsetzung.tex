@@ -26,9 +26,7 @@ Die gesamte KI-Anwendung wurde auf einem Raspberry Pi implementiert, der als zen
 
 \begin{table}[H]
 	\centering
-	\caption{Trade-off-Analyse der evaluierten Sprachmodelle}
-	\label{tab:llm_vergleich}
-	\renewcommand{\arraystretch}{1.2}
+	
 	\begin{tabular}{|p{5.5cm}|c|c|c|c|}
 		\hline
 		\textbf{Kriterium} &
@@ -48,6 +46,9 @@ Die gesamte KI-Anwendung wurde auf einem Raspberry Pi implementiert, der als zen
 		\textbf{Gesamtbewertung} & \textbf{4,6} & \textbf{3,3} & \textbf{2,9} & \textbf{3,6} \\
 		\hline
 	\end{tabular}
+	\caption{Trade-off-Analyse der evaluierten Sprachmodelle}
+	\label{tab:llm_vergleich}
+	\renewcommand{\arraystretch}{1.2}
 \end{table}
 
 Die durchgeführten Tests zeigten deutliche Unterschiede zwischen den untersuchten Sprachmodellen. TinyLlama erreichte zwar die höchste Ausführungsgeschwindigkeit, erzeugte jedoch häufig unvollständige oder sehr oberflächliche Antworten. Dadurch war das Modell für den vorgesehenen Einsatz als Informations- und Messeassistent nur eingeschränkt geeignet.
@@ -146,9 +147,7 @@ Zur Auswahl des geeigneten Konzepts wurde eine Nutzwertanalyse durchgeführt. Da
 
 \begin{table}[H]
 	\centering
-	\caption{Nutzwertanalyse der untersuchten Mikrofonkonzepte}
-	\label{tab:mikrofonbewertung}
-	\renewcommand{\arraystretch}{1.2}
+
 	\begin{tabular}{|p{5.5cm}|c|c|c|}
 		\hline
 		\textbf{Kriterium (Gewichtung)} &
@@ -169,12 +168,15 @@ Zur Auswahl des geeigneten Konzepts wurde eine Nutzwertanalyse durchgeführt. Da
 		\textbf{Gesamtbewertung} & \textbf{4,55} & \textbf{2,95} & \textbf{2,70} \\
 		\hline
 	\end{tabular}
+		\caption{Nutzwertanalyse der untersuchten Mikrofonkonzepte}
+	\label{tab:mikrofonbewertung}
+	\renewcommand{\arraystretch}{1.2}
 \end{table}
 
-\begin{flushleft}
-	\small
-	Bewertungsskala: 1 = sehr schlecht, 5 = sehr gut.
-\end{flushleft}
+%\begin{flushleft}
+%	\small
+%	Bewertungsskala: 1 = sehr schlecht, 5 = sehr gut.
+%\end{flushleft}
 
 Die Ergebnisse der Nutzwertanalyse zeigen, dass die Kombination aus Webcam-Mikrofon und zusätzlichem Aktivierungsknopf die höchste Gesamtbewertung erzielt. Obwohl die Varianten mit Bluetooth-Ansteckmikrofon und Headset eine bessere Sprachqualität bieten, ergeben sich im praktischen Messebetrieb mehrere Nachteile.
 
