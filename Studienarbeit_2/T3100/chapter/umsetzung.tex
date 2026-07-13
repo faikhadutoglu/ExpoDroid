@@ -1,15 +1,13 @@
 \chapter{Interaktionsfunktionen}
-\label{cha:Umsetzung und Ergebnisse}
+\label{cha:Interaktionsfunktionen}
 
-
+Der Quellcode für die Interaktionsfunktion befindet sich im GitHub-Repository des Entwicklerteams. Das Repository ist unter folgendem \textcolor{blue}{\href{https://github.com/faikhadutoglu/ExpoDroid}{Link}} auffindbar.
 
 %Je nach Art der Arbeit kann diese Kapitelüberschrift auch \glqq Ergebnisse\grqq~lauten, z.~B. bei rein messtechnischen Aufgaben.
 %
 %Beschreibung der Umsetzung des zuvor gewählten Vorgehens (theoretische Untersuchung, Erhebungen, Durchführung von Experimenten, Prototypenaufbau, Implementierung eines Prozesses, etc.).
 %
 %Verifikation anhand der zuvor erarbeiteten Anforderungen und Validierung in Bezug auf das zuvor gestellte Ziel. Diskussion der Ergebnisse. Spätestens hier auch auf die Zuverlässigkeit der gewonnenen Erkenntnisse eingehen (z.~B. anhand der Genauigkeit von Messergebnissen).
-
-
 
 % --- SIMON ---
 \section{KI-Systeme: Implementierung und Performance}
@@ -62,7 +60,7 @@ Qwen verfügte über einen vergleichsweise großen Wissensumfang und erzeugte na
 Gemma 3:1B erwies sich als das am besten geeignete Modell für den Einsatz auf dem Raspberry Pi 5. Das Modell erzeugte vollständige und verständliche Antworten, setzte die vorgegebenen Systemprompts zuverlässig um und zeigte die beste Qualität bei deutschsprachigen Ausgaben. Gleichzeitig konnte es noch mit akzeptabler Geschwindigkeit auf der verfügbaren Hardware betrieben werden. Aus diesem Grund wurde Gemma 3:1B als lokales Sprachmodell für die weitere Entwicklung ausgewählt.
 
  
-\subsection{Umsetzung: Software und Infrastruktur}
+\subsection{Umsetzung Software und Infrastruktur}
 Das KI-System des Roboters wurde ursprünglich mit dem Sprachmodell Gemma 3 realisiert. Ziel war es, sämtliche Sprachverarbeitung lokal auf dem Raspberry Pi 5 durchzuführen, um unabhängig von einer Internetverbindung arbeiten zu können. Der lokale Betrieb bietet zudem Vorteile hinsichtlich Datenschutz, Ausfallsicherheit und Betriebskosten, da keine externen Cloud-Dienste erforderlich sind.
 
 Im Rahmen der ersten Tests zeigte sich jedoch, dass die begrenzte Rechenleistung des Raspberry Pi 5 für die Echtzeitverarbeitung eines Large Language Models nur eingeschränkt geeignet ist. Insbesondere die Generierung längerer Antworten führte zu deutlich erhöhten Antwortzeiten. Für einen Messebetrieb, bei dem eine möglichst direkte Interaktion zwischen Besucher und Roboter erforderlich ist, waren diese Verzögerungen teilweise zu hoch. Während einfache Anfragen noch innerhalb akzeptabler Zeit beantwortet werden konnten, nahm die Verarbeitungsdauer bei komplexeren Fragen spürbar zu.
@@ -200,14 +198,17 @@ Zur Lösung dieses Problems wurde ein Python-Skript entwickelt, das zwischen Ben
 
 Durch diesen Ansatz konnte sowohl die Zuverlässigkeit der Antworten als auch die Antwortgeschwindigkeit verbessert werden. Gleichzeitig ließ sich die Menge der an das Sprachmodell übergebenen Informationen gezielt auf die jeweilige Benutzeranfrage beschränken.
 
-Trotz der Optimierungen konnten Halluzinationen des lokalen Sprachmodells nicht vollständig ausgeschlossen werden. Insbesondere bei längeren Gesprächen und komplexeren Fragestellungen zeigte sich vereinzelt die Generierung fehlerhafter oder frei erfundener Informationen. Zur Reduzierung dieses Verhaltens wurde der Antwortumfang des Modells begrenzt und die Antwortgenerierung durch zusätzliche Systemanweisungen stärker eingeschränkt. Dadurch konnten Halluzinationen zwar reduziert werden, allerdings führte dies teilweise zu längeren Antwortzeiten und weniger ausführlichen Antworten.  
-\subsection*{Testergebnisse und Hybrides KI Modell}
+Trotz der Optimierungen konnten Halluzinationen des lokalen Sprachmodells nicht vollständig ausgeschlossen werden. Insbesondere bei längeren Gesprächen und komplexeren Fragestellungen zeigte sich vereinzelt die Generierung fehlerhafter oder frei erfundener Informationen. Zur Reduzierung dieses Verhaltens wurde der Antwortumfang des Modells begrenzt und die Antwortgenerierung durch zusätzliche Systemanweisungen stärker eingeschränkt. Dadurch konnten Halluzinationen zwar reduziert werden, allerdings führte dies teilweise zu längeren Antwortzeiten und weniger ausführlichen Antworten. 
+ 
+\subsection{Testergebnisse und Hybrides KI Modell}
+
 Während der ersten Versuche zeigte sich jedoch, dass die lokale Ausführung von Gemma 3 auf dem Raspberry Pi 5 zu relativ langen Antwortzeiten führte. Besonders bei komplexeren Fragen war die Antwortgenerierung nicht schnell genug, um einen natürlichen Gesprächsfluss aufrechtzuerhalten. Aus diesem Grund wurde zusätzlich die Cloud-KI Gemini integriert.
 
 Das entwickelte System arbeitet als hybrides KI-System. Bei bestehender Internetverbindung werden Benutzeranfragen bevorzugt an Gemini übertragen, wodurch deutlich kürzere Antwortzeiten erreicht werden. Fällt die Internetverbindung aus oder ist kein WLAN verfügbar, erfolgt automatisch eine Umschaltung auf das lokal installierte Gemma-3-Modell. Dadurch bleibt die grundlegende Funktionalität des Roboters auch ohne Netzwerkverbindung erhalten.
 
 Durch diesen Aufbau konnte ein Kompromiss zwischen hoher Antwortgeschwindigkeit und der Ausfallsicherheit eines lokal lauffähigen Systems erreicht werden. Die modulare Softwarearchitektur ermöglicht zudem die zukünftige Integration weiterer Sprachmodelle sowie den Austausch einzelner Komponenten ohne grundlegende Änderungen am Gesamtsystem.
-\subsection*{Display, WLAN und VNC-Integration}
+
+\section{Display, WLAN und VNC-Integration}
 
 Zur visuellen Interaktion wurde der Roboter mit einem 10,1-Zoll-Display mit einer Auflösung von 1024 × 600 Pixeln ausgestattet. Auf diesem Display werden animierte Augen dargestellt, die dem Roboter ein lebendiges Erscheinungsbild verleihen und die Interaktion mit Besuchern unterstützen.
 
@@ -266,8 +267,8 @@ Durch die Kombination aus automatischem Systemstart, animierter Benutzeroberflä
 	\caption{Automatischer Systemstart des Roboters.}
 \end{figure}
 
-\subsection{Ergebnisse: Systemleistung}
-\subsubsection*{Latenzmessung und Benchmarks}
+\section{Ergebnisse: Systemleistung}
+\subsection*{Latenzmessung und Benchmarks}
 Zur Bewertung der Reaktionsfähigkeit des Systems wurden mehrere Tests mit der lokal auf dem Raspberry Pi 5 ausgeführten KI sowie mit der cloudbasierten Gemini-KI durchgeführt. Dabei wurde die Zeit zwischen dem Abschluss der Spracheingabe und dem Beginn der Sprachausgabe gemessen.
 
 Die Tests zeigten, dass die lokale Ausführung des Gemma-3-Modells auf dem Raspberry Pi grundsätzlich möglich ist, die Antwortzeiten jedoch stark von der Komplexität der Benutzeranfrage abhängen. Einfache Fragen konnten innerhalb von etwa 15 bis 30 Sekunden beantwortet werden. Bei komplexeren Anfragen stieg die Antwortzeit teilweise auf bis zu einer Minute an. Dadurch wurde ein natürlicher Gesprächsfluss erheblich eingeschränkt.
@@ -291,7 +292,7 @@ Die Energieversorgung erfolgte über eine Powerbank mit einer Kapazität von 20\
 
 Insgesamt zeigten die Stabilitätstests, dass die entwickelte Hardware- und Softwareplattform für den geplanten Messeeinsatz geeignet ist. Die größte Einschränkung stellt weiterhin die vergleichsweise hohe Antwortzeit des lokal ausgeführten Sprachmodells dar. Daher wird die hybride Nutzung von cloudbasierter und lokaler KI als sinnvoller Kompromiss zwischen Reaktionsgeschwindigkeit und Ausfallsicherheit bewertet.
 
-\subsection{Wirtschaftlichkeit der cloudbasierten KI-Nutzung}
+\section{Wirtschaftlichkeit der cloudbasierten KI-Nutzung}
 
 Neben den technischen Vorteilen wurde auch die Wirtschaftlichkeit der cloudbasierten KI-Lösung Gemini Flash für den Einsatz auf Messen betrachtet. Dabei wurden insbesondere die Kriterien Kosten, Einfachheit der Integration, Flexibilität, Antwortgeschwindigkeit sowie die Auswirkungen auf die Benutzererfahrung bewertet.
 
@@ -309,7 +310,7 @@ Demgegenüber steht die Abhängigkeit von einer verfügbaren Internetverbindung.
 
 Insgesamt zeigt die Betrachtung der Wirtschaftlichkeit, dass der Einsatz von Gemini Flash für den vorgesehenen Messebetrieb eine technisch und wirtschaftlich sinnvolle Lösung darstellt. Die Kombination aus geringen Betriebskosten, hoher Flexibilität, sehr kurzen Antwortzeiten und einer deutlich verbesserten Benutzererfahrung überwiegt die Nachteile der Netzabhängigkeit. In Verbindung mit dem implementierten Fallback-System ergibt sich somit ein zuverlässiges und gleichzeitig wirtschaftliches Gesamtkonzept für den praktischen Einsatz des Roboters.
 
-\subsubsection*{Kostenbetrachtung der Gemini-Integration}
+\subsection*{Kostenbetrachtung der Gemini-Integration}
 
 Neben den technischen Vorteilen wurde auch die Wirtschaftlichkeit des Einsatzes von Gemini Flash untersucht. Die Nutzung erfolgt über eine Programmierschnittstelle (API), bei der die Kosten anhand der übertragenen Ein- und Ausgabetokens berechnet werden. Für Gemini 2.5 Flash betragen die Kosten derzeit 0,30 US-Dollar pro einer Million Eingabetokens sowie 2,50 US-Dollar pro einer Million Ausgabetokens.
 
