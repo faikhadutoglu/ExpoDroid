@@ -1,11 +1,10 @@
-\chapter{Vorgehensweise}
+\chapter{Weiterentwicklung Mechanischen und elektronischen Konzeptes}
 \label{cha:Vorgehensweise}
 
-% --- ANGUS ---
-\section{Konzeptentwicklung}
+
 \label{sec:Konzeptentwicklung}
 
-\subsection{Optimierung des Fahrwerkes}
+\section{Optimierung des Fahrwerkes}
 
 Wie in Abbildung~\ref{fig:fahrwerk} dargestellt, basiert der Roboter auf einem dreirädrigen Fahrwerk mit Differenzialantrieb. Während der vorherigen Studienarbeit stellte sich im praktischen Betrieb heraus, dass die ursprüngliche Position des einzelnen Vorderrads zu einer unzureichenden Standsicherheit führte. Das Vorderrad befand sich vergleichsweise nahe am Schwerpunkt des Roboters, wodurch das Stützpolygon nur eine geringe Ausdehnung aufwies. Seitliche Kräfte oder Gewichtsverlagerungen führten dazu, dass der Roboter zum Kippen neigte.
 
@@ -27,7 +26,7 @@ Eine quantitative Untersuchung der Kippstabilität wurde im Rahmen dieser Arbeit
 
 %################################
 
-\subsection{Planung der Roboterarme und Schultergelenke}
+\section{Roboterarme und Schultergelenke}
 
 
 Um dem Roboter ein  menschlicheres Erscheinungsbild zu verleihen und die Interaktion mit Messebesuchern zu verbessern, wurde die Integration von Armen in das Gesamtkonzept vorgesehen. Neben der rein optischen Funktion sollten die Arme einfache Bewegungen ausführen können, um Besucher beispielsweise durch Winkbewegungen zu begrüßen. Da der Roboter ausschließlich als Demonstrator für Hochschulmessen entwickelt wird, standen keine Manipulations- oder Greifaufgaben im Vordergrund. Ziel war daher eine Lösung, die den technischen Charakter des Roboters unterstreicht und gleichzeitig mit vertretbarem konstruktivem Aufwand umgesetzt werden kann.
@@ -60,19 +59,19 @@ Zur Auswahl des geeigneten Konzepts wurde eine vereinfachte Konzeptbewertung dur
 		\textbf{Schultergelenk} &
 		\textbf{Mehrgelenkig} \\
 		\midrule
-		Optische Wirkung          & 3 & 3 & 5 & 5 \\
+		Optische Wirkung          & 3 & 2 & 4 & 5 \\
 		Interaktionsmöglichkeit   & 5 & 1 & 5 & 5 \\
 		Mechanischer Aufwand      & 4 & 5 & 4 & 1 \\
-		Elektronischer Aufwand    & 3 & 5 & 4 & 1 \\
+		
 		Fertigungsaufwand         & 3 & 5 & 4 & 1 \\
-		Wartungsfreundlichkeit    & 2 & 5 & 4 & 2 \\
+		Wartungsfreundlichkeit    & 2 & 5 & 4 & 1 \\
 		Eignung für Messebetrieb  & 5 & 3 & 5 & 3 \\
 		\midrule
 		\textbf{Gesamtpunktzahl} &
 		&
-		\textbf{74} &
-		\textbf{97} &
-		\textbf{63} \\
+		\textbf{71} &
+		\textbf{98} &
+		\textbf{64} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -82,7 +81,7 @@ Auf Grundlage der Bewertung fiel die Entscheidung auf einen geraden Roboterarm m
 
 
 %################################
-\subsubsection{Konzept der Handgestaltung}
+\subsubsection*{Handgestaltung}
 
 Neben den Armen beeinflusst insbesondere die Gestaltung der Hände das Erscheinungsbild des Roboters. Da im Rahmen dieser Arbeit keine Greiffunktion vorgesehen ist, lag der Schwerpunkt auf einer optisch ansprechenden Gestaltung, die den technischen Charakter des Roboters unterstützt und sich gleichzeitig einfach realisieren lässt.
 
@@ -114,19 +113,18 @@ Zur Entscheidungsfindung wurden die Konzepte gegenübergestellt.
 		\textbf{Humanoide Hand} &
 		\textbf{Robotergreifer} \\
 		\midrule
-		Optische Wirkung          & 4 & 3 & 5 & 5 \\
-		Technischer Eindruck      & 4 & 2 & 4 & 5 \\
-		Fertigungsaufwand         & 4 & 5 & 1 & 4 \\
+		Optische Wirkung          & 4 & 3 & 5 & 4 \\
+		Technischer Eindruck      & 4 & 1 & 5 & 5 \\
 		Mechanischer Aufwand      & 3 & 5 & 1 & 5 \\
 		Stabilität                & 4 & 5 & 3 & 5 \\
 		Integration ins Design    & 5 & 3 & 4 & 5 \\
-		Gewicht                   & 2 & 5 & 3 & 5 \\
+		Gewicht                   & 2 & 5 & 2 & 3 \\
 		\midrule
 		\textbf{Gesamtpunktzahl} &
 		&
-		\textbf{87} &
-		\textbf{70} &
-		\textbf{113} \\
+		\textbf{76} &
+		\textbf{79} &
+		\textbf{102} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -175,15 +173,15 @@ Ultraschallsensoren bestimmen den Abstand zu einem Objekt anhand der Laufzeit au
 
 \paragraph{Radarsensoren}
 
-Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung.
+Radarsensoren arbeiten mit elektromagnetischen Wellen und ermöglichen auch bei schlechten Sichtverhältnissen eine zuverlässige Objekterkennung. Sie besitzen eine hohe Reichweite und sind weitgehend unempfindlich gegenüber Witterungseinflüssen. Für den vorgesehenen Einsatzbereich eines langsam fahrenden Demonstrationsroboters sind Reichweite und Leistungsfähigkeit jedoch deutlich überdimensioniert. Zusätzlich sind Radarsensoren vergleichsweise kostenintensiv und erfordern eine aufwendigere Signalverarbeitung. \cite{fraden2016sensors}
 
 \paragraph{LiDAR}
 
-LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich.
+LiDAR-Systeme vermessen ihre Umgebung mithilfe eines Laserstrahls und erzeugen dabei hochauflösende Abstandsinformationen. Dadurch lassen sich Hindernisse sehr präzise erkennen und kartieren. Diese Sensoren werden häufig in autonomen Fahrzeugen oder mobilen Servicerobotern eingesetzt. Gegenüber Ultraschallsensoren besitzen sie jedoch deutlich höhere Anschaffungskosten und stellen höhere Anforderungen an die Datenverarbeitung. Für die reine Kollisionsvermeidung eines Demonstrationsroboters ist diese Genauigkeit nicht zwingend erforderlich. \cite{fraden2016sensors}
 
 \paragraph{Kamerabasierte Objekterkennung}
 
-Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen.
+Kameras ermöglichen die umfangreichste Erfassung der Umgebung und können mithilfe moderner Bildverarbeitung oder künstlicher Intelligenz Personen und Objekte klassifizieren. Gleichzeitig stellen sie jedoch die höchsten Anforderungen an Rechenleistung, Softwareentwicklung und Umgebungsbedingungen. Insbesondere wechselnde Lichtverhältnisse sowie verdeckte Sichtfelder können die Zuverlässigkeit der Erkennung beeinflussen. \cite{Szeliski2022}
 
 Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgeführt.
 
@@ -229,11 +227,11 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		
 		Anschaffungskosten      &5&5&25&2&10&1&5&4&20\\
 		Integrationsaufwand     &4&5&20&3&12&2&8&2&8\\
-		Messgenauigkeit         &3&3&9&4&12&5&15&5&15\\
+		Messgenauigkeit         &3&3&9&4&12&5&15&3&9\\
 		Reichweite              &2&3&6&5&10&5&10&4&8\\
 		Rechenaufwand           &5&5&25&4&20&3&15&1&5\\
-		Zuverlässigkeit         &5&4&20&5&25&5&25&3&15\\
-		Eignung für Messebetrieb&5&5&25&3&15&4&20&3&15\\
+		Zuverlässigkeit         &4&4&20&5&25&5&25&3&15\\
+		Eignung für Messebetrieb&3&5&25&3&15&4&20&3&15\\
 		
 		\midrule
 		
@@ -248,7 +246,7 @@ Zur Auswahl des geeigneten Sensorsystems wurde eine Trade-off-Analyse durchgefü
 		\textbf{98}
 		&
 		&
-		\textbf{86}
+		\textbf{80}
 		
 		\\
 		
