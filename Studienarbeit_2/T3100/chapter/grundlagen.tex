@@ -6,6 +6,7 @@
 
 % --- ANGUS ---
 \section{Roboterarten}
+\label{sec:Roboterarten}
 
 Roboter lassen sich anhand ihres Einsatzgebiets, ihres mechanischen Aufbaus sowie ihrer Interaktion mit dem Menschen in verschiedene Kategorien einteilen. \cite{Siciliano2016} Je nach Anwendungsfall unterscheiden sich die Anforderungen hinsichtlich Beweglichkeit, Präzision, Autonomie und Sicherheit. Im Folgenden werden die für diese Arbeit relevanten Roboterarten vorgestellt. \cite{Siciliano2016} 
 
@@ -32,6 +33,7 @@ Demonstrations- und Serviceroboter dienen der Interaktion mit Menschen und über
 Der im Rahmen dieser Arbeit entwickelte Roboter lässt sich als mobiler Demonstrationsroboter mit humanoiden Gestaltungselementen einordnen. Obwohl keine komplexen Manipulationsaufgaben vorgesehen sind, orientieren sich das äußere Erscheinungsbild sowie die geplanten Interaktionsmöglichkeiten an humanoiden Robotern. Gleichzeitig dient der Roboter als Demonstrationsplattform für verschiedene mechatronische und informationstechnische Systeme.
 
 \section{Mechanische Konstruktionsprinzipien (Angus)}
+\label{sec:Konstruktionsprinzipien}
 
 \subsection{Additive Fertigung mittels 3D-Druck}
 
@@ -74,6 +76,8 @@ Ein wesentlicher Vorteil von Ultraschallsensoren besteht darin, dass ihre Messun
 
 % --- SIMON ---
 \section{Softwarelösungen für Roboter}
+\label{sec:Softwarelösungen}
+
 Neben der Hardware stellt die Software einen wesentlichen Bestandteil moderner Robotersysteme dar. Aufgrund begrenzter Rechen-, Speicher- und Energieressourcen müssen insbesondere bei mobilen Robotern effiziente Softwarekonzepte eingesetzt werden. Gleichzeitig ist eine geeignete Schnittstelle zur Interaktion zwischen Mensch und Roboter erforderlich. Daher werden im Folgenden Aspekte des Ressourcenmanagements auf Einplatinencomputern sowie Verfahren der Mensch-Roboter-Interaktion und der Fernwartung betrachtet.
 \subsection{Ressourcenmanagement auf Einplatinencomputern}
 
@@ -130,6 +134,8 @@ Weiterhin wurde festgestellt, dass die Bereitstellung eines eigenen WLAN-Hotspot
 
 % --- HAI NAM ---
 \section{Elektromechanische Integration und Design (Hai Nam)}
+\label{sec:Elektromechanische}
+
 \subsection{Ästhetik und modernes Produktdesign von Robotern}
 
 Neben der technischen Funktionalität spielt auch das äußere Erscheinungsbild eines Roboters eine wichtige Rolle. Das Produktdesign beeinflusst nicht nur die optische Wahrnehmung, sondern auch die Benutzerakzeptanz, die Bedienbarkeit und den Gesamteindruck eines Systems. Insbesondere bei Robotern, die in direktem Kontakt mit Menschen eingesetzt werden, trägt ein durchdachtes Design maßgeblich zur Akzeptanz und zum Vertrauen der Nutzer bei.
@@ -144,7 +150,7 @@ Im Rahmen dieser Arbeit wurde daher neben der technischen Umsetzung auch auf ein
 
 \subsection{Aktorik und Greifsysteme}
 
-\subsubsection{Funktionsweise und Ansteuerung von Servomotoren [PENDING READ]}
+\subsubsection*{Funktionsweise und Ansteuerung von Servomotoren [PENDING READ]}
 
 Servomotoren gehören zu den am häufigsten eingesetzten Aktoren in der Robotik und Automatisierungstechnik. Sie ermöglichen eine präzise Positionierung von mechanischen Komponenten und werden insbesondere dann eingesetzt, wenn Winkelstellungen exakt angefahren und gehalten werden müssen. Im Gegensatz zu herkömmlichen Gleichstrommotoren besitzen Servomotoren eine integrierte Regelung, die eine kontinuierliche Überwachung der aktuellen Position ermöglicht. Dadurch eignen sie sich besonders für Anwendungen wie Roboterarme, Greifmechanismen oder automatisierte Fertigungsanlagen. \cite{Kollmorgen.2024}
 
@@ -175,7 +181,7 @@ Für den in dieser Studienarbeit verwendeten Robotergreifer wurde ein Standard M
 
 Zusammenfassend stellen Servomotoren eine kostengünstige und präzise Lösung zur Positionierung beweglicher Komponenten dar. Durch ihre integrierte Regelung, die einfache Ansteuerung sowie das hohe Drehmoment bei geringer Baugröße sind sie für robotische Greifsysteme besonders geeignet.
 
-\subsubsection{Mechanik von Greifklauen [PENDING READ]}
+\subsubsection*{Mechanik von Greifklauen [PENDING READ]}
 
 Greifklauen stellen das Endeffektor System eines Roboters dar und dienen der Aufnahme, dem Transport sowie dem Ablegen von Werkstücken oder anderen Objekten. Sie bilden die mechanische Schnittstelle zwischen dem Robotersystem und seiner Umgebung. Die Konstruktion einer Greifklaue richtet sich nach den Eigenschaften der zu handhabenden Objekte sowie nach den Anforderungen hinsichtlich Tragfähigkeit, Präzision und Beweglichkeit.
 
@@ -197,8 +203,8 @@ Ein weiterer Vorteil mechanischer Parallelgreifer liegt in ihrer einfachen Steue
 
 Zusammenfassend bildet die Mechanik der Greifklaue die Grundlage für eine sichere und präzise Objektmanipulation. Erst das Zusammenspiel aus geeignetem Werkstoff, mechanischer Übersetzung, synchroner Fingerbewegung und passendem Servoantrieb ermöglicht einen zuverlässigen Greifvorgang. Die im Projekt eingesetzte Aluminium Greifklaue erfüllt diese Anforderungen und stellt aufgrund ihrer einfachen Konstruktion sowie ihrer hohen Stabilität eine geeignete Lösung für den Aufbau eines robotischen Greifsystems dar.
 
-
 \section{KI TTS STT}
+\label{sec:KI}
 
 Unter künstlicher Intelligenz (KI) versteht man Verfahren und Softwaresysteme, die Aufgaben bearbeiten können, welche normalerweise menschliche Intelligenz erfordern. Dazu zählen Lernen, Sprachverarbeitung, Mustererkennung, Schlussfolgern und Entscheidungsfindung. Ziel moderner KI ist nicht die vollständige Nachbildung des Menschen, sondern die technische Umsetzung einzelner kognitiver Fähigkeiten. Der Bereich der KI umfasst zahlreiche Teilgebiete wie Machine Learning, Deep Learning, Computer Vision und Natural Language Processing. \cite{goodfellow2016deep}
 
