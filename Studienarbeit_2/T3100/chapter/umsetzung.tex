@@ -1,4 +1,4 @@
-\chapter{Interaktionsfunktionen}
+\chapter{Umsetzung und Ergebnisse}
 \label{cha:Umsetzung und Ergebnisse}
 
 
@@ -12,7 +12,19 @@
 
 \textit{In diesem Kapitel werden die konkrete Realisierung und die anschließende Validierung der jeweiligen Arbeitspakete zusammenhängend dargestellt.}
 
+% --- ANGUS ---
+\section{Mechanische Realisierung und Validierung (Angus)}
+\subsection{Umsetzung: Fertigung und Montage}
+\subsubsection{Chassis-Modifikationen (Akku, Stützrad, Sensoren)}
+Hier wird beschrieben, wie das Akkusystem und die Radposition umgebaut wurden.
+\subsubsection{Aufbau der Manipulatoren und des Kopfes}
+Details zur Fertigung der Arme, Schultern und des Kopfes sowie Lackierung.
 
+\subsection{Ergebnisse: Mechanische Tests}
+\subsubsection{Stabilitäts- und Belastungsprüfung}
+Wie stabil steht der Roboter jetzt? Hält der Akku-Mechanismus?
+\subsubsection{Optische und haptische Abnahme}
+Bewertung der Lackierung und der Bewegungsfreiheit der Arme.
 
 % --- SIMON ---
 \section{KI-Systeme: Implementierung und Performance (Simon)}
@@ -271,21 +283,67 @@ Die Energieversorgung erfolgte über eine Powerbank mit einer Kapazität von 20\
 
 Insgesamt zeigten die Stabilitätstests, dass die entwickelte Hardware- und Softwareplattform für den geplanten Messeeinsatz geeignet ist. Die größte Einschränkung stellt weiterhin die vergleichsweise hohe Antwortzeit des lokal ausgeführten Sprachmodells dar. Daher wird die hybride Nutzung von cloudbasierter und lokaler KI als sinnvoller Kompromiss zwischen Reaktionsgeschwindigkeit und Ausfallsicherheit bewertet.
 
-\subsection{Elektronische Architektur}
-\label{cha:Elektronische Architektur}
+\subsection{Wirtschaftlichkeit der cloudbasierten KI-Nutzung}
 
-\vspace{0.5cm}
-\begin{figure}[H]
-	\centering
-	%\fbox{%
-		\input{images/Konstruktions_Plan.tex}
-		%}
-	\vspace{1cm}
-	\caption{Qualitative Darstellung der elektronischen Architektur des Roboters mit allen relevanten Komponenten}		
-	\label{fig:Konstruktions_Plan}
-\end{figure}
+Neben den technischen Vorteilen wurde auch die Wirtschaftlichkeit der cloudbasierten KI-Lösung Gemini Flash für den Einsatz auf Messen betrachtet. Dabei wurden insbesondere die Kriterien Kosten, Einfachheit der Integration, Flexibilität, Antwortgeschwindigkeit sowie die Auswirkungen auf die Benutzererfahrung bewertet.
 
-Die elektrische Architektur wurde weiterentwickelt. Der Kopfbereich und der untere Körper sind in der aktuellen Form unabhängig von einander. Der ESP32 steuert die Bewegung der Motoren.
+Ein wesentlicher Vorteil der Cloud-KI besteht in der geringen benötigten Hardwareleistung. Da die eigentliche Verarbeitung auf externen Servern erfolgt, muss auf dem Raspberry Pi lediglich die Kommunikation mit der Schnittstelle (API) erfolgen. Dadurch können auch komplexe Sprachmodelle verwendet werden, ohne dass zusätzliche lokale Rechenhardware erforderlich ist. Dies reduziert die Anschaffungskosten und vereinfacht die Systemarchitektur.
+
+Die Nutzung von Gemini Flash erfolgt nutzungsabhängig über ein API-Abrechnungsmodell. Im Vergleich zu den Kosten für leistungsfähige lokale KI-Hardware fallen bei typischen Messeanwendungen jedoch nur geringe Betriebskosten an. Während eines Messetages werden meist kurze Informationsanfragen gestellt, sodass die Anzahl der übertragenen Tokens vergleichsweise niedrig bleibt. Die entstehenden Kosten pro Veranstaltung sind daher gering und wirtschaftlich vertretbar. Gleichzeitig entfallen Aufwendungen für die Wartung und Aktualisierung großer lokaler Sprachmodelle.
+
+Ein weiterer Vorteil liegt in der hohen Flexibilität. Aktualisierungen des Sprachmodells erfolgen automatisch durch den Anbieter und stehen unmittelbar zur Verfügung. Zudem können zukünftige Modellversionen ohne Änderungen an der Hardware genutzt werden. Dadurch bleibt das System langfristig aktuell und kann bei Bedarf einfach erweitert werden.
+
+Besonders relevant für den Messebetrieb ist die deutlich höhere Antwortgeschwindigkeit gegenüber lokal ausgeführten Sprachmodellen. Während die lokale Ausführung von Gemma 3 auf dem Raspberry Pi je nach Komplexität der Anfrage Antwortzeiten von mehreren zehn Sekunden erreichen kann, liefert Gemini Flash Antworten typischerweise innerhalb weniger Sekunden. Dadurch entsteht für die Besucher ein wesentlich natürlicherer Gesprächsfluss.
+
+Die geringeren Antwortzeiten wirken sich unmittelbar auf die User Experience aus. Besucher erwarten bei einer sprachbasierten Interaktion eine schnelle Reaktion des Systems. Lange Wartezeiten führen häufig dazu, dass Gesprächspartner die Aufmerksamkeit verlieren oder den Eindruck erhalten, das System habe die Anfrage nicht verstanden. Durch die schnelle Antwortgenerierung der Cloud-KI bleibt die Interaktion flüssig und wirkt deutlich professioneller. Dies erhöht die Akzeptanz des Roboters und verbessert dessen Wahrnehmung als intelligenter Informationsassistent.
+
+Demgegenüber steht die Abhängigkeit von einer verfügbaren Internetverbindung. Fällt die Netzwerkverbindung aus, kann die Cloud-KI nicht genutzt werden. Aus diesem Grund wurde die Gemini-Integration mit dem lokal installierten Gemma-3-Modell kombiniert. Durch diesen hybriden Ansatz können die Vorteile der schnellen und leistungsfähigen Cloud-KI genutzt werden, während gleichzeitig die grundsätzliche Funktionalität des Systems auch ohne Internetverbindung erhalten bleibt.
+
+Insgesamt zeigt die Betrachtung der Wirtschaftlichkeit, dass der Einsatz von Gemini Flash für den vorgesehenen Messebetrieb eine technisch und wirtschaftlich sinnvolle Lösung darstellt. Die Kombination aus geringen Betriebskosten, hoher Flexibilität, sehr kurzen Antwortzeiten und einer deutlich verbesserten Benutzererfahrung überwiegt die Nachteile der Netzabhängigkeit. In Verbindung mit dem implementierten Fallback-System ergibt sich somit ein zuverlässiges und gleichzeitig wirtschaftliches Gesamtkonzept für den praktischen Einsatz des Roboters.
+
+\subsubsection{Kostenbetrachtung der Gemini-Integration}
+
+Neben den technischen Vorteilen wurde auch die Wirtschaftlichkeit des Einsatzes von Gemini Flash untersucht. Die Nutzung erfolgt über eine Programmierschnittstelle (API), bei der die Kosten anhand der übertragenen Ein- und Ausgabetokens berechnet werden. Für Gemini 2.5 Flash betragen die Kosten derzeit 0,30 US-Dollar pro einer Million Eingabetokens sowie 2,50 US-Dollar pro einer Million Ausgabetokens.
+
+Da der Roboter überwiegend kurze Informationsgespräche mit Messebesuchern führt, ist der Tokenverbrauch vergleichsweise gering. Für eine überschlägige Berechnung wurde angenommen, dass pro Gespräch durchschnittlich etwa 100 Eingabetokens und 300 Ausgabetokens verarbeitet werden. Dies entspricht einer typischen Besucheranfrage mit einer ausführlichen Antwort des Roboters.
+
+Bei 500 Gesprächen während einer Messe ergeben sich somit:
+
+\begin{itemize}
+	\item Eingabetokens: 500 $\times$ 100 = 50\,000 Tokens
+	\item Ausgabetokens: 500 $\times$ 300 = 150\,000 Tokens
+\end{itemize}
+
+Daraus ergeben sich folgende Kosten:
+
+\begin{align}
+	K_{\text{Input}} &= \frac{50\,000}{1\,000\,000} \cdot 0{,}30 \,\$ = 0{,}015 \,\$ \\
+	K_{\text{Output}} &= \frac{150\,000}{1\,000\,000} \cdot 2{,}50 \,\$ = 0{,}375 \,\$
+\end{align}
+
+Die Gesamtkosten betragen damit lediglich:
+
+\begin{equation}
+	K_{\text{Gesamt}} = 0{,}39 \,\$
+\end{equation}
+
+Selbst bei einer deutlich höheren Nutzung von beispielsweise 2\,000 Gesprächen pro Veranstaltung würden die Kosten nur bei etwa 1,56 US-Dollar liegen. Im Vergleich zu den Anschaffungs- und Betriebskosten der übrigen Hardwarekomponenten stellen die KI-Kosten somit einen vernachlässigbaren Anteil dar.
+
+Die Analyse zeigt, dass der Einsatz von Gemini Flash nicht nur technische Vorteile hinsichtlich Antwortqualität und Geschwindigkeit bietet, sondern auch aus wirtschaftlicher Sicht sehr attraktiv ist. Die laufenden Betriebskosten bleiben selbst bei intensiver Nutzung deutlich unter den Kosten, die durch zusätzliche leistungsfähige Hardware für eine lokale KI-Verarbeitung entstehen würden.
+\newpage
 
 
 
+% --- HAI NAM ---
+\section{Elektronik und Design: Integration und Tests (Hai Nam)}
+\subsection{Umsetzung: Verdrahtung und Peripherie}
+\subsubsection{Installation Screw Terminal und Kabelmanagement}
+Beschreibung der sauberen Verkabelung.
+\subsubsection{Funktionserweiterungen (Klaue, Speak-Through, Paintbrush)}
+Einbau der Klaue und Programmierung der Zusatzfunktionen.
+
+\subsection{Ergebnisse: Funktionsprüfung}
+\subsubsection{Test der Aktorik und Animationen}
+Greifkrafttests und Ablauf der Winkanimation.
+\subsubsection{Usability-Check}
+Audioqualität der Durchsagefunktion und Bewertung des Clean-Designs.
